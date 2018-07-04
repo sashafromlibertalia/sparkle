@@ -1,0 +1,15 @@
+{
+  "name": "vietnam_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-vk-sdk": "^1.0.5",
+    "vk-io": "^4.0.0-beta.10"
+  }
+}
