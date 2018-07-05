@@ -199,7 +199,7 @@ updates.hear('/lesson', async(context) => {
 	{
 		if(Time.getHours() === 1 & Time.getDay() === 5 & Time.getMinutes(i)) 
 		{
-			context.send('В данный момент проходит английский')
+			context.send('В данный момент проходит ' + Schedule[0][0])
 		}
 	}
 })
