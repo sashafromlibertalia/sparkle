@@ -103,3 +103,25 @@ updates.hear(/шанс/i, async(context) => {
   var m = chances[Math.floor(Math.random() * chances.length)]
 	await context.send(m)
 })
+
+
+const Time = new Date()
+
+var Schedule = new Array(6)
+Schedule[0] = new Array(7)
+Schedule[0][0] = "Английский"
+Schedule[0][1] = "Английский"
+Schedule[0][2] = "Русский"
+Schedule[0][2] = "Искусство"
+Schedule[0][3] = "Физ-ра"
+Schedule[0][4] = "Литература"
+Schedule[0][5] = "Физика"
+Schedule[0][6] = "Алгебра"
+
+
+updates.hear('/lesson', async(context) => {
+	if(Time.getHours() === 21)
+	{
+		context.send(Schedule[0][1])
+	}
+})
