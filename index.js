@@ -2,6 +2,7 @@ const {VK} = require('vk-io');
 const fs = require('fs')
 const vk = new VK();
 const {updates} = vk;
+const {api} = vk;
 const {Keyboard} = require('vk-io')
 
 //Не трогать
@@ -106,6 +107,10 @@ updates.hear(/шанс/i, async(context) => {
 })
 
 
+updates.setHearFallbackHandler(async (context, next) => {
+	await context.send('Такой команды нет. Хочешь, чтобы она появилась - пиши Саше :(');
+});
+
 const Time = new Date()
 var Schedule = new Array(6)
 Schedule[0] = new Array(7)
@@ -180,7 +185,6 @@ Schedule[5][6] = ""
 
 
 const newDay = new Date()
-newDay.setHours(22)
 
 var greeting = new Array(4)
 greeting[0] = "Итак, мои дорогие, начался новый учебный день. Я желаю вам всем хороших оценок по всем предметам, удачи :)\n Расписание на сегодня:\n"
@@ -190,7 +194,9 @@ greeting[3] = "Привет. Без лишних слов. Расписание 
 var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
 
 var timer = setInterval(function() {
-    context.send(random_greeting)
-}, 5000)
-
-console.log(random_greeting)
+	if(newDay.getHours() === 23){
+		api.messages.send({
+			message: random_greeting
+		})
+	}
+}, 1000)
