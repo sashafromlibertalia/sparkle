@@ -73,22 +73,21 @@ const hearCommand = (name, conditions, handle) => {
 };
 
 
-const Keyboard1 = Keyboard
-.keyboard([
-	Keyboard.textButton({
+
+
+hearCommand('game', async (context) => {
+	await context.send({
+		message: 'Итак...',
+		keyboard: Keyboard.keyboard([
+			Keyboard.textButton({
 				label: 'Шар Вероятностей',
 				payload: {
 					command: 'ball'
 				},
 				color: Keyboard.PRIMARY_COLOR
-			})
-])
-.oneTime()
-
-hearCommand('game', async (context) => {
-	await context.send({
-		message: 'Итак...',
-		keyboard: Keyboard1
+			}),
+			Keyboard.oneTime()
+		])
 	});
 });
 
