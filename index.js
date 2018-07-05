@@ -196,7 +196,8 @@ var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
 var timer = setInterval(function() {
 	if(newDay.getHours() === 23){
 		api.messages.send({
-			message: random_greeting
+			message: random_greeting,
+			domain: 'egoromanov'
 		})
 	}
 }, 1000)
