@@ -80,10 +80,9 @@ hearCommand('game', async (context) => {
 				payload: {
 					command: 'ball'
 				},
-				color: Keyboard.PRIMARY_COLOR
+				color: Keyboard.POSITIVE_COLOR
 			}),
-		]),
-		keyboard: keyboard.oneTime() 
+		])
 	});
 });
 
