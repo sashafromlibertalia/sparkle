@@ -107,7 +107,7 @@ updates.hear(/шанс/i, async(context) => {
 
 const Time = new Date()
 
-var Schedule = new Array(6)
+var Schedule = new Array(1)
 Schedule[0] = new Array(7)
 Schedule[0][0] = "Английский"
 Schedule[0][1] = "Английский"
