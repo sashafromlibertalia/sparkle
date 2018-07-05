@@ -38,6 +38,18 @@ updates.hear('/start', async(context) => {
 
 
 
+updates.use(async (context, next) => {
+	if (context.is('message')) {
+		const payload = context.getMessagePayload();
+
+		context.state.command = payload && payload.command
+			? payload.command
+			: null;
+	}
+
+	await next();
+});
+
 const hearCommand = (name, conditions, handle) => {
 	if (typeof handle !== 'function') {
 		handle = conditions;
@@ -59,24 +71,17 @@ const hearCommand = (name, conditions, handle) => {
 	);
 };
 
-
-
-updates.hear('/game', async(context) => {
+hearCommand('/game', async(context) => {
 	await context.send({
-		keyboard: Keyboard.keyboard([
-		[
+		message: 'Итак...',
+		keyboard: keyboard.keyboard([
 			Keyboard.textButton({
-				label: 'Шар Вероятностей',
+				label:'Шар Вероятностей',
 				payload: {
 					command:'ball'
 				},
 				color: Keyboard.PRIMARY_COLOR
 			})
-		]
-	])
+		])
 	})
-})
-	
-hearCommand('ball', async(context) => {
-	await context.send('Итак. Вы выбрали игру "Шар Вероятностей". Как играть? Очень просто!')
 })
