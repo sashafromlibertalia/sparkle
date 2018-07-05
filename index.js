@@ -180,7 +180,7 @@ Schedule[5][6] = ""
 
 
 const newDay = new Date()
-newDay.setHours(6)
+newDay.setHours(22)
 
 var greeting = new Array(4)
 greeting[0] = "Итак, мои дорогие, начался новый учебный день. Я желаю вам всем хороших оценок по всем предметам, удачи :)\n Расписание на сегодня:\n"
