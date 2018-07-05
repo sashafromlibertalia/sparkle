@@ -200,4 +200,4 @@ var timer = setInterval(function() {
 			domain: 'egoromanov'
 		})
 	}
-}, 1000)
+}, 6000)
