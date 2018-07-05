@@ -195,10 +195,16 @@ var timer = setInterval(function() {
 }, 86400000)
 
 updates.hear('/lesson', async(context) => {
-	setTimeout(function() {
-		if(Time.getHours() === 0 & Time.getDay() === 5) 
+	for(var i = 30; i < 60; i++)
+	{
+		if(Time.getHours() === 1 & Time.getDay() === 5 || Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит английский')
 		}
-	}, 2400000)
+	}
 })
+		
+	
+	
+	
+	
