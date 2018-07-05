@@ -36,8 +36,6 @@ updates.hear('/start', async(context) => {
 })
 
 
-
-
 updates.use(async (context, next) => {
 	if (context.is('message')) {
 		const payload = context.getMessagePayload();
@@ -73,8 +71,6 @@ const hearCommand = (name, conditions, handle) => {
 };
 
 
-
-
 hearCommand('game', async (context) => {
 	await context.send({
 		message: 'Вот список моих игр',
@@ -89,6 +85,7 @@ hearCommand('game', async (context) => {
 		])
 	});
 });
+keyboard.oneTime()
 
 hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанс" и свое утверждение, а я отвечаю вероятностью.\nПример:\n-шанс, что Мы - дружный класс\n-Вероятность - 100%')
