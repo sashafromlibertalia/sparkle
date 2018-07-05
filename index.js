@@ -198,6 +198,7 @@ var timer = setInterval(function() {
 		api.messages.send({
 			message: random_greeting,
 			domain: 'egoromanov'
-		})
+		}),
+		console.log(random_greeting)
 	}
 }, 6000)
