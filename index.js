@@ -58,7 +58,8 @@ const hearCommand = (name, conditions, handle) => {
 };
 
 updates.hear('/game', async(context) => {
-	Keyboard.keyboard([
+	await context.send({
+		keyboard: Keyboard.keyboard([
 		[
 			Keyboard.textButton({
 				label: 'Шар Вероятностей',
@@ -69,8 +70,9 @@ updates.hear('/game', async(context) => {
 			})
 		]
 	])
+	})
 })
-
+	
 hearCommand('ball', async(context) => {
 	await context.send('кек')
 })
