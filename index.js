@@ -77,7 +77,7 @@ const hearCommand = (name, conditions, handle) => {
 
 hearCommand('game', async (context) => {
 	await context.send({
-		message: 'Итак...',
+		message: 'Вот список моих игр',
 		keyboard: Keyboard.keyboard([
 			Keyboard.textButton({
 				label: 'Шар Вероятностей',
@@ -86,8 +86,19 @@ hearCommand('game', async (context) => {
 				},
 				color: Keyboard.PRIMARY_COLOR
 			}),
-			Keyboard.oneTime()
 		])
 	});
 });
 
+hearCommand('ball', async(context) => {
+	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанс" и свое утверждение, а я отвечаю вероятностью.\nПример:\n-шанс, что Мы - дружный класс\n-В')
+})
+
+var chances = new Array(6)
+  chances[0] = "Вероятность близка к нулю :("
+  chances[1] = "Я считаю, что 50 на 50"
+  chances[2] = "Вероятность - 100%"
+  chances[3] = "Я полагаю, что вероятность близка к 100%"
+  chances[4] = "Маловероятно, но шанс есть" 
+  chances[5] = "Вероятность нулевая, ничего не поделать"
+  var m = chances[Math.floor(Math.random() * chances.length)]
