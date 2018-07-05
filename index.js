@@ -105,8 +105,10 @@ hearCommand('game', async (context) => {
 				label: 'Шар Вероятностей',
 				payload: {
 					command: 'ball'
-				}
+				},
+				color: Keyboard.PRIMARY_COLOR
 			})
 		])
 	});
+	Keyboard.onTime()
 });
