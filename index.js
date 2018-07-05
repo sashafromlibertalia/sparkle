@@ -107,8 +107,8 @@ hearCommand('game', async (context) => {
 					command: 'ball'
 				},
 				color: Keyboard.PRIMARY_COLOR
-			})
+			}),
+			Keyboard.onTime()
 		])
 	});
-	Keyboard.onTime()
 });
