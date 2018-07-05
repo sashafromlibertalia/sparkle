@@ -192,3 +192,5 @@ var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
 var timer = setInterval(function() {
     context.send(random_greeting)
 }, 60000)
+
+console.log(random_greeting)
