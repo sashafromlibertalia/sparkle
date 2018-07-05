@@ -175,15 +175,6 @@ Schedule[5][5] = ""
 Schedule[5][6] = ""
 
 
-/*updates.hear('/lesson', async(context) => {
-	if(Time.getHours() === 8 & Time.getDay() === 1 )
-	{
-		context.send('В данный момент в нашей гимназии проходит следующий урок: '+ Schedule[0][1])
-	}
-})*/
-
-
-
 const newDay = new Date()
 
 var greeting = new Array(4)
@@ -202,3 +193,12 @@ var timer = setInterval(function() {
 		console.log(random_greeting)
 	}
 }, 86400000)
+
+updates.hear('/lesson', async(context) => {
+	setTimeout(function() {
+		if(Time.getHours() === 0 & Time.getDay() === 5) 
+		{
+			context.send('В данный момент проходит английский')
+		}
+	}, 2400000)
+})
