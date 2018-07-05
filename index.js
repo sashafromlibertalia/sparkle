@@ -197,7 +197,7 @@ var timer = setInterval(function() {
 updates.hear('/lesson', async(context) => {
 	for(var i = 30; i < 60; i++)
 	{
-		if(Time.getHours() === 1 & Time.getDay() === 5 || Time.getMinutes(i)) 
+		if(Time.getHours() === 1 & Time.getDay() === 5 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит английский')
 		}
