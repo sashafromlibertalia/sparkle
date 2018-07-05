@@ -1,11 +1,8 @@
 const {VK} = require('vk-io');
-const {MessageContext} = require('vk-io');
 const fs = require('fs')
 const vk = new VK();
-const {api} = vk;
 const {updates} = vk;
-const {upload} = vk;
-
+const {Keyboard} = require('vk-io')
 
 //Не трогать
 const TOKEN = "e74e42966fb9a1e8ab1354ab4721881369665a16367e044c005920b5220827e17ca9894b56412ea2e2891"
@@ -35,5 +32,18 @@ updates.use(async (context, next) => {
 });
 
 updates.hear('/start', async(context) => {
-    context.send('Привет! Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:\n/lesson - оповещает тебя, какой сейчас урок\n/game - не знаю зачем, но у меня есть игры (Я сам в шоке)')
+	context.send('Привет! Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:\n/lesson - оповещает тебя, какой сейчас урок\n/game - не знаю зачем, но у меня есть игры (Я сам в шоке)')
+})
+
+updates.hear('/game', async(context) => {
+	Keyboard.keyboard([
+		[
+			Keyboard.textButton({
+				label: 'Шар Вероятностей',
+				payload: {
+					command:'ball'
+				}
+			})
+		]
+	])
 })
