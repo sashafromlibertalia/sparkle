@@ -8,17 +8,18 @@ const {Keyboard} = require('vk-io')
 const TOKEN = "e74e42966fb9a1e8ab1354ab4721881369665a16367e044c005920b5220827e17ca9894b56412ea2e2891"
 
 vk.setOptions({
-    token: TOKEN
+	token: TOKEN
 })
 
 //Святыня
 require('https').createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
-    res.end('')
+	res.end('')
 });
 
 
 updates.startPolling()
 
+//Святыня 2
 updates.use(async (context, next) => {
 	if (context.is('message') && context.isOutbox()) {
 		return;
@@ -31,11 +32,6 @@ updates.use(async (context, next) => {
 	}
 });
 
-updates.hear('/start', async(context) => {
-	context.send('Привет! Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:\n/lesson - оповещает тебя, какой сейчас урок\n/game - не знаю зачем, но у меня есть игры (Я сам в шоке)')
-})
-
-
 updates.use(async (context, next) => {
 	if (context.is('message')) {
 		const payload = context.getMessagePayload();
@@ -47,7 +43,6 @@ updates.use(async (context, next) => {
 
 	await next();
 });
-
 
 const hearCommand = (name, conditions, handle) => {
 	if (typeof handle !== 'function') {
@@ -71,6 +66,13 @@ const hearCommand = (name, conditions, handle) => {
 };
 
 
+
+
+//Команды
+updates.hear('/start', async(context) => {
+	context.send('Привет! Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:\n/lesson - оповещает тебя, какой сейчас урок\n/game - не знаю зачем, но у меня есть игры (Я сам в шоке)')
+})
+
 hearCommand('game', async (context) => {
 	await context.send({
 		message: 'Вот список моих игр',
@@ -91,7 +93,6 @@ hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанс" и свое утверждение, а я отвечаю вероятностью.\nПример:\n-шанс, что Мы - дружный класс\n-Вероятность - 100%')
 })
 
-
 updates.hear(/шанс/i, async(context) => {
 	var chances = new Array(6)
   chances[0] = "Вероятность близка к нулю :("
@@ -106,22 +107,88 @@ updates.hear(/шанс/i, async(context) => {
 
 
 const Time = new Date()
-
-var Schedule = new Array(1)
+var Schedule = new Array(6)
 Schedule[0] = new Array(7)
-Schedule[0][0] = "Английский"
-Schedule[0][1] = "Английский"
-Schedule[0][2] = "Русский"
-Schedule[0][2] = "Искусство"
-Schedule[0][3] = "Физ-ра"
-Schedule[0][4] = "Литература"
-Schedule[0][5] = "Физика"
-Schedule[0][6] = "Алгебра"
+Schedule[0][0] = ""
+Schedule[0][1] = ""
+Schedule[0][2] = ""
+Schedule[0][2] = ""
+Schedule[0][3] = ""
+Schedule[0][4] = ""
+Schedule[0][5] = ""
+Schedule[0][6] = ""
+
+Schedule[1] = new Array(7)
+Schedule[1][0] = ""
+Schedule[1][1] = ""
+Schedule[1][2] = ""
+Schedule[1][2] = ""
+Schedule[1][3] = ""
+Schedule[1][4] = ""
+Schedule[1][5] = ""
+Schedule[1][6] = ""
+
+Schedule[2] = new Array(7)
+Schedule[2][0] = ""
+Schedule[2][1] = ""
+Schedule[2][2] = ""
+Schedule[2][2] = ""
+Schedule[2][3] = ""
+Schedule[2][4] = ""
+Schedule[2][5] = ""
+Schedule[2][6] = ""
 
 
-updates.hear('/lesson', async(context) => {
-	if(Time.getHours() === 21)
+Schedule[3] = new Array(7)
+Schedule[3][0] = ""
+Schedule[3][1] = ""
+Schedule[3][2] = ""
+Schedule[3][2] = ""
+Schedule[3][3] = ""
+Schedule[3][4] = ""
+Schedule[3][5] = ""
+Schedule[3][6] = ""
+
+Schedule[4] = new Array(7)
+Schedule[4][0] = ""
+Schedule[4][1] = ""
+Schedule[4][2] = ""
+Schedule[4][2] = ""
+Schedule[4][3] = ""
+Schedule[4][4] = ""
+Schedule[4][5] = ""
+Schedule[4][6] = ""
+
+Schedule[5] = new Array(7)
+Schedule[5][0] = ""
+Schedule[5][1] = ""
+Schedule[5][2] = ""
+Schedule[5][2] = ""
+Schedule[5][3] = ""
+Schedule[5][4] = ""
+Schedule[5][5] = ""
+Schedule[5][6] = ""
+
+
+/*updates.hear('/lesson', async(context) => {
+	if(Time.getHours() === 8 & Time.getDay() === 1 )
 	{
-		context.send('В данный момент в нашей гимназии проходит следующий урок: '+Schedule[0][1])
+		context.send('В данный момент в нашей гимназии проходит следующий урок: '+ Schedule[0][1])
 	}
-})
+})*/
+
+
+
+const newDay = new Date()
+newDay.setHours(6)
+
+var greeting = new Array(4)
+greeting[0] = "Итак, мои дорогие, начался новый учебный день. Я желаю вам всем хороших оценок по всем предметам, удачи :)\n Расписание на сегодня:\n"
+greeting[1] = "И снова всем приветик, господа. Скучали? Я знаю, что нет. Вот вам расписание на сегодня: \n"
+greeting[2] = "Шалом, дамы и пацаны. Возможно, мои ежедневные напоминая о расписании вам надоели, но я ничего поделать не могу - я создан для выполнения конкретных задач. Кстати, вот сегодняшнее расписание: \n"
+greeting[3] = "Привет. Без лишних слов. Расписание на сегодня:\n"
+var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
+
+var timer = setInterval(function() {
+    context.send(random_greeting)
+}, 60000)
