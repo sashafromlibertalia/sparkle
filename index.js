@@ -82,10 +82,11 @@ hearCommand('game', async (context) => {
 				},
 				color: Keyboard.PRIMARY_COLOR
 			}),
-		])
+		]),
+		keyboard: keyboard.oneTime() 
 	});
 });
-keyboard.oneTime()
+
 
 hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанс" и свое утверждение, а я отвечаю вероятностью.\nПример:\n-шанс, что Мы - дружный класс\n-Вероятность - 100%')
