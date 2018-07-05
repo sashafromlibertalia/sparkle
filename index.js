@@ -35,6 +35,28 @@ updates.hear('/start', async(context) => {
 	context.send('Привет! Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:\n/lesson - оповещает тебя, какой сейчас урок\n/game - не знаю зачем, но у меня есть игры (Я сам в шоке)')
 })
 
+
+const hearCommand = (name, conditions, handle) => {
+	if (typeof handle !== 'function') {
+		handle = conditions;
+		conditions = [`/${name}`];
+	}
+
+	if (!Array.isArray(conditions)) {
+		conditions = [conditions];
+	}
+
+	updates.hear(
+		[
+			(text, { state }) => (
+				state.command === name
+			),
+			...conditions
+		],
+		handle
+	);
+};
+
 updates.hear('/game', async(context) => {
 	Keyboard.keyboard([
 		[
@@ -42,8 +64,13 @@ updates.hear('/game', async(context) => {
 				label: 'Шар Вероятностей',
 				payload: {
 					command:'ball'
-				}
+				},
+				color: Keyboard.PRIMARY_COLOR
 			})
 		]
 	])
+})
+
+hearCommand('ball', async(context) => {
+	await context.send('кек')
 })
