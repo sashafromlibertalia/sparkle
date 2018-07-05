@@ -122,6 +122,6 @@ Schedule[0][6] = "Алгебра"
 updates.hear('/lesson', async(context) => {
 	if(Time.getHours() === 21)
 	{
-		context.send(Schedule[0][1])
+		context.send('В данный момент в нашей гимназии проходит следующий урок: '+Schedule[0][1])
 	}
 })
