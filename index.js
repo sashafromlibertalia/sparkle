@@ -73,43 +73,22 @@ const hearCommand = (name, conditions, handle) => {
 };
 
 
-/*hearCommand('game', async (context, next) => {
-	context.state.command = 'game';
-
-	await next();
-});
-
-
-
-hearCommand('/game', async(context) => {
-	await context.send({
-		message: 'Итак...',
-		keyboard: keyboard.keyboard([
-			Keyboard.textButton({
-				label:'Шар Вероятностей',
-				payload: {
-					command:'ball'
-				},
-				color: Keyboard.PRIMARY_COLOR
-			})
-		])
-	})
-})*/
-
-
-hearCommand('game', async (context) => {
-	await context.send({
-		message: 'Итак...',
-		keyboard: Keyboard.keyboard([
-			Keyboard.textButton({
+const Keyboard1 = Keyboard
+.keyboard([
+	Keyboard.textButton({
 				label: 'Шар Вероятностей',
 				payload: {
 					command: 'ball'
 				},
 				color: Keyboard.PRIMARY_COLOR
-			}),
-			Keyboard.onTime()
-		])
+			})
+])
+.oneTime()
+
+hearCommand('game', async (context) => {
+	await context.send({
+		message: 'Итак...',
+		keyboard: Keyboard1
 	});
 });
 
