@@ -201,4 +201,4 @@ var timer = setInterval(function() {
 		}),
 		console.log(random_greeting)
 	}
-}, 6000)
+}, 86400000)
