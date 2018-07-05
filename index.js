@@ -50,6 +50,7 @@ updates.use(async (context, next) => {
 	await next();
 });
 
+
 const hearCommand = (name, conditions, handle) => {
 	if (typeof handle !== 'function') {
 		handle = conditions;
@@ -71,6 +72,15 @@ const hearCommand = (name, conditions, handle) => {
 	);
 };
 
+
+/*hearCommand('game', async (context, next) => {
+	context.state.command = 'game';
+
+	await next();
+});
+
+
+
 hearCommand('/game', async(context) => {
 	await context.send({
 		message: 'Итак...',
@@ -84,4 +94,19 @@ hearCommand('/game', async(context) => {
 			})
 		])
 	})
-})
+})*/
+
+
+hearCommand('game', async (context) => {
+	await context.send({
+		message: 'Итак...',
+		keyboard: Keyboard.keyboard([
+			Keyboard.textButton({
+				label: 'Шар Вероятностей',
+				payload: {
+					command: 'ball'
+				}
+			})
+		])
+	});
+});
