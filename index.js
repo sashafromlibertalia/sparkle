@@ -94,7 +94,9 @@ hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанс" и свое утверждение, а я отвечаю вероятностью.\nПример:\n-шанс, что Мы - дружный класс\n-Вероятность - 100%')
 })
 
-var chances = new Array(6)
+
+updates.hear(/шанс/i, async(context) => {
+	var chances = new Array(6)
   chances[0] = "Вероятность близка к нулю :("
   chances[1] = "Я считаю, что 50 на 50"
   chances[2] = "Вероятность - 100%"
@@ -102,3 +104,5 @@ var chances = new Array(6)
   chances[4] = "Маловероятно, но шанс есть" 
   chances[5] = "Вероятность нулевая, ничего не поделать"
   var m = chances[Math.floor(Math.random() * chances.length)]
+	await context.send(m)
+})
