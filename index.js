@@ -36,6 +36,8 @@ updates.hear('/start', async(context) => {
 })
 
 
+
+
 const hearCommand = (name, conditions, handle) => {
 	if (typeof handle !== 'function') {
 		handle = conditions;
@@ -57,6 +59,8 @@ const hearCommand = (name, conditions, handle) => {
 	);
 };
 
+
+
 updates.hear('/game', async(context) => {
 	await context.send({
 		keyboard: Keyboard.keyboard([
@@ -74,5 +78,5 @@ updates.hear('/game', async(context) => {
 })
 	
 hearCommand('ball', async(context) => {
-	await context.send('кек')
+	await context.send('Итак. Вы выбрали игру "Шар Вероятностей". Как играть? Очень просто!')
 })
