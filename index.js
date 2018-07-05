@@ -195,7 +195,7 @@ var timer = setInterval(function() {
 }, 86400000)
 
 updates.hear('/lesson', async(context) => {
-	for(var i = 30; i < 60; i++)
+	for(var i = 0; i < 40; i++)
 	{
 		if(Time.getHours() === 1 & Time.getDay() === 5 & Time.getMinutes(i)) 
 		{
