@@ -74,8 +74,7 @@ updates.hear('/start', async(context) => {
 	context.send('Привет! Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:\n/дз - ДОМАШКА\n/lesson - оповещает тебя, какой сейчас урок\n/schedule - получи расписание на сегодняшний день\n/game - не знаю зачем, но у меня есть игры (Я сам в шоке)')
 })
 
-const key1 = Keyboard
-		    Keyboard.keyboard([
+const key1 = Keyboard.keyboard([
 			Keyboard.textButton({
 				label: 'Шар Вероятностей',
 				payload: {
@@ -92,12 +91,12 @@ const key1 = Keyboard
 				color: Keyboard.NEGATIVE_COLOR
 			}),
 		])
-key1.oneTime()
+		Keyboard.oneTime()
 
 hearCommand('game', async (context) => {
 	await context.send({
 		message: 'Вот список моих игр',
-		keyboard: key1 
+		keyboard: key1
 	});
 });
 
