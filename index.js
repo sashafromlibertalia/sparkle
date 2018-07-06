@@ -1,5 +1,4 @@
 const {VK} = require('vk-io');
-const fs = require('fs')
 const vk = new VK();
 const {updates} = vk;
 const {api} = vk;
