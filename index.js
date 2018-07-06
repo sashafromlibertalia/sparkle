@@ -23,17 +23,6 @@ updates.startPolling()
 
 
 //Святыня 2
-updates.use(async (context, next) => {
-	if (context.is('message')) {
-		return;
-	}
-
-	try {
-		await next();
-	} catch (error) {
-		console.error('Error:', error);
-	}
-});
 
 updates.use(async (context, next) => {
 	if (context.is('message') && context.isOutbox) {
@@ -46,7 +35,7 @@ updates.use(async (context, next) => {
 		console.error('Error:', error);
 	}
 });
-
+ 
 const hearCommand = (name, conditions, handle) => {
 	if (typeof handle !== 'function') {
 		handle = conditions;
