@@ -102,7 +102,7 @@ hearCommand('game', async (context) => {
 				},
 				color: Keyboard.NEGATIVE_COLOR
 			})
-	    ], Keyboard.oneTime())
+	    ], keyboard.oneTime())
 	});
 })
 
@@ -788,6 +788,8 @@ for(i = 10; i < 50; i++)
 
 })
 		
+
+
 
 updates.hear('/уроки', async(context) => {
 	if(Time.getDay() === 1)
