@@ -11,10 +11,7 @@ vk.setOptions({
 	token: TOKEN
 })
 
-//Святыня
-require('https').createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
-	res.end('')
-});
+
 
 
 updates.startPolling()
@@ -819,6 +816,26 @@ updates.hear('/уроки', async(context) => {
 		context.send('Расписание на сегодня:\n' + Schedule[5])
 	}
 })
+
+
+
+
+
+//Святыня
+require('https').createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
+	res.end('')
+});
+
+
+var http = require('http');
+var static = require('node-static');
+var file = new static.Server('.');
+
+http.createServer(function(req, res) {
+  file.serve(req, res);
+}).listen(8080);
+
+console.log('Server running on port 8080');
 
 
 updates.hear('/дз', async(context) => {
