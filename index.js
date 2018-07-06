@@ -846,7 +846,9 @@ updates.hear('/дз', async(context) => {
 
 	if(Time.getDay() === 5)
 	{
-		context.send(fs.readlinkSync('https://github.com/FloydReme/testforme/blob/master/domashka.txt'))
+		context.send(fs.readlinkSync('https://raw.githubusercontent.com/FloydReme/testforme/master/domashka.txt', {
+			encoding: 'utf8'
+		}))
 	}
 
 	if(Time.getDay() === 6)
