@@ -819,6 +819,39 @@ updates.hear('/уроки', async(context) => {
 		context.send('Расписание на сегодня:\n' + Schedule[5])
 	}
 })
+
+
+updates.hear('/дз', async(context) => {
+	if(Time.getDay() === 1)
+	{
+
+	}
+
+	if(Time.getDay() === 2)
+	{
+		
+	}
+
+	if(Time.getDay() === 3)
+	{
+		
+	}
+
+	if(Time.getDay() === 4)
+	{
+		
+	}
+
+	if(Time.getDay() === 5)
+	{
+		
+	}
+
+	if(Time.getDay() === 6)
+	{
+		
+	}
+})
 	
 	
 	
