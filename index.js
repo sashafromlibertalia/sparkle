@@ -846,7 +846,7 @@ updates.hear('/дз', async(context) => {
 
 	if(Time.getDay() === 5)
 	{
-		await context.send(fs.readFileSync('files/domashka.txt'))
+		
 	}
 
 	if(Time.getDay() === 6)
