@@ -71,7 +71,7 @@ const hearCommand = (name, conditions, handle) => {
 
 //Команды
 updates.hear('/start', async(context) => {
-	context.send('Привет! Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:\n/homework - ДОМАШКА\n/lesson - оповещает тебя, какой сейчас урок\n/schedule - получи расписание на сегодняшний день\n/game - не знаю зачем, но у меня есть игры (Я сам в шоке)')
+	context.send('Привет! Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:\n/дз - ДОМАШКА\n/lesson - оповещает тебя, какой сейчас урок\n/schedule - получи расписание на сегодняшний день\n/game - не знаю зачем, но у меня есть игры (Я сам в шоке)')
 })
 
 hearCommand('game', async (context) => {
@@ -195,16 +195,580 @@ var timer = setInterval(function() {
 }, 86400000)
 
 updates.hear('/lesson', async(context) => {
-	for(var i = 0; i < 40; i++)
+	//Первый урок
+	for(i = 30; i < 59; i++)
 	{
-		if(Time.getHours() === 1 & Time.getDay() === 5 & Time.getMinutes(i)) 
+		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[0][0])
 		}
+		break
 	}
+	for(i = 0; i < 10; i++)
+	{
+		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[0][0])
+		}
+		break
+	}
+
+
+	//Второй урок
+	for(i = 20; i < 59; i++)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[0][1])
+		}
+		break
+	}
+	while(i = 0)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[0][1])
+		}
+		break
+	}
+
+
+	//Третий урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 10 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[0][2])
+		}
+		break
+	}
+
+
+	//Четвертый урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 11 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[0][3])
+		}
+		break
+	}
+
+
+	//Пятый урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 12 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[0][4])
+		}
+		break
+	}
+
+
+	//Шестой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 13 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[0][5])
+		}
+		break
+	}
+
+
+	//Седьмой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 14 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[0][6])
+		}
+		break
+	}
+
+
+
+
+
+	//Первый урок
+	for(i = 30; i < 59; i++)
+	{
+		if(Time.getHours() === 8 & Time.getDay() === 2 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[1][0])
+		}
+		break
+	}
+	for(i = 0; i < 10; i++)
+	{
+		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[1][0])
+		}
+		break
+	}
+
+
+	//Второй урок
+	for(i = 20; i < 59; i++)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[1][1])
+		}
+		break
+	}
+	while(i = 0)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[1][1])
+		}
+		break
+	}
+
+
+	//Третий урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 10 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[1][2])
+		}
+		break
+	}
+
+
+	//Четвертый урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 11 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[1][3])
+		}
+		break
+	}
+
+
+	//Пятый урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 12 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[1][4])
+		}
+		break
+	}
+
+
+	//Шестой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 13 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[1][5])
+		}
+		break
+	}
+
+
+	//Седьмой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 14 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[1][6])
+		}
+		break
+	}
+
+	
+
+
+
+	//Первый урок
+	for(i = 30; i < 59; i++)
+	{
+		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[2][0])
+		}
+		break
+	}
+	for(i = 0; i < 10; i++)
+	{
+		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[2][0])
+		}
+		break
+	}
+
+
+	//Второй урок
+	for(i = 20; i < 59; i++)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[2][1])
+		}
+		break
+	}
+	while(i = 0)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[2][1])
+		}
+		break
+	}
+
+
+	//Третий урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 10 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[2][2])
+		}
+		break
+	}
+
+
+	//Четвертый урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 11 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[2][3])
+		}
+		break
+	}
+
+
+	//Пятый урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 12 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[2][4])
+		}
+		break
+	}
+
+
+	//Шестой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 13 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[2][5])
+		}
+		break
+	}
+
+
+	//Седьмой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 14 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[2][6])
+		}
+		break
+	}
+
+
+
+
+
+
+	//Первый урок
+	for(i = 30; i < 59; i++)
+	{
+		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[3][0])
+		}
+		break
+	}
+	for(i = 0; i < 10; i++)
+	{
+		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[3][0])
+		}
+		break
+	}
+
+
+	//Второй урок
+	for(i = 20; i < 59; i++)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[3][1])
+		}
+		break
+	}
+	while(i = 0)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[3][1])
+		}
+		break
+	}
+
+
+	//Третий урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 10 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[3][2])
+		}
+		break
+	}
+
+
+	//Четвертый урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 11 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[3][3])
+		}
+		break
+	}
+
+
+	//Пятый урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 12 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[3][4])
+		}
+		break
+	}
+
+
+	//Шестой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 13 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[3][5])
+		}
+		break
+	}
+
+
+	//Седьмой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 14 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[3][6])
+		}
+		break
+	}
+
+
+
+
+
+	//Первый урок
+	for(i = 30; i < 59; i++)
+	{
+		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[4][0])
+		}
+		break
+	}
+	for(i = 0; i < 10; i++)
+	{
+		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[4][0])
+		}
+		break
+	}
+
+
+	//Второй урок
+	for(i = 20; i < 59; i++)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[4][1])
+		}
+		break
+	}
+	while(i = 0)
+	{
+		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[4][1])
+		}
+		break
+	}
+
+
+	//Третий урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 10 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[4][2])
+		}
+		break
+	}
+
+
+	//Четвертый урок
+	for(i = 15; i < 55; i++)
+	{
+		if(Time.getHours() === 11 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[4][3])
+		}
+		break
+	}
+
+
+	//Пятый урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 12 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[4][4])
+		}
+		break
+	}
+
+
+	//Шестой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 13 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[4][5])
+		}
+		break
+	}
+
+
+	//Седьмой урок
+	for(i = 10; i < 50; i++)
+	{
+		if(Time.getHours() === 14 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		{
+			context.send('В данный момент проходит ' + Schedule[4][6])
+		}
+		break
+	}
+
+
+//Первый урок
+for(i = 30; i < 59; i++)
+{
+	if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+	{
+		context.send('В данный момент проходит ' + Schedule[5][0])
+	}
+	break
+}
+for(i = 0; i < 10; i++)
+{
+	if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+	{
+		context.send('В данный момент проходит ' + Schedule[5][0])
+	}
+	break
+}
+
+
+//Второй урок
+for(i = 20; i < 59; i++)
+{
+	if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+	{
+		context.send('В данный момент проходит ' + Schedule[5][1])
+	}
+	break
+}
+while(i = 0)
+{
+	if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+	{
+		context.send('В данный момент проходит ' + Schedule[5][1])
+	}
+	break
+}
+
+
+//Третий урок
+for(i = 15; i < 55; i++)
+{
+	if(Time.getHours() === 10 & Time.getDay() === 1 & Time.getMinutes(i)) 
+	{
+		context.send('В данный момент проходит ' + Schedule[5][2])
+	}
+	break
+}
+
+
+//Четвертый урок
+for(i = 15; i < 55; i++)
+{
+	if(Time.getHours() === 11 & Time.getDay() === 1 & Time.getMinutes(i)) 
+	{
+		context.send('В данный момент проходит ' + Schedule[5][3])
+	}
+	break
+}
+
+
+//Пятый урок
+for(i = 10; i < 50; i++)
+{
+	if(Time.getHours() === 12 & Time.getDay() === 1 & Time.getMinutes(i)) 
+	{
+		context.send('В данный момент проходит ' + Schedule[5][4])
+	}
+	break
+}
+
+
+//Шестой урок
+for(i = 10; i < 50; i++)
+{
+	if(Time.getHours() === 13 & Time.getDay() === 1 & Time.getMinutes(i)) 
+	{
+		context.send('В данный момент проходит ' + Schedule[5][5])
+	}
+	break
+}
+
+
+//Седьмой урок
+for(i = 10; i < 50; i++)
+{
+	if(Time.getHours() === 14 & Time.getDay() === 1 & Time.getMinutes(i)) 
+	{
+		context.send('В данный момент проходит ' + Schedule[5][6])
+	}
+	break
+}
+
 })
 		
 	
 	
 	
 	
+
