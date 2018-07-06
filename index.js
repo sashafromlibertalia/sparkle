@@ -850,7 +850,7 @@ request(url, async function(error, Response, body) {
 	const Mhk = $('#LC13').text()
 	const History = $('#LC14').text()
 	const Society = $('#LC15').text()
-	await context.send(English + Algebra)
+	await context.send(Algebra)
 })
 	}
 	if(Time.getDay() === 0)
