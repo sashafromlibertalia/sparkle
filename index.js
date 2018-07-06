@@ -822,10 +822,11 @@ updates.hear('/уроки', async(context) => {
 })
 
 
+
+
 updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 1)
 	{
-
 	}
 
 	if(Time.getDay() === 2)
@@ -845,7 +846,7 @@ updates.hear('/дз', async(context) => {
 
 	if(Time.getDay() === 5)
 	{
-		
+		context.send(fs.readlinkSync('https://github.com/FloydReme/testforme/blob/master/domashka.txt'))
 	}
 
 	if(Time.getDay() === 6)
@@ -857,4 +858,3 @@ updates.hear('/дз', async(context) => {
 	
 	
 
-/*vk.com/doc368418604_469007974?hash=36244e022d7ea55f9c&dl=5042e68d67fcb5865b - файл */
