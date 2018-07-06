@@ -20,43 +20,7 @@ require('https').createServer().listen(process.env.PORT || 5000).on('request', f
 
 
 updates.startPolling()
-updates.hear('/дз', async(context) => {
-	if(Time.getDay() === 1)
-	{
 
-	}
-
-	if(Time.getDay() === 2)
-	{
-		
-	}
-
-	if(Time.getDay() === 3)
-	{
-		
-	}
-
-	if(Time.getDay() === 4)
-	{
-		
-	}
-
-	if(Time.getDay() === 5)
-	{
-
-	}
-
-	if(Time.getDay() === 6)
-	{
-		//Парсинг тут
-       var url = 'https://github.com/FloydReme/testforme/blob/master/domashka.txt'
-       request(url, async function(error, response, body) {
-       var $ = cheerio.load(body)
-       var Engligh = $('#LC1').text()
-       await context.send(Engligh)
-       })
-	}
-})
 
 //Святыня 2
 updates.use(async (context, next) => {
