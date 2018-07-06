@@ -74,10 +74,8 @@ updates.hear('/start', async(context) => {
 	context.send('Привет! Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:\n/дз - ДОМАШКА\n/lesson - оповещает тебя, какой сейчас урок\n/schedule - получи расписание на сегодняшний день\n/game - не знаю зачем, но у меня есть игры (Я сам в шоке)')
 })
 
-hearCommand('game', async (context) => {
-	await context.send({
-		message: 'Вот список моих игр',
-		keyboard: Keyboard.keyboard([
+const key1 = Keyboard
+		    Keyboard.keyboard([
 			Keyboard.textButton({
 				label: 'Шар Вероятностей',
 				payload: {
@@ -86,25 +84,41 @@ hearCommand('game', async (context) => {
 				color: Keyboard.POSITIVE_COLOR
 			}),
 			
-	        Keyboard.textButton({
+            Keyboard.textButton({
 				label: 'Закрыть клавиатуру',
 				payload: {
 					command: 'cancel'
 				},
 				color: Keyboard.NEGATIVE_COLOR
-			})
+			}),
 		])
+key1.oneTime()
+
+hearCommand('game', async (context) => {
+	await context.send({
+		message: 'Вот список моих игр',
+		keyboard: key1 
 	});
 });
 
-const key1 = Keyboard.textButton({
+const key1 = Keyboard
+		    Keyboard.keyboard([
+			Keyboard.textButton({
+				label: 'Шар Вероятностей',
+				payload: {
+					command: 'ball'
+				},
+				color: Keyboard.POSITIVE_COLOR
+			}),
+			
+            Keyboard.textButton({
 				label: 'Закрыть клавиатуру',
 				payload: {
 					command: 'cancel'
 				},
 				color: Keyboard.NEGATIVE_COLOR
-			})
-
+			}),
+		])
 key1.oneTime()
 hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанс" и свое утверждение, а я отвечаю вероятностью.\nПример:\n-шанс, что Мы - дружный класс\n-Вероятность - 100%')
