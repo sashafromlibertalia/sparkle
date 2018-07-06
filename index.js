@@ -3,7 +3,8 @@ const {Keyboard} = require('vk-io');
 const vk = new VK();
 const {updates} = vk;
 const {api} = vk;
-const fs = require('fs')
+const cheerio = require('cheerio')
+const request = require("request")
 
 //Не трогать
 const TOKEN = "e74e42966fb9a1e8ab1354ab4721881369665a16367e044c005920b5220827e17ca9894b56412ea2e2891"
@@ -823,10 +824,23 @@ updates.hear('/уроки', async(context) => {
 
 
 
+//Парсинг тут
+var url = 'https://github.com/FloydReme/testforme/blob/master/domashka.txt'
+request(url, function(error, response, body) {
+var $ = cheerio.load(body)
+var Engligh = $('#LC1').html()
+console.log(Engligh)
+})
+	
+
 
 updates.hear('/дз', async(context) => {
+	
+
+
 	if(Time.getDay() === 1)
 	{
+
 	}
 
 	if(Time.getDay() === 2)
@@ -846,7 +860,7 @@ updates.hear('/дз', async(context) => {
 
 	if(Time.getDay() === 5)
 	{
-		
+
 	}
 
 	if(Time.getDay() === 6)
@@ -854,7 +868,3 @@ updates.hear('/дз', async(context) => {
 		
 	}
 })
-	
-	
-	
-
