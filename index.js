@@ -797,27 +797,27 @@ for(i = 10; i < 50; i++)
 updates.hear('/уроки', async(context) => {
 	if(Time.getDay() === 1)
 	{
-		context.send('Расписание на сегодня:\n' + Schedule[0])
+		await context.send('Расписание на сегодня:\n' + Schedule[0])
 	}
 	if(Time.getDay() === 2)
 	{
-		context.send('Расписание на сегодня:\n' + Schedule[1])
+		await context.send('Расписание на сегодня:\n' + Schedule[1])
 	}
 	if(Time.getDay() === 3)
 	{
-		context.send('Расписание на сегодня:\n' + Schedule[2])
+		await context.send('Расписание на сегодня:\n' + Schedule[2])
 	}
 	if(Time.getDay() === 4)
 	{
-		context.send('Расписание на сегодня:\n' + Schedule[3])
+		await context.send('Расписание на сегодня:\n' + Schedule[3])
 	}
 	if(Time.getDay() === 5)
 	{
-		context.send('Расписание на сегодня:\n' + Schedule[4])
+		await context.send('Расписание на сегодня:\n' + Schedule[4])
 	}
 	if(Time.getDay() === 6)
 	{
-		context.send('Расписание на сегодня:\n' + Schedule[5])
+		await context.send('Расписание на сегодня:\n' + Schedule[5])
 	}
 })
 
@@ -846,9 +846,7 @@ updates.hear('/дз', async(context) => {
 
 	if(Time.getDay() === 5)
 	{
-		context.send(fs.readlinkSync('https://raw.githubusercontent.com/FloydReme/testforme/master/domashka.txt', {
-			encoding: 'utf8'
-		}))
+		await context.send(fs.readFileSync('files/domashka.txt'))
 	}
 
 	if(Time.getDay() === 6)
