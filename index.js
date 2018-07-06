@@ -1,8 +1,9 @@
 const {VK} = require('vk-io');
+const {Keyboard} = require('vk-io');
 const vk = new VK();
 const {updates} = vk;
 const {api} = vk;
-const {Keyboard} = require('vk-io')
+const fs = require('fs')
 
 //Не трогать
 const TOKEN = "e74e42966fb9a1e8ab1354ab4721881369665a16367e044c005920b5220827e17ca9894b56412ea2e2891"
@@ -11,7 +12,10 @@ vk.setOptions({
 	token: TOKEN
 })
 
-
+//Святыня
+require('https').createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
+	res.end('')
+});
 
 
 updates.startPolling()
@@ -818,26 +822,6 @@ updates.hear('/уроки', async(context) => {
 })
 
 
-
-
-
-//Святыня
-require('https').createServer().listen(process.env.PORT || 5000).on('request', function(req, res){
-	res.end('')
-});
-
-
-var http = require('http');
-var static = require('node-static');
-var file = new static.Server('.');
-
-http.createServer(function(req, res) {
-  file.serve(req, res);
-}).listen(8080);
-
-console.log('Server running on port 8080');
-
-
 updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 1)
 	{
@@ -873,3 +857,4 @@ updates.hear('/дз', async(context) => {
 	
 	
 
+/*vk.com/doc368418604_469007974?hash=36244e022d7ea55f9c&dl=5042e68d67fcb5865b - файл */
