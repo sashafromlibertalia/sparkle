@@ -85,6 +85,13 @@ hearCommand('game', async (context) => {
 				},
 				color: Keyboard.POSITIVE_COLOR
 			}),
+			Keyboard.textButton({
+				label: 'Закрыть клавиатуру',
+				payload: {
+					command: 'cancel'
+				},
+				color: Keyboard.NEGATIVE_COLOR
+			})
 		])
 	});
 });
@@ -92,6 +99,11 @@ hearCommand('game', async (context) => {
 
 hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанс" и свое утверждение, а я отвечаю вероятностью.\nПример:\n-шанс, что Мы - дружный класс\n-Вероятность - 100%')
+})
+
+
+hearCommand('cancel', async(context) => {
+	await context.send('Хорошо, я выключу клавиатуру!')
 })
 
 updates.hear(/шанс/i, async(context) => {
