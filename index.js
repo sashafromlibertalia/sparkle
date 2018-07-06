@@ -101,7 +101,10 @@ hearCommand('game', async (context) => {
 				},
 				color: Keyboard.NEGATIVE_COLOR
 			})
-	    ], keyboard.oneTime())
+		],
+		{
+			oneTime: true
+		})
 	});
 })
 
