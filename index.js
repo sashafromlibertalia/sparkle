@@ -122,10 +122,6 @@ updates.hear(/шанс/i, async(context) => {
 })
 
 
-updates.setHearFallbackHandler(async (context, next) => {
-	await context.send('Такой команды нет. Хочешь, чтобы она появилась - пиши Саше :(');
-});
-
 const Time = new Date()
 var Schedule = new Array(6)
 Schedule[0] = new Array(7)
@@ -779,7 +775,6 @@ for(i = 10; i < 50; i++)
 	}
 	break
 }
-
 })
 		
 
@@ -812,6 +807,58 @@ updates.hear('/уроки', async(context) => {
 	}
 })
 
+
+
+updates.hear('/дз', async(context) => {
+	if(Time.getDay() === 1)
+	{
+		
+	}
+	if(Time.getDay() === 2)
+	{
+		
+	}
+	if(Time.getDay() === 3)
+	{
+
+	}
+	if(Time.getDay() === 4)
+	{
+
+	}
+	if(Time.getDay() === 5)
+	{
+
+	}
+	if(Time.getDay() === 6)
+	{
+		const url = 'https://github.com/FloydReme/testforme/blob/master/domashka.txt'
+request(url, async function(error, Response, body) {
+	const $ = cheerio.load(body)
+	const English = $('#LC1').text()
+	const Russian = $('#LC2').text()
+	const Literature=  $('#LC3').text()
+	const German = $('#LC4').text()
+	const French = $('#LC5').text()
+	const Algebra = $('#LC6').text()
+	const Geometry = $('#LC7').text()
+	const Biology = $('#LC8').text()
+	const Physics = $('#LC10').text()
+	const Chemistry = $('#LC9').text()
+	const CompScience = $('#LC11').text()
+	const Geography = $('#LC12').text()
+	const Mhk = $('#LC13').text()
+	const History = $('#LC14').text()
+	const Society = $('#LC15').text()
+	await context.send(English + Algebra)
+})
+	}
+	if(Time.getDay() === 0)
+	{
+		
+	}
+
+})
 
 
 
