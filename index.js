@@ -824,20 +824,11 @@ updates.hear('/уроки', async(context) => {
 
 
 
-//Парсинг тут
-var url = 'https://github.com/FloydReme/testforme/blob/master/domashka.txt'
-request(url, function(error, response, body) {
-var $ = cheerio.load(body)
-var Engligh = $('#LC1').html()
-console.log(Engligh)
-})
+
 	
 
 
 updates.hear('/дз', async(context) => {
-	
-
-
 	if(Time.getDay() === 1)
 	{
 
@@ -865,6 +856,12 @@ updates.hear('/дз', async(context) => {
 
 	if(Time.getDay() === 6)
 	{
-		
+		//Парсинг тут
+       var url = 'https://github.com/FloydReme/testforme/blob/master/domashka.txt'
+       request(url, async function(error, response, body) {
+       var $ = cheerio.load(body)
+       var Engligh = $('#LC1').text()
+       await context.send(Engligh)
+       })
 	}
 })
