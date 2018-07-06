@@ -78,7 +78,7 @@ updates.hear('/start', async(context) => {
 hearCommand('game', async (context) => {
 	await context.send({
 		message: 'Вот список моих игр',
-		keyboard: key1 = Keyboard.keyboard([
+		keyboard: Keyboard.keyboard([
 			[
 				Keyboard.textButton({
 				label: 'Шар Вероятностей',
@@ -102,7 +102,7 @@ hearCommand('game', async (context) => {
 				},
 				color: Keyboard.NEGATIVE_COLOR
 			})
-	    ], key1.oneTime())
+	    ], Keyboard.oneTime())
 	});
 })
 
@@ -135,65 +135,65 @@ updates.setHearFallbackHandler(async (context, next) => {
 const Time = new Date()
 var Schedule = new Array(6)
 Schedule[0] = new Array(7)
-Schedule[0][0] = ""
-Schedule[0][1] = ""
-Schedule[0][2] = ""
-Schedule[0][2] = ""
-Schedule[0][3] = ""
-Schedule[0][4] = ""
-Schedule[0][5] = ""
-Schedule[0][6] = ""
+Schedule[0][0] = "\n"
+Schedule[0][1] = "\n"
+Schedule[0][2] = "\n"
+Schedule[0][2] = "\n"
+Schedule[0][3] = "\n"
+Schedule[0][4] = "\n"
+Schedule[0][5] = "\n"
+Schedule[0][6] = "\n"
 
 Schedule[1] = new Array(7)
-Schedule[1][0] = ""
-Schedule[1][1] = ""
-Schedule[1][2] = ""
-Schedule[1][2] = ""
-Schedule[1][3] = ""
-Schedule[1][4] = ""
-Schedule[1][5] = ""
-Schedule[1][6] = ""
+Schedule[1][0] = "\n"
+Schedule[1][1] = "\n"
+Schedule[1][2] = "\n"
+Schedule[1][2] = "\n"
+Schedule[1][3] = "\n"
+Schedule[1][4] = "\n"
+Schedule[1][5] = "\n"
+Schedule[1][6] = "\n"
 
 Schedule[2] = new Array(7)
-Schedule[2][0] = ""
-Schedule[2][1] = ""
-Schedule[2][2] = ""
-Schedule[2][2] = ""
-Schedule[2][3] = ""
-Schedule[2][4] = ""
-Schedule[2][5] = ""
-Schedule[2][6] = ""
+Schedule[2][0] = "\n"
+Schedule[2][1] = "\n"
+Schedule[2][2] = "\n"
+Schedule[2][2] = "\n"
+Schedule[2][3] = "\n"
+Schedule[2][4] = "\n"
+Schedule[2][5] = "\n"
+Schedule[2][6] = "\n"
 
 
 Schedule[3] = new Array(7)
-Schedule[3][0] = ""
-Schedule[3][1] = ""
-Schedule[3][2] = ""
-Schedule[3][2] = ""
-Schedule[3][3] = ""
-Schedule[3][4] = ""
-Schedule[3][5] = ""
-Schedule[3][6] = ""
+Schedule[3][0] = "\n"
+Schedule[3][1] = "\n"
+Schedule[3][2] = "\n"
+Schedule[3][2] = "\n"
+Schedule[3][3] = "\n"
+Schedule[3][4] = "\n"
+Schedule[3][5] = "\n"
+Schedule[3][6] = "\n"
 
 Schedule[4] = new Array(7)
-Schedule[4][0] = ""
-Schedule[4][1] = ""
-Schedule[4][2] = ""
-Schedule[4][2] = ""
-Schedule[4][3] = ""
-Schedule[4][4] = ""
-Schedule[4][5] = ""
-Schedule[4][6] = ""
+Schedule[4][0] = "\n"
+Schedule[4][1] = "\n"
+Schedule[4][2] = "\n"
+Schedule[4][2] = "\n"
+Schedule[4][3] = "\n"
+Schedule[4][4] = "\n"
+Schedule[4][5] = "\n"
+Schedule[4][6] = "\n"
 
 Schedule[5] = new Array(7)
-Schedule[5][0] = ""
-Schedule[5][1] = ""
-Schedule[5][2] = ""
-Schedule[5][2] = ""
-Schedule[5][3] = ""
-Schedule[5][4] = ""
-Schedule[5][5] = ""
-Schedule[5][6] = ""
+Schedule[5][0] = "\n"
+Schedule[5][1] = "\n"
+Schedule[5][2] = "\n"
+Schedule[5][2] = "\n"
+Schedule[5][3] = "\n"
+Schedule[5][4] = "\n"
+Schedule[5][5] = "\n"
+Schedule[5][6] = "\n"
 
 
 const newDay = new Date()
@@ -788,7 +788,33 @@ for(i = 10; i < 50; i++)
 
 })
 		
-	
+
+updates.hear('/schedule', async(context) => {
+	if(Time.getDay() === 1)
+	{
+		context.send('Расписание на сегодня:\n' + Schedule[0])
+	}
+	if(Time.getDay() === 2)
+	{
+		context.send('Расписание на сегодня:\n' + Schedule[1])
+	}
+	if(Time.getDay() === 3)
+	{
+		context.send('Расписание на сегодня:\n' + Schedule[2])
+	}
+	if(Time.getDay() === 4)
+	{
+		context.send('Расписание на сегодня:\n' + Schedule[3])
+	}
+	if(Time.getDay() === 5)
+	{
+		context.send('Расписание на сегодня:\n' + Schedule[4])
+	}
+	if(Time.getDay() === 6)
+	{
+		context.send('Расписание на сегодня:\n' + Schedule[5])
+	}
+})
 	
 	
 	
