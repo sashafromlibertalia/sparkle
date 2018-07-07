@@ -877,25 +877,43 @@ updates.hear('/дз', async(context) => {
 	Saturday[4] = Biology
 	Saturday[5] = Algebra
 
+	
+	const Sunday = new Array(15)
+	Sunday[0] = English
+	Sunday[1] = Russian
+	Sunday[2] = Literature
+	Sunday[3] = History_
+	Sunday[4] = CompScience
+	Sunday[5] = Biology
+	Sunday[6] = Algebra
+	Sunday[7] = Geography
+	Sunday[8] = Geometry
+	Sunday[9] = Society
+	Sunday[10] = Chemistry
+	Sunday[11] = Physics
+	Sunday[12] = Mhk
+	Sunday[13] = French
+	Sunday[14] = German
+
 	if(Time.getDay() === 1)
 	{
 		const x = Monday.join('\n')
-		await context.send(x)
+		await context.send('Домашка с понедельника: ' + x)
 	}
 	if(Time.getDay() === 2)
 	{
 		const x = Tuesday.join('\n')
-		await context.send(x)
+		await context.send('Домашка со вторника: ' + x)
 	}
 	if(Time.getDay() === 3)
 	{
 		const x = Wednesday.join('\n')
-		await context.send(x)
+		await context.send('Домашка со среды: ' + x)
 	}
 	if(Time.getDay() === 4)
 	{
 		const x = Thursday.join('\n')
-		await context.send(x)
+		await context.send('Домашка с понедельника: ' + x)
 	}
 	if(Time.getDay() === 5)
 	{
@@ -909,7 +927,8 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 0)
 	{
-		
+		const x = Sunday.join('\n')
+		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + x)
 	}})
 })
 
