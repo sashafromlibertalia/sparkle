@@ -922,13 +922,29 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 6)
 	{
+		var options = {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+			weekday: 'long',
+			hour: 'numeric',
+			minute: 'numeric'
+		  };
 		const x = Saturday.join('\n')
-		await context.send('Домашка с субботы ' + Time.getDate() + Time.getMonth().toDat + x)
+		await context.send('Домашка с субботы ' + Time.toLocaleDateString('ru', options) + x)
 	}
 	if(Time.getDay() === 0)
 	{
+		var options = {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+			weekday: 'long',
+			hour: 'numeric',
+			minute: 'numeric'
+		  };
 		const x = Sunday.join('\n')
-		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + Time.toDateString()  + x)
+		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + Time.toLocaleDateString('ru', options)  + x)
 	}})
 })
 
