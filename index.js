@@ -921,13 +921,16 @@ updates.hear('/дз', async(context) => {
 		await context.send('Домашка с пятницы '+ Time.getDate() + x)
 	}
 	if(Time.getDay() === 6)
-	Time.setUTCHours(3)
 	{
 		var options = {
+			month: 'long',
+			day: 'numeric',
 			weekday: 'long',
+			timezone: 'UTC',
 			hour: 'numeric',
-			minute: 'numeric'
+			minute: 'numeric',
 		  };
+		  
 		const x = Saturday.join('\n')
 		await context.send('Домашка с субботы ' + Time.toLocaleString('ru', options) + x)
 	}
