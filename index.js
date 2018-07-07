@@ -923,9 +923,6 @@ updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 6)
 	{
 		var options = {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
 			weekday: 'long',
 			hour: 'numeric',
 			minute: 'numeric'
