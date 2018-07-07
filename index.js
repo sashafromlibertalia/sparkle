@@ -932,7 +932,7 @@ updates.hear('/дз', async(context) => {
 		  };
 		  
 		const x = Saturday.join('\n')
-		await context.send('Домашка с субботы ' + Time.toLocaleString('ru', options) + x)
+		await context.send('Домашка с субботы ' + Time.toLocaleDateString('ru', options) + x)
 	}
 	if(Time.getDay() === 0)
 	{
