@@ -6,6 +6,7 @@ const {api} = vk;
 const cheerio = require('cheerio')
 const request = require('request')
 
+
 //Не трогать
 const TOKEN = "e74e42966fb9a1e8ab1354ab4721881369665a16367e044c005920b5220827e17ca9894b56412ea2e2891"
 
@@ -922,14 +923,13 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 6)
 	{
-		var options = {
-			month: 'long',
-			day: 'numeric',
-			weekday: 'long'
-		  };
-		  
+		var formatter = new Intl.DateTimeFormat("ru", {
+			weekday: "long",
+			month: "long",
+			day: "numeric"
+		  });
 		const x = Saturday.join('\n')
-		await context.send('Домашка с субботы ' + Time.toLocaleString('ru', options) + ' \n' + x)
+		await context.send('Домашка с субботы ' + formatter.format(Time) + ' \n' + x)
 	}
 	if(Time.getDay() === 0)
 	{
