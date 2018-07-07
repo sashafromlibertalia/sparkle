@@ -924,7 +924,6 @@ updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 6)
 	{
 		var formatter = new Intl.DateTimeFormat("ru", {
-			weekday: "long",
 			month: "long",
 			day: "numeric"
 		  });
