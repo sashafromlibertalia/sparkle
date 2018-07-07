@@ -929,7 +929,7 @@ updates.hear('/дз', async(context) => {
 		  };
 		  
 		const x = Saturday.join('\n')
-		await context.send('Домашка с субботы ' + Time.toLocaleString('ru') + x)
+		await context.send('Домашка с субботы ' + Time.toLocaleString('ru','\n') + x)
 	}
 	if(Time.getDay() === 0)
 	{
