@@ -923,13 +923,13 @@ updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 6)
 	{
 		var options = {
-			month: 'long',
+			month: 'string',
 			day: 'numeric',
-			weekday: 'long'
+			weekday: 'string'
 		  };
 		  
 		const x = Saturday.join('\n')
-		await context.send('Домашка с субботы ' + Time.toLocaleString('ru','\n') + x)
+		await context.send('Домашка с субботы ' + Time.toLocaleString('ru', options + x)
 	}
 	if(Time.getDay() === 0)
 	{
