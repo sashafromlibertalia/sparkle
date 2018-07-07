@@ -835,7 +835,47 @@ updates.hear('/дз', async(context) => {
 	Monday[4] = Biology
 	Monday[5] = Algebra
 
+	const Tuesday = new Array(6)
+	Tuesday[0] = English
+	Tuesday[1] = Literature
+	Tuesday[2] = History_
+	Tuesday[3] = CompScience
+	Tuesday[4] = Biology
+	Tuesday[5] = Algebra
 
+	const Wednesday = new Array(6)
+	Wednesday[0] = English
+	Wednesday[1] = Literature
+	Wednesday[2] = History_
+	Wednesday[3] = CompScience
+	Wednesday[4] = Biology
+	Wednesday[5] = Algebra
+
+	const Thursday = new Array(6)
+	Thursday[0] = English
+	Thursday[1] = Literature
+	Thursday[2] = History_
+	Thursday[3] = CompScience
+	Thursday[4] = Biology
+	Thursday[5] = Algebra
+
+
+	const Friday = new Array(6)
+	Friday[0] = English
+	Friday[1] = Literature
+	Friday[2] = History_
+	Friday[3] = CompScience
+	Friday[4] = Biology
+	Friday[5] = Algebra
+
+
+	const Saturday = new Array(6)
+	Saturday[0] = English
+	Saturday[1] = Literature
+	Saturday[2] = History_
+	Saturday[3] = CompScience
+	Saturday[4] = Biology
+	Saturday[5] = Algebra
 
 	if(Time.getDay() === 1)
 	{
@@ -859,7 +899,7 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 6)
 	{
-		await context.send(Monday[3])
+		await context.send(Monday[4])
 	}
 	if(Time.getDay() === 0)
 	{
