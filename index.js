@@ -806,7 +806,37 @@ updates.hear('/уроки', async(context) => {
 
 
 
+
 updates.hear('/дз', async(context) => {
+	const url = 'https://github.com/FloydReme/bot631/blob/master/domashka.txt'
+    request(url, async function(error, Response, body) {
+	const $ = cheerio.load(body)
+	const English = $('#LC1').text()
+	const Russian = $('#LC2').text()
+	const Literature=  $('#LC3').text()
+	const German = $('#LC4').text()
+	const French = $('#LC5').text()
+	const Algebra = $('#LC6').text()
+	const Geometry = $('#LC7').text()
+	const Biology = $('#LC8').text()
+	const Physics = $('#LC10').text()
+	const Chemistry = $('#LC9').text()
+	const CompScience = $('#LC11').text()
+	const Geography = $('#LC12').text()
+	const Mhk = $('#LC13').text()
+	const History_ = $('#LC14').text()
+	const Society = $('#LC15').text()
+
+	const Monday = new Array(6)
+	Monday[0] = English
+	Monday[1] = Literature
+	Monday[2] = History_
+	Monday[3] = CompScience
+	Monday[4] = Biology
+	Monday[5] = Algebra
+
+
+
 	if(Time.getDay() === 1)
 	{
 		
@@ -829,35 +859,13 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 6)
 	{
-		const url = 'https://github.com/FloydReme/bot631/blob/master/domashka.txt'
-request(url, async function(error, Response, body) {
-	const $ = cheerio.load(body)
-	const English = $('#LC1').text()
-	const Russian = $('#LC2').text()
-	const Literature=  $('#LC3').text()
-	const German = $('#LC4').text()
-	const French = $('#LC5').text()
-	const Algebra = $('#LC6').text()
-	const Geometry = $('#LC7').text()
-	const Biology = $('#LC8').text()
-	const Physics = $('#LC10').text()
-	const Chemistry = $('#LC9').text()
-	const CompScience = $('#LC11').text()
-	const Geography = $('#LC12').text()
-	const Mhk = $('#LC13').text()
-	const History = $('#LC14').text()
-	const Society = $('#LC15').text()
-	await context.send(Algebra)
-})
+		await context.send(Monday[3])
 	}
 	if(Time.getDay() === 0)
 	{
 		
-	}
-
+	}})
 })
-
-
 
 updates.hear('/help', async(context) => {
 	await context.send(`Итак, вот вам более-менее краткая документация.
