@@ -863,7 +863,7 @@ request(url, async function(error, Response, body) {
 
 updates.hear('/help', async(context) => {
 	await context.send(`Итак, вот вам более-менее краткая документация.
-	Мой исходный код: https://github.com/FloydReme/bot631/blob/master/domashka.txt
+	Мой исходный код: https://github.com/FloydReme/bot631
 	
 	Краткая сводка по моим командам: /start
 	Ответы на те или иные сообщения вызваны регулярными выражениями. Как это работает? Просто! 
