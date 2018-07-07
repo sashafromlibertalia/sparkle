@@ -898,37 +898,37 @@ updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 1)
 	{
 		const x = Monday.join('\n')
-		await context.send('Домашка с понедельника: ' + x)
+		await context.send('Домашка с понедельника ' + Time.getDate() + x)
 	}
 	if(Time.getDay() === 2)
 	{
 		const x = Tuesday.join('\n')
-		await context.send('Домашка со вторника: ' + x)
+		await context.send('Домашка со вторника '+ Time.getDate() + x)
 	}
 	if(Time.getDay() === 3)
 	{
 		const x = Wednesday.join('\n')
-		await context.send('Домашка со среды: ' + x)
+		await context.send('Домашка со среды '+ Time.getDate() + x)
 	}
 	if(Time.getDay() === 4)
 	{
 		const x = Thursday.join('\n')
-		await context.send('Домашка с понедельника: ' + x)
+		await context.send('Домашка с четверга '+ Time.getDate() + x)
 	}
 	if(Time.getDay() === 5)
 	{
 		const x = Friday.join('\n')
-		await context.send(x)
+		await context.send('Домашка с пятницы '+ Time.getDate() + x)
 	}
 	if(Time.getDay() === 6)
 	{
 		const x = Saturday.join('\n')
-		await context.send(x)
+		await context.send('Домашка с субботы ' + Time.getDate() + x)
 	}
 	if(Time.getDay() === 0)
 	{
 		const x = Sunday.join('\n')
-		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + x)
+		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + Time.getDate() + x)
 	}})
 })
 
