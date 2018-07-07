@@ -925,10 +925,7 @@ updates.hear('/дз', async(context) => {
 		var options = {
 			month: 'long',
 			day: 'numeric',
-			weekday: 'long',
-			timezone: 'UTC + 3',
-			hour: 'numeric',
-			minute: 'numeric',
+			weekday: 'long'
 		  };
 		  
 		const x = Saturday.join('\n')
