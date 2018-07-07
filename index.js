@@ -211,10 +211,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[0][0])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	for(i = 0; i < 10; i++)
@@ -222,10 +218,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[0][0])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -238,10 +230,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[0][1])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	while(i = 0)
@@ -249,10 +237,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[0][1])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -265,10 +249,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[0][2])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -280,10 +260,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[0][3])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -294,10 +270,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 12 & Time.getDay() === 1 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[0][4])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -321,10 +293,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[0][6])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -339,10 +307,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[1][0])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	for(i = 0; i < 10; i++)
@@ -350,10 +314,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 8 & Time.getDay() === 2 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[1][0])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -366,10 +326,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[1][1])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	while(i = 0)
@@ -377,10 +333,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 9 & Time.getDay() === 2 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[1][1])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -393,10 +345,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[1][2])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -407,10 +355,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 11 & Time.getDay() === 2 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[1][3])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -423,10 +367,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[1][4])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -438,10 +378,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[1][5])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -452,10 +388,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 14 & Time.getDay() === 2 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[1][6])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -471,10 +403,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[2][0])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	for(i = 0; i < 10; i++)
@@ -482,10 +410,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 8 & Time.getDay() === 3 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[2][0])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -498,10 +422,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[2][1])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	while(i = 0)
@@ -509,10 +429,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 9 & Time.getDay() === 3 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[2][1])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -525,10 +441,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[2][2])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -539,10 +451,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 11 & Time.getDay() === 3 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[2][3])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -555,10 +463,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[2][4])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -570,10 +474,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[2][5])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -584,10 +484,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 14 & Time.getDay() === 3 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[2][6])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -604,10 +500,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[3][0])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	for(i = 0; i < 10; i++)
@@ -615,10 +507,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 8 & Time.getDay() === 4 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[3][0])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -631,10 +519,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[3][1])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	while(i = 0)
@@ -642,10 +526,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 9 & Time.getDay() === 4 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[3][1])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -669,10 +549,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[3][3])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -695,10 +571,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[3][5])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -709,10 +581,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 14 & Time.getDay() === 4 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[3][6])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -728,10 +596,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[4][0])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	for(i = 0; i < 10; i++)
@@ -739,10 +603,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 8 & Time.getDay() === 5 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[4][0])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -755,10 +615,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[4][1])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 	while(i = 0)
@@ -766,10 +622,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 9 & Time.getDay() === 5 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[4][1])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -782,10 +634,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[4][2])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -796,10 +644,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 11 & Time.getDay() === 5 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[4][3])
-		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -812,10 +656,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[4][4])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -827,10 +667,6 @@ updates.hear('/lesson', async(context) => {
 		{
 			context.send('В данный момент проходит ' + Schedule[4][5])
 		}
-		else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 		break
 	}
 
@@ -841,9 +677,6 @@ updates.hear('/lesson', async(context) => {
 		if(Time.getHours() === 14 & Time.getDay() === 5 & Time.getMinutes(i)) 
 		{
 			context.send('В данный момент проходит ' + Schedule[4][6])
-		}else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
 		}
 		break
 	}
@@ -856,10 +689,6 @@ for(i = 30; i < 59; i++)
 	{
 		context.send('В данный момент проходит ' + Schedule[5][0])
 	}
-	else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 	break
 }
 for(i = 0; i < 10; i++)
@@ -868,10 +697,6 @@ for(i = 0; i < 10; i++)
 	{
 		context.send('В данный момент проходит ' + Schedule[5][0])
 	}
-	else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 	break
 }
 
@@ -883,10 +708,6 @@ for(i = 20; i < 59; i++)
 	{
 		context.send('В данный момент проходит ' + Schedule[5][1])
 	}
-	else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 	break
 }
 while(i = 0)
@@ -895,10 +716,6 @@ while(i = 0)
 	{
 		context.send('В данный момент проходит ' + Schedule[5][1])
 	}
-	else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 	break
 }
 
@@ -910,10 +727,6 @@ for(i = 15; i < 55; i++)
 	{
 		context.send('В данный момент проходит ' + Schedule[5][2])
 	}
-	else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 	break
 }
 
@@ -925,10 +738,6 @@ for(i = 15; i < 55; i++)
 	{
 		context.send('В данный момент проходит ' + Schedule[5][3])
 	}
-	else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 	break
 }
 
@@ -940,10 +749,6 @@ for(i = 10; i < 50; i++)
 	{
 		context.send('В данный момент проходит ' + Schedule[5][4])
 	}
-	else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 	break
 }
 
@@ -955,10 +760,6 @@ for(i = 10; i < 50; i++)
 	{
 		context.send('В данный момент проходит ' + Schedule[5][5])
 	}
-	else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 	break
 }
 
@@ -970,12 +771,10 @@ for(i = 10; i < 50; i++)
 	{
 		context.send('В данный момент проходит ' + Schedule[5][6])
 	}
-	else
-		{
-			context.send('Сейчас урока нет. Ураааааа!')
-		}
 	break
 }
+
+await context.send('Сейчас урока нет. Ураааааа!')
 })
 		
 
