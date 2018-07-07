@@ -879,32 +879,32 @@ updates.hear('/дз', async(context) => {
 
 	if(Time.getDay() === 1)
 	{
-		const x = Monday.join()
+		const x = Monday.join('\n')
 		await context.send(x)
 	}
 	if(Time.getDay() === 2)
 	{
-		const x = Tuesday.join()
+		const x = Tuesday.join('\n')
 		await context.send(x)
 	}
 	if(Time.getDay() === 3)
 	{
-		const x = Wednesday.join()
+		const x = Wednesday.join('\n')
 		await context.send(x)
 	}
 	if(Time.getDay() === 4)
 	{
-		const x = Thursday.join()
+		const x = Thursday.join('\n')
 		await context.send(x)
 	}
 	if(Time.getDay() === 5)
 	{
-		const x = Friday.join()
+		const x = Friday.join('\n')
 		await context.send(x)
 	}
 	if(Time.getDay() === 6)
 	{
-		const x = Saturday.join()
+		const x = Saturday.join('\n')
 		await context.send(x)
 	}
 	if(Time.getDay() === 0)
