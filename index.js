@@ -926,7 +926,7 @@ updates.hear('/дз', async(context) => {
 			month: 'long',
 			day: 'numeric',
 			weekday: 'long',
-			timezone: 'UTC+3',
+			timezone: 'UTC + 3',
 			hour: 'numeric',
 			minute: 'numeric',
 		  };
