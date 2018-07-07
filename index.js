@@ -23,19 +23,18 @@ updates.startPolling()
 
 
 //Святыня 2
-
 updates.use(async (context, next) => {
-	if (context.is('message') && context.isOutbox) {
-		return;
+	if (context.is('message')) {
+		const { messagePayload } = context;
+
+		context.state.command = messagePayload && messagePayload.command
+			? messagePayload.command
+			: null;
 	}
 
-	try {
-		await next();
-	} catch (error) {
-		console.error('Error:', error);
-	}
+	await next();
 });
- 
+
 const hearCommand = (name, conditions, handle) => {
 	if (typeof handle !== 'function') {
 		handle = conditions;
@@ -56,8 +55,6 @@ const hearCommand = (name, conditions, handle) => {
 		handle
 	);
 };
-
-
 
 
 //Команды
