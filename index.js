@@ -899,7 +899,7 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 6)
 	{
-		await context.send(Monday)
+		await context.send(Monday[1,2,3,4,5])
 	}
 	if(Time.getDay() === 0)
 	{
