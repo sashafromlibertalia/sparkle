@@ -829,7 +829,7 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 6)
 	{
-		const url = 'https://github.com/FloydReme/testforme/blob/master/domashka.txt'
+		const url = 'https://github.com/FloydReme/bot631/blob/master/domashka.txt'
 request(url, async function(error, Response, body) {
 	const $ = cheerio.load(body)
 	const English = $('#LC1').text()
@@ -861,4 +861,13 @@ request(url, async function(error, Response, body) {
 
 	
 
-
+updates.hear('/help', async(context) => {
+	await context.send(`Итак, вот вам более-менее краткая документация.
+	Мой исходный код: https://github.com/FloydReme/bot631/blob/master/domashka.txt
+	
+	Краткая сводка по моим командам: /start
+	Ответы на те или иные сообщения вызваны регулярными выражениями. Как это работает? Просто! 
+	Я делаю триггер на то или иное слово, а бот на него отвечает.
+	
+	Со временем команды будут увеличиваться, если вы об этом меня попросите и если в этом будет вообще всякий смысл`)
+})
