@@ -921,6 +921,7 @@ updates.hear('/дз', async(context) => {
 		await context.send('Домашка с пятницы '+ Time.getDate() + x)
 	}
 	if(Time.getDay() === 6)
+	Time.now()
 	{
 		var options = {
 			weekday: 'long',
@@ -928,7 +929,7 @@ updates.hear('/дз', async(context) => {
 			minute: 'numeric'
 		  };
 		const x = Saturday.join('\n')
-		await context.send('Домашка с субботы ' + Time.toLocaleString('ru', options, '\n') + x)
+		await context.send('Домашка с субботы ' + Time.toLocaleString('ru', options) + x)
 	}
 	if(Time.getDay() === 0)
 	{
