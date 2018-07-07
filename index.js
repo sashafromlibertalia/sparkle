@@ -828,12 +828,12 @@ updates.hear('/дз', async(context) => {
 	const Society = $('#LC15').text()
 
 	const Monday = new Array(6)
-	Monday[0] = 1
-	Monday[1] = 3
-	Monday[2] = 2
-	Monday[3] = 3
-	Monday[4] = 4
-	Monday[5] = 5
+	Monday[0] = English
+	Monday[1] = Literature
+	Monday[2] = History_
+	Monday[3] = CompScience
+	Monday[4] = Biology
+	Monday[5] = Algebra
 
 	const Tuesday = new Array(6)
 	Tuesday[0] = English
@@ -899,7 +899,8 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 6)
 	{
-		await context.send(Monday)
+		const x = Monday.slice()
+		await context.send(x)
 	}
 	if(Time.getDay() === 0)
 	{
