@@ -898,28 +898,48 @@ updates.hear('/дз', async(context) => {
 
 	if(Time.getDay() === 1)
 	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
 		const x = Monday.join('\n')
-		await context.send('Домашка с понедельника ' + Time.getDate() + x)
+		await context.send('Домашка с понедельника ' + formatter.format(Time) + ' \n'  + x)
 	}
 	if(Time.getDay() === 2)
 	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
 		const x = Tuesday.join('\n')
-		await context.send('Домашка со вторника '+ Time.getDate() + x)
+		await context.send('Домашка со вторника '+ formatter.format(Time) + ' \n'  + x)
 	}
 	if(Time.getDay() === 3)
 	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
 		const x = Wednesday.join('\n')
-		await context.send('Домашка со среды '+ Time.getDate() + x)
+		await context.send('Домашка со среды '+ formatter.format(Time) + ' \n'  + x)
 	}
 	if(Time.getDay() === 4)
 	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
 		const x = Thursday.join('\n')
-		await context.send('Домашка с четверга '+ Time.getDate() + x)
+		await context.send('Домашка с четверга '+ formatter.format(Time) + ' \n' + x)
 	}
 	if(Time.getDay() === 5)
 	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
 		const x = Friday.join('\n')
-		await context.send('Домашка с пятницы '+ Time.getDate() + x)
+		await context.send('Домашка с пятницы '+ formatter.format(Time) + ' \n'  + x)
 	}
 	if(Time.getDay() === 6)
 	{
@@ -932,16 +952,12 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 0)
 	{
-		var options = {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-			weekday: 'long',
-			hour: 'numeric',
-			minute: 'numeric'
-		  };
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
 		const x = Sunday.join('\n')
-		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + Time.toLocaleDateString('ru', options)  + x)
+		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + formatter.format(Time) + ' \n'  + x)
 	}})
 })
 
