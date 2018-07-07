@@ -923,7 +923,7 @@ updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 6)
 	{
 		const x = Saturday.join('\n')
-		await context.send('Домашка с субботы ' + Time.getDate() + Time.getMonth() + x)
+		await context.send('Домашка с субботы ' + Time.getDate() + Time.getMonth().toString() + x)
 	}
 	if(Time.getDay() === 0)
 	{
