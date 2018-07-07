@@ -5,7 +5,7 @@ const {updates} = vk;
 const {api} = vk;
 const cheerio = require('cheerio')
 const request = require('request')
-
+const Intl = require('intl')
 
 //Не трогать
 const TOKEN = "e74e42966fb9a1e8ab1354ab4721881369665a16367e044c005920b5220827e17ca9894b56412ea2e2891"
