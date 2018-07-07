@@ -921,7 +921,7 @@ updates.hear('/дз', async(context) => {
 		await context.send('Домашка с пятницы '+ Time.getDate() + x)
 	}
 	if(Time.getDay() === 6)
-	Time.now()
+	Time.setUTCHours(3)
 	{
 		var options = {
 			weekday: 'long',
