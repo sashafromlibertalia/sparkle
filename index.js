@@ -899,7 +899,7 @@ updates.hear('/дз', async(context) => {
 	}
 	if(Time.getDay() === 6)
 	{
-		const x = Monday.slice()
+		const x = Monday.join()
 		await context.send(x)
 	}
 	if(Time.getDay() === 0)
