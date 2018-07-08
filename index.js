@@ -991,9 +991,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	google.resultsPerPage = 3;
 	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
 	google(textUser, function (err, res) {
-		for (var i = 0; i < res.links.length; ++i) 
-		{
-		  var link = res.links[i]; 
+		  var link = res.links[1]; 
 		  const settings = {
 			streamType: 'png',
 			windowSize: {
@@ -1008,22 +1006,14 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 		   }
 		   webshot(link.href, 'images/GDZ1.png', settings, function(err) 
 		   {
-				  context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
+				  context.send('ГДЗ номер ' + 1 + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
 		   
 		   })
-	  } 
+	   
 	})
 })
 
-
-
-
-
-
-
-
-
-const reg1 = new Array(14)
+const reg1 = new Array(15)
 reg1[0] = new RegExp(/мякиш/i)
 reg1[1] = new RegExp(/мякишу/i)
 reg1[2] = new RegExp(/мякише/i)
@@ -1038,6 +1028,7 @@ reg1[10] = new RegExp(/програмироше/i)
 reg1[11] = new RegExp(/программироша/i)
 reg1[12] = new RegExp(/программирошу/i)
 reg1[13] = new RegExp(/программироше/i)
+reg1[14] = new RegExp(/мирош/i)
 
 const answers1 = new Array(4)
 answers1[0] = "Говнокодера вызывали? (っಠ‿ಠ)っ"
