@@ -986,9 +986,11 @@ updates.hear('/help', async(context) => {
 
 updates.hear(/^\/гдз (.+)/i, async (context) => {
 	const basicURL = 'https://yandex.ru/search/?text='
-	const user_input = context.$match[1];
-	await context.send(user_input);
+	const textUser = context.$match[1];
+	await context.send(textUser);
 });
+
+
 
 const reg1 = new Array(14)
 reg1[0] = new RegExp(/мякиш/i)
