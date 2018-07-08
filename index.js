@@ -985,6 +985,11 @@ updates.hear('/help', async(context) => {
 })
 
 
+updates.hear('/гдз', async(context) => {
+	
+})
+
+
 const reg1 = new Array(14)
 reg1[0] = new RegExp(/мякиш/i)
 reg1[1] = new RegExp(/мякишу/i)
