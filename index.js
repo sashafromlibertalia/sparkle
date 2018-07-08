@@ -105,6 +105,7 @@ hearCommand('ball', async(context) => {
 hearCommand('else', async(context) => {
 	await context.send('Раз эта кнопка у вас все еще есть, значит я страдаю от острой игровой недостаточности. Если у вас есть идеи, которые может реализовать этот бот в игровой форме - пишите Саше, он сможет :)')
 })
+
 hearCommand('cancel', async(context) => {
 	await context.send('Хорошо, я выключу клавиатуру!')
 })
