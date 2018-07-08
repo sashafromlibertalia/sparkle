@@ -1003,10 +1003,10 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 				  height: 700
 			  }
 		  }
-		  webshot(link, 'GDZ.png', settings, function(err) {
+		 const images = webshot(link, 'GDZ.png', settings, function(err) {
 
 		  })
-		  context.sendPhoto('GDZ.png')
+		  context.sendPhoto(images)
 		}
 })
 })
