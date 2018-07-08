@@ -1008,10 +1008,8 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 		   }
 		   webshot(link.href, 'images/GDZ1.png', settings, function(err) 
 		   {
-			   if(i = 0)
-			   {
 				  context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
-			   }
+		   
 		   })
 	  } 
 	})
