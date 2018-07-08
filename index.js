@@ -986,9 +986,10 @@ updates.hear('/help', async(context) => {
 
 
 
-updates.hear(/\/гдз (.+)/, async(context) => {
+updates.hear(/\/гдз (.+)/, async(context, match) => {
 	const basicURL = 'https://yandex.ru/search/?text='
-	await context.send(context.$match)
+	const user_input = match[1]
+	await context.send(user_input)
 })
 
 
