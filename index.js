@@ -991,7 +991,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	google.resultsPerPage = 3;
 	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
 	google(textUser, function (err, res) {
-		  var link = res.links[1]; 
+		  var link = res.links[0]; 
 		  const settings = {
 			streamType: 'png',
 			windowSize: {
