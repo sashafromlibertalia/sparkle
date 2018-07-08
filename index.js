@@ -1006,10 +1006,6 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 			},
 			userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)' + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
 		}
-		webshot(link.href, 'images/GDZ1.png', settings, function(err) 
-		{
-			context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))
-		})
 	  } 
 	})
 })
