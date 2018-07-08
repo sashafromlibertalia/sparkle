@@ -991,7 +991,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	google.resultsPerPage = 3;
 	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
 	google(textUser, function (err, res) {
-		for (var i = 0; i < res.links.length; i++) 
+		for (var i = 0; i < res.links.length; ++i) 
 		{
 		  var link = res.links[i]; 
 		  const settings = {
@@ -1011,18 +1011,6 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 			   if(i = 0)
 			   {
 				  context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
-			   }
-			   if(i = 1)
-			   {
-				 context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
-			   }
-			   if(i = 2)
-			   {
-				context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
-			   }
-			   if(i = 3)
-			   {
-				context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
 			   }
 		   })
 	  } 
