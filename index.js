@@ -990,16 +990,16 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	const textUser = context.$match[1];
 	google.resultsPerPage = 4;
 	
-	google(textUser, function (err, res){
+	google(textUser, function (err, res) {
 		if (err) console.error(err)
-	  
-		for (var i = 0; i < res.links.length; ++i) {
-		  var link = res.links[i];
-		  await context.send(link.title + ' - ' + link.href)
-		}
-	
-});
 
+		for (var i = 0; i < res.links.length; ++i) 
+		{
+		  var link = res.links[i];
+		  context.send(link.title + ' - ' + link.href)
+		}
+})
+})
 
 
 
