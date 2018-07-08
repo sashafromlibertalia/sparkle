@@ -1020,6 +1020,10 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 			   {
 				context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
 			   }
+			   if(i = 3)
+			   {
+				context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
+			   }
 		   })
 	  } 
 	})
