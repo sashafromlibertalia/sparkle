@@ -1009,6 +1009,21 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 				  context.send('ГДЗ номер ' + 1 + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
 		   
 		   })
+
+
+		   var link = res.links[1]
+		   webshot(link.href, 'images/GDZ2.png', settings, function(err) 
+		   {
+				  context.send('ГДЗ номер ' + 2 + ':\n' + link.href, context.sendPhoto('images/GDZ2.png'))  
+		   
+		   })
+
+		   var link = res.links[2]
+		   webshot(link.href, 'images/GDZ1.png', settings, function(err) 
+		   {
+				  context.send('ГДЗ номер ' + 3 + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))  
+		   
+		   })
 	   
 	})
 })
