@@ -110,7 +110,7 @@ hearCommand('cancel', async(context) => {
 if(hearCommand('ball'))
 {
 	updates.hear(/шанс/i, async(context) => {
-		await context.send(' ')
+		await context.send('     ')
 	})
 }
 else
