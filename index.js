@@ -975,3 +975,30 @@ updates.hear('/help', async(context) => {
 	
 	Со временем команды будут увеличиваться, если вы об этом меня попросите и если в этом будет вообще всякий смысл`)
 })
+
+
+const reg1 = new Array(14)
+reg1[0] = new RegExp(/мякиш/i)
+reg1[1] = new RegExp(/мякишу/i)
+reg1[2] = new RegExp(/мякише/i)
+reg1[3] = new RegExp(/мякиша/)
+reg1[4] = new RegExp(/програмирош/i)
+reg1[5] = new RegExp(/программирош/i)
+reg1[6] = new RegExp(/программироша/i)
+reg1[7] = new RegExp(/програмироша/i)
+reg1[8] = new RegExp(/програмироша/i)
+reg1[9] = new RegExp(/програмирошу/i)
+reg1[10] = new RegExp(/програмироше/i)
+reg1[11] = new RegExp(/программироша/i)
+reg1[12] = new RegExp(/программирошу/i)
+reg1[13] = new RegExp(/программироше/i)
+
+const answers1 = new Array(4)
+answers1[0] = "Говнокодера вызывали? (っಠ‿ಠ)っ"
+answers1[1] = "Если ты ругаешь Мироша, то ты пидор ( ͡° ͜ʖ ͡°)"
+answers1[2] = "Ты если что-то против меня имеешь? Го раз на раз выйдем, а не в интернете базарь (ﾒ￣▽￣)︻┳═一 "
+answers1[3] = "Я хорош собой, и вы это знаете (ʘ ͜ʖ ʘ)"
+const random1 = answers1[Math.floor(Math.random() * answers1.length)]
+updates.hear(reg1, async(context) => {
+	await context.send(random1)
+})
