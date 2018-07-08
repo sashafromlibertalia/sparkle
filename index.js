@@ -194,13 +194,13 @@ greeting[3] = "Привет. Без лишних слов. Расписание 
 var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
 
 var timer = setInterval(function() {
-	if(newDay.getHours() === 12 ){
+	if(newDay.getHours() === 6 ){
 		api.messages.send({
 			message: random_greeting,
 			domain: 'egoromanov'
 		})
 	}
-}, 4000)
+}, 86400000)
 
 updates.hear('/lesson', async(context) => {
 	//Первый урок
