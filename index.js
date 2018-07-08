@@ -79,7 +79,7 @@ hearCommand('game', async (context) => {
                 Keyboard.textButton({
 				label: 'Что-то еще...',
 				payload: {
-					command: 'asdasd'
+					command: 'else'
 				},
 				color: Keyboard.POSITIVE_COLOR
 			})
@@ -102,7 +102,9 @@ hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанc" и свое утверждение, а я отвечаю вероятностью.\nПример:\n- шанc, что Мы - дружный класс\n- Вероятность - 100%') 
 })
 
-
+hearCommand('else', async(context) => {
+	await context.send('Раз эта кнопка у вас все еще есть, значит я страдаю от острой игровой недостаточности. Если у вас есть идеи, которые может реализовать этот бот в игровой форме - пишите Саше, он сможет :)')
+})
 hearCommand('cancel', async(context) => {
 	await context.send('Хорошо, я выключу клавиатуру!')
 })
