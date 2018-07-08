@@ -107,14 +107,6 @@ hearCommand('cancel', async(context) => {
 	await context.send('Хорошо, я выключу клавиатуру!')
 })
 
-if(hearCommand('ball'))
-{
-	updates.hear(/шанс/i, async(context) => {
-		await context.send('     ')
-	})
-}
-else
-{
 	updates.hear(/шанс/i, async(context) => {
 	var chances = new Array(6)
   chances[0] = "Вероятность близка к нулю :("
@@ -126,7 +118,7 @@ else
   var m = chances[Math.floor(Math.random() * chances.length)]
 	await context.send(m)
 })
-}
+
 
 
 
