@@ -987,36 +987,32 @@ updates.hear('/help', async(context) => {
 })
 
 updates.hear(/^\/гдз (.+)/i, async (context) => {
-	const basicURL = 'https://yandex.ru/search/?text= '
 	const textUser = context.$match[1];
-	google.resultsPerPage = 4;
-	
+	google.resultsPerPage = 3;
+	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
 	google(textUser, function (err, res) {
-		if (err) console.error(err)
-
 		for (var i = 0; i < res.links.length; ++i) 
 		{
-		  var link = res.links[i];
+		  var link = res.links[i]; 
 		  const settings = {
-			  shotSize: {
-				  width: 'all',
-				  height: 700
-			  }
-		  }
-		 const images = webshot(link, 'GDZ.png', settings, function(err) {
-
-		  })
-		  context.sendPhoto(images)
+			streamType: 'png',
+			windowSize: {
+				width: '1000',
+				height: '1400'
+			},
+			shotSize: {
+				width: '1000',
+				height: '1400'
+			},
+			userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)' + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
 		}
+		webshot(link.href, 'images/GDZ1.png', settings, function(err) 
+		{
+			context.send('ГДЗ номер ' + i + ':\n' + link.href, context.sendPhoto('images/GDZ1.png'))
+		})
+	  } 
+	})
 })
-})
-
-
-
-
-
-
-
 
 
 
