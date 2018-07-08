@@ -6,6 +6,7 @@ const {api} = vk;
 const cheerio = require('cheerio')
 const request = require('request')
 const Intl = require('intl')
+const google = require('google')
 
 //Не трогать
 const TOKEN = "e74e42966fb9a1e8ab1354ab4721881369665a16367e044c005920b5220827e17ca9894b56412ea2e2891"
@@ -985,10 +986,36 @@ updates.hear('/help', async(context) => {
 })
 
 updates.hear(/^\/гдз (.+)/i, async (context) => {
-	const basicURL = 'https://yandex.ru/search/?text='
+	const basicURL = 'https://yandex.ru/search/?text= '
 	const textUser = context.$match[1];
-	await context.send(textUser);
+	google.resultsPerPage = 4;
+	
+	google(textUser, function (err, res){
+		if (err) console.error(err)
+	  
+		for (var i = 0; i < res.links.length; ++i) {
+		  var link = res.links[i];
+		  await Promise.all([
+			  context.send(link.title + ' - ' + link.href),
+			  context.send(link.description + "\n")
+		  ])
+		}
+	
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
