@@ -995,9 +995,7 @@ updates.hear(/\/гдз (.+)/, async(context) => {
 updates.hear(/^\/reverse (.+)/i, async (context) => {
 	const text = context.$match[1];
 
-	const reversed = text.split('').reverse().join('');
-
-	await context.send(reversed);
+	await context.send(text);
 });
 
 const reg1 = new Array(14)
