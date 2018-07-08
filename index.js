@@ -7,6 +7,7 @@ const cheerio = require('cheerio')
 const request = require('request')
 const Intl = require('intl')
 const google = require('google')
+const webshot = require('webshot')
 
 //Не трогать
 const TOKEN = "e74e42966fb9a1e8ab1354ab4721881369665a16367e044c005920b5220827e17ca9894b56412ea2e2891"
@@ -996,7 +997,16 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 		for (var i = 0; i < res.links.length; ++i) 
 		{
 		  var link = res.links[i];
-		  context.send(link.title + ' - ' + link.href)
+		  const settings = {
+			  shotSize: {
+				  width: 'all',
+				  height: 700
+			  }
+		  }
+		  webshot(link, 'GDZ.png', settings, function(err) {
+
+		  })
+		  context.sendPhoto('GDZ.png')
 		}
 })
 })
