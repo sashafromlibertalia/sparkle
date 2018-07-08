@@ -995,10 +995,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	  
 		for (var i = 0; i < res.links.length; ++i) {
 		  var link = res.links[i];
-		  await Promise.all([
-			  context.send(link.title + ' - ' + link.href),
-			  context.send(link.description + "\n")
-		  ])
+		  await context.send(link.title + ' - ' + link.href)
 		}
 	
 });
