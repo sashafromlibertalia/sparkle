@@ -99,7 +99,7 @@ hearCommand('game', async (context) => {
 })
 
 hearCommand('ball', async(context) => {
-	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанс" и свое утверждение, а я отвечаю вероятностью.\nПример:\n-шанс, что Мы - дружный класс\n-Вероятность - 100%') 
+	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанс" и свое утверждение, а я отвечаю вероятностью.\nПример:\n- шанс, что Мы - дружный класс\n- Вероятность - 100%') 
 })
 
 
@@ -194,14 +194,12 @@ greeting[3] = "Привет. Без лишних слов. Расписание 
 var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
 
 var timer = setInterval(function() {
-	if(newDay.getHours() === 6 ){
+	if(newDay.getHours() === 12 ){
 		api.messages.send({
-			message: random_greeting,
-			domain: 'egoromanov'
-		}),
-		console.log(random_greeting)
+			message: random_greeting
+		})
 	}
-}, 86400000)
+}, 4000)
 
 updates.hear('/lesson', async(context) => {
 	//Первый урок
