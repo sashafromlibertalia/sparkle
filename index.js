@@ -1037,7 +1037,7 @@ updates.hear(/^\/отзыв (.+)/i, async(context) => {
 	const feedback = context.$match[1]
 	await context.send('Хорошо, твой отзыв будет отправлен Саше, спасибо :)')
 	context.send({
-		message: feedback,
+		message: 'Новый отзыв:' + feedback,
 		domain: 'egoromanov'
 	})
 })
