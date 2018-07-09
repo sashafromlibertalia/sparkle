@@ -1040,6 +1040,7 @@ reg1[11] = new RegExp(/программироша/i)
 reg1[12] = new RegExp(/программирошу/i)
 reg1[13] = new RegExp(/программироше/i)
 reg1[14] = new RegExp(/мирош/i)
+reg1[15] = new RegExp(/мирошу/i)
 
 const answers1 = new Array(4)
 answers1[0] = "Говнокодера вызывали? (っಠ‿ಠ)っ"
