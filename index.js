@@ -971,19 +971,18 @@ updates.hear('/дз', async(context) => {
 
 updates.hear('/help', async(context) => {
 	await context.send(`Итак, вот вам более-менее краткая документация.
-	Мой исходный код: https://github.com/FloydReme/bot631
+Мой исходный код: https://github.com/FloydReme/bot631
 	
-	Краткая сводка по моим командам: /start
+Краткая сводка по моим командам: /start
 
-	Ответы на те или иные сообщения вызваны регулярными выражениями. Как это работает? Просто! 
-	Я делаю триггер на то или иное слово, а бот на него отвечает.
+Ответы на те или иные сообщения вызваны регулярными выражениями. Как это работает? Просто! 
+Я делаю триггер на то или иное слово, а бот на него отвечает.
 
-	КАК РАБОТАЕТ /гдз:
-	Вы пишите команду "/гдз" и следом текст задачи. Пример:
-	/гдз Из двух городов одновременно на встречу друг другу отправились два поезда. 
-	Они встретились через 13 часов.Один поезд ехал со скоростью 95 км/ч,другой со скоростью 3/5 км/ч от скорости первого. Найти расстояние?
-	
-	Со временем команды будут увеличиваться, если вы об этом меня попросите и если в этом будет вообще всякий смысл`)
+КАК РАБОТАЕТ /гдз:
+Вы пишите команду "/гдз" и следом текст задачи. Пример:
+/гдз Из двух городов одновременно на встречу друг другу отправились два поезда. 
+
+Со временем команды будут увеличиваться, если вы об этом меня попросите и если в этом будет вообще всякий смысл`)
 })
 
 updates.hear(/^\/гдз (.+)/i, async (context) => {
@@ -991,42 +990,38 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	google.resultsPerPage = 3;
 	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
 	google(textUser, function (err, res) {
-		
+    const settings = {
+	    streamType: 'png',
+		windowSize: {
+			width: '1000',
+			height: '1400'
+		},
+		shotSize: {
+			width: '1000',
+			height: '1400'
+		},
+		userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)' + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
+		}
+
+
 		var link1 = res.links[0]; 
-		  const settings = {
-			streamType: 'png',
-			windowSize: {
-				width: '1000',
-				height: '1400'
-			},
-			shotSize: {
-				width: '1000',
-				height: '1400'
-			},
-			userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)' + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
-		   }
-
-		   webshot(link1.href, 'images/GDZ1.png', settings, function(err) 
-		   {
-				  context.send('ГДЗ номер ' + 1 + ':\n' + link1.href, context.sendPhoto('images/GDZ1.png'))  
-		   
-		   })
+		webshot(link1.href, 'images/GDZ1.png', settings, function(err) 
+		{
+			context.send('ГДЗ номер ' + 1 + ':\n' + link1.href, context.sendPhoto('images/GDZ1.png'))  
+		})
 
 
-		   var link2 = res.links[1]
-		   webshot(link2.href, 'images/GDZ2.png', settings, function(err) 
-		   {
-				  context.send('ГДЗ номер ' + 2 + ':\n' + link2.href, context.sendPhoto('images/GDZ2.png'))  
-		   
-		   })
+		var link2 = res.links[1]
+		webshot(link2.href, 'images/GDZ2.png', settings, function(err) 
+		{
+			context.send('ГДЗ номер ' + 2 + ':\n' + link2.href, context.sendPhoto('images/GDZ2.png'))   
+		})
 
-		   var link3 = res.links[2]
-		   webshot(link3.href, 'images/GDZ1.png', settings, function(err) 
-		   {
-				  context.send('ГДЗ номер ' + 3 + ':\n' + link3.href, context.sendPhoto('images/GDZ1.png'))  
-		   
-		   })
-	   
+		var link3 = res.links[2]
+		webshot(link3.href, 'images/GDZ1.png', settings, function(err) 
+		{
+			context.send('ГДЗ номер ' + 3 + ':\n' + link3.href, context.sendPhoto('images/GDZ1.png'))  
+		})
 	})
 })
 
@@ -1050,7 +1045,7 @@ reg1[14] = new RegExp(/мирош/i)
 const answers1 = new Array(4)
 answers1[0] = "Говнокодера вызывали? (っಠ‿ಠ)っ"
 answers1[1] = "Если ты ругаешь Мироша, то ты пидор ( ͡° ͜ʖ ͡°)"
-answers1[2] = "Ты если что-то против меня имеешь? Го раз на раз выйдем, а не в интернете базарь (ﾒ￣▽￣)︻┳═一 "
+answers1[2] = "Ты что-то против меня имеешь? Го раз на раз выйдем, а не в интернете базарь (ﾒ￣▽￣)︻┳═一 "
 answers1[3] = "Я хорош собой, и вы это знаете (ʘ ͜ʖ ʘ)"
 const random1 = answers1[Math.floor(Math.random() * answers1.length)]
 updates.hear(reg1, async(context) => {
