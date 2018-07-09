@@ -1003,8 +1003,17 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 		userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)' + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
 		}
 
+		for (var i = 0; i < res.links.length; ++i) {
+			var link = res.links[i];
+			webshot(link.href, 'images/GDZ.png', settings, function(err) 
+		{
+			context.send('ГДЗ номер ' + 1 + ':\n' + link.href, context.sendPhoto('images/GDZ.png'))  
+		})
 
-		var link1 = res.links[0]; 
+		  }
+
+
+		/*var link1 = res.links[0]; 
 		webshot(link1.href, 'images/GDZ1.png', settings, function(err) 
 		{
 			context.send('ГДЗ номер ' + 1 + ':\n' + link1.href, context.sendPhoto('images/GDZ1.png'))  
@@ -1021,7 +1030,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 		webshot(link3.href, 'images/GDZ3.png', settings, function(err) 
 		{
 			context.send('ГДЗ номер ' + 3 + ':\n' + link3.href, context.sendPhoto('images/GDZ3.png'))  
-		})
+		})*/
 	})
 })
 
