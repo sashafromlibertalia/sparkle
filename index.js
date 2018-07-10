@@ -1071,3 +1071,4 @@ updates.hear(reg1, async(context) => {
 	await context.send(random1)
 })
 
+/*https://imv4.vk.com/im2227?act=a_check&key=2a8e8c6bd2664cf9946cfe214a9941f14228b588&ts=1692241509&wait=25&mode=2&version=3*/
