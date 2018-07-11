@@ -1071,3 +1071,22 @@ updates.hear(reg1, async(context) => {
 	await context.send(random1)
 })
 
+const reg2 = new Array(10)
+reg2[0] = new RegExp(/ганц/i)
+reg2[1] = new RegExp(/ганца/i)
+reg2[2] = new RegExp(/ганцу/i)
+reg2[3] = new RegExp(/ганце/i)
+reg2[4] = new RegExp(/ганцем/i)
+reg2[5] = new RegExp(/богдан/i)
+reg2[6] = new RegExp(/богдану/i)
+reg2[7] = new RegExp(/богдана/i)
+reg2[8] = new RegExp(/богданом/i)
+reg2[9] = new RegExp(/богдане/i)
+const answers2 = new Array(3)
+answers2[0] = "Ruhm der Ukraine"
+answers2[1] = "Bogdan ist der Sinn des Lebens"
+answers2[2] = "der beste Mann Kappa"
+const random2 = answers2[Math.floor(Math.random() * answers1.length)]
+updates.hear(reg2, async(context) => {
+	await context.send(random2)
+})
