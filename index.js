@@ -1091,3 +1091,7 @@ const random2 = answers2[Math.floor(Math.random() * answers1.length)]
 updates.hear(reg2, async(context) => {
 	await context.send(random2)
 })
+
+updates.hear(/спасибо/i, async(context) => {
+	await context.send('Не за что! Рад помочь')
+})
