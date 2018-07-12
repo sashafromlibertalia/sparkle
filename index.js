@@ -92,7 +92,14 @@ hearCommand('game', async (context) => {
 					command: 'else'
 				},
 				color: Keyboard.POSITIVE_COLOR
-			})
+			}),
+			    Keyboard.textButton({
+				label: 'Слова',
+				payload: {
+					command: 'words'
+				},
+				color: Keyboard.POSITIVE_COLOR
+				})
 			],
                 Keyboard.textButton({
 				label: 'Закрыть клавиатуру',
@@ -132,6 +139,27 @@ hearCommand('cancel', async(context) => {
 	await context.send(m)
 })
 
+hearCommand('words', async(context) => {
+
+	const startWords = new Array()
+	startWords[0] = "Яблоко"
+	startWords[1] = "Мяч"
+	startWords[2] = "Колодец"
+	startWords[3] = "Река"
+	startWords[4] = "Город"
+	startWords[5] = "Скрипка"
+	startWords[6] = "Мем"
+	startWords[7] = "Оружие"
+	startWords[8] = "Забор"
+	startWords[9] = "Автобус"
+	const randomWord = startWords[Math.floor(Math.random() * startWords.length)]
+
+	await Promise.all([
+		context.send('Как играть в слова? Ну, вроде как все понятно - ты пишешь слово, а я тебе отвечу другим словом на последнюю букву твоего - проще некуда))'),
+		context.send(`Давай я начну: ` + randomWord)
+	])
+	
+})
 
 
 
