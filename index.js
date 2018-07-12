@@ -1095,3 +1095,32 @@ updates.hear(reg2, async(context) => {
 updates.hear(/спасибо/i, async(context) => {
 	await context.send('Не за что! Рад помочь')
 })
+
+
+const reg3 = new Array(18)
+reg3[0] = new RegExp(/новосельцев/i)
+reg3[1] = new RegExp(/новос/i)
+reg3[2] = new RegExp(/навос/i)
+reg3[3] = new RegExp(/навоз/i)
+reg3[4] = new RegExp(/новосельцева/i)
+reg3[5] = new RegExp(/новосельцеву/i)
+reg3[6] = new RegExp(/новосельцеве/i)
+reg3[7] = new RegExp(/новосельцевым/i)
+reg3[8] = new RegExp(/новоса/i)
+reg3[9] = new RegExp(/новоса/i)
+reg3[10] = new RegExp(/новосу/i)
+reg3[11] = new RegExp(/новосе/i)
+reg3[12] = new RegExp(/навоса/i)
+reg3[13] = new RegExp(/навосу/i)
+reg3[14] = new RegExp(/навосе/i)
+reg3[15] = new RegExp(/навоса/i)
+reg3[16] = new RegExp(/навосу/i)
+reg3[17] = new RegExp(/навозу/i)
+const answers3 = new Array()
+answers3[0] = "ЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ"
+answers3[1] = "ПОМАЦАЙ ПIД МАТРАЦЕМ"
+answers3[2] = "Продам Брата. Дорого"
+const random3 = answers3[Math.floor(Math.random() * answers3.length)]
+updates.hear(reg3, async(context) => {
+	await context.send(random3)
+})
