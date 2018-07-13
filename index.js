@@ -13,7 +13,9 @@ const webshot = require('webshot')
 const TOKEN = "c6bacea9fa33ad3ba684c4ac9380cb70e650133088eb97919619ee977ae59489b5d142928b837e450cd30"
 
 vk.setOptions({
-	token: TOKEN
+	token: TOKEN,
+	pollingGroupId: 168462227,
+	peer_id:2000000002
 })
 
 //Святыня
@@ -22,8 +24,9 @@ require('https').createServer().listen(process.env.PORT || 5000).on('request', f
 });
 
 
-updates.startPolling()
+api.baseUrl = 'https://api.vk.com/method/'
 
+updates.startPolling()
 
 //Святыня 2
 updates.use(async (context, next) => {
@@ -61,7 +64,7 @@ const hearCommand = (name, conditions, handle) => {
 
 
 //Команды
-updates.hear('/start', async(context) => {
+vk.updates.hear('/start', async(context) => {
 	context.send({
 		message: `Привет! 
 Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
@@ -71,9 +74,7 @@ updates.hear('/start', async(context) => {
 /game - не знаю зачем, но у меня есть игры (Я сам в шоке)
 /гдз - гугли гдз и я постараюсь прислать его тебе
 /отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен, честное слово
-/help - моя документация`,
-		peer_id: 2000000002,
-	    group_id: 168462227})
+/help - моя документация`})
 })
 
 
