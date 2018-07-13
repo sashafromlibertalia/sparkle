@@ -117,16 +117,6 @@ hearCommand('game', async (context) => {
 
 hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанc" и свое утверждение, а я отвечаю вероятностью.\nПример:\n- шанc, что Мы - дружный класс\n- Вероятность - 100%') 
-})
-
-hearCommand('else', async(context) => {
-	await context.send('Раз эта кнопка у вас все еще есть, значит я страдаю от острой игровой недостаточности. Если у вас есть идеи, которые может реализовать этот бот в игровой форме - пишите Саше, он сможет :)')
-})
-
-hearCommand('cancel', async(context) => {
-	await context.send('Хорошо, я выключу клавиатуру!')
-})
-
 	updates.hear(/шанс/i, async(context) => {
 	var chances = new Array(6)
   chances[0] = "Вероятность близка к нулю :("
@@ -138,10 +128,20 @@ hearCommand('cancel', async(context) => {
   var m = chances[Math.floor(Math.random() * chances.length)]
 	await context.send(m)
 })
+})
+
+hearCommand('else', async(context) => {
+	await context.send('Раз эта кнопка у вас все еще есть, значит я страдаю от острой игровой недостаточности. Если у вас есть идеи, которые может реализовать этот бот в игровой форме - пишите Саше, он сможет :)')
+})
+
+hearCommand('cancel', async(context) => {
+	await context.send('Хорошо, я выключу клавиатуру!')
+})
+
+	
 
 hearCommand('words', async(context) => {
-
-	const startWords = new Array()
+	const startWords = new Array(10)
 	startWords[0] = "Яблоко"
 	startWords[1] = "Мяч"
 	startWords[2] = "Колодец"
@@ -153,12 +153,20 @@ hearCommand('words', async(context) => {
 	startWords[8] = "Забор"
 	startWords[9] = "Автобус"
 	const randomWord = startWords[Math.floor(Math.random() * startWords.length)]
-
 	await Promise.all([
 		context.send('Как играть в слова? Ну, вроде как все понятно - ты пишешь слово, а я тебе отвечу другим словом на последнюю букву твоего - проще некуда))'),
 		context.send(`Давай я начну: ` + randomWord)
 	])
 	
+	const userInputWord = context.$match[1]
+	
+	for(const i = 0; i < startWords.length; i++)
+	{
+		if(startWords[i].lastIndex = userInputWord.search(startWords[i].lastIndex))
+		{
+			context.send('Вас понял')
+		}
+	}
 })
 
 
