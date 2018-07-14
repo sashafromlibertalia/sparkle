@@ -14,7 +14,7 @@ const TOKEN = "c6bacea9fa33ad3ba684c4ac9380cb70e650133088eb97919619ee977ae59489b
 
 vk.setOptions({
 	token: TOKEN,
-	pollingGroupId: 168462227,
+
 	peer_id:2000000002
 })
 
