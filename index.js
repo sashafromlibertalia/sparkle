@@ -121,7 +121,7 @@ hearCommand('game', async (context) => {
 
 hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанc" и свое утверждение, а я отвечаю вероятностью.\nПример:\n- шанc, что Мы - дружный класс\n- Вероятность - 100%') 
-	updates.hear(/шанс/i, async(context) => {
+	updates.hear(/шанс (.+)/i, async(context) => {
 	var chances = new Array(6)
   chances[0] = "Вероятность близка к нулю :("
   chances[1] = "Я считаю, что 50 на 50"
