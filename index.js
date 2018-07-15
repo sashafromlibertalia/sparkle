@@ -169,12 +169,12 @@ hearCommand('words', async(context) => {
 			const url = 'https://gufo.me/dict/ozhegov?page=3&letter=а'
             request(url, async function(body) {
 	        const $ = cheerio.load(body)
-			const letterA = $('.list-unstyled app-word-list').text()
-			})
+			const letterA = $('ul .list-unstyled app-word-list').text()
+			
 			if(userInput.charAt(randomWord.length - 1) === 'а')
 			{
 				await context.send(letterA)
-			}
+			}})
 		}
 	    })
 	})	
