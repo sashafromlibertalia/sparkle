@@ -166,16 +166,12 @@ hearCommand('words', async(context) => {
 		const userInput = context.text
 		while(randomWord.charAt(randomWord.length - 1) === userInput.charAt(0))
 		{
-			const url = 'https://gufo.me/dict/ozhegov?page=3&letter=а'
-            request(url, async function(body) {
-	        const $ = cheerio.load(body)
-			const letterA = $('ul .list-unstyled app-word-list').text()
 			
-			if(userInput.charAt(randomWord.length - 1) === 'а')
+			
+			if(userInput.charAt(userInput.length - 1) === 'а')
 			{
-				await context.send(letterA)
-			}})
-		}
+				await context.send('mem')
+			}}
 	    })
 	})	
 
