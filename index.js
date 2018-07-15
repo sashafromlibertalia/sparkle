@@ -164,7 +164,7 @@ hearCommand('words', async(context) => {
 	])
 	updates.on('message', async(context) => {
 		const userInput = context.text
-		if(randomWord.charAt(randomWord.length - 1) === userInput.charAt(0))
+		while(randomWord.charAt(randomWord.length - 1) === userInput.charAt(0))
 		{
 			await context.send('Кек')
 		}
