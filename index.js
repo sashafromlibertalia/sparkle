@@ -171,7 +171,7 @@ hearCommand('words', async(context) => {
 	        const $ = cheerio.load(body)
 			const letterA = $('.list-unstyled app-word-list').text()
 			})
-			if(randomWord.charAt(randomWord.length - 1) === 'а')
+			if(userInput.charAt(randomWord.length - 1) === 'а')
 			{
 				await context.send(letterA)
 			}
