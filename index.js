@@ -169,6 +169,7 @@ hearCommand('words', async(context) => {
 		if(startWords[i].slice(-1) = userInputWord.search(startWords[i],slice(-1)))
 		{
 			context.send('Вас понял')
+			console.log(startWords[i].slice(-1))
 		}
 	}
 })
