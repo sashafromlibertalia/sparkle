@@ -145,6 +145,7 @@ hearCommand('cancel', async(context) => {
 	
 
 hearCommand('words', async(context) => {
+	
 	const startWords = new Array(10)
 	startWords[0] = "Яблоко"
 	startWords[1] = "Мяч"
@@ -161,17 +162,17 @@ hearCommand('words', async(context) => {
 		context.send('Как играть в слова? Ну, вроде как все понятно - ты пишешь слово, а я тебе отвечу другим словом на последнюю букву твоего - проще некуда))'),
 		context.send(`Давай я начну: ` + randomWord)
 	])
-	
-	const userInputWord = context.$match[1]
-	
-	for(const i = 0; i < startWords.length; i++)
+	updates.hear('message', async(context) =>{
+		for(const i = 0; i < startWords.length; i++)
 	{
 		wordLength = startWords[i].length
-		if(startWords[i].substr(-1) = userInputWord.substr(-1))
+		const userInputWord = context.$match[1]
+		if(startWords[i].substr(-1) === userInputWord.substr(-1))
 		{
 			context.send('Вас понял')
 		}
 	}
+	})	
 })
 
 
