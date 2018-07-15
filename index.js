@@ -162,21 +162,18 @@ hearCommand('words', async(context) => {
 		context.send('Как играть в слова? Ну, вроде как все понятно - ты пишешь слово, а я тебе отвечу другим словом на последнюю букву твоего - проще некуда))'),
 		context.send(`Давай я начну: ` + randomWord)
 	])
-	updates.on('message', async(context) => {
-	const findIt = /[а-я]/gi;
-	findIt.exec()
-	const userInputWord = context.$match[1]	
-    for(const i = 0; i < startWords.length; i++)
-	{
-		const findIt = /[а-я]/gi;
-	    findIt.exec(startWords[i])
-		if(findIt.exec(startWords[i]) === findIt.exec(userInputWord[0]))
-		{
-			context.send('Вас понял')
-		}
-	}
+		updates.hear(/(.+)/i, async(context) => {
+			for(const i = 0; i < startWords.length; i++)
+			{	
+			let userInputWord = context.$match[1]
+			if(startWords[3][0] === userInputWord[0])
+			{
+				await context.send('Кек')
+			}
+			}
+		})
 	})	
-})
+
 
 
 
