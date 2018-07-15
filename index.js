@@ -163,10 +163,14 @@ hearCommand('words', async(context) => {
 		context.send(`Давай я начну: ` + randomWord)
 	])
 	updates.on('message', async(context) => {
+	const findIt = /[а-я]/gi;
+	findIt.exec()
 	const userInputWord = context.$match[1]	
     for(const i = 0; i < startWords.length; i++)
 	{
-		if(startWords[i].slice(-1) === userInputWord.slice(-1))
+		const findIt = /[а-я]/gi;
+	    findIt.exec(startWords[i])
+		if(findIt.exec(startWords[i]) === findIt.exec(userInputWord[0]))
 		{
 			context.send('Вас понял')
 		}
