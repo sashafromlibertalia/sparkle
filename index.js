@@ -166,7 +166,15 @@ hearCommand('words', async(context) => {
 		const userInput = context.text
 		while(randomWord.charAt(randomWord.length - 1) === userInput.charAt(0))
 		{
-			await context.send('Кек')
+			const url = 'https://gufo.me/dict/ozhegov?page=3&letter=а'
+            request(url, async function(body) {
+	        const $ = cheerio.load(body)
+			const letterA = $('.list-unstyled app-word-list').text()
+			})
+			if(randomWord.charAt(randomWord.length - 1) === 'а')
+			{
+				await context.send(letterA)
+			}
 		}
 	    })
 	})	
@@ -251,7 +259,7 @@ var timer = setInterval(function() {
 	if(newDay.getHours() === 6 ){
 		api.messages.send({
 			message: random_greeting,
-			domain: 'egoromanov'
+			peer_id: 2000000001
 		})
 	}
 }, 86400000)
