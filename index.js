@@ -166,7 +166,7 @@ hearCommand('words', async(context) => {
 	const userInputWord = context.$match[1]	
     for(const i = 0; i < startWords.length; i++)
 	{
-		if(startWords[i].substr(-1) === userInputWord.substr(-1))
+		if(startWords[i].slice(-1) === userInputWord.slice(-1))
 		{
 			context.send('Вас понял')
 		}
