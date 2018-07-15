@@ -166,10 +166,10 @@ hearCommand('words', async(context) => {
 	
 	for(const i = 0; i < startWords.length; i++)
 	{
-		if(startWords[i].charAt(startWords[i].length - 1) = userInputWord.search(startWords[i].charAt(startWords[i].length - 1)))
+		wordLength = startWords[i].length
+		if(startWords[i].substr(-1) = userInputWord.substr(-1))
 		{
 			context.send('Вас понял')
-			console.log(startWords[i].charAt(startWords[i].length - 1))
 		}
 	}
 })
