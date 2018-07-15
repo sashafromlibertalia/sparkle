@@ -162,7 +162,7 @@ hearCommand('words', async(context) => {
 		context.send('Как играть в слова? Ну, вроде как все понятно - ты пишешь слово, а я тебе отвечу другим словом на последнюю букву твоего - проще некуда))'),
 		context.send(`Давай я начну: ` + randomWord)
 	])
-	updates.hear('message', async(context) =>{
+	updates.on('message', async(context) =>{
 		for(const i = 0; i < startWords.length; i++)
 	{
 		wordLength = startWords[i].length
