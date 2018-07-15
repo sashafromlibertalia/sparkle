@@ -168,10 +168,6 @@ hearCommand('words', async(context) => {
 		{
 			await context.send('Кек')
 		}
-		else
-		{
-			await context.send('Нет! Мое слово на такую букву не оканчивалось')
-		}
 	    })
 	})	
 
