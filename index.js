@@ -1047,7 +1047,7 @@ updates.hear(/^\/отзыв (.+)/i, async(context) => {
 
 
 
-const reg1 = new Array(15)
+const reg1 = new Array(17)
 reg1[0] = new RegExp(/мякиш/i)
 reg1[1] = new RegExp(/мякишу/i)
 reg1[2] = new RegExp(/мякише/i)
@@ -1064,6 +1064,7 @@ reg1[12] = new RegExp(/программирошу/i)
 reg1[13] = new RegExp(/программироше/i)
 reg1[14] = new RegExp(/мирош/i)
 reg1[15] = new RegExp(/мирошу/i)
+reg1[16] = new RegExp(/микромяш/i)
 
 const answers1 = new Array(4)
 answers1[0] = "Говнокодера вызывали? (っಠ‿ಠ)っ"
