@@ -1127,3 +1127,7 @@ const random3 = answers3[Math.floor(Math.random() * answers3.length)]
 updates.hear(reg3, async(context) => {
 	await context.send(random3)
 })
+
+updates.hear(/ганж/i, async(context) => {
+	context.send('Ты там нахуй охуел, пес? Сейчас гейскую порнуху скину')
+})
