@@ -24,6 +24,8 @@ require('https').createServer().listen(process.env.PORT || 5000).on('request', f
 });
 
 
+
+
 api.baseUrl = 'https://api.vk.com/method/'
 
 updates.startPolling()
