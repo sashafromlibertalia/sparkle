@@ -1002,7 +1002,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	const textUser = context.$match[1];
 	google.resultsPerPage = 3;
 	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
-	google(textUser, function (err, res) {
+	google(textUser, function (error, res) {
     const settings = {
 	    streamType: 'png',
 		windowSize: {
@@ -1037,6 +1037,10 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 			context.sendPhoto('images/GDZ3.png')
 		})
 		])
+		if(error)
+		{
+			context.send('Простите, у меня случилась ошибка :с')
+		}
 	})
 })
 
