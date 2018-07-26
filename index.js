@@ -1021,7 +1021,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
         const link3 = res.links[2]
 		
 		Promise.all([
-			webshot(link1.href, 'images/GDZ1.png', settings, function(err) 
+		webshot(link1.href, 'images/GDZ1.png', settings, function(err) 
 		{
 			context.send('ГДЗ номер 1' + ':\n' + link1.href, context.sendPhoto('images/GDZ1.png'))  
 		}),
