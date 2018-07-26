@@ -1025,16 +1025,28 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 		{
 			context.send('ГДЗ номер 1:\n' + link1.href)
 			context.sendPhoto('images/GDZ1.png')
+			if(error)
+		{
+			context.send('Простите, у меня случилась ошибка :с')
+		}
 		}),
 		webshot(link2.href, 'images/GDZ2.png', settings, function(error) 
 		{
 			context.send('ГДЗ номер 2:\n' + link2.href) 
 			context.sendPhoto('images/GDZ2.png')
+			if(error)
+		{
+			context.send('Простите, у меня случилась ошибка :с')
+		}
 		}),
 		webshot(link3.href, 'images/GDZ3.png', settings, function(error) 
 		{
 			context.send('ГДЗ номер 3:\n' + link3.href)
 			context.sendPhoto('images/GDZ3.png')
+			if(error)
+		{
+			context.send('Простите, у меня случилась ошибка :с')
+		}
 		})
 		])
 		if(error)
