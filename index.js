@@ -1151,6 +1151,29 @@ updates.hear(reg3, async(context) => {
 	await context.send(random3)
 })
 
+
+const reg4 = new Array(10)
+reg4[0] = new RegExp(/рыжий/i)
+reg4[1] = new RegExp(/рыжего/i)
+reg4[2] = new RegExp(/рыжему/i)
+reg4[3] = new RegExp(/рыжим/i)
+reg4[4] = new RegExp(/даня/i)
+reg4[5] = new RegExp(/дани/i)
+reg4[6] = new RegExp(/дане/i)
+reg4[7] = new RegExp(/пономарь/i)
+reg4[8] = new RegExp(/пономарев/i)
+reg4[9] = new RegExp(/пономарева/i)
+const answers4 = new Array()
+answers4[0] = "ЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ"
+answers4[1] = "ПАЦАНЫ ПТУ ВАЩЕ ЗАЕБИСЬ, ВСЕМ СОВЕТУЮ. ОТ ОДНОЙ ПАРЫ ПОУМНЕЛ НА 200 ХП"
+answers4[2] = "Я НЕ ДАНИИЛ СЦУКА"
+const random4 = answers3[Math.floor(Math.random() * answers3.length)]
+updates.hear(reg3, async(context) => {
+	await context.send(random4)
+})
+
+
+
 updates.hear(/ганж/i, async(context) => {
 	context.send('Ты там нахуй охуел, пес? Сейчас гейскую порнуху скину')
 })
