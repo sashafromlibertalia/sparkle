@@ -1142,7 +1142,7 @@ reg3[14] = new RegExp(/навосе/i)
 reg3[15] = new RegExp(/навоса/i)
 reg3[16] = new RegExp(/навосу/i)
 reg3[17] = new RegExp(/навозу/i)
-const answers3 = new Array()
+const answers3 = new Array(3)
 answers3[0] = "ЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ"
 answers3[1] = "ПОМАЦАЙ ПIД МАТРАЦЕМ"
 answers3[2] = "Продам Брата. Дорого"
@@ -1163,11 +1163,11 @@ reg4[6] = new RegExp(/дане/i)
 reg4[7] = new RegExp(/пономарь/i)
 reg4[8] = new RegExp(/пономарев/i)
 reg4[9] = new RegExp(/пономарева/i)
-const answers4 = new Array()
+const answers4 = new Array(3)
 answers4[0] = "ЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ"
 answers4[1] = "ПАЦАНЫ ПТУ ВАЩЕ ЗАЕБИСЬ, ВСЕМ СОВЕТУЮ. ОТ ОДНОЙ ПАРЫ ПОУМНЕЛ НА 200 ХП"
 answers4[2] = "Я НЕ ДАНИИЛ СЦУКА"
-const random4 = answers3[Math.floor(Math.random() * answers3.length)]
+const random4 = answers4[Math.floor(Math.random() * answers3.length)]
 updates.hear(reg4, async(context) => {
 	await context.send(random4)
 })
