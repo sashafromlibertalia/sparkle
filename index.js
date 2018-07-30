@@ -213,11 +213,15 @@ greeting[2] = "Шалом, дамы и пацаны. Возможно, мои е
 greeting[3] = "Привет. Без лишних слов. Расписание на сегодня:\n"
 var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
 
-if(newDay.getHours() === 10 ){
+if(newDay.getHours() === 10) 
+{
 	api.messages.send({
 		message: random_greeting,
 		peer_id: 2000000001
-})
+	})
+}
+	
+
 
 updates.hear('/lesson', async(context) => {
 	//Первый урок
