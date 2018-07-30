@@ -1168,7 +1168,7 @@ answers4[0] = "ЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ"
 answers4[1] = "ПАЦАНЫ ПТУ ВАЩЕ ЗАЕБИСЬ, ВСЕМ СОВЕТУЮ. ОТ ОДНОЙ ПАРЫ ПОУМНЕЛ НА 200 ХП"
 answers4[2] = "Я НЕ ДАНИИЛ СЦУКА"
 const random4 = answers3[Math.floor(Math.random() * answers3.length)]
-updates.hear(reg3, async(context) => {
+updates.hear(reg4, async(context) => {
 	await context.send(random4)
 })
 
