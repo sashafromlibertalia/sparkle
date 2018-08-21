@@ -1068,7 +1068,7 @@ updates.hear(/^\/отзыв (.+)/i, async(context) => {
 
 
 
-const reg1 = new Array(17)
+/*const reg1 = new Array(17)
 reg1[0] = new RegExp(/мякиш/i)
 reg1[1] = new RegExp(/мякишу/i)
 reg1[2] = new RegExp(/мякише/i)
@@ -1095,7 +1095,7 @@ answers1[3] = "Я хорош собой, и вы это знаете (ʘ ͜ʖ ʘ
 const random1 = answers1[Math.floor(Math.random() * answers1.length)]
 updates.hear(reg1, async(context) => {
 	await context.send(random1)
-})
+})*/
 
 const reg2 = new Array(10)
 reg2[0] = new RegExp(/ганц/i)
@@ -1151,7 +1151,7 @@ updates.hear(reg3, async(context) => {
 })
 
 
-const reg4 = new Array(10)
+/*const reg4 = new Array(10)
 reg4[0] = new RegExp(/рыжий/i)
 reg4[1] = new RegExp(/рыжего/i)
 reg4[2] = new RegExp(/рыжему/i)
@@ -1169,10 +1169,10 @@ answers4[2] = "Я НЕ ДАНИИЛ СЦУКА"
 const random4 = answers4[Math.floor(Math.random() * answers3.length)]
 updates.hear(reg4, async(context) => {
 	await context.send(random4)
-})
+})*/
 
 
 
 updates.hear(/ганж/i, async(context) => {
-	context.send('Ты там нахуй охуел, пес? Сейчас гейскую порнуху скину')
+	context.send('Ты рамсы попутал, пес?')
 })
