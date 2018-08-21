@@ -204,7 +204,7 @@ Schedule[5][5] = "\n"
 Schedule[5][6] = "\n"
 
 
-const newDay = new Date()
+/*const newDay = new Date()
 
 var greeting = new Array(4)
 greeting[0] = "Итак, мои дорогие, начался новый учебный день. Я желаю вам всем хороших оценок по всем предметам, удачи :)\n Расписание на сегодня:\n"
@@ -212,13 +212,13 @@ greeting[1] = "И снова всем приветик, господа. Скуч
 greeting[2] = "Шалом, дамы и пацаны. Возможно, мои ежедневные напоминая о расписании вам надоели, но я ничего поделать не могу - я создан для выполнения конкретных задач. Кстати, вот сегодняшнее расписание: \n"
 greeting[3] = "Привет. Без лишних слов. Расписание на сегодня:\n"
 var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
-if(newDay.getHours() === 10) 
+if(newDay.getHours() === 7) 
 {
 	api.messages.send({
 		message: random_greeting,
 		peer_id: 2000000001
 	})
-}
+}*/
 	
 
 
