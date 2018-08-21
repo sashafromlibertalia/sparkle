@@ -1112,7 +1112,7 @@ const answers2 = new Array(3)
 answers2[0] = "Ruhm der Ukraine"
 answers2[1] = "Bogdan ist der Sinn des Lebens"
 answers2[2] = "der beste Mann Kappa"
-const random2 = answers2[Math.floor(Math.random() * answers1.length)]
+const random2 = answers2[Math.floor(Math.random() * answers2.length)]
 updates.hear(reg2, async(context) => {
 	await context.send(random2)
 })
