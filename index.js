@@ -27,7 +27,6 @@ require('https').createServer().listen(process.env.PORT || 5000).on('request', f
 
 
 api.baseUrl = 'https://api.vk.com/method/'
-
 updates.startPolling()
 
 //Святыня 2
@@ -136,7 +135,6 @@ hearCommand('cancel', async(context) => {
 	await context.send('Хорошо, я выключу клавиатуру!')
 })
 
-	
 
 
 
@@ -202,6 +200,37 @@ Schedule[5][3] = "\n"
 Schedule[5][4] = "\n"
 Schedule[5][5] = "\n"
 Schedule[5][6] = "\n"
+
+updates.hear('/завтра', async(context) => {
+	if(Time.getDay() === 1)
+	{
+		await context.send(`Расписание на завтра: \n ${Schedule[1].join('\n')}`)
+	}
+	if(Time.getDay() === 2)
+	{
+		await context.send(`Расписание на завтра: \n ${Schedule[2].join('\n')}`)
+	}
+	if(Time.getDay() === 3)
+	{
+		await context.send(`Расписание на завтра: \n ${Schedule[3].join('\n')}`)
+	}
+	if(Time.getDay() === 4)
+	{
+		await context.send(`Расписание на завтра: \n ${Schedule[4].join('\n')}`)
+	}
+	if(Time.getDay() === 5)
+	{
+		await context.send(`Расписание на завтра: \n ${Schedule[5].join('\n')}`)
+	}
+	if(Time.getDay() === 6)
+	{
+		await context.send(`Завтра неучебный день - кайфуйте`)
+	}
+	if(Time.getDay() === 0)
+	{
+		await context.send(`Расписание на завтра: \n ${Schedule[0].join('\n')}`)
+	}
+})
 
 
 /*const newDay = new Date()
@@ -508,10 +537,6 @@ updates.hear('/lesson', async(context) => {
 	}
 
 
-
-
-
-
 	//Первый урок
 	for(i = 30; i < 59; i++)
 	{
@@ -795,8 +820,6 @@ for(i = 10; i < 50; i++)
 
 await context.send('Сейчас урока нет. Ураааааа!')
 })
-		
-
 
 
 updates.hear('/уроки', async(context) => {
@@ -825,9 +848,6 @@ updates.hear('/уроки', async(context) => {
 		await context.send('Расписание на сегодня:\n' + Schedule[5])
 	}
 })
-
-
-
 
 updates.hear('/дз', async(context) => {
 	const url = 'https://github.com/FloydReme/bot631/blob/master/domashka.txt'
