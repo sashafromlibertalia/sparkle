@@ -169,12 +169,12 @@ Schedule[2][5] = "6. Немецкий/Французский"
 Schedule[2][6] = "7. Электив"
 
 Schedule[3] = new Array(6)
-Schedule[3][0] = "СОН"
-Schedule[3][1] = "Физика"
-Schedule[3][2] = "Инфа"
-Schedule[3][3] = "Алгебра"
-Schedule[3][4] = "История"
-Schedule[3][5] = "История"
+Schedule[3][0] = "1. СОН"
+Schedule[3][1] = "2. Физика"
+Schedule[3][2] = "3. Инфа"
+Schedule[3][3] = "4. Алгебра"
+Schedule[3][4] = "5. История"
+Schedule[3][5] = "6. История"
 
 
 Schedule[4] = new Array(6)
