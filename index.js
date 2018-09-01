@@ -76,6 +76,7 @@ vk.updates.hear('/start', async(context) => {
 /гдз - гугли гдз и я постараюсь прислать его тебе
 /отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен, честное слово
 /завтра - узнаешь расписание на завтрашний день
+/неделя - расписание на всю неделю
 /help - моя документация`})
 })
 
@@ -141,66 +142,57 @@ hearCommand('cancel', async(context) => {
 
 const Time = new Date()
 var Schedule = new Array(6)
-Schedule[0] = new Array(7)
-Schedule[0][0] = "\n"
-Schedule[0][1] = "\n"
-Schedule[0][2] = "\n"
-Schedule[0][2] = "\n"
-Schedule[0][3] = "\n"
-Schedule[0][4] = "\n"
-Schedule[0][5] = "\n"
-Schedule[0][6] = "\n"
+Schedule[0] = new Array(6)
+Schedule[0][0] = "1. История"
+Schedule[0][1] = "2. Русский"
+Schedule[0][2] = "3. Литература"
+Schedule[0][3] = "4. Химия"
+Schedule[0][4] = "5. Английский"
+Schedule[0][5] = "6. Английский"
 
 Schedule[1] = new Array(7)
-Schedule[1][0] = "\n"
-Schedule[1][1] = "\n"
-Schedule[1][2] = "\n"
-Schedule[1][2] = "\n"
-Schedule[1][3] = "\n"
-Schedule[1][4] = "\n"
-Schedule[1][5] = "\n"
-Schedule[1][6] = "\n"
+Schedule[1][0] = "1. Литература"
+Schedule[1][1] = "2. Биология"
+Schedule[1][2] = "3. Русский"
+Schedule[1][3] = "4. Общество"
+Schedule[1][4] = "5. Алгебра"
+Schedule[1][5] = "6. Физкультура"
+Schedule[1][6] = "7. Физкультура"
 
 Schedule[2] = new Array(7)
-Schedule[2][0] = "\n"
-Schedule[2][1] = "\n"
-Schedule[2][2] = "\n"
-Schedule[2][2] = "\n"
-Schedule[2][3] = "\n"
-Schedule[2][4] = "\n"
-Schedule[2][5] = "\n"
-Schedule[2][6] = "\n"
+Schedule[2][0] = "1. Геометрия"
+Schedule[2][1] = "2. Английский"
+Schedule[2][2] = "3. Английский"
+Schedule[2][3] = "4. МХК"
+Schedule[2][4] = "5. Физика"
+Schedule[2][5] = "6. Немецкий/Французский"
+Schedule[2][6] = "7. Электив"
+
+Schedule[3] = new Array(6)
+Schedule[3][0] = "СОН"
+Schedule[3][1] = "Физика"
+Schedule[3][2] = "Инфа"
+Schedule[3][3] = "Алгебра"
+Schedule[3][4] = "История"
+Schedule[3][5] = "История"
 
 
-Schedule[3] = new Array(7)
-Schedule[3][0] = "\n"
-Schedule[3][1] = "\n"
-Schedule[3][2] = "\n"
-Schedule[3][2] = "\n"
-Schedule[3][3] = "\n"
-Schedule[3][4] = "\n"
-Schedule[3][5] = "\n"
-Schedule[3][6] = "\n"
+Schedule[4] = new Array(6)
+Schedule[4][0] = "1. География"
+Schedule[4][1] = "2. Электив"
+Schedule[4][2] = "3. Русский"
+Schedule[4][3] = "4. Литература"
+Schedule[4][4] = "5. Английский"
+Schedule[4][5] = "6. Английский"
 
-Schedule[4] = new Array(7)
-Schedule[4][0] = "\n"
-Schedule[4][1] = "\n"
-Schedule[4][2] = "\n"
-Schedule[4][2] = "\n"
-Schedule[4][3] = "\n"
-Schedule[4][4] = "\n"
-Schedule[4][5] = "\n"
-Schedule[4][6] = "\n"
+Schedule[5] = new Array(6)
+Schedule[5][0] = "1. Геометрия"
+Schedule[5][1] = "2. Общество"
+Schedule[5][2] = "3. ОБЖ"
+Schedule[5][3] = "4. Физкультура"
+Schedule[5][4] = "5. Немецкий/французский"
+Schedule[5][5] = "6. Математика-электив"
 
-Schedule[5] = new Array(7)
-Schedule[5][0] = "\n"
-Schedule[5][1] = "\n"
-Schedule[5][2] = "\n"
-Schedule[5][2] = "\n"
-Schedule[5][3] = "\n"
-Schedule[5][4] = "\n"
-Schedule[5][5] = "\n"
-Schedule[5][6] = "\n"
 
 updates.hear('/завтра', async(context) => {
 	if(Time.getDay() === 1)
@@ -826,27 +818,27 @@ await context.send('Сейчас урока нет. Ураааааа!')
 updates.hear('/уроки', async(context) => {
 	if(Time.getDay() === 1)
 	{
-		await context.send('Расписание на сегодня:\n' + Schedule[0])
+		await context.send('Расписание на сегодня:\n' + Schedule[0].join('\n'))
 	}
 	if(Time.getDay() === 2)
 	{
-		await context.send('Расписание на сегодня:\n' + Schedule[1])
+		await context.send('Расписание на сегодня:\n' + Schedule[1].join('\n'))
 	}
 	if(Time.getDay() === 3)
 	{
-		await context.send('Расписание на сегодня:\n' + Schedule[2])
+		await context.send('Расписание на сегодня:\n' + Schedule[2].join('\n'))
 	}
 	if(Time.getDay() === 4)
 	{
-		await context.send('Расписание на сегодня:\n' + Schedule[3])
+		await context.send('Расписание на сегодня:\n' + Schedule[3].join('\n'))
 	}
 	if(Time.getDay() === 5)
 	{
-		await context.send('Расписание на сегодня:\n' + Schedule[4])
+		await context.send('Расписание на сегодня:\n' + Schedule[4].join('\n'))
 	}
 	if(Time.getDay() === 6)
 	{
-		await context.send('Расписание на сегодня:\n' + Schedule[5])
+		await context.send('Расписание на сегодня:\n' + Schedule[5].join('\n'))
 	}
 })
 
@@ -1088,6 +1080,26 @@ updates.hear(/^\/отзыв (.+)/i, async(context) => {
 })
 
 
+updates.hear('/неделя', async(context) => {
+	await context.send(`РАСПИСАНИЕ НА ВСЮ НЕДЕЛЮ:
+ПОНЕДЕЛЬНИК:
+${Schedule[0].join('\n')}
+
+ВТОРНИК:
+${Schedule[1].join('\n')}
+
+СРЕДА:
+${Schedule[2].join('\n')}
+
+ЧЕТВЕРГ:
+${Schedule[3].join('\n')}
+
+ПЯТНИЦА:
+${Schedule[4].join('\n')}
+
+СУББОТА:
+${Schedule[5].join('\n')}`)
+})
 
 /*const reg1 = new Array(17)
 reg1[0] = new RegExp(/мякиш/i)
