@@ -145,7 +145,7 @@ var Schedule = new Array(6)
 Schedule[0] = new Array(6)
 Schedule[0][0] = "1. История"
 Schedule[0][1] = "2. Русский"
-Schedule[0][2] = "3. Литература"
+Schedule[0][2] = "3. Русский"
 Schedule[0][3] = "4. Химия"
 Schedule[0][4] = "5. Английский"
 Schedule[0][5] = "6. Английский"
@@ -180,7 +180,7 @@ Schedule[3][5] = "6. История"
 Schedule[4] = new Array(6)
 Schedule[4][0] = "1. География"
 Schedule[4][1] = "2. Электив"
-Schedule[4][2] = "3. Русский"
+Schedule[4][2] = "3. Литература"
 Schedule[4][3] = "4. Литература"
 Schedule[4][4] = "5. Английский"
 Schedule[4][5] = "6. Английский"
@@ -861,59 +861,48 @@ updates.hear('/дз', async(context) => {
 	const Mhk = $('#LC13').text()
 	const History_ = $('#LC14').text()
 	const Society = $('#LC15').text()
+	const OBJ = $('#LC16').text()
 
-	const Monday = new Array(6)
-	Monday[0] = English
-	Monday[1] = Literature
-	Monday[2] = History_
-	Monday[3] = CompScience
-	Monday[4] = Biology
-	Monday[5] = Algebra
+	const Monday = new Array(4)
+	Monday[0] = History_
+	Monday[1] = Russian
+	Monday[2] = Chemistry
+	Monday[3] = English
 
-	const Tuesday = new Array(6)
-	Tuesday[0] = English
-	Tuesday[1] = Literature
-	Tuesday[2] = History_
-	Tuesday[3] = CompScience
-	Tuesday[4] = Biology
-	Tuesday[5] = Algebra
+	const Tuesday = new Array(5)
+	Tuesday[0] = Literature
+	Tuesday[1] = Biology
+	Tuesday[2] = Russian
+	Tuesday[3] = Society
+	Tuesday[4] = Algebra
 
-	const Wednesday = new Array(6)
-	Wednesday[0] = English
-	Wednesday[1] = Literature
-	Wednesday[2] = History_
-	Wednesday[3] = CompScience
-	Wednesday[4] = Biology
-	Wednesday[5] = Algebra
+	const Wednesday = new Array(5)
+	Wednesday[0] = Geometry
+	Wednesday[1] = English
+	Wednesday[2] = Mhk
+	Wednesday[3] = Physics
+	Wednesday[4] = French
 
-	const Thursday = new Array(6)
-	Thursday[0] = English
-	Thursday[1] = Literature
-	Thursday[2] = History_
-	Thursday[3] = CompScience
-	Thursday[4] = Biology
-	Thursday[5] = Algebra
+	const Thursday = new Array(4)
+	Thursday[0] = Physics
+	Thursday[1] = CompScience
+	Thursday[2] = Algebra
+	Thursday[3] = History_
 
 
-	const Friday = new Array(6)
-	Friday[0] = English
+	const Friday = new Array(3)
+	Friday[0] = Geography
 	Friday[1] = Literature
-	Friday[2] = History_
-	Friday[3] = CompScience
-	Friday[4] = Biology
-	Friday[5] = Algebra
+	Friday[2] = English
 
+	const Saturday = new Array(5)
+	Saturday[0] = Geometry
+	Saturday[1] = Society
+	Saturday[2] = OBJ
+	Saturday[3] = French
+	Saturday[4] = Algebra
 
-	const Saturday = new Array(6)
-	Saturday[0] = English
-	Saturday[1] = Literature
-	Saturday[2] = History_
-	Saturday[3] = CompScience
-	Saturday[4] = Biology
-	Saturday[5] = Algebra
-
-	
-	const Sunday = new Array(15)
+	const Sunday = new Array(16)
 	Sunday[0] = English
 	Sunday[1] = Russian
 	Sunday[2] = Literature
@@ -929,6 +918,7 @@ updates.hear('/дз', async(context) => {
 	Sunday[12] = Mhk
 	Sunday[13] = French
 	Sunday[14] = German
+	Sunday[15] = OBJ
 
 	if(Time.getDay() === 1)
 	{
