@@ -1140,9 +1140,9 @@ updates.hear(reg2, async(context) => {
 	await context.send(random2)
 })
 
-updates.hear(/спасибо/i, async(context) => {
+/*updates.hear(/спасибо/i, async(context) => {
 	await context.send('Не за что! Рад помочь')
-})
+})*/
 
 
 const reg3 = new Array(18)
