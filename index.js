@@ -1007,6 +1007,10 @@ updates.hear('/insert ?', async(context) => {
 Всем мир`)
 })
 
+updates.hear('/дз все', async(context) =>{
+	await context.send(Sunday.join('\n'))
+})
+
 updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 1)
 	{
