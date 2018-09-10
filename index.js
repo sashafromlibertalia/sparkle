@@ -958,25 +958,7 @@ request(url, async function(error, Response, body) {
 	Saturday[2] = predmeti[15] + OBJdz
 	Saturday[3] = predmeti[4] + Frenchdz
 	Saturday[4] = predmeti[5] + Algebradz
-
-	const Sunday = new Array(16)
-	Sunday[0] = predmeti[0] + preds[0].dz
-	Sunday[1] = predmeti[1] + preds[1].dz
-	Sunday[2] = predmeti[2] + preds[2].dz
-	Sunday[3] = predmeti[13] + preds[13].dz
-	Sunday[4] = predmeti[10] + preds[10].dz
-	Sunday[5] = predmeti[7] + preds[7].dz
-	Sunday[6] = predmeti[5] + preds[5].dz
-	Sunday[7] = predmeti[11] + preds[11].dz
-	Sunday[8] = predmeti[6] + preds[6].dz
-	Sunday[9] = predmeti[14] + preds[14].dz
-	Sunday[10] = predmeti[9] + preds[9].dz
-	Sunday[11] = predmeti[8]+ preds[8].dz
-	Sunday[12] = predmeti[12] + preds[12].dz
-	Sunday[13] = predmeti[4] + preds[4].dz
-	Sunday[14] = predmeti[3] + preds[3].dz
-	Sunday[15] = predmeti[15] + preds[15].dz
-
+	
 	const preds = new Array(16)
 	preds[0] = {
 		namesubj: predmeti[0],
@@ -1043,6 +1025,26 @@ request(url, async function(error, Response, body) {
 		dz: OBJdz 
 	}
 
+
+	const Sunday = new Array(16)
+	Sunday[0] = predmeti[0] + preds[0].dz
+	Sunday[1] = predmeti[1] + preds[1].dz
+	Sunday[2] = predmeti[2] + preds[2].dz
+	Sunday[3] = predmeti[13] + preds[13].dz
+	Sunday[4] = predmeti[10] + preds[10].dz
+	Sunday[5] = predmeti[7] + preds[7].dz
+	Sunday[6] = predmeti[5] + preds[5].dz
+	Sunday[7] = predmeti[11] + preds[11].dz
+	Sunday[8] = predmeti[6] + preds[6].dz
+	Sunday[9] = predmeti[14] + preds[14].dz
+	Sunday[10] = predmeti[9] + preds[9].dz
+	Sunday[11] = predmeti[8]+ preds[8].dz
+	Sunday[12] = predmeti[12] + preds[12].dz
+	Sunday[13] = predmeti[4] + preds[4].dz
+	Sunday[14] = predmeti[3] + preds[3].dz
+	Sunday[15] = predmeti[15] + preds[15].dz
+
+	
 	
 
 updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
