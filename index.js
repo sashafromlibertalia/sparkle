@@ -74,6 +74,8 @@ vk.updates.hear('/start', async(context) => {
 /уроки - получи расписание на сегодняшний день
 /game - не знаю зачем, но у меня есть игры (Я сам в шоке)
 /гдз - гугли гдз и я постараюсь прислать его тебе
+/insert - добавляй в бота домашку, если ты его знаешь, а другие - нет
+/insert ? - справка по команде /insert
 /отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен, честное слово
 /завтра - узнаешь расписание на завтрашний день
 /неделя - расписание на всю неделю
@@ -879,84 +881,133 @@ updates.hear('/уроки', async(context) => {
 	}
 })
 
-updates.hear('/дз', async(context) => {
-	const url = 'https://github.com/FloydReme/bot631/blob/master/domashka.txt'
-    request(url, async function(error, Response, body) {
+
+const url = 'https://github.com/FloydReme/bot631/blob/master/domashka.txt'
+request(url, async function(error, Response, body) {
 	const $ = cheerio.load(body)
+	const Englishdz = $('#LC2').text()
+	const Russiandz = $('#LC4').text()
+	const Literaturedz=  $('#LC6').text()
+	const Germandz = $('#LC8').text()
+	const Frenchdz = $('#LC10').text()
+	const Algebradz = $('#LC12').text()
+	const Geometrydz = $('#LC14').text()
+	const Biologydz = $('#LC16').text()
+	const Physicsdz = $('#LC18').text()
+	const Chemistrydz = $('#LC20').text()
+	const CompSciencedz= $('#LC22').text()
+	const Geographydz = $('#LC24').text()
+	const Mhkdz = $('#LC26').text()
+	const History_dz = $('#LC28').text()
+	const Societydz = $('#LC30').text()
+	const OBJdz = $('#LC32').text()
+
 	const English = $('#LC1').text()
-	const Russian = $('#LC2').text()
-	const Literature=  $('#LC3').text()
-	const German = $('#LC4').text()
-	const French = $('#LC5').text()
-	const Algebra = $('#LC6').text()
-	const Geometry = $('#LC7').text()
-	const Biology = $('#LC8').text()
-	const Physics = $('#LC10').text()
-	const Chemistry = $('#LC9').text()
-	const CompScience = $('#LC11').text()
-	const Geography = $('#LC12').text()
-	const Mhk = $('#LC13').text()
-	const History_ = $('#LC14').text()
-	const Society = $('#LC15').text()
-	const OBJ = $('#LC16').text()
+	const Russian = $('#LC3').text()
+	const Literature=  $('#LC5').text()
+	const German = $('#LC7').text()
+	const French = $('#LC9').text()
+	const Algebra = $('#LC11').text()
+	const Geometry = $('#LC13').text()
+	const Biology = $('#LC15').text()
+	const Physics = $('#LC17').text()
+	const Chemistry = $('#LC19').text()
+	const CompScience = $('#LC21').text()
+	const Geography = $('#LC23').text()
+	const Mhk = $('#LC25').text()
+	const History_ = $('#LC27').text()
+	const Society = $('#LC29').text()
+	const OBJ = $('#LC31').text()
 
 	const Monday = new Array(4)
-	Monday[0] = History_
-	Monday[1] = Russian
-	Monday[2] = Chemistry
-	Monday[3] = English
+	Monday[0] = History_ + History_dz
+	Monday[1] = Russian + Russiandz
+	Monday[2] = Chemistry + Chemistrydz
+	Monday[3] = English + Englishdz
 
 	const Tuesday = new Array(5)
-	Tuesday[0] = Literature
-	Tuesday[1] = Biology
-	Tuesday[2] = Russian
-	Tuesday[3] = Society
-	Tuesday[4] = Algebra
+	Tuesday[0] = Literature + Literaturedz
+	Tuesday[1] = Biology + Biologydz
+	Tuesday[2] = Russian + Russiandz
+	Tuesday[3] = Society + Societydz
+	Tuesday[4] = Algebra + Algebradz
 
 	const Wednesday = new Array(5)
-	Wednesday[0] = Geometry
-	Wednesday[1] = English
-	Wednesday[2] = Mhk
-	Wednesday[3] = Physics
-	Wednesday[4] = French
+	Wednesday[0] = Geometry + Geometrydz
+	Wednesday[1] = English + Englishdz
+	Wednesday[2] = Mhk + Mhkdz
+	Wednesday[3] = Physics + Physicsdz
+	Wednesday[4] = French + Frenchdz
 
 	const Thursday = new Array(4)
-	Thursday[0] = Physics
-	Thursday[1] = CompScience
-	Thursday[2] = Algebra
-	Thursday[3] = History_
+	Thursday[0] = Physics + Physicsdz
+	Thursday[1] = CompScience + CompSciencedz
+	Thursday[2] = Algebra + Algebradz
+	Thursday[3] = History_ + History_dz
 
 
 	const Friday = new Array(3)
-	Friday[0] = Geography
-	Friday[1] = Literature
-	Friday[2] = English
+	Friday[0] = Geography + Geographydz
+	Friday[1] = Literature + Literaturedz
+	Friday[2] = English + Englishdz
 
 	const Saturday = new Array(5)
-	Saturday[0] = Geometry
-	Saturday[1] = Society
-	Saturday[2] = OBJ
-	Saturday[3] = French
-	Saturday[4] = Algebra
+	Saturday[0] = Geometry + Geometrydz
+	Saturday[1] = Society + Societydz
+	Saturday[2] = OBJ + OBJdz
+	Saturday[3] = French + Frenchdz
+	Saturday[4] = Algebra + Algebradz
 
 	const Sunday = new Array(16)
-	Sunday[0] = English
-	Sunday[1] = Russian
-	Sunday[2] = Literature
-	Sunday[3] = History_
-	Sunday[4] = CompScience
-	Sunday[5] = Biology
-	Sunday[6] = Algebra
-	Sunday[7] = Geography
-	Sunday[8] = Geometry
-	Sunday[9] = Society
-	Sunday[10] = Chemistry
-	Sunday[11] = Physics
-	Sunday[12] = Mhk
-	Sunday[13] = French
-	Sunday[14] = German
-	Sunday[15] = OBJ
+	Sunday[0] = English + Englishdz
+	Sunday[1] = Russian + Russiandz
+	Sunday[2] = Literature + Literaturedz
+	Sunday[3] = History_ + History_dz
+	Sunday[4] = CompScience + CompSciencedz
+	Sunday[5] = Biology + Biologydz
+	Sunday[6] = Algebra + Algebradz
+	Sunday[7] = Geography + Geographydz
+	Sunday[8] = Geometry + Geometrydz
+	Sunday[9] = Society + Societydz
+	Sunday[10] = Chemistry + Chemistrydz
+	Sunday[11] = Physics + Physicsdz
+	Sunday[12] = Mhk + Mhkdz
+	Sunday[13] = French + Frenchdz
+	Sunday[14] = German + Germandz
+	Sunday[15] = OBJ + OBJdz
 
+
+updates.hear(/^\/insert (.+) (.+)/i, async(context) => {
+	const Subject = new RegExp(context.$match[1],'i') 
+	const homeWork = context.$match[2]
+	const subjects = []
+	$('td').each(function(i, elem) {
+		subjects[i] = $(this).text();
+	});
+
+	for(var j = 0; j < subjects.length; j++)
+	{
+		if(subjects[j].match(Subject))
+		{
+			context.send(`Ваш предмет: ${subjects[j]}
+			Ваше дз: ${homeWork}`)
+		}
+	}
+})
+
+
+
+updates.hear('/insert ?', async(context) => {
+	await context.send(`
+Справка по команде /insert.
+Она позволяет добавлять домашнее задание для каждого предмета моментально (На самом деле Саша не хочет все вводить вручную, процесс нужно автоматизировать)
+Итак, как она работает?
+Вы пишите: /insert название_предмета сама_домашка
+Затем бот отправит вам обновленное дз по вашему предмету, и все будут счастливы!
+Всем мир`)
+})
+
+updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 1)
 	{
 		var formatter = new Intl.DateTimeFormat("ru", {
@@ -1042,7 +1093,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	const textUser = context.$match[1];
 	google.resultsPerPage = 3;
 	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
-	google(textUser, function (error, res) {
+	google(textUser, function (error) {
     const settings = {
 	    streamType: 'png',
 		windowSize: {
