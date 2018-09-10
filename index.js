@@ -901,81 +901,149 @@ request(url, async function(error, Response, body) {
 	const History_dz = $('#LC28').text()
 	const Societydz = $('#LC30').text()
 	const OBJdz = $('#LC32').text()
-
-	const English = $('#LC1').text()
-	const Russian = $('#LC3').text()
-	const Literature=  $('#LC5').text()
-	const German = $('#LC7').text()
-	const French = $('#LC9').text()
-	const Algebra = $('#LC11').text()
-	const Geometry = $('#LC13').text()
-	const Biology = $('#LC15').text()
-	const Physics = $('#LC17').text()
-	const Chemistry = $('#LC19').text()
-	const CompScience = $('#LC21').text()
-	const Geography = $('#LC23').text()
-	const Mhk = $('#LC25').text()
-	const History_ = $('#LC27').text()
-	const Society = $('#LC29').text()
-	const OBJ = $('#LC31').text()
+	
+	const predmeti = new Array(16)
+	predmeti[0] = $('#LC1').text() //English
+	predmeti[1] = $('#LC3').text() //Russian
+	predmeti[2] = $('#LC5').text() //Literature
+	predmeti[3] = $('#LC7').text() //German
+	predmeti[4] = $('#LC9').text() //French
+	predmeti[5] = $('#LC11').text() //Algebra
+	predmeti[6] = $('#LC13').text() //Geometry
+	predmeti[7] = $('#LC15').text() //Biology
+	predmeti[8] = $('#LC17').text() //Physics
+	predmeti[9] = $('#LC19').text() //Chemistry
+	predmeti[10] = $('#LC21').text() //СompScience
+	predmeti[11] = $('#LC23').text() //Geography
+	predmeti[12] = $('#LC25').text() //Mhk
+	predmeti[13] = $('#LC27').text() //History
+	predmeti[14] = $('#LC29').text() //Society
+	predmeti[15] = $('#LC31').text() // OBJ
 
 	const Monday = new Array(4)
-	Monday[0] = History_ + History_dz
-	Monday[1] = Russian + Russiandz
-	Monday[2] = Chemistry + Chemistrydz
-	Monday[3] = English + Englishdz
+	Monday[0] = predmeti[13] + History_dz
+	Monday[1] = predmeti[1] + Russiandz
+	Monday[2] = predmeti[9] + Chemistrydz
+	Monday[3] = predmeti[0] + Englishdz
 
 	const Tuesday = new Array(5)
-	Tuesday[0] = Literature + Literaturedz
-	Tuesday[1] = Biology + Biologydz
-	Tuesday[2] = Russian + Russiandz
-	Tuesday[3] = Society + Societydz
-	Tuesday[4] = Algebra + Algebradz
+	Tuesday[0] = predmeti[2] + Literaturedz
+	Tuesday[1] = predmeti[7] + Biologydz
+	Tuesday[2] = predmeti[1] + Russiandz
+	Tuesday[3] = predmeti[14] + Societydz
+	Tuesday[4] = predmeti[5] + Algebradz
 
 	const Wednesday = new Array(5)
-	Wednesday[0] = Geometry + Geometrydz
-	Wednesday[1] = English + Englishdz
-	Wednesday[2] = Mhk + Mhkdz
-	Wednesday[3] = Physics + Physicsdz
-	Wednesday[4] = French + Frenchdz
+	Wednesday[0] = predmeti[6] + Geometrydz
+	Wednesday[1] = predmeti[0] + Englishdz
+	Wednesday[2] = predmeti[12] + Mhkdz
+	Wednesday[3] = predmeti[8] + Physicsdz
+	Wednesday[4] = predmeti[4] + Frenchdz
 
 	const Thursday = new Array(4)
-	Thursday[0] = Physics + Physicsdz
-	Thursday[1] = CompScience + CompSciencedz
-	Thursday[2] = Algebra + Algebradz
-	Thursday[3] = History_ + History_dz
+	Thursday[0] = predmeti[8] + Physicsdz
+	Thursday[1] = predmeti[10] + CompSciencedz
+	Thursday[2] = predmeti[5] + Algebradz
+	Thursday[3] = predmeti[13] + History_dz
 
 
 	const Friday = new Array(3)
-	Friday[0] = Geography + Geographydz
-	Friday[1] = Literature + Literaturedz
-	Friday[2] = English + Englishdz
+	Friday[0] = predmeti[11] + Geographydz
+	Friday[1] = predmeti[2] + Literaturedz
+	Friday[2] = predmeti[0] + Englishdz
 
 	const Saturday = new Array(5)
-	Saturday[0] = Geometry + Geometrydz
-	Saturday[1] = Society + Societydz
-	Saturday[2] = OBJ + OBJdz
-	Saturday[3] = French + Frenchdz
-	Saturday[4] = Algebra + Algebradz
+	Saturday[0] = predmeti[6] + Geometrydz
+	Saturday[1] = predmeti[14] + Societydz
+	Saturday[2] = predmeti[15] + OBJdz
+	Saturday[3] = predmeti[4] + Frenchdz
+	Saturday[4] = predmeti[5] + Algebradz
 
 	const Sunday = new Array(16)
-	Sunday[0] = English + Englishdz
-	Sunday[1] = Russian + Russiandz
-	Sunday[2] = Literature + Literaturedz
-	Sunday[3] = History_ + History_dz
-	Sunday[4] = CompScience + CompSciencedz
-	Sunday[5] = Biology + Biologydz
-	Sunday[6] = Algebra + Algebradz
-	Sunday[7] = Geography + Geographydz
-	Sunday[8] = Geometry + Geometrydz
-	Sunday[9] = Society + Societydz
-	Sunday[10] = Chemistry + Chemistrydz
-	Sunday[11] = Physics + Physicsdz
-	Sunday[12] = Mhk + Mhkdz
-	Sunday[13] = French + Frenchdz
-	Sunday[14] = German + Germandz
-	Sunday[15] = OBJ + OBJdz
+	Sunday[0] = predmeti[0] + Englishdz
+	Sunday[1] = predmeti[1] + Russiandz
+	Sunday[2] = predmeti[2] + Literaturedz
+	Sunday[3] = predmeti[13] + History_dz
+	Sunday[4] = predmeti[10] + CompSciencedz
+	Sunday[5] = predmeti[7] + Biologydz
+	Sunday[6] = predmeti[5] + Algebradz
+	Sunday[7] = predmeti[11] + Geographydz
+	Sunday[8] = predmeti[6] + Geometrydz
+	Sunday[9] = predmeti[14] + Societydz
+	Sunday[10] = predmeti[9] + Chemistrydz
+	Sunday[11] = predmeti[8]+ Physicsdz
+	Sunday[12] = predmeti[12] + Mhkdz
+	Sunday[13] = predmeti[4] + Frenchdz
+	Sunday[14] = predmeti[3] + Germandz
+	Sunday[15] = predmeti[15] + OBJdz
 
+	const preds = new Array(16)
+	preds[0] = {
+		namesubj: predmeti[0],
+		dz: Englishdz 
+	}
+	preds[1] = {
+		namesubj: predmeti[1],
+		dz: Russiandz
+	}
+	preds[2] = {
+		namesubj: predmeti[2],
+		dz: Literaturedz 
+	}
+	preds[3] = {
+		namesubj: predmeti[3],
+		dz: Germandz
+	}
+	preds[4] = {
+		namesubj: predmeti[4],
+		dz: Frenchdz
+	}
+	preds[5] = {
+		namesubj: predmeti[5],
+		dz: Algebradz
+	}
+	preds[6] = {
+		namesubj: predmeti[6],
+		dz: Geometrydz
+	}
+	preds[7] = {
+		namesubj: predmeti[7],
+		dz: Biologydz 
+	}
+	preds[8] = {
+		namesubj: predmeti[8],
+		dz: Physicsdz 
+	}
+	preds[9] = {
+		namesubj: predmeti[9],
+		dz: Chemistrydz 
+	}
+	preds[10] = {
+		namesubj: predmeti[10],
+		dz: CompSciencedz 
+	}
+	preds[11] = {
+		namesubj: predmeti[11],
+		dz: Geographydz 
+	}
+	preds[12] = {
+		namesubj: predmeti[12],
+		dz: Mhkdz
+	}
+	preds[13] = {
+		namesubj: predmeti[13],
+		dz: History_dz 
+	}
+	preds[14] = {
+		namesubj: predmeti[14],
+		dz: Societydz
+	}
+	preds[15] = {
+		namesubj: predmeti[15],
+		dz: OBJdz 
+	}
+
+	
 
 updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
 	const Subject = new RegExp(context.$match[1],'i') 
@@ -985,11 +1053,27 @@ updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
 		subjects[i] = $(this).text();
 	});
 
+	//Прохожусь по всем тегам td и нахожу, есть ли там регулярка с каким-нибудь предметом, если да, то выполняю следующее:
+	//Прохожусь по массиву предметов и нахожу, есть ли там совпадение с найденным предметом среди них, то делаю следующее:
+	//Нахожу нужный предмет и вставляю homework в его значение.
 	for(var j = 0; j < subjects.length; j++)
 	{
 		if(subjects[j].match(Subject))
 		{
-			console.log(subjects[j])
+			for(var i = 0; i < predmeti.length; i++)
+			{
+				if(predmeti[i] === subjects[j])
+				{
+					for (var g = 0; g  < preds.length; g++)
+					{
+						if(predmeti[i] === preds[g].namesubj)
+						{
+							preds[g].dz = homeWork
+							await context.send(preds.namesubj + preds.dz)
+						}
+					}	
+				}
+			}
 		}
 	}
 })
