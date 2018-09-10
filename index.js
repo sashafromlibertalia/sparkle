@@ -1070,7 +1070,7 @@ updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
 						{
 							preds[g].dz = homeWork
 							await context.send(`ВАЖНО: Главный список по команде /дз останется старым.
-📌 НОВОЕ ДЗ: ${preds[g].namesubj + homeWork} 📌`)
+📌 НОВОЕ ДЗ: ${preds[g].namesubj + homeWork} 📌`) 
 						}
 					}	
 				}
