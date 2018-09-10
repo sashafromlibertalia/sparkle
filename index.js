@@ -977,7 +977,7 @@ request(url, async function(error, Response, body) {
 	Sunday[15] = OBJ + OBJdz
 
 
-updates.hear(/^\/insert (.+) (.+)/i, async(context) => {
+updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
 	const Subject = new RegExp(context.$match[1],'i') 
 	const homeWork = context.$match[2]
 	const subjects = []
@@ -989,8 +989,7 @@ updates.hear(/^\/insert (.+) (.+)/i, async(context) => {
 	{
 		if(subjects[j].match(Subject))
 		{
-			context.send(`Ваш предмет: ${subjects[j]}
-			Ваше дз: ${homeWork}`)
+			console.log(subjects[j])
 		}
 	}
 })
