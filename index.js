@@ -1055,7 +1055,7 @@ updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
 
 	//Прохожусь по всем тегам td и нахожу, есть ли там регулярка с каким-нибудь предметом, если да, то выполняю следующее:
 	//Прохожусь по массиву предметов и нахожу, есть ли там совпадение с найденным предметом среди них, то делаю следующее:
-	//Нахожу нужный предмет и вставляю homework в его значение.
+	//Нахожу нужный объект с предметом и вставляю homework в dz.
 	for(var j = 0; j < subjects.length; j++)
 	{
 		if(subjects[j].match(Subject))
@@ -1069,7 +1069,9 @@ updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
 						if(predmeti[i] === preds[g].namesubj)
 						{
 							preds[g].dz = homeWork
-							await context.send(preds.namesubj + preds.dz)
+							await context.send(`ВАЖНО: Главный список по команде /дз останется старым.
+________________________________________________________________
+							${preds[g].namesubj + homeWork}`)
 						}
 					}	
 				}
