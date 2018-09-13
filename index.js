@@ -19,8 +19,8 @@ vk.setOptions({
 })
 
 //Святыня
-require('https').createServer().listen(process.env.PORT || 5000).on('request', function(request, res){
-	res.end('')
+require('https').createServer().listen(process.env.PORT || 3000).on('request', function(request, res){
+	
 });
 
 
@@ -883,7 +883,7 @@ updates.hear('/уроки', async(context) => {
 
 
 const url = 'https://github.com/FloydReme/bot631/blob/master/domashka.txt'
-request(url, async function(error, Response, body) {
+request(url, async function(error, res, body) {
 	const $ = cheerio.load(body)
 	const Englishdz = $('#LC2').text()
 	const Russiandz = $('#LC4').text()
@@ -1183,7 +1183,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	const textUser = context.$match[1];
 	google.resultsPerPage = 3;
 	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
-	google(textUser, function (error) {
+	google(textUser, function (error,res) {
     const settings = {
 	    streamType: 'png',
 		windowSize: {
