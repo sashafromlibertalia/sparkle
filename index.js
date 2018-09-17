@@ -1160,6 +1160,72 @@ updates.hear('/дз', async(context) => {
 	}})
 })
 
+updates.hear('/дз завтра', async(context) => {
+	if(Time.getDay() === 1)
+	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
+		const x = Tuesday.join('\n')
+		await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + x)
+	}
+	if(Time.getDay() === 2)
+	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
+		const x = Wednesday.join('\n')
+		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n'  + x)
+	}
+	if(Time.getDay() === 3)
+	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
+		const x = Thursday.join('\n')
+		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n'  + x)
+	}
+	if(Time.getDay() === 4)
+	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
+		const x = Friday.join('\n')
+		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n' + x)
+	}
+	if(Time.getDay() === 5)
+	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
+		const x = Friday.join('\n')
+		await context.send('Домашка с пятницы. Сегодня '+ formatter.format(Time) + ' \n'  + x)
+	}
+	if(Time.getDay() === 6)
+	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
+		const x = Sunday.join('\n')
+		await context.send(x)
+	}
+	if(Time.getDay() === 0)
+	{
+		var formatter = new Intl.DateTimeFormat("ru", {
+			month: "long",
+			day: "numeric"
+		  });
+		const x = Sunday.join('\n')
+		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + formatter.format(Time) + ' \n'  + x)
+}})
+
+
 updates.hear('/help', async(context) => {
 	await context.send(`Итак, вот вам более-менее краткая документация.
 Мой исходный код: https://github.com/FloydReme/bot631
