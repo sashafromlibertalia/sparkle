@@ -1158,8 +1158,6 @@ updates.hear('/дз', async(context) => {
 		const x = Sunday.join('\n')
 		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + formatter.format(Time) + ' \n'  + x)
 	}})
-})
-
 updates.hear('/дз завтра', async(context) => {
 	if(Time.getDay() === 1)
 	{
@@ -1223,7 +1221,9 @@ updates.hear('/дз завтра', async(context) => {
 		  });
 		const x = Sunday.join('\n')
 		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + formatter.format(Time) + ' \n'  + x)
-}})
+}})	
+})
+
 
 
 updates.hear('/help', async(context) => {
