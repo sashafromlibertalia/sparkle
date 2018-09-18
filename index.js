@@ -991,11 +991,11 @@ request(url, async function(error, res, body) {
 	}
 	preds[8] = {
 		namesubj: predmeti[8],
-		dz: Physicsdz 
+		dz: Chemistrydz
 	}
 	preds[9] = {
 		namesubj: predmeti[9],
-		dz: Chemistrydz 
+		dz: Physicsdz
 	}
 	preds[10] = {
 		namesubj: predmeti[10],
