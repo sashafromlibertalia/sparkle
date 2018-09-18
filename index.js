@@ -908,8 +908,8 @@ request(url, async function(error, res, body) {
 	predmeti[5] = $('#LC11').text() //Algebra
 	predmeti[6] = $('#LC13').text() //Geometry
 	predmeti[7] = $('#LC15').text() //Biology
-	predmeti[8] = $('#LC17').text() //Physics
-	predmeti[9] = $('#LC19').text() //Chemistry
+	predmeti[8] = $('#LC17').text() //Сhemistry
+	predmeti[9] = $('#LC19').text() //Physics
 	predmeti[10] = $('#LC21').text() //СompScience
 	predmeti[11] = $('#LC23').text() //Geography
 	predmeti[12] = $('#LC25').text() //Mhk
@@ -934,11 +934,11 @@ request(url, async function(error, res, body) {
 	Wednesday[0] = predmeti[6] + Geometrydz
 	Wednesday[1] = predmeti[0] + Englishdz
 	Wednesday[2] = predmeti[12] + Mhkdz
-	Wednesday[3] = predmeti[8] + Physicsdz
+	Wednesday[3] = predmeti[9] + Physicsdz
 	Wednesday[4] = predmeti[4] + Frenchdz
 
 	const Thursday = new Array(4)
-	Thursday[0] = predmeti[8] + Physicsdz
+	Thursday[0] = predmeti[9] + Physicsdz
 	Thursday[1] = predmeti[10] + CompSciencedz
 	Thursday[2] = predmeti[5] + Algebradz
 	Thursday[3] = predmeti[13] + History_dz
