@@ -76,6 +76,7 @@ vk.updates.hear('/start', async(context) => {
 /гдз - гугли гдз и я постараюсь прислать его тебе
 /insert - добавляй в бота домашку, если ты его знаешь, а другие - нет
 /insert ? - справка по команде /insert
+/дата - узнай дз на конкретный день
 /отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен, честное слово
 /завтра - узнаешь расписание на завтрашний день
 /неделя - расписание на всю неделю
@@ -1078,6 +1079,110 @@ updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
 	}
 })
 
+var formatter = new Intl.DateTimeFormat("ru", {
+	month: "long",
+	day: "numeric"
+});
+const asks = new Array(2)
+asks[0] = new RegExp(/задано/i)
+asks[1] = new RegExp(/задали/i)
+updates.hear(asks, async(context) => {
+	await context.send({
+		message: 'Я тут увидел, что кто-то из вас спрашивает ДЗ. Выберите, какой день вам нужен:',
+		keyboard: Keyboard.keyboard([
+			[
+				Keyboard.textButton({
+				label: `Понедельник`,
+				payload: {
+					command: 'monday'
+				},
+				color: Keyboard.POSITIVE_COLOR
+			}),
+                Keyboard.textButton({
+				label: `Вторник`,
+				payload: {
+					command: 'tuesday'
+				},
+				color: Keyboard.POSITIVE_COLOR,
+			}), 
+			    Keyboard.textButton({
+				label: `Среда`,
+				payload: {
+					command: 'wednesday'
+				},
+				color: Keyboard.POSITIVE_COLOR
+			})],
+			[
+				Keyboard.textButton({
+					label: `Четверг`,
+					payload: {
+						command: 'thursday'
+					},
+					color: Keyboard.POSITIVE_COLOR}),
+				Keyboard.textButton({
+					label: `Пятница`,
+					payload: {
+						command: 'friday'
+					},
+					color: Keyboard.POSITIVE_COLOR}),
+				Keyboard.textButton({
+					label: `Суббота`,
+					payload: {
+						command: 'saturday'
+					},
+					color: Keyboard.POSITIVE_COLOR})
+				],
+                Keyboard.textButton({
+				label: `Закрыть клавиатуру`,
+				payload: {
+					command: 'cancel'
+				},
+				color: Keyboard.NEGATIVE_COLOR
+			})
+		],
+		{
+			oneTime: true
+		})
+	})
+
+})
+
+hearCommand('monday', async(context) => {
+	await context.send(`
+	Итак, вот домашка на понедельник
+${Monday.join('\n')}`)
+})
+
+hearCommand('tuesday', async(context) => {
+	await context.send(`
+	Итак, вот домашка на вторник 
+${Tuesday.join('\n')}`)
+})
+
+hearCommand('wednesday', async(context) => {
+	await context.send(`
+	Итак, вот домашка на среду 
+${Wednesday.join('\n')}`)
+})
+
+hearCommand('thursday', async(context) => {
+	await context.send(`
+	Итак, вот домашка на четверг
+${Thursday.join('\n')}`)
+})
+
+hearCommand('friday', async(context) => {
+	await context.send(`
+	Итак, вот домашка на пятницу
+${Friday.join('\n')}`)
+})
+
+hearCommand('saturday', async(context) => {
+	await context.send(`
+	Итак, вот домашка на субботу 
+${Saturday.join('\n')}`)
+})
+
 
 
 updates.hear('/insert ?', async(context) => {
@@ -1332,34 +1437,6 @@ ${Schedule[4].join(' ')}
 ${Schedule[5].join(' ')}`)
 })
 
-/*const reg1 = new Array(17)
-reg1[0] = new RegExp(/мякиш/i)
-reg1[1] = new RegExp(/мякишу/i)
-reg1[2] = new RegExp(/мякише/i)
-reg1[3] = new RegExp(/мякиша/)
-reg1[4] = new RegExp(/програмирош/i)
-reg1[5] = new RegExp(/программирош/i)
-reg1[6] = new RegExp(/программироша/i)
-reg1[7] = new RegExp(/програмироша/i)
-reg1[8] = new RegExp(/програмироша/i)
-reg1[9] = new RegExp(/програмирошу/i)
-reg1[10] = new RegExp(/програмироше/i)
-reg1[11] = new RegExp(/программироша/i)
-reg1[12] = new RegExp(/программирошу/i)
-reg1[13] = new RegExp(/программироше/i)
-reg1[14] = new RegExp(/мирош/i)
-reg1[15] = new RegExp(/мирошу/i)
-reg1[16] = new RegExp(/микромяш/i)
-
-const answers1 = new Array(4)
-answers1[0] = "Говнокодера вызывали? (っಠ‿ಠ)っ"
-answers1[1] = "Если ты ругаешь Мироша, то ты пидор ( ͡° ͜ʖ ͡°)"
-answers1[2] = "Ты что-то против меня имеешь? Го раз на раз выйдем, а не в интернете базарь (ﾒ￣▽￣)︻┳═一 "
-answers1[3] = "Я хорош собой, и вы это знаете (ʘ ͜ʖ ʘ)"
-const random1 = answers1[Math.floor(Math.random() * answers1.length)]
-updates.hear(reg1, async(context) => {
-	await context.send(random1)
-})*/
 
 const reg2 = new Array(10)
 reg2[0] = new RegExp(/ганц/i)
@@ -1413,25 +1490,7 @@ updates.hear(reg3, async(context) => {
 	await context.send(random3)
 })
 
-/*const reg4 = new Array(10)
-reg4[0] = new RegExp(/рыжий/i)
-reg4[1] = new RegExp(/рыжего/i)
-reg4[2] = new RegExp(/рыжему/i)
-reg4[3] = new RegExp(/рыжим/i)
-reg4[4] = new RegExp(/даня/i)
-reg4[5] = new RegExp(/дани/i)
-reg4[6] = new RegExp(/дане/i)
-reg4[7] = new RegExp(/пономарь/i)
-reg4[8] = new RegExp(/пономарев/i)
-reg4[9] = new RegExp(/пономарева/i)
-const answers4 = new Array(3)
-answers4[0] = "ЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ"
-answers4[1] = "ПАЦАНЫ ПТУ ВАЩЕ ЗАЕБИСЬ, ВСЕМ СОВЕТУЮ. ОТ ОДНОЙ ПАРЫ ПОУМНЕЛ НА 200 ХП"
-answers4[2] = "Я НЕ ДАНИИЛ СЦУКА"
-const random4 = answers4[Math.floor(Math.random() * answers3.length)]
-updates.hear(reg4, async(context) => {
-	await context.send(random4)
-})*/
+
 
 updates.hear(/ганж/i, async(context) => {
 	context.send('Ты рамсы попутал, пес?')
@@ -1461,3 +1520,52 @@ updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 		await context.send(`Упс, ошибочка. У вас нет доступа к этой команде`)
 	}
 })
+
+/*const reg4 = new Array(10)
+reg4[0] = new RegExp(/рыжий/i)
+reg4[1] = new RegExp(/рыжего/i)
+reg4[2] = new RegExp(/рыжему/i)
+reg4[3] = new RegExp(/рыжим/i)
+reg4[4] = new RegExp(/даня/i)
+reg4[5] = new RegExp(/дани/i)
+reg4[6] = new RegExp(/дане/i)
+reg4[7] = new RegExp(/пономарь/i)
+reg4[8] = new RegExp(/пономарев/i)
+reg4[9] = new RegExp(/пономарева/i)
+const answers4 = new Array(3)
+answers4[0] = "ЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ"
+answers4[1] = "ПАЦАНЫ ПТУ ВАЩЕ ЗАЕБИСЬ, ВСЕМ СОВЕТУЮ. ОТ ОДНОЙ ПАРЫ ПОУМНЕЛ НА 200 ХП"
+answers4[2] = "Я НЕ ДАНИИЛ СЦУКА"
+const random4 = answers4[Math.floor(Math.random() * answers3.length)]
+updates.hear(reg4, async(context) => {
+	await context.send(random4)
+})*/
+
+/*const reg1 = new Array(17)
+reg1[0] = new RegExp(/мякиш/i)
+reg1[1] = new RegExp(/мякишу/i)
+reg1[2] = new RegExp(/мякише/i)
+reg1[3] = new RegExp(/мякиша/)
+reg1[4] = new RegExp(/програмирош/i)
+reg1[5] = new RegExp(/программирош/i)
+reg1[6] = new RegExp(/программироша/i)
+reg1[7] = new RegExp(/програмироша/i)
+reg1[8] = new RegExp(/програмироша/i)
+reg1[9] = new RegExp(/програмирошу/i)
+reg1[10] = new RegExp(/програмироше/i)
+reg1[11] = new RegExp(/программироша/i)
+reg1[12] = new RegExp(/программирошу/i)
+reg1[13] = new RegExp(/программироше/i)
+reg1[14] = new RegExp(/мирош/i)
+reg1[15] = new RegExp(/мирошу/i)
+reg1[16] = new RegExp(/микромяш/i)
+
+const answers1 = new Array(4)
+answers1[0] = "Говнокодера вызывали? (っಠ‿ಠ)っ"
+answers1[1] = "Если ты ругаешь Мироша, то ты пидор ( ͡° ͜ʖ ͡°)"
+answers1[2] = "Ты что-то против меня имеешь? Го раз на раз выйдем, а не в интернете базарь (ﾒ￣▽￣)︻┳═一 "
+answers1[3] = "Я хорош собой, и вы это знаете (ʘ ͜ʖ ʘ)"
+const random1 = answers1[Math.floor(Math.random() * answers1.length)]
+updates.hear(reg1, async(context) => {
+	await context.send(random1)
+})*/
