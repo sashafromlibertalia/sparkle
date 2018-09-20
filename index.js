@@ -1092,21 +1092,21 @@ updates.hear(asks, async(context) => {
 		keyboard: Keyboard.keyboard([
 			[
 				Keyboard.textButton({
-				label: `Понедельник`,
+				label: `Понедельник ${formatter.format(Time)}`,
 				payload: {
 					command: 'monday'
 				},
 				color: Keyboard.POSITIVE_COLOR
 			}),
                 Keyboard.textButton({
-				label: `Вторник`,
+				label: `Вторник ${formatter.format(Time.setDate(Time.getDate() + 1))}`,
 				payload: {
 					command: 'tuesday'
 				},
 				color: Keyboard.POSITIVE_COLOR,
 			}), 
 			    Keyboard.textButton({
-				label: `Среда`,
+				label: `Среда ${formatter.format(Time.setDate(Time.getDate() + 2))}`,
 				payload: {
 					command: 'wednesday'
 				},
@@ -1114,19 +1114,19 @@ updates.hear(asks, async(context) => {
 			})],
 			[
 				Keyboard.textButton({
-					label: `Четверг`,
+					label: `Четверг ${formatter.format(Time.setDate(Time.getDate() + 3))}`,
 					payload: {
 						command: 'thursday'
 					},
 					color: Keyboard.POSITIVE_COLOR}),
 				Keyboard.textButton({
-					label: `Пятница`,
+					label: `Пятница ${formatter.format(Time.setDate(Time.getDate() + 4))}`,
 					payload: {
 						command: 'friday'
 					},
 					color: Keyboard.POSITIVE_COLOR}),
 				Keyboard.textButton({
-					label: `Суббота`,
+					label: `Суббота ${formatter.format(Time.setDate(Time.getDate() + 5))}`,
 					payload: {
 						command: 'saturday'
 					},
@@ -1149,37 +1149,37 @@ updates.hear(asks, async(context) => {
 
 hearCommand('monday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на понедельник
+	Итак, вот домашка на понедельник ${formatter.format(Time)}
 ${Monday.join('\n')}`)
 })
 
 hearCommand('tuesday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на вторник 
+	Итак, вот домашка на вторник ${formatter.format(Time.setDate(Time.getDate() + 1))}
 ${Tuesday.join('\n')}`)
 })
 
 hearCommand('wednesday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на среду 
+	Итак, вот домашка на среду ${formatter.format(Time.setDate(Time.getDate() + 2))}
 ${Wednesday.join('\n')}`)
 })
 
 hearCommand('thursday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на четверг
+	Итак, вот домашка на четверг ${formatter.format(Time.setDate(Time.getDate() + 3))}
 ${Thursday.join('\n')}`)
 })
 
 hearCommand('friday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на пятницу
+	Итак, вот домашка на пятницу ${formatter.format(Time.setDate(Time.getDate() + 4))}
 ${Friday.join('\n')}`)
 })
 
 hearCommand('saturday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на субботу 
+	Итак, вот домашка на субботу ${formatter.format(Time.setDate(Time.getDate() + 5))}
 ${Saturday.join('\n')}`)
 })
 
