@@ -1092,21 +1092,21 @@ updates.hear(asks, async(context) => {
 		keyboard: Keyboard.keyboard([
 			[
 				Keyboard.textButton({
-				label: `Понедельник ${formatter.format(Time)}`,
+				label: `Понедельник`,
 				payload: {
 					command: 'monday'
 				},
 				color: Keyboard.POSITIVE_COLOR
 			}),
                 Keyboard.textButton({
-				label: `Вторник ${formatter.format(Time.setDate(Time.getDate() + 1))}`,
+				label: `Вторник`,
 				payload: {
 					command: 'tuesday'
 				},
 				color: Keyboard.POSITIVE_COLOR,
 			}), 
 			    Keyboard.textButton({
-				label: `Среда ${formatter.format(Time.setDate(Time.getDate() + 2))}`,
+				label: `Среда`,
 				payload: {
 					command: 'wednesday'
 				},
@@ -1114,19 +1114,80 @@ updates.hear(asks, async(context) => {
 			})],
 			[
 				Keyboard.textButton({
-					label: `Четверг ${formatter.format(Time.setDate(Time.getDate() + 3))}`,
+					label: `Четверг`,
 					payload: {
 						command: 'thursday'
 					},
 					color: Keyboard.POSITIVE_COLOR}),
 				Keyboard.textButton({
-					label: `Пятница ${formatter.format(Time.setDate(Time.getDate() + 4))}`,
+					label: `Пятница`,
 					payload: {
 						command: 'friday'
 					},
 					color: Keyboard.POSITIVE_COLOR}),
 				Keyboard.textButton({
-					label: `Суббота ${formatter.format(Time.setDate(Time.getDate() + 5))}`,
+					label: `Суббота`,
+					payload: {
+						command: 'saturday'
+					},
+					color: Keyboard.POSITIVE_COLOR})
+				],
+                Keyboard.textButton({
+				label: `Закрыть клавиатуру`,
+				payload: {
+					command: 'cancel'
+				},
+				color: Keyboard.NEGATIVE_COLOR
+			})
+		],
+		{
+			oneTime: true
+		})
+	})
+
+})
+
+updates.hear('/дата', async(context) => {
+	await context.send({
+		message: 'Выберите, какой день вам нужен:',
+		keyboard: Keyboard.keyboard([
+			[
+				Keyboard.textButton({
+				label: `Понедельник`,
+				payload: {
+					command: 'monday'
+				},
+				color: Keyboard.POSITIVE_COLOR
+			}),
+                Keyboard.textButton({
+				label: `Вторник`,
+				payload: {
+					command: 'tuesday'
+				},
+				color: Keyboard.POSITIVE_COLOR,
+			}), 
+			    Keyboard.textButton({
+				label: `Среда`,
+				payload: {
+					command: 'wednesday'
+				},
+				color: Keyboard.POSITIVE_COLOR
+			})],
+			[
+				Keyboard.textButton({
+					label: `Четверг`,
+					payload: {
+						command: 'thursday'
+					},
+					color: Keyboard.POSITIVE_COLOR}),
+				Keyboard.textButton({
+					label: `Пятница`,
+					payload: {
+						command: 'friday'
+					},
+					color: Keyboard.POSITIVE_COLOR}),
+				Keyboard.textButton({
+					label: `Суббота`,
 					payload: {
 						command: 'saturday'
 					},
@@ -1149,37 +1210,37 @@ updates.hear(asks, async(context) => {
 
 hearCommand('monday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на понедельник ${formatter.format(Time)}
+	Итак, вот домашка на понедельник
 ${Monday.join('\n')}`)
 })
 
 hearCommand('tuesday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на вторник ${formatter.format(Time.setDate(Time.getDate() + 1))}
+	Итак, вот домашка на вторник 
 ${Tuesday.join('\n')}`)
 })
 
 hearCommand('wednesday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на среду ${formatter.format(Time.setDate(Time.getDate() + 2))}
+	Итак, вот домашка на среду 
 ${Wednesday.join('\n')}`)
 })
 
 hearCommand('thursday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на четверг ${formatter.format(Time.setDate(Time.getDate() + 3))}
+	Итак, вот домашка на четверг
 ${Thursday.join('\n')}`)
 })
 
 hearCommand('friday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на пятницу ${formatter.format(Time.setDate(Time.getDate() + 4))}
+	Итак, вот домашка на пятницу
 ${Friday.join('\n')}`)
 })
 
 hearCommand('saturday', async(context) => {
 	await context.send(`
-	Итак, вот домашка на субботу ${formatter.format(Time.setDate(Time.getDate() + 5))}
+	Итак, вот домашка на субботу 
 ${Saturday.join('\n')}`)
 })
 
