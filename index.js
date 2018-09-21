@@ -955,7 +955,6 @@ request(url, async function(error, res, body) {
 	Saturday[1] = predmeti[14] + Societydz
 	Saturday[2] = predmeti[15] + OBJdz
 	Saturday[3] = predmeti[4] + Frenchdz
-	Saturday[4] = predmeti[5] + Algebradz
 	
 	const preds = new Array(16)
 	preds[0] = {
