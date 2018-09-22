@@ -921,7 +921,7 @@ request(url, async function(error, res, body) {
 	const Monday = new Array(4)
 	Monday[0] = predmeti[13] + History_dz
 	Monday[1] = predmeti[1] + Russiandz
-	Monday[2] = predmeti[9] + Chemistrydz
+	Monday[2] = predmeti[8] + Chemistrydz
 	Monday[3] = predmeti[0] + Englishdz
 
 	const Tuesday = new Array(5)
@@ -1366,8 +1366,8 @@ updates.hear('/дз завтра', async(context) => {
 			month: "long",
 			day: "numeric"
 		  });
-		const x = Friday.join('\n')
-		await context.send('Домашка с пятницы. Сегодня '+ formatter.format(Time) + ' \n'  + x)
+		const x = Saturday.join('\n')
+		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n'  + x)
 	}
 	if(Time.getDay() === 6)
 	{
