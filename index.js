@@ -10,7 +10,7 @@ const google = require('google')
 const webshot = require('webshot')
 
 //Не трогать
-const TOKEN = "c6bacea9fa33ad3ba684c4ac9380cb70e650133088eb97919619ee977ae59489b5d142928b837e450cd30"
+const TOKEN = "YOUR_TOKEN"
 
 vk.setOptions({
 	token: TOKEN,
