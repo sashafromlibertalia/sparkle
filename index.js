@@ -233,7 +233,7 @@ greeting[1] = "И снова всем приветик, господа. Скуч
 greeting[2] = "Шалом, дамы и пацаны. Возможно, мои ежедневные напоминая о расписании вам надоели, но я ничего поделать не могу - я создан для выполнения конкретных задач. Кстати, вот сегодняшнее расписание: \n"
 greeting[3] = "Привет. Без лишних слов. Расписание на сегодня:\n"
 var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
-if(newDay.getHours() === 8 && newDay.getMinutes() === 0) 
+if(newDay.getHours() === 8 && newDay.getMinutes() === 00) 
 {
 	if(newDay.getDay() === 1)
 	{
