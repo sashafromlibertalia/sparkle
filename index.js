@@ -10,7 +10,7 @@ const google = require('google')
 const webshot = require('webshot')
 
 //Не трогать
-const TOKEN = "YOUR_TOKEN"
+const TOKEN = "c6bacea9fa33ad3ba684c4ac9380cb70e650133088eb97919619ee977ae59489b5d142928b837e450cd30"
 
 vk.setOptions({
 	token: TOKEN,
@@ -1384,8 +1384,8 @@ updates.hear('/дз завтра', async(context) => {
 			month: "long",
 			day: "numeric"
 		  });
-		const x = Sunday.join('\n')
-		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + formatter.format(Time) + ' \n'  + x)
+		const x = Monday.join('\n')
+		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n'  + x)
 }})	
 })
 
