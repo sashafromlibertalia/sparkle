@@ -8,6 +8,7 @@ const request = require('request')
 const Intl = require('intl')
 const google = require('google')
 const webshot = require('webshot')
+const fs = require('fs')
 
 //Не трогать
 const TOKEN = "c6bacea9fa33ad3ba684c4ac9380cb70e650133088eb97919619ee977ae59489b5d142928b837e450cd30"
@@ -19,7 +20,7 @@ vk.setOptions({
 })
 
 //Святыня
-require('https').createServer().listen(process.env.PORT || 3000).on('request', function(request, res){
+require('https').createServer().listen(process.env.PORT || 5000).on('request', function(request, res){
 	
 });
 
@@ -1601,24 +1602,7 @@ updates.hear(reg4, async(context) => {
 	await context.send(random4)
 })*/
 
-/*const reg1 = new Array(17)
-reg1[0] = new RegExp(/мякиш/i)
-reg1[1] = new RegExp(/мякишу/i)
-reg1[2] = new RegExp(/мякише/i)
-reg1[3] = new RegExp(/мякиша/)
-reg1[4] = new RegExp(/програмирош/i)
-reg1[5] = new RegExp(/программирош/i)
-reg1[6] = new RegExp(/программироша/i)
-reg1[7] = new RegExp(/програмироша/i)
-reg1[8] = new RegExp(/програмироша/i)
-reg1[9] = new RegExp(/програмирошу/i)
-reg1[10] = new RegExp(/програмироше/i)
-reg1[11] = new RegExp(/программироша/i)
-reg1[12] = new RegExp(/программирошу/i)
-reg1[13] = new RegExp(/программироше/i)
-reg1[14] = new RegExp(/мирош/i)
-reg1[15] = new RegExp(/мирошу/i)
-reg1[16] = new RegExp(/микромяш/i)
+/*
 
 const answers1 = new Array(4)
 answers1[0] = "Говнокодера вызывали? (っಠ‿ಠ)っ"
@@ -1629,3 +1613,32 @@ const random1 = answers1[Math.floor(Math.random() * answers1.length)]
 updates.hear(reg1, async(context) => {
 	await context.send(random1)
 })*/
+
+
+const reg4 = new Array(12)
+reg4[0] = new RegExp(/армия/i)
+reg4[1] = new RegExp(/армии/i)
+reg4[2] = new RegExp(/армию/i)
+reg4[3] = new RegExp(/армией/)
+reg4[4] = new RegExp(/армейка/i)
+reg4[5] = new RegExp(/армейки/i)
+reg4[6] = new RegExp(/армейкою/i)
+reg4[7] = new RegExp(/армейкой/i)
+reg4[8] = new RegExp(/иди служи/i)
+reg4[9] = new RegExp(/вдв/i)
+reg4[10] = new RegExp(/десантура/i)
+reg4[11] = new RegExp(/иди в армию/i)
+const kukarek = new Array(8)
+kukarek[0] = 'ДЕДЫ ВОЕВАЛЕ И Я ПОВОЮЮ'
+kukarek[1] = 'МЯКИШ ПЕТУХ АРМИЯ СИЛА АЛЛАХ АКБАР'
+kukarek[2] = 'ОРМЕЙКА ТОПЧАН. ВСЕМ СОВЕТУЮ'
+kukarek[3] = 'КУКАРЕКУУУУУУУ'
+kukarek[4] = 'Русские сила, америка - могила'
+kukarek[5] = 'Я СРОЧНИК. КУКАРЕКУЮ ГДЕ ХОЧУ'
+const randomKukarek = kukarek[Math.floor(Math.random() * kukarek.length)]
+updates.hear(reg4, async(context) => {
+	await context.send({
+		message: 'ОРМЕЙКА ТОПЧАН. ВСЕМ СОВЕТУЮ',
+		attachment: 'photo-168462227_456239031'
+	})
+})
