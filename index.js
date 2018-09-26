@@ -1628,7 +1628,7 @@ reg4[8] = new RegExp(/иди служи/i)
 reg4[9] = new RegExp(/вдв/i)
 reg4[10] = new RegExp(/десантура/i)
 reg4[11] = new RegExp(/иди в армию/i)
-const kukarek = new Array(8)
+const kukarek = new Array(6)
 kukarek[0] = 'ДЕДЫ ВОЕВАЛЕ И Я ПОВОЮЮ'
 kukarek[1] = 'МЯКИШ ПЕТУХ АРМИЯ СИЛА АЛЛАХ АКБАР'
 kukarek[2] = 'ОРМЕЙКА ТОПЧАН. ВСЕМ СОВЕТУЮ'
@@ -1638,7 +1638,7 @@ kukarek[5] = 'Я СРОЧНИК. КУКАРЕКУЮ ГДЕ ХОЧУ'
 const randomKukarek = kukarek[Math.floor(Math.random() * kukarek.length)]
 updates.hear(reg4, async(context) => {
 	await context.send({
-		message: 'ОРМЕЙКА ТОПЧАН. ВСЕМ СОВЕТУЮ',
+		message: randomKukarek,
 		attachment: 'photo-168462227_456239031'
 	})
 })
