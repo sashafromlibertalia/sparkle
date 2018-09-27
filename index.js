@@ -1615,7 +1615,7 @@ updates.hear(reg1, async(context) => {
 })*/
 
 updates.on('message', async(context) => {
-	const reg4 = new Array(28)
+	const reg4 = new Array(29)
 reg4[0] = new RegExp(/армия/i)
 reg4[1] = new RegExp(/армии/i)
 reg4[2] = new RegExp(/армию/i)
