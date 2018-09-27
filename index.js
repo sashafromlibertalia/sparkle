@@ -1614,8 +1614,8 @@ updates.hear(reg1, async(context) => {
 	await context.send(random1)
 })*/
 
-
-const reg4 = new Array(12)
+updates.on('message', async(context) => {
+	const reg4 = new Array(28)
 reg4[0] = new RegExp(/армия/i)
 reg4[1] = new RegExp(/армии/i)
 reg4[2] = new RegExp(/армию/i)
@@ -1643,6 +1643,9 @@ reg4[22] = new RegExp(/дезертира/i)
 reg4[23] = new RegExp(/дезертиров/i)
 reg4[24] = new RegExp(/служба/i)
 reg4[25] = new RegExp(/службы/i)
+reg4[26] = new RegExp(/арм/i)
+reg4[27] = new RegExp(/орм/i)
+reg4[28] = new RegExp(/вмф/i)
 const kukarek = new Array(6)
 kukarek[0] = 'ДЕДЫ ВОЕВАЛЕ И Я ПОВОЮЮ'
 kukarek[1] = 'МЯКИШ ПЕТУХ АРМИЯ СИЛА АЛЛАХ АКБАР'
@@ -1657,4 +1660,5 @@ updates.hear(reg4, async(context) => {
 		message: randomKukarek,
 		attachment: 'photo-168462227_456239031'
 	})
+})
 })
