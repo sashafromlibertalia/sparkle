@@ -1614,8 +1614,7 @@ updates.hear(reg1, async(context) => {
 	await context.send(random1)
 })*/
 
-updates.on('message', async(context) => {
-	const reg4 = new Array(29)
+const reg4 = new Array(29)
 reg4[0] = new RegExp(/армия/i)
 reg4[1] = new RegExp(/армии/i)
 reg4[2] = new RegExp(/армию/i)
@@ -1660,5 +1659,4 @@ updates.hear(reg4, async(context) => {
 		message: randomKukarek,
 		attachment: 'photo-168462227_456239031'
 	})
-})
 })
