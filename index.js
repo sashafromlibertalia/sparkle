@@ -1653,10 +1653,12 @@ kukarek[3] = 'КУКАРЕКУУУУУУУ'
 kukarek[4] = 'Однажды меня спросили: "Как это - быть опущенным дедами?" Я ответил: "Через 2 месяца не так классно, как хотелось бы"'
 kukarek[4] = 'Русские сила, америка - могила'
 kukarek[5] = 'Я СРОЧНИК. КУКАРЕКУЮ ГДЕ ХОЧУ'
+const petuhphoto = ['photo-168462227_456239032', 'photo-168462227_456239031']
+const randomKukarek2 = petuhphoto[Math.floor(Math.random() * kukarek.length)]
 const randomKukarek = kukarek[Math.floor(Math.random() * kukarek.length)]
 updates.hear(reg4, async(context) => {
 	await context.send({
 		message: randomKukarek,
-		attachment: 'photo-168462227_456239031'
+		attachment: randomKukarek2
 	})
 })
