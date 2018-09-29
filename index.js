@@ -1656,7 +1656,7 @@ kukarek[5] = 'Я СРОЧНИК. КУКАРЕКУЮ ГДЕ ХОЧУ'
 const petuhphoto = new Array(2)
 petuhphoto[0] = 'photo-168462227_456239032'
 petuhphoto[1] = 'photo-168462227_456239031'
-const randomKukarek2 = petuhphoto[Math.floor(Math.random() * kukarek.length)]
+const randomKukarek2 = petuhphoto[Math.floor(Math.random() * petuhphoto.length)]
 const randomKukarek = kukarek[Math.floor(Math.random() * kukarek.length)]
 updates.hear(reg4, async(context) => {
 	await context.send({
