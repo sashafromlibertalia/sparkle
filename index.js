@@ -900,7 +900,8 @@ request(url, async function(error, res, body) {
 	const History_dz = $('#LC28').text()
 	const Societydz = $('#LC30').text()
 	const OBJdz = $('#LC32').text()
-	
+	const DPUAlgebra = $('#LC34').text()
+
 	const predmeti = new Array(16)
 	predmeti[0] = $('#LC1').text() //English
 	predmeti[1] = $('#LC3').text() //Russian
@@ -918,6 +919,8 @@ request(url, async function(error, res, body) {
 	predmeti[13] = $('#LC27').text() //History
 	predmeti[14] = $('#LC29').text() //Society
 	predmeti[15] = $('#LC31').text() // OBJ
+	predmeti[16] = $('#LC33').text() // ДПУ Алгебра
+	
 
 	const Monday = new Array(4)
 	Monday[0] = predmeti[13] + History_dz
@@ -939,12 +942,12 @@ request(url, async function(error, res, body) {
 	Wednesday[3] = predmeti[9] + Physicsdz
 	Wednesday[4] = predmeti[4] + Frenchdz
 
-	const Thursday = new Array(4)
+	const Thursday = new Array(5)
 	Thursday[0] = predmeti[9] + Physicsdz
 	Thursday[1] = predmeti[10] + CompSciencedz
 	Thursday[2] = predmeti[5] + Algebradz
 	Thursday[3] = predmeti[13] + History_dz
-
+	Thursday[4] = predmeti[16] + DPUAlgebra
 
 	const Friday = new Array(3)
 	Friday[0] = predmeti[11] + Geographydz
@@ -957,7 +960,7 @@ request(url, async function(error, res, body) {
 	Saturday[2] = predmeti[15] + OBJdz
 	Saturday[3] = predmeti[4] + Frenchdz
 	
-	const preds = new Array(16)
+	const preds = new Array(17)
 	preds[0] = {
 		namesubj: predmeti[0],
 		dz: Englishdz 
@@ -1022,9 +1025,13 @@ request(url, async function(error, res, body) {
 		namesubj: predmeti[15],
 		dz: OBJdz 
 	}
+	preds[16] = {
+		namesubj: predmeti[16],
+		dz: DPUAlgebra
+	}
 
 
-	const Sunday = new Array(16)
+	const Sunday = new Array(17)
 	Sunday[0] = predmeti[0] + preds[0].dz
 	Sunday[1] = predmeti[1] + preds[1].dz
 	Sunday[2] = predmeti[2] + preds[2].dz
@@ -1041,7 +1048,7 @@ request(url, async function(error, res, body) {
 	Sunday[13] = predmeti[4] + preds[4].dz
 	Sunday[14] = predmeti[3] + preds[3].dz
 	Sunday[15] = predmeti[15] + preds[15].dz
-
+	Sunday[16] = predmeti[16] + preds[16].dz
 	
 	
 
