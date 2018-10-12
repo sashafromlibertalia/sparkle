@@ -21,7 +21,7 @@ vk.setOptions({
 
 //Святыня
 require('https').createServer().listen(process.env.PORT || 5000).on('request', function(request, res){
-	
+	res.end('')
 });
 
 
@@ -1530,7 +1530,7 @@ updates.hear(reg2, async(context) => {
 	await context.send('Не за что! Рад помочь')
 })*/
 
-const reg3 = new Array(18)
+/*const reg3 = new Array(18)
 reg3[0] = new RegExp(/новосельцев/i)
 reg3[1] = new RegExp(/новос/i)
 reg3[2] = new RegExp(/навос/i)
@@ -1556,7 +1556,7 @@ answers3[2] = "Продам Брата. Дорого"
 const random3 = answers3[Math.floor(Math.random() * answers3.length)]
 updates.hear(reg3, async(context) => {
 	await context.send(random3)
-})
+})*/
 
 
 
