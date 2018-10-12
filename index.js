@@ -1560,9 +1560,9 @@ updates.hear(reg3, async(context) => {
 
 
 
-updates.hear(/ганж/i, async(context) => {
-	context.send('Ты рамсы попутал, пес?')
-})
+//updates.hear(/ганж/i, async(context) => {
+//	context.send('Ты рамсы попутал, пес?')
+//})
 
 updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	const victim = context.$match[1]
