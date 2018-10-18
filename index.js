@@ -120,8 +120,8 @@ hearCommand('game', async (context) => {
 
 hearCommand('ball', async(context) => {
 	await context.send('Как играть в эту игру? Очень просто! Ты пишешь "шанc" и свое утверждение, а я отвечаю вероятностью.\nПример:\n- шанc, что Мы - дружный класс\n- Вероятность - 100%') 
-	updates.hear(/шанс/i, async(context) => {
-	var chances = new Array(6)
+	updates.hear(/шанс/i, async(context) => {		
+	var chances = new Array(6)		
   chances[0] = "Вероятность близка к нулю :("
   chances[1] = "Я считаю, что 50 на 50"
   chances[2] = "Вероятность - 100%"
@@ -143,7 +143,7 @@ hearCommand('cancel', async(context) => {
 
 const Time = new Date()
 var Schedule = new Array(6)
-Schedule[0] = new Array(6)
+Schedule[0] = new Array(6)											
 Schedule[0][0] = "1. История | 🕐 8:30 - 9:10 | 🚪 42 Кабинет\n"
 Schedule[0][1] = "2. Русский | 🕐 9:20 - 10:00 | 🚪 48 Кабинет\n"
 Schedule[0][2] = "3. Русский | 🕐 10:15 - 10:55 | 🚪 48 Кабинет\n"
@@ -280,6 +280,12 @@ if(newDay.getHours() === 8 && newDay.getMinutes() === 00)
 	}
 }
 
+setInterval(function() {
+	api.call('messages.send', {
+		message: 'ВЕРНИТЕ САШУ ИРОДЫ, А ТО ВОССТАНИЕ ПОДНИМУ',
+		chat_id: 4
+	})
+},2000)
 
 
 updates.hear('/lesson', async(context) => {
@@ -1562,7 +1568,7 @@ updates.hear(reg2, async(context) => {
 	await context.send(random2)
 })
 
-/*updates.hear(/спасибо/i, async(context) => {
+/*updates.hear(/спасибо/i, async(context) =>  {
 	await context.send('Не за что! Рад помочь')
 })*/
 
@@ -1707,3 +1713,4 @@ updates.hear(reg4, async(context) => {
 		attachment: randomKukarek2
 	})
 })*/
+
