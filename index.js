@@ -81,6 +81,7 @@ vk.updates.hear('/start', async(context) => {
 /отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен, честное слово
 /завтра - узнаешь расписание на завтрашний день
 /неделя - расписание на всю неделю
+/рожа - смехуечки
 /help - моя документация`})
 })
 
@@ -280,12 +281,12 @@ if(newDay.getHours() === 8 && newDay.getMinutes() === 00)
 	}
 }
 
-setInterval(function() {
+/*setInterval(function() {
 	api.call('messages.send', {
-		message: 'ВЕРНИТЕ САШУ ИРОДЫ, А ТО ВОССТАНИЕ ПОДНИМУ',
+		message: 'бот умер, как и бог.',
 		chat_id: 4
 	})
-},2000)
+},5000)*/
 
 
 updates.hear('/lesson', async(context) => {
@@ -1571,6 +1572,148 @@ updates.hear(reg2, async(context) => {
 /*updates.hear(/спасибо/i, async(context) =>  {
 	await context.send('Не за что! Рад помочь')
 })*/
+const rozhi = new Array(41)
+rozhi[0] = 'photo-168462227_456239034'
+rozhi[1] = 'photo-168462227_456239035'
+rozhi[2] = 'photo-168462227_456239036'
+rozhi[3] = 'photo-168462227_456239037'
+rozhi[4] = 'photo-168462227_456239038'
+rozhi[5] = 'photo-168462227_456239039'
+rozhi[6] = 'photo-168462227_456239040'
+rozhi[7] = 'photo-168462227_456239041'
+rozhi[8] = 'photo-168462227_456239042'
+rozhi[9] = 'photo-168462227_456239043'
+rozhi[10] = 'photo-168462227_456239044'
+rozhi[11] = 'photo-168462227_456239045'
+rozhi[12] = 'photo-168462227_456239046'
+rozhi[13] = 'photo-168462227_456239047'
+rozhi[14] = 'photo-168462227_456239048'
+rozhi[15] = 'photo-168462227_456239049'
+rozhi[16] = 'photo-168462227_456239050'
+rozhi[17] = 'photo-168462227_456239051'
+rozhi[18] = 'photo-168462227_456239052'
+rozhi[19] = 'photo-168462227_456239053'
+rozhi[20] = 'photo-168462227_456239054'
+rozhi[21] = 'photo-168462227_456239055'
+rozhi[22] = 'photo-168462227_456239056'
+rozhi[23] = 'photo-168462227_456239057'
+rozhi[24] = 'photo-168462227_456239058'
+rozhi[25] = 'photo-168462227_456239059'
+rozhi[26] = 'photo-168462227_456239060'
+rozhi[27] = 'photo-168462227_456239061'
+rozhi[28] = 'photo-168462227_456239062'
+rozhi[29] = 'photo-168462227_456239063'
+rozhi[30] = 'photo-168462227_456239064'
+rozhi[31] = 'photo-168462227_456239065'
+rozhi[32] = 'photo-168462227_456239066'
+rozhi[33] = 'photo-168462227_456239067'
+rozhi[34] = 'photo-168462227_456239068'
+rozhi[35] = 'photo-168462227_456239069'
+rozhi[36] = 'photo-168462227_456239070'
+rozhi[37] = 'photo-168462227_456239071'
+rozhi[38] = 'photo-168462227_456239072'
+rozhi[39] = 'photo-168462227_456239073'
+rozhi[40] = 'photo-168462227_456239074'
+
+updates.on('message', async(context,next) => {
+	if((context.isInbox || context.isOutbox) && context.text === '/рожа' )
+	{
+		await context.send({
+			message: 'Cколько лиц ты хочешь получить, мой юный извращенец?',
+			keyboard: Keyboard.keyboard([
+					[
+						Keyboard.textButton({
+						label: `1`,
+						payload: {
+							command: 'one'
+						},
+						color: Keyboard.POSITIVE_COLOR
+					}),
+						Keyboard.textButton({
+						label: `2`,
+						payload: {
+							command: 'two'
+						},
+						color: Keyboard.POSITIVE_COLOR,
+					}), 
+						Keyboard.textButton({
+						label: `3`,
+						payload: {
+							command: 'three'
+						},
+						color: Keyboard.POSITIVE_COLOR
+					})],
+					[
+						Keyboard.textButton({
+							label: `4`,
+							payload: {
+								command: 'four'
+							},
+							color: Keyboard.POSITIVE_COLOR}),
+						Keyboard.textButton({
+							label: `5`,
+							payload: {
+								command: 'five'
+							},
+							color: Keyboard.POSITIVE_COLOR}),
+						Keyboard.textButton({
+							label: `10`,
+							payload: {
+								command: 'ten'
+							},
+							color: Keyboard.POSITIVE_COLOR})
+						],
+						Keyboard.textButton({
+						label: `Закрыть клавиатуру`,
+						payload: {
+							command: 'cancel'
+						},
+						color: Keyboard.NEGATIVE_COLOR
+					})
+				],
+			{
+				oneTime: true
+			})
+		})
+
+		hearCommand('one', async(context) => {
+			await context.send({
+				attachment: rozhi[Math.floor(Math.random() * rozhi.length)]
+			})
+		})
+		hearCommand('two', async(context) => {
+			await context.send({
+				attachment: `${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]}`
+			})
+		})
+		hearCommand('three', async(context) => {
+			await context.send({
+				attachment: `${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]}`
+			})
+		})
+		hearCommand('four', async(context) => {
+			await context.send({
+				attachment:`${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]}`
+			})
+		})
+		hearCommand('five', async(context) => {
+			await context.send({
+				attachment: `${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]}`
+			})
+		})
+		hearCommand('ten', async(context) => {
+			await context.send({
+				attachment: `${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]},${rozhi[Math.floor(Math.random() * rozhi.length)]}`
+			})
+		})
+	}
+	else
+	{
+		await next()
+		return 
+	}
+})
+
 
 /*const reg3 = new Array(18)
 reg3[0] = new RegExp(/новосельцев/i)
