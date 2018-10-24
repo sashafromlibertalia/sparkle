@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "gm": "^1.23.1",
     "google": "^2.1.0",
     "intl": "^1.2.5",
     "node-vk-sdk": "^1.0.5",

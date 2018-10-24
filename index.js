@@ -8,8 +8,7 @@ const request = require('request')
 const Intl = require('intl')
 const google = require('google')
 const webshot = require('webshot')
-const fs = require('fs')
-
+const gm = require('gm')
 //Не трогать
 const TOKEN = "c6bacea9fa33ad3ba684c4ac9380cb70e650133088eb97919619ee977ae59489b5d142928b837e450cd30"
 
@@ -82,6 +81,7 @@ vk.updates.hear('/start', async(context) => {
 /завтра - узнаешь расписание на завтрашний день
 /неделя - расписание на всю неделю
 /рожа - смехуечки
+/мем - еще одни смехуечки
 /help - моя документация`})
 })
 
@@ -1858,4 +1858,6 @@ updates.hear(reg4, async(context) => {
 		attachment: randomKukarek2
 	})
 })*/
+
+
 
