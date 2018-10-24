@@ -1572,7 +1572,7 @@ updates.hear(reg2, async(context) => {
 /*updates.hear(/спасибо/i, async(context) =>  {
 	await context.send('Не за что! Рад помочь')
 })*/
-const rozhi = new Array(43)
+const rozhi = new Array(44)
 rozhi[0] = 'photo-168462227_456239034'
 rozhi[1] = 'photo-168462227_456239035'
 rozhi[2] = 'photo-168462227_456239036'
@@ -1616,6 +1616,7 @@ rozhi[39] = 'photo-168462227_456239073'
 rozhi[40] = 'photo-168462227_456239074'
 rozhi[41] = 'photo-168462227_456239075'
 rozhi[42] = 'photo-168462227_456239076'
+rozhi[43] = 'photo-168462227_456239077'
 updates.on('message', async(context,next) => {
 	if((context.isInbox || context.isOutbox) && context.text === '/рожа' )
 	{
