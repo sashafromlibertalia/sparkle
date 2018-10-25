@@ -1866,12 +1866,14 @@ updates.hear('/citgen', async(context) => {
 	{
 		for(var i = 0; i < context.forwards.length; i++)
 		{
-			text[i] = context.forwards[i].text
+			if(context.forwards[i].from_id === context.forwards[i].from_id)
+			{
+				text[i] = context.forwards[i].text
+			}
+			else {
+				await context.send('Так! Ошибка! Рофляночка должна принадлежать одному человеку, а не разным')
+			}		
 		}
-		
-	}
-	else {
-		await context.send('Чтобы получить рофляночку, прикрепите какие-нибудь сообщения от одного человека')
+		await context.send(text.join('\n'))
 	}
 })
-
