@@ -3,6 +3,7 @@ const {Keyboard} = require('vk-io');
 const vk = new VK();
 const {updates} = vk;
 const {api} = vk;
+const { upload } = vk;
 const cheerio = require('cheerio')
 const request = require('request')
 const Intl = require('intl')
@@ -1859,5 +1860,17 @@ updates.hear(reg4, async(context) => {
 	})
 })*/
 
-
+updates.hear('/мем', async(context) => {
+gm(640, 400, "#00000000")
+.font("Helvetica.ttf", 12)
+.drawText(10, 50, "from scratch")
+.write("images/Kek.png", function (err) {
+  upload.messagePhoto({
+	  sourse: {
+		  
+	  }
+  })
+  await context.send('Ждите, меня еще не накодили')
+});
+})
 
