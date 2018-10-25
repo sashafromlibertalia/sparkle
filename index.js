@@ -1861,7 +1861,17 @@ updates.hear(reg4, async(context) => {
 })*/
 
 updates.hear('/citgen', async(context) => {
-
- context.send('Ждите, меня еще не накодили')
+	var text = []
+	if(context.hasForwards)
+	{
+		for(var i = 0; i < context.forwards.length; i++)
+		{
+			text[i] = context.forwards[i].text
+		}
+		
+	}
+	else {
+		await context.send('Чтобы получить рофляночку, прикрепите какие-нибудь сообщения от одного человека')
+	}
 })
 
