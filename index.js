@@ -1861,16 +1861,7 @@ updates.hear(reg4, async(context) => {
 })*/
 
 updates.hear('/мем', async(context) => {
-gm(640, 400, "#00000000")
-.font("Helvetica.ttf", 12)
-.drawText(10, 50, "from scratch")
-.write("images/Kek.png", function (err) {
-  upload.messagePhoto({
-	  sourse: {
-		  
-	  }
-  })
+
   await context.send('Ждите, меня еще не накодили')
-});
 })
 
