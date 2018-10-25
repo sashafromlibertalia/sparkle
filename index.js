@@ -82,7 +82,7 @@ vk.updates.hear('/start', async(context) => {
 /завтра - узнаешь расписание на завтрашний день
 /неделя - расписание на всю неделю
 /рожа - смехуечки
-/мем - еще одни смехуечки
+/citgen - еще одни смехуечки
 /help - моя документация`})
 })
 
@@ -1860,8 +1860,8 @@ updates.hear(reg4, async(context) => {
 	})
 })*/
 
-updates.hear('/мем', async(context) => {
+updates.hear('/citgen', async(context) => {
 
-  await context.send('Ждите, меня еще не накодили')
+ context.send('Ждите, меня еще не накодили')
 })
 
