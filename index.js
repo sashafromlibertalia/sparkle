@@ -1892,7 +1892,7 @@ updates.hear('/citgen', async(context) => {
 	}
 	gm(640,400, '#000000')
 	.write('images/kek.png', function(err){
-		console.log(err)
+		await context.send(err)
 	})
 
 	upload.messagePhoto({
