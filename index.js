@@ -10,6 +10,8 @@ const Intl = require('intl')
 const google = require('google')
 const webshot = require('webshot')
 const gm = require('gm')
+const fs = require('fs')
+
 //Не трогать
 const TOKEN = "c6bacea9fa33ad3ba684c4ac9380cb70e650133088eb97919619ee977ae59489b5d142928b837e450cd30"
 
@@ -1866,16 +1868,40 @@ updates.hear('/citgen', async(context) => {
 	var text = []
 	if(context.hasForwards)
 	{
+		if(context.forwards.length === 1)
+		{
+			text[0] = context.forwards[0].text
+		}
 		for(var i = 0; i < context.forwards.length; i++)
 		{
-			if(context.forwards[i].from_id === context.forwards[i].from_id)
+			for(var j = 1; j < context.forwards.length; j++)
 			{
-				text[i] = context.forwards[i].text
+				
+				if (context.forwards[i].from_id === context.forwards[j].from_id)
+				{
+					text[i] = context.forwards[i].text
+				}
+				else {
+					text = ''
+					await context.send('Так! Ошибка! Рофляночка должна принадлежать одному человеку, а не разным')
+					break
+				}
 			}
-			else {
-				await context.send('Так! Ошибка! Рофляночка должна принадлежать одному человеку, а не разным')
-			}		
 		}
 		await context.send(text.join('\n'))
 	}
+	gm(640,400, '#000000')
+	.write('images/kek.png', function(err){
+		console.log(err)
+	})
+
+	const uploadPhoto = upload.messagePhoto({
+		peer_id: context.peerId,
+		source: {
+			value: fs.readFileSync('images/kek.png'),
+			filename: 'Kek.png',
+			contentType: 'image/png'
+		}
+	})
+
 })
