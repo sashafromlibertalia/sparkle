@@ -1889,15 +1889,13 @@ updates.hear('/citgen', async(context) => {
 				}
 			}
 		}
+		gm(640,400, '#86CCFF')
+		.drawText(28,36,'Цитаты великих людей')
+		.font('HelveticaNeue.ttf',35)
+		.drawText(110,110,text.join('\n'))
+		.font('HelveticaNeue.ttf', 24)
+		.colorize(10,20,30)
+		.write('rofl.png', function(err) {console.log('?')})
+		await context.sendPhoto('rofl.png')
 	}
-	gm(640,400, '#000000')
-	.drawText(28,36,'Цитаты великих людей')
-	.font('Rubik-Medium.ttf',35)
-	.drawText(168,125,text)
-	.font('Rubik-Medium.ttf', 24)
-	.write('rofl.png', function(err){
-		console.log(err)
-	})
-
-	await context.sendPhoto('rofl.png')
 })
