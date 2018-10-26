@@ -1865,6 +1865,7 @@ updates.hear(reg4, async(context) => {
 })*/
 
 updates.hear('/citgen', async(context) => {
+	await context.send('Citgen accepted')
 	var text = []
 	if(context.hasForwards)
 	{
@@ -1888,20 +1889,15 @@ updates.hear('/citgen', async(context) => {
 				}
 			}
 		}
-		await context.send(text.join('\n'))
 	}
 	gm(640,400, '#000000')
+	.drawText(28,36,'Цитаты великих людей')
+	.font('Rubik-Medium.ttf',35)
+	.drawText(168,125,text)
+	.font('Rubik-Medium.ttf', 24)
 	.write('rofl.png', function(err){
 		console.log(err)
 	})
 
-	/*upload.messagePhoto({
-		peer_id: context.peerId,
-		source: {
-			value: fs.readFileSync('images/kek.png'),
-			filename: 'Kek.png',
-			contentType: 'image/png'
-		}
-	})*/
-
+	await context.sendPhoto('rofl.png')
 })
