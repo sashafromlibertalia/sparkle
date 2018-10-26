@@ -1895,7 +1895,7 @@ updates.hear('/citgen', async(context) => {
 		console.log(err)
 	})
 
-	const uploadPhoto = upload.messagePhoto({
+	upload.messagePhoto({
 		peer_id: context.peerId,
 		source: {
 			value: fs.readFileSync('images/kek.png'),
