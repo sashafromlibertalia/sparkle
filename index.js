@@ -1890,10 +1890,8 @@ updates.hear('/citgen', async(context) => {
 			}
 		}
 		gm(640,400, '#86CCFF')
-		.drawText(28,36,'Цитаты великих людей')
-		.font('HelveticaNeue.ttf',35)
-		.drawText(110,110,text.join('\n'))
-		.font('HelveticaNeue.ttf', 24)
+		.drawText(28,36,'Цитаты великих людей').font('HelveticaNeue.ttf',35)
+		.drawText(110,110,text.join('\n')).font('HelveticaNeue.ttf', 24)
 		.colorize(10,20,30)
 		.write('rofl.png', function(err) {console.log('?')})
 		await context.sendPhoto('rofl.png')
