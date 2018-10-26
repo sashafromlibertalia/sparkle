@@ -1895,7 +1895,7 @@ updates.hear('/citgen', async(context) => {
 		gm(640,400, "#000000")
 		.fill('#FFFFFF')
 		.drawText(28,36,'Цитаты великих людей').font('HelveticaNeue.ttf',35)
-		.drawText(360,250,text.join('\n')).font('HelveticaNeue.ttf',24)
+		.drawText(320,200,text.join('\n')).font('HelveticaNeue.ttf',24)
 		.write('rofl.png', function(err) {console.log(err)})
 		await context.sendPhoto('rofl.png')
 	}
