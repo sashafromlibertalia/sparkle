@@ -1867,6 +1867,7 @@ updates.hear(reg4, async(context) => {
 updates.hear('/citgen', async(context) => {
 	await context.send('Citgen accepted')
 	var text = []
+	var image
 	if(context.hasForwards)
 	{
 		if(context.forwards.length === 1)
@@ -1889,10 +1890,12 @@ updates.hear('/citgen', async(context) => {
 				}
 			}
 		}
-		gm(640,400, '#86CCFF')
-		.drawText(28,36,'Цитаты великих людей').font('HelveticaNeue.ttf',35)
-		.drawText(110,110,text.join('\n')).font('HelveticaNeue.ttf', 24)
-		.colorize(10,20,30)
+
+		gm(640,400, "#000000")
+		.fill('#FFFFFF')
+		.textFont('HelveticaNeue.ttf')
+		.drawText(28,36,'Цитаты великих людей').fontSize(35)
+		.drawText(110,110,text.join('\n')).fontSize(24)
 		.write('rofl.png', function(err) {console.log('?')})
 		await context.sendPhoto('rofl.png')
 	}
