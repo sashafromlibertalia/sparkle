@@ -1891,17 +1891,17 @@ updates.hear('/citgen', async(context) => {
 		await context.send(text.join('\n'))
 	}
 	gm(640,400, '#000000')
-	.write('images/kek.png', function(err){
-		await context.send(err)
+	.write('rofl.png', function(err){
+		console.log(err)
 	})
 
-	upload.messagePhoto({
+	/*upload.messagePhoto({
 		peer_id: context.peerId,
 		source: {
 			value: fs.readFileSync('images/kek.png'),
 			filename: 'Kek.png',
 			contentType: 'image/png'
 		}
-	})
+	})*/
 
 })
