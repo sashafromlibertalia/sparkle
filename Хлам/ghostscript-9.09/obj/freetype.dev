@@ -1,0 +1,20 @@
+-obj ./obj/afangles.o ./obj/afcjk.o ./obj/afdummy.o ./obj/afglobal.o ./obj/afhints.o ./obj/afindic.o ./obj/aflatin.o ./obj/afloader.o ./obj/afmodule.o ./obj/afwarp.o
+./obj/ftadvanc.o ./obj/ftcalc.o ./obj/ftdbgmem.o ./obj/ftgloadr.o ./obj/ftobjs.o ./obj/ftoutln.o ./obj/ftrfork.o ./obj/ftsnames.o ./obj/ftstream.o ./obj/fttrigon.o ./obj/ftutil.o ./obj/ftbbox.o ./obj/ftbdf.o ./obj/ftbitmap.o ./obj/ftdebug.o ./obj/ftgasp.o ./obj/ftglyph.o ./obj/ftgxval.o ./obj/ftinit.o ./obj/ftlcdfil.o ./obj/ftmm.o ./obj/ftotval.o ./obj/ftpfr.o ./obj/ftstroke.o ./obj/ftsynth.o ./obj/ftsystem.o ./obj/fttype1.o ./obj/ftwinfnt.o ./obj/ftxf86.o ./obj/ftpatent.o
+./obj/bdflib.o ./obj/bdfdrivr.o
+./obj/ftcbasic.o ./obj/ft2ccache.o ./obj/ftccmap.o ./obj/ftcglyph.o ./obj/ftcimage.o ./obj/ftcmanag.o ./obj/ftcmru.o ./obj/ftcsbits.o
+./obj/cffobjs.o ./obj/cffload.o ./obj/cffgload.o ./obj/cffparse.o ./obj/cffcmap.o ./obj/cffdrivr.o
+./obj/cidparse.o ./obj/cidload.o ./obj/cidriver.o ./obj/cidgload.o ./obj/cidobjs.o
+./obj/ftgzip.o
+./obj/ftlzw.o
+./obj/pcfdrivr.o ./obj/pcfread.o ./obj/pcfutil.o
+./obj/pfrload.o ./obj/pfrgload.o ./obj/pfrcmap.o ./obj/pfrdrivr.o ./obj/pfrsbit.o ./obj/pfrobjs.o
+./obj/psobjs.o ./obj/t1decode.o ./obj/t1cmap.o ./obj/afmparse.o ./obj/psconv.o ./obj/psauxmod.o
+./obj/pshrec.o ./obj/pshglob.o ./obj/pshmod.o ./obj/pshalgo.o
+./obj/psmodule.o ./obj/pspic.o
+./obj/ftraster.o ./obj/ftrend1.o ./obj/rastpic.o
+./obj/ftgrays.o ./obj/ftsmooth.o ./obj/ftspic.o
+./obj/sfobjs.o ./obj/sfdriver.o ./obj/ttcmap.o ./obj/ttmtx.o ./obj/ttpost.o ./obj/ft2ttload.o ./obj/ttsbit.o ./obj/ttkern.o ./obj/ttbdf.o ./obj/sfntpic.o
+./obj/ttdriver.o ./obj/ft2ttobjs.o ./obj/ttpload.o ./obj/ttgload.o ./obj/ft2ttinterp.o ./obj/ttgxvar.o ./obj/ttpic.o
+./obj/t1afm.o ./obj/t1driver.o ./obj/t1objs.o ./obj/t1load.o ./obj/t1gload.o ./obj/t1parse.o
+./obj/t42objs.o ./obj/t42parse.o ./obj/t42drivr.o
+./obj/winfnt.o

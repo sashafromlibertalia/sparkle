@@ -1,0 +1,2 @@
+-obj ./obj/gdevprn.o ./obj/gxdownscale.o
+-include ./obj/clist
