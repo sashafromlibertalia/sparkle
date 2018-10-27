@@ -3,7 +3,6 @@ const {Keyboard} = require('vk-io');
 const vk = new VK();
 const {updates} = vk;
 const {api} = vk;
-const { upload } = vk;
 const cheerio = require('cheerio')
 const request = require('request')
 const Intl = require('intl')
@@ -1891,22 +1890,39 @@ updates.hear('/citgen', async(context) => {
 			}
 			imagekek[i] = await api.users.get({
 				user_ids: context.forwards[i].from_id,
-				fields: 'photo_200',
+				fields: 'photo_100',
 				name_case: 'nom'
 			})
 		}
-		console.log(imagekek[0][0].photo_200)
-		fs.writeFileSync('ava.png',imagekek[0][0].photo_200)
+
+
+		var download = function(uri, filename, callback){
+			request.head(uri, function(err, res, body){
+			  console.log('content-type:', res.headers['content-type']);
+			  console.log('content-length:', res.headers['content-length']);
+			  request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+			});
+		};
+
+		download(imagekek[0][0].photo_100, 'ava.png', function(){
+			console.log('done');
+		});
+
 		gm(640,400, "#000000")
-		.append('ava.png')
 		.fill('#FFFFFF')
 		.drawText(30,42,'Цитаты великих людей').font('HelveticaNeue.ttf',30)
 		.drawText(260,200,text.join('\n')).font('HelveticaNeue.ttf',20)
 		.drawText(380,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`).fontSize(35)
+		.append('ava.png')
 		.write('rofl.png', async function(err) {
+			if(err)
+			{
+				console.log(err)
+			}
 			await context.sendPhoto('rofl.png')
 			await fs.unlink('rofl.png')
-			await console.log(err)
-		})		
+		})
+
+		
 	}
 })
