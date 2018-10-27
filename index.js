@@ -1863,13 +1863,13 @@ updates.hear(reg4, async(context) => {
 		attachment: randomKukarek2
 	})
 })*/
-
 updates.hear('/citgen', async(context) => {
 	await context.send('Citgen accepted')
 	var text = []
+	fs.writeFileSync('rofl.png',"")
+	var imagekek
 	if(context.hasForwards)
 	{
-		var image
 		if(context.forwards.length === 1)
 		{
 			text[0] = context.forwards[0].text
@@ -1882,7 +1882,6 @@ updates.hear('/citgen', async(context) => {
 				if (context.forwards[i].from_id === context.forwards[j].from_id)
 				{
 					text[i] = context.forwards[i].text
-
 				}
 				else {
 					text = ''
@@ -1891,12 +1890,20 @@ updates.hear('/citgen', async(context) => {
 				}
 			}
 		}
-		
+		imagekek = api.users.get({
+			user_ids: context.forwards[0].from_id,
+			fields: 'photo_100'
+		})
 		gm(640,400, "#000000")
+		.append(fs.createWriteStream('${imagekek.photo_100}'))	
 		.fill('#FFFFFF')
-		.drawText(28,36,'Цитаты великих людей').font('HelveticaNeue.ttf',35)
-		.drawText(320,200,text.join('\n')).font('HelveticaNeue.ttf',24)
-		.write('rofl.png', function(err) {console.log(err)})
-		await context.sendPhoto('rofl.png')
+		.drawText(30,42,'Цитаты великих людей').font('HelveticaNeue.ttf',30)
+		.drawText(260,200,text.join('\n')).font('HelveticaNeue.ttf',35)
+		.drawText(200,210, imagekek.first_name + imagekek.last_name).font('HelveticaNeue.ttf',35)
+		.write('rofl.png', async function(err) {
+			await context.sendPhoto('rofl.png')
+			await fs.unlink('rofl.png')
+			await console.log(err)
+		})		
 	}
 })
