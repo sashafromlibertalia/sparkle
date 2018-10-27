@@ -1913,7 +1913,6 @@ updates.hear('/citgen', async(context) => {
 		.drawText(30,42,'Цитаты великих людей').font('HelveticaNeue.ttf',30)
 		.drawText(200,200,text.join('\n')).font('HelveticaNeue.ttf',20)
 		.drawText(380,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`).fontSize(35)
-		.append('ava.png')
 		.write('rofl.png', async function(err) {
 			if(err)
 			{
