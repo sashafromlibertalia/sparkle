@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3
 Primary memory available: 8.00 gigabytes
-Default processor set: 402 tasks, 1783 threads, 4 processors
-Load average: 2.37, Mach factor: 1.76
+Default processor set: 383 tasks, 1699 threads, 4 processors
+Load average: 1.83, Mach factor: 2.15
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -174,7 +174,7 @@ configure:4347: checking the name lister (/usr/bin/nm -B) interface
 configure:4354: gcc -c -g -O2  conftest.c >&5
 configure:4357: /usr/bin/nm -B "conftest.o"
 configure:4360: output
-00000000000001ec S _some_variable
+0000000000000218 S _some_variable
 configure:4367: result: BSD nm
 configure:4370: checking whether ln -s works
 configure:4374: result: yes
@@ -696,7 +696,7 @@ LN_S='ln -s'
 LTLIBOBJS=''
 LT_SYS_LIBRARY_PATH=''
 MANIFEST_TOOL=':'
-MKDIR_P='/Users/FloydReme/downloads/хлам/freetype-2.8/builds/unix/./install-sh -c -d'
+MKDIR_P='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/freetype-2.8/builds/unix/./install-sh -c -d'
 NM='/usr/bin/nm -B'
 NMEDIT='nmedit'
 OBJDUMP='objdump'
