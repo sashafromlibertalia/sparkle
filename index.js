@@ -1911,7 +1911,7 @@ updates.hear('/citgen', async(context) => {
 		gm(640,400, "#000000")
 		.fill('#FFFFFF')
 		.drawText(30,42,'Цитаты великих людей').font('HelveticaNeue.ttf',30)
-		.drawText(260,200,text.join('\n')).font('HelveticaNeue.ttf',20)
+		.drawText(200,200,text.join('\n')).font('HelveticaNeue.ttf',20)
 		.drawText(380,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`).fontSize(35)
 		.append('ava.png')
 		.write('rofl.png', async function(err) {
@@ -1922,7 +1922,5 @@ updates.hear('/citgen', async(context) => {
 			await context.sendPhoto('rofl.png')
 			await fs.unlink('rofl.png')
 		})
-
-		
 	}
 })
