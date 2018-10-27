@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3
 Primary memory available: 8.00 gigabytes
-Default processor set: 399 tasks, 1733 threads, 4 processors
-Load average: 2.61, Mach factor: 1.79
+Default processor set: 383 tasks, 1677 threads, 4 processors
+Load average: 1.52, Mach factor: 2.47
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -937,7 +937,7 @@ configure:8263: checking the name lister (/usr/bin/nm -B) interface
 configure:8270: gcc -c  -g -O2 -Wall -D_THREAD_SAFE   conftest.c >&5
 configure:8273: /usr/bin/nm -B "conftest.o"
 configure:8276: output
-00000000000001e8 S _some_variable
+0000000000000218 S _some_variable
 configure:8283: result: BSD nm
 configure:8287: checking the maximum length of command line arguments
 configure:8418: result: 196608
@@ -2366,7 +2366,7 @@ configure:21701: checking for CryptGenRandom
 configure:21701: gcc -o conftest  -g -O2 -Wall -D_THREAD_SAFE    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_CryptGenRandom", referenced from:
-      _main in conftest-91bd7f.o
+      _main in conftest-487a54.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:21701: $? = 1
@@ -2509,7 +2509,7 @@ configure:21701: checking for getexecname
 configure:21701: gcc -o conftest  -g -O2 -Wall -D_THREAD_SAFE    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_getexecname", referenced from:
-      _main in conftest-2211c8.o
+      _main in conftest-f57d28.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:21701: $? = 1
@@ -2640,7 +2640,7 @@ configure:21701: checking for lltostr
 configure:21701: gcc -o conftest  -g -O2 -Wall -D_THREAD_SAFE    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_lltostr", referenced from:
-      _main in conftest-d4e4bf.o
+      _main in conftest-5e6565.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:21701: $? = 1
@@ -2773,7 +2773,7 @@ configure:21701: checking for _pclose
 configure:21701: gcc -o conftest  -g -O2 -Wall -D_THREAD_SAFE    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "__pclose", referenced from:
-      _main in conftest-4c4e2d.o
+      _main in conftest-e3a327.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:21701: $? = 1
@@ -2905,7 +2905,7 @@ configure:21701: checking for _popen
 configure:21701: gcc -o conftest  -g -O2 -Wall -D_THREAD_SAFE    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "__popen", referenced from:
-      _main in conftest-689747.o
+      _main in conftest-525df7.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:21701: $? = 1
@@ -3035,7 +3035,7 @@ configure:21701: checking for posix_fadvise
 configure:21701: gcc -o conftest  -g -O2 -Wall -D_THREAD_SAFE    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_posix_fadvise", referenced from:
-      _main in conftest-8d2291.o
+      _main in conftest-179db9.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:21701: $? = 1
@@ -3162,7 +3162,7 @@ configure:21701: checking for posix_fallocate
 configure:21701: gcc -o conftest  -g -O2 -Wall -D_THREAD_SAFE    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_posix_fallocate", referenced from:
-      _main in conftest-07c434.o
+      _main in conftest-d25b62.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:21701: $? = 1
@@ -3353,7 +3353,7 @@ configure:21701: checking for spawnvp
 configure:21701: gcc -o conftest  -g -O2 -Wall -D_THREAD_SAFE    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_spawnvp", referenced from:
-      _main in conftest-8d6f56.o
+      _main in conftest-0a9b17.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:21701: $? = 1
@@ -3543,7 +3543,7 @@ configure:21701: checking for ulltostr
 configure:21701: gcc -o conftest  -g -O2 -Wall -D_THREAD_SAFE    conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_ulltostr", referenced from:
-      _main in conftest-bd2db1.o
+      _main in conftest-632b74.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:21701: $? = 1
@@ -11464,7 +11464,9 @@ config.status:1557: creating rungm.sh
 config.status:1557: creating wand/GraphicsMagickWand-config
 config.status:1557: creating wand/GraphicsMagickWand.pc
 config.status:1557: creating magick/magick_config.h
+config.status:1738: magick/magick_config.h is unchanged
 config.status:1557: creating magick/magick_config_api.h
+config.status:1738: magick/magick_config_api.h is unchanged
 config.status:1786: executing depfiles commands
 config.status:1786: executing libtool commands
 config.status:1786: executing default commands
@@ -11785,7 +11787,7 @@ lt_cv_truncate_bin='/bin/dd bs=4096 count=1'
 ## Output variables. ##
 ## ----------------- ##
 
-ACLOCAL='${SHELL} /Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/config/missing aclocal-1.15'
+ACLOCAL='${SHELL} /Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config/missing aclocal-1.15'
 AMDEPBACKSLASH='\'
 AMDEP_FALSE='#'
 AMDEP_TRUE=''
@@ -11796,9 +11798,9 @@ AM_DEFAULT_VERBOSITY='1'
 AM_V='$(V)'
 AR='ar'
 AS='as'
-AUTOCONF='${SHELL} /Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/config/missing autoconf'
-AUTOHEADER='${SHELL} /Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/config/missing autoheader'
-AUTOMAKE='${SHELL} /Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/config/missing automake-1.15'
+AUTOCONF='${SHELL} /Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config/missing autoconf'
+AUTOHEADER='${SHELL} /Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config/missing autoheader'
+AUTOMAKE='${SHELL} /Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config/missing automake-1.15'
 AWK='awk'
 BIN_DIR='/usr/local/bin'
 BrowseDelegate='xdg-open'
@@ -11974,14 +11976,14 @@ MAGICK_API_CPPFLAGS='-I/usr/local/include/GraphicsMagick'
 MAGICK_API_LDFLAGS='-L/usr/local/lib -L/usr/local/lib -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib'
 MAGICK_API_LIBS='-lGraphicsMagick -lfreetype -lpng16 -lbz2 -lxml2 -lz -lm -lpthread'
 MAGICK_API_PC_CPPFLAGS=''
-MAGICK_CODER_MODULE_PATH='/Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/coders'
+MAGICK_CODER_MODULE_PATH='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/coders'
 MAGICK_COMPAT_FALSE=''
 MAGICK_COMPAT_TRUE='#'
-MAGICK_CONFIGURE_BUILD_PATH='/Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/config'
-MAGICK_CONFIGURE_SRC_PATH='/Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/config'
+MAGICK_CONFIGURE_BUILD_PATH='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config'
+MAGICK_CONFIGURE_SRC_PATH='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config'
 MAGICK_DEP_LIBS='-lfreetype -lpng16 -lbz2 -lxml2 -lz -lm -lpthread'
 MAGICK_FEATURES='BZLIB PNG PS TTF XML ZLIB'
-MAGICK_FILTER_MODULE_PATH='/Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/filters'
+MAGICK_FILTER_MODULE_PATH='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/filters'
 MAGICK_LIBRARY_AGE='18'
 MAGICK_LIBRARY_CURRENT='21'
 MAGICK_LIBRARY_REVISION='1'
@@ -12007,7 +12009,7 @@ MAGICK_WAND_LIBRARY_REVISION='0'
 MAINT='#'
 MAINTAINER_MODE_FALSE=''
 MAINTAINER_MODE_TRUE='#'
-MAKEINFO='${SHELL} /Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/config/missing makeinfo'
+MAKEINFO='${SHELL} /Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config/missing makeinfo'
 MANIFEST_TOOL=':'
 MAN_DIR='/usr/local/share/man'
 MKDIR_P='config/install-sh -c -d'
@@ -12095,7 +12097,7 @@ WITH_PERL_STATIC_TRUE='#'
 WITH_PERL_TRUE='#'
 WITH_SHARED_LIBS_FALSE=''
 WITH_SHARED_LIBS_TRUE='#'
-WinPathScript='/Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/winpath.sh'
+WinPathScript='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/winpath.sh'
 XMKMF=''
 X_CFLAGS=''
 X_EXTRA_LIBS=''
@@ -12141,7 +12143,7 @@ host_vendor='apple'
 htmldir='${docdir}'
 includedir='${prefix}/include'
 infodir='${datarootdir}/info'
-install_sh='${SHELL} /Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30/config/install-sh'
+install_sh='${SHELL} /Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config/install-sh'
 libdir='${exec_prefix}/lib'
 libexecdir='${exec_prefix}/libexec'
 localedir='${datarootdir}/locale'

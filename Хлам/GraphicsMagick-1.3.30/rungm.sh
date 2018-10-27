@@ -13,8 +13,8 @@
 # Written by Bob Friesenhahn <bfriesen@simple.dallas.tx.us> December 2003
 #
 
-top_srcdir='/Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30'
-top_builddir='/Users/FloydReme/downloads/хлам/graphicsmagick-1.3.30'
+top_srcdir='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30'
+top_builddir='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30'
 
 MAGICK_CODER_MODULE_PATH="${top_builddir}/coders"
 MAGICK_CONFIGURE_SRC_PATH="${top_srcdir}/config"
