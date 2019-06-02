@@ -1,6 +1,6 @@
 ![alt text](https://pp.userapi.com/c845216/v845216900/9c0b3/MupX9Y9CqOg.jpg)
 
-# Bot 
+# Bot
 
 Специальный бот на Node.Js, написанный для моей школьной беседы.
 

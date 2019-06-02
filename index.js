@@ -10,9 +10,10 @@ const google = require('google')
 const webshot = require('webshot')
 const gm = require('gm')
 const fs = require('fs')
+var moment = require('moment');
+moment().format();
 
-//Не трогать
-const TOKEN = "c6bacea9fa33ad3ba684c4ac9380cb70e650133088eb97919619ee977ae59489b5d142928b837e450cd30"
+const TOKEN = "9e95f643f84f4f92ebffe153eaf266de5702538e3b82b9028cd0e477820be927a3759863f0dd31bc22f46"
 
 vk.setOptions({
 	token: TOKEN,
@@ -20,7 +21,7 @@ vk.setOptions({
 	peer_id: 2000000001
 })
 
-//Святыня
+//Cоздаем сервер
 require('https').createServer().listen(process.env.PORT || 5000).on('request', function(request, res){
 	res.end('')
 });
@@ -31,7 +32,7 @@ require('https').createServer().listen(process.env.PORT || 5000).on('request', f
 api.baseUrl = 'https://api.vk.com/method/'
 updates.startPolling()
 
-//Святыня 2
+//Обработчик сообщений и клавиатуры
 updates.use(async (context, next) => {
 	if (context.is('message')) {
 		const { messagePayload } = context;
@@ -70,25 +71,25 @@ const hearCommand = (name, conditions, handle) => {
 vk.updates.hear('/start', async(context) => {
 	context.send({
 		message: `Привет! 
-Я - Бот, созданный специально для 10-А класса 631 гимназии. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
+Я - Бот, созданный специально для НАЗВАНИЕ_ВАШЕГО_ЗАВЕДЕНИЯ. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
 /дз - ДОМАШКА
-/lesson - оповещает тебя, какой сейчас урок
+/урок - оповещает тебя, какой сейчас урок
 /уроки - получи расписание на сегодняшний день
-/game - не знаю зачем, но у меня есть игры (Я сам в шоке)
+/игры - не знаю зачем, но у меня есть игры 
 /гдз - гугли гдз и я постараюсь прислать его тебе
 /insert - добавляй в бота домашку, если ты его знаешь, а другие - нет
 /insert ? - справка по команде /insert
 /дата - узнай дз на конкретный день
-/отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен, честное слово
+/отзыв - напиши отзыв, и ВАШЕ_ИМЯ его увидит. ВАЖНО: отзыв анонимен
 /завтра - узнаешь расписание на завтрашний день
 /неделя - расписание на всю неделю
-/рожа - смехуечки
-/citgen - еще одни смехуечки
+/рожа - шутки
+/citgen - еще одни шутки, пересылаете чье-то сообщение и пишите эту команду
 /help - моя документация`})
 })
 
 
-hearCommand('game', async (context) => {
+hearCommand('игры', async (context) => {
 	await context.send({
 		message: 'Вот список моих игр',
 		keyboard: Keyboard.keyboard([
@@ -147,745 +148,185 @@ hearCommand('cancel', async(context) => {
 const Time = new Date()
 var Schedule = new Array(6)
 Schedule[0] = new Array(6)											
-Schedule[0][0] = "1. История | 🕐 8:30 - 9:10 | 🚪 42 Кабинет\n"
-Schedule[0][1] = "2. Русский | 🕐 9:20 - 10:00 | 🚪 48 Кабинет\n"
-Schedule[0][2] = "3. Русский | 🕐 10:15 - 10:55 | 🚪 48 Кабинет\n"
-Schedule[0][3] = "4. Химия | 🕐 11:15 - 11:55 | 🚪 36 Кабинет\n"
-Schedule[0][4] = "5. Английский | 🕐 12:10 - 12:50 | 🚪 10, 26, 26а\n"
-Schedule[0][5] = "6. Английский | 🕐 13:10 - 13:50 | 🚪 10, 26, 26a\n"
+Schedule[0][0] = "1. ПРЕДМЕТ | 🕐 8:30 - 9:10 | 🚪 КАБИНЕТ\n"
+Schedule[0][1] = "2. ПРЕДМЕТ | 🕐 9:20 - 10:00 | 🚪 КАБИНЕТ\n"
+Schedule[0][2] = "3. ПРЕДМЕТ | 🕐 10:15 - 10:55 | 🚪 КАБИНЕТ\n"
+Schedule[0][3] = "4. ПРЕДМЕТ | 🕐 11:15 - 11:55 | 🚪 КАБИНЕТ\n"
+Schedule[0][4] = "5. ПРЕДМЕТ | 🕐 12:10 - 12:50 | 🚪 КАБИНЕТ\n"
+Schedule[0][5] = "6. ПРЕДМЕТ | 🕐 13:10 - 13:50 | 🚪 КАБИНЕТ\n"
 
 Schedule[1] = new Array(7)
-Schedule[1][0] = "1. Литература | 🕐 8:30 - 9:10 | 🚪 48 Кабинет\n"
-Schedule[1][1] = "2. Биология | 🕐 9:20 - 10:00 | 🚪 37 Кабинет\n"
-Schedule[1][2] = "3. Русский | 🕐 10:15 - 10:55 | 🚪 48 Кабинет\n"
-Schedule[1][3] = "4. Общество | 🕐 11:15 - 11:55 | 🚪 42 Кабинет\n"
-Schedule[1][4] = "5. Алгебра | 🕐 12:10 - 12:50 | 🚪 38 Кабинет\n"
-Schedule[1][5] = "6. Физкультура | 🕐 13:10 - 13:50 | 🚪 Спортзал\n"
-Schedule[1][6] = "7. Физкультура | 🕐 14:10 - 14:50 | 🚪 Cпортзал\n"
+Schedule[1][0] = "1. ПРЕДМЕТ | 🕐 8:30 - 9:10 | 🚪 КАБИНЕТ\n"
+Schedule[1][1] = "2. ПРЕДМЕТ | 🕐 9:20 - 10:00 | 🚪 КАБИНЕТ\n"
+Schedule[1][2] = "3. ПРЕДМЕТ | 🕐 10:15 - 10:55 | 🚪 КАБИНЕТ\n"
+Schedule[1][3] = "4. ПРЕДМЕТ | 🕐 11:15 - 11:55 | 🚪 КАБИНЕТ\n"
+Schedule[1][4] = "5. ПРЕДМЕТ | 🕐 12:10 - 12:50 | 🚪 КАБИНЕТ\n"
+Schedule[1][5] = "6. ПРЕДМЕТ | 🕐 13:10 - 13:50 | 🚪 КАБИНЕТ\n"
+Schedule[1][6] = "7. ПРЕДМЕТ | 🕐 14:10 - 14:50 | 🚪 КАБИНЕТ\n"
 
 Schedule[2] = new Array(7)
-Schedule[2][0] = "1. Геометрия | 🕐 8:30 - 9:10 | 🚪 38 Кабинет\n"
-Schedule[2][1] = "2. Английский | 🕐 9:20 - 10:00 | 🚪 17, 26, 26a\n"
-Schedule[2][2] = "3. Английский | 🕐 10:15 - 10:55 | 🚪 17, 26, 26a\n"
-Schedule[2][3] = "4. МХК | 🕐 11:15 - 11:55 | 🚪 11 Кабинет\n"
-Schedule[2][4] = "5. Физика | 🕐 12:10 - 12:50 | 🚪 35 Кабинет\n"
-Schedule[2][5] = "6. Немецкий/Французский | 🕐 13:10 - 13:50 | 🚪 14,10\n"
-Schedule[2][6] = "7. Электив | 🕐 14:10 - 14:50 | 🚪 36, 42, 48\n"
+Schedule[2][0] = "1. ПРЕДМЕТ | 🕐 8:30 - 9:10 | 🚪 КАБИНЕТ\n"
+Schedule[2][1] = "2. ПРЕДМЕТ | 🕐 9:20 - 10:00 | 🚪 КАБИНЕТ\n"
+Schedule[2][2] = "3. ПРЕДМЕТ | 🕐 10:15 - 10:55 | 🚪 КАБИНЕТ\n"
+Schedule[2][3] = "4. ПРЕДМЕТ | 🕐 11:15 - 11:55 | 🚪 КАБИНЕТ\n"
+Schedule[2][4] = "5. ПРЕДМЕТ | 🕐 12:10 - 12:50 | 🚪 КАБИНЕТ\n"
+Schedule[2][5] = "6. ПРЕДМЕТ | 🕐 13:10 - 13:50 | 🚪 КАБИНЕТ\n"
+Schedule[2][6] = "7. ПРЕДМЕТ | 🕐 14:10 - 14:50 | 🚪 КАБИНЕТ\n"
 
 Schedule[3] = new Array(6)
 Schedule[3][0] = "1. СОН | 🕐 До 9:20 \n"
-Schedule[3][1] = "2. Физика | 🕐 9:20 - 10:00 | 🚪 35 Кабинет\n"
-Schedule[3][2] = "3. Инфа | 🕐 10:15 - 10:55 | 🚪 27, 27a\n"
-Schedule[3][3] = "4. Алгебра | 🕐 11:15 - 11:55 | 🚪 38 Кабинет\n"
-Schedule[3][4] = "5. История | 🕐 12:10 - 12:50 | 🚪 42 Кабинет\n"
-Schedule[3][5] = "6. История | 🕐 13:10 - 13:50 | 🚪 42 Кабинет\n"
+Schedule[3][1] = "2. ПРЕДМЕТ | 🕐 9:20 - 10:00 | 🚪 КАБИНЕТ\n"
+Schedule[3][2] = "3. ПРЕДМЕТ | 🕐 10:15 - 10:55 | 🚪 КАБИНЕТ\n"
+Schedule[3][3] = "4. ПРЕДМЕТ | 🕐 11:15 - 11:55 | 🚪 КАБИНЕТ\n"
+Schedule[3][4] = "5. ПРЕДМЕТ | 🕐 12:10 - 12:50 | 🚪 КАБИНЕТ\n"
+Schedule[3][5] = "6. ПРЕДМЕТ | 🕐 13:10 - 13:50 | 🚪 КАБИНЕТ\n"
 
 
 Schedule[4] = new Array(6)
-Schedule[4][0] = "1. География | 🕐 8:30 - 9:10 | 🚪 41 Кабинет\n"
-Schedule[4][1] = "2. Электив | 🕐 9:20 - 10:00 | 🚪 37, 16, 48\n"
-Schedule[4][2] = "3. Литература | 🕐 10:15 - 10:55 | 🚪 48 Кабинет\n"
-Schedule[4][3] = "4. Литература |  🕐 11:15 - 11:55 | 🚪 48 Кабинет\n"
-Schedule[4][4] = "5. Английский | 🕐 12:10 - 12:50 | 🚪 10, акт. зал, 41\n"
-Schedule[4][5] = "6. Английский | 🕐 13:10 - 13:50 | 🚪 10, акт. зал, 26\n"
+Schedule[4][0] = "1. ПРЕДМЕТ | 🕐 8:30 - 9:10 | 🚪 КАБИНЕТ\n"
+Schedule[4][1] = "2. ПРЕДМЕТ | 🕐 9:20 - 10:00 | 🚪 КАБИНЕТ\n"
+Schedule[4][2] = "3. ПРЕДМЕТ | 🕐 10:15 - 10:55 | 🚪 КАБИНЕТ\n"
+Schedule[4][3] = "4. ПРЕДМЕТ | 🕐 11:15 - 11:55 | 🚪 КАБИНЕТ\n"
+Schedule[4][4] = "5. ПРЕДМЕТ | 🕐 12:10 - 12:50 | 🚪 КАБИНЕТ\n"
+Schedule[4][5] = "6. ПРЕДМЕТ | 🕐 13:10 - 13:50 | 🚪 КАБИНЕТ\n"
 
 Schedule[5] = new Array(6)
-Schedule[5][0] = "1. Геометрия | 🕐 8:30 - 9:10 | 🚪 38 Кабинет\n"
-Schedule[5][1] = "2. Общество | 🕐 9:20 - 10:00 | 🚪 41 Кабинет\n"
-Schedule[5][2] = "3. ОБЖ | 🕐 10:15 - 10:55 | 🚪 12 Кабинет\n"
-Schedule[5][3] = "4. Физкультура | 🕐 11:15 - 11:55 | 🚪 Спортзал\n"
-Schedule[5][4] = "5. Немецкий/французский | 🕐 12:10 - 12:50 | 🚪 14, 15\n"
-Schedule[5][5] = "6. Математика-электив | 🕐 13:10 - 13:50 | 🚪 38 Кабинет\n"
+Schedule[5][0] = "1. ПРЕДМЕТ | 🕐 8:30 - 9:10 | 🚪 КАБИНЕТ\n"
+Schedule[5][1] = "2. ПРЕДМЕТ | 🕐 9:20 - 10:00 | 🚪 КАБИНЕТ\n"
+Schedule[5][2] = "3. ПРЕДМЕТ | 🕐 10:15 - 10:55 | 🚪 КАБИНЕТ\n"
+Schedule[5][3] = "4. ПРЕДМЕТ | 🕐 11:15 - 11:55 | 🚪 КАБИНЕТ\n"
+Schedule[5][4] = "5. ПРЕДМЕТ | 🕐 12:10 - 12:50 | 🚪 КАБИНЕТ\n"
+Schedule[5][5] = "6. ПРЕДМЕТ | 🕐 13:10 - 13:50 | 🚪 КАБИНЕТ\n"
 
 
 updates.hear('/завтра', async(context) => {
-	if(Time.getDay() === 1)
-	{
-		await context.send(`Расписание на завтра: \n ${Schedule[1].join(' ')}`)
-	}
-	if(Time.getDay() === 2)
-	{
-		await context.send(`Расписание на завтра: \n ${Schedule[2].join(' ')}`)
-	}
-	if(Time.getDay() === 3)
-	{
-		await context.send(`Расписание на завтра: \n ${Schedule[3].join(' ')}`)
-	}
-	if(Time.getDay() === 4)
-	{
-		await context.send(`Расписание на завтра: \n ${Schedule[4].join(' ')}`)
-	}
-	if(Time.getDay() === 5)
-	{
-		await context.send(`Расписание на завтра: \n ${Schedule[5].join(' ')}`)
-	}
-	if(Time.getDay() === 6)
-	{
-		await context.send(`Завтра неучебный день - кайфуйте`)
-	}
-	if(Time.getDay() === 0)
-	{
-		await context.send(`Расписание на завтра: \n ${Schedule[0].join(' ')}`)
+	
+	for(i = 0; i < 7; i++) {
+		if(moment().day() === i) {
+			await context.send(`Расписание на завтра: \n ${Schedule[i].join(' ')}`)
+		}
 	}
 })
 
-
-const newDay = new Date()
-var greeting = new Array(4)
+/* Убрать комментарий, когда начнется новый учебный год
+let greeting = new Array(4)
 greeting[0] = "Итак, мои дорогие, начался новый учебный день. Я желаю вам всем хороших оценок по всем предметам, удачи :)\n Расписание на сегодня:\n"
 greeting[1] = "И снова всем приветик, господа. Скучали? Я знаю, что нет. Вот вам расписание на сегодня: \n"
 greeting[2] = "Шалом, дамы и пацаны. Возможно, мои ежедневные напоминая о расписании вам надоели, но я ничего поделать не могу - я создан для выполнения конкретных задач. Кстати, вот сегодняшнее расписание: \n"
 greeting[3] = "Привет. Без лишних слов. Расписание на сегодня:\n"
 var random_greeting = greeting[Math.floor(Math.random() * greeting.length)]
-if(newDay.getHours() === 8 && newDay.getMinutes() === 00) 
-{
-	if(newDay.getDay() === 1)
-	{
-		api.messages.send({
-			message: random_greeting + Schedule[0],
-			peer_id: 2000000001
-		})
-	}
-	if(newDay.getDay() === 2)
-	{
-		api.messages.send({
-			message: random_greeting + Schedule[1],
-			peer_id: 2000000001
-		})
-	}
-	if(newDay.getDay() === 3)
-	{
-		api.messages.send({
-			message: random_greeting + Schedule[2],
-			peer_id: 2000000001
-		})
-	}
-	if(newDay.getDay() === 4)
-	{
-		api.messages.send({
-			message: random_greeting + Schedule[3],
-			peer_id: 2000000001
-		})	
-	}
-	if(newDay.getDay() === 5)
-	{
-		api.messages.send({
-			message: random_greeting + Schedule[4],
-			peer_id: 2000000001
-		})
-	}
-	if(newDay.getDay() === 6)
-	{
-		api.messages.send({
-			message: random_greeting + Schedule[5],
-			peer_id: 2000000001
-		})
-	}
-}
-
-/*setInterval(function() {
-	api.call('messages.send', {
-		message: 'бот умер, как и бог.',
-		chat_id: 4
-	})
-},5000)*/
-
-
-updates.hear('/lesson', async(context) => {
-	//Первый урок
-	for(i = 30; i < 59; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[0][0])
+if(moment().hour() === 7 && moment().minute() === 40) {
+	for(i = 1; i < 7; i++) {
+		if(moment().day() === i) {
+			api.messages.send({
+				message: random_greeting + Schedule[i-1],
+				peer_id: 2000000001
+			})
 		}
-		break
 	}
-	for(i = 0; i < 10; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 1 & Time.getMinutes(i)) 
+}*/
+
+updates.hear('/урок', async(context) => {
+	for(j = 1; j < 7; j++) {
+		//Первый урок
+		for(i = 30; i < 59; i++)
 		{
-			context.send('В данный момент проходит ' + Schedule[0][0])
+			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) 
+			{
+				context.send('В данный момент проходит ' + Schedule[j-1][0])
+			}
+			break
 		}
-		break
-	}
-
-
-	//Второй урок
-	for(i = 20; i < 59; i++)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		for(i = 0; i < 10; i++)
 		{
-			context.send('В данный момент проходит ' + Schedule[0][1])
+			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) 
+			{	
+				context.send('В данный момент проходит ' + Schedule[j-1][0])
+			}
+			break
 		}
-		break
-	}
-	while(i = 0)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 1 & Time.getMinutes(i)) 
+
+		//Второй урок
+		for(i = 20; i < 59; i++)
 		{
-			context.send('В данный момент проходит ' + Schedule[0][1])
+			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) 
+			{
+				context.send('В данный момент проходит ' + Schedule[j-1][1])
+			}
+			break
 		}
-		break
-	}
-
-
-	//Третий урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 10 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		while(i = 0)
 		{
-			context.send('В данный момент проходит ' + Schedule[0][2])
+			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) 
+			{
+				context.send('В данный момент проходит ' + Schedule[j-1][1])
+			}
+			break
 		}
-		break
-	}
 
 
-	//Четвертый урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 11 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		//Третий урок
+		for(i = 15; i < 55; i++)
 		{
-			context.send('В данный момент проходит ' + Schedule[0][3])
+			if(moment().hour() === 10 && moment().day() === j && moment().minute() === i && Schedule[j-1][2] != undefined) 
+			{
+				context.send('В данный момент проходит ' + Schedule[j-1][2])
+			}
+			break
 		}
-		break
-	}
 
 
-	//Пятый урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 12 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		//Четвертый урок
+		for(i = 15; i < 55; i++)
 		{
-			context.send('В данный момент проходит ' + Schedule[0][4])
+			if(moment().hour() === 11 && moment().day() === j && moment().minute() === i && Schedule[j-1][3] != undefined) 
+			{
+				context.send('В данный момент проходит ' + Schedule[j-1][3])
+			}
+			break
 		}
-		break
-	}
 
 
-	//Шестой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 13 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		//Пятый урок
+		for(i = 10; i < 50; i++)
 		{
-			context.send('В данный момент проходит ' + Schedule[0][5])
+			if(moment().hour() === 12 && moment().day() === j && moment().minute() === i && Schedule[j-1][4] != undefined) 
+			{
+				context.send('В данный момент проходит ' + Schedule[j-1][4])
+			}
+			break
 		}
-		break
-	}
 
 
-	//Седьмой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 14 & Time.getDay() === 1 & Time.getMinutes(i)) 
+		//Шестой урок
+		for(i = 10; i < 50; i++)
 		{
-			context.send('В данный момент проходит ' + Schedule[0][6])
+			if(moment().hour() === 13 && moment().day() === j && moment().minute() === i && Schedule[j-1][5] != undefined) 
+			{
+				context.send('В данный момент проходит ' + Schedule[j-1][5])
+			}
+			break
 		}
-		break
-	}
 
 
-
-
-
-	//Первый урок
-	for(i = 30; i < 59; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 2 & Time.getMinutes(i)) 
+		//Седьмой урок
+		for(i = 10; i < 50; i++)
 		{
-			context.send('В данный момент проходит ' + Schedule[1][0])
+			if(moment().hour() === 14 && moment().day() === j && moment().minute() === i && Schedule[j-1][6] != undefined) 
+			{
+				context.send('В данный момент проходит ' + Schedule[j-1][6])
+			}
+			break
 		}
-		break
 	}
-	for(i = 0; i < 10; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 2 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[1][0])
-		}
-		break
-	}
-
-
-	//Второй урок
-	for(i = 20; i < 59; i++)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 2 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[1][1])
-		}
-		break
-	}
-	while(i = 0)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 2 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[1][1])
-		}
-		break
-	}
-
-
-	//Третий урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 10 & Time.getDay() === 2 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[1][2])
-		}
-		break
-	}
-
-
-	//Четвертый урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 11 & Time.getDay() === 2 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[1][3])
-		}
-		break
-	}
-
-
-	//Пятый урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 12 & Time.getDay() === 2 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[1][4])
-		}
-		break
-	}
-
-
-	//Шестой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 13 & Time.getDay() === 2 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[1][5])
-		}
-		break
-	}
-
-
-	//Седьмой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 14 & Time.getDay() === 2 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[1][6])
-		}
-		break
-	}
-
-	
-
-
-
-	//Первый урок
-	for(i = 30; i < 59; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 3 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[2][0])
-		}
-		break
-	}
-	for(i = 0; i < 10; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 3 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[2][0])
-		}
-		break
-	}
-
-
-	//Второй урок
-	for(i = 20; i < 59; i++)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 3 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[2][1])
-		}
-		break
-	}
-	while(i = 0)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 3 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[2][1])
-		}
-		break
-	}
-
-
-	//Третий урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 10 & Time.getDay() === 3 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[2][2])
-		}
-		break
-	}
-
-
-	//Четвертый урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 11 & Time.getDay() === 3 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[2][3])
-		}
-		break
-	}
-
-
-	//Пятый урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 12 & Time.getDay() === 3 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[2][4])
-		}
-		break
-	}
-
-
-	//Шестой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 13 & Time.getDay() === 3 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[2][5])
-		}
-		break
-	}
-
-
-	//Седьмой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 14 & Time.getDay() === 3 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[2][6])
-		}
-		break
-	}
-
-
-	//Первый урок
-	for(i = 30; i < 59; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 4 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[3][0])
-		}
-		break
-	}
-	for(i = 0; i < 10; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 4 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[3][0])
-		}
-		break
-	}
-
-
-	//Второй урок
-	for(i = 20; i < 59; i++)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 4 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[3][1])
-		}
-		break
-	}
-	while(i = 0)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 4 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[3][1])
-		}
-		break
-	}
-
-
-	//Третий урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 10 & Time.getDay() === 4 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[3][2])
-		}
-		break
-	}
-
-
-	//Четвертый урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 11 & Time.getDay() === 4 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[3][3])
-		}
-		break
-	}
-
-
-	//Пятый урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 12 & Time.getDay() === 4 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[3][4])
-		}
-		break
-	}
-
-
-	//Шестой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 13 & Time.getDay() === 4 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[3][5])
-		}
-		break
-	}
-
-
-	//Седьмой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 14 & Time.getDay() === 4 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[3][6])
-		}
-		break
-	}
-
-
-
-
-
-	//Первый урок
-	for(i = 30; i < 59; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 5 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[4][0])
-		}
-		break
-	}
-	for(i = 0; i < 10; i++)
-	{
-		if(Time.getHours() === 8 & Time.getDay() === 5 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[4][0])
-		}
-		break
-	}
-
-
-	//Второй урок
-	for(i = 20; i < 59; i++)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 5 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[4][1])
-		}
-		break
-	}
-	while(i = 0)
-	{
-		if(Time.getHours() === 9 & Time.getDay() === 5 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[4][1])
-		}
-		break
-	}
-
-
-	//Третий урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 10 & Time.getDay() === 5 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[4][2])
-		}
-		break
-	}
-
-
-	//Четвертый урок
-	for(i = 15; i < 55; i++)
-	{
-		if(Time.getHours() === 11 & Time.getDay() === 5 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[4][3])
-		}
-		break
-	}
-
-
-	//Пятый урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 12 & Time.getDay() === 5 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[4][4])
-		}
-		break
-	}
-
-
-	//Шестой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 13 & Time.getDay() === 5 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[4][5])
-		}
-		break
-	}
-
-
-	//Седьмой урок
-	for(i = 10; i < 50; i++)
-	{
-		if(Time.getHours() === 14 & Time.getDay() === 5 & Time.getMinutes(i)) 
-		{
-			context.send('В данный момент проходит ' + Schedule[4][6])
-		}
-		break
-	}
-
-
-//Первый урок
-for(i = 30; i < 59; i++)
-{
-	if(Time.getHours() === 8 & Time.getDay() === 6 & Time.getMinutes(i)) 
-	{
-		context.send('В данный момент проходит ' + Schedule[5][0])
-	}
-	break
-}
-for(i = 0; i < 10; i++)
-{
-	if(Time.getHours() === 8 & Time.getDay() === 6 & Time.getMinutes(i)) 
-	{
-		context.send('В данный момент проходит ' + Schedule[5][0])
-	}
-	break
-}
-
-
-//Второй урок
-for(i = 20; i < 59; i++)
-{
-	if(Time.getHours() === 9 & Time.getDay() === 6 & Time.getMinutes(i)) 
-	{
-		context.send('В данный момент проходит ' + Schedule[5][1])
-	}
-	break
-}
-while(i = 0)
-{
-	if(Time.getHours() === 9 & Time.getDay() === 6 & Time.getMinutes(i)) 
-	{
-		context.send('В данный момент проходит ' + Schedule[5][1])
-	}
-	break
-}
-
-
-//Третий урок
-for(i = 15; i < 55; i++)
-{
-	if(Time.getHours() === 10 & Time.getDay() === 6 & Time.getMinutes(i)) 
-	{
-		context.send('В данный момент проходит ' + Schedule[5][2])
-	}
-	break
-}
-
-
-//Четвертый урок
-for(i = 15; i < 55; i++)
-{
-	if(Time.getHours() === 11 & Time.getDay() === 6 & Time.getMinutes(i)) 
-	{
-		context.send('В данный момент проходит ' + Schedule[5][3])
-	}
-	break
-}
-
-
-//Пятый урок
-for(i = 10; i < 50; i++)
-{
-	if(Time.getHours() === 12 & Time.getDay() === 6 & Time.getMinutes(i)) 
-	{
-		context.send('В данный момент проходит ' + Schedule[5][4])
-	}
-	break
-}
-
-
-//Шестой урок
-for(i = 10; i < 50; i++)
-{
-	if(Time.getHours() === 13 & Time.getDay() === 6 & Time.getMinutes(i)) 
-	{
-		context.send('В данный момент проходит ' + Schedule[5][5])
-	}
-	break
-}
-
-
-//Седьмой урок
-for(i = 10; i < 50; i++)
-{
-	if(Time.getHours() === 14 & Time.getDay() === 6 & Time.getMinutes(i)) 
-	{
-		context.send('В данный момент проходит ' + Schedule[5][6])
-	}
-	break
-}
-
-await context.send('Сейчас урока нет. Ураааааа!')
 })
 
 
 updates.hear('/уроки', async(context) => {
-	if(Time.getDay() === 1)
-	{
-		await context.send('Расписание на сегодня:\n' + Schedule[0].join(' '))
-	}
-	if(Time.getDay() === 2)
-	{
-		await context.send('Расписание на сегодня:\n' + Schedule[1].join(' '))
-	}
-	if(Time.getDay() === 3)
-	{
-		await context.send('Расписание на сегодня:\n' + Schedule[2].join(' '))
-	}
-	if(Time.getDay() === 4)
-	{
-		await context.send('Расписание на сегодня:\n' + Schedule[3].join(' '))
-	}
-	if(Time.getDay() === 5)
-	{
-		await context.send('Расписание на сегодня:\n' + Schedule[4].join(' '))
-	}
-	if(Time.getDay() === 6)
-	{
-		await context.send('Расписание на сегодня:\n' + Schedule[5].join(' '))
+	for(i = 1; i < 7; i++) {
+		if(moment().day() === i) {
+			await context.send('Расписание на сегодня:\n' + Schedule[i-1].join(' '))
+		}
 	}
 })
 
@@ -1058,10 +499,12 @@ request(url, async function(error, res, body) {
 	Sunday[14] = predmeti[3] + preds[3].dz
 	Sunday[15] = predmeti[15] + preds[15].dz
 	Sunday[16] = predmeti[16] + preds[16].dz
+
+	const Days = [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
 	
 	
 
-updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
+	updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
 	const Subject = new RegExp(context.$match[1],'i') 
 	const homeWork = context.$match[2]
 	const subjects = []
@@ -1093,16 +536,12 @@ updates.hear(/^\/insert ([а-я.]+) (.+)/i, async(context) => {
 			}
 		}
 	}
-})
+	})
 
-var formatter = new Intl.DateTimeFormat("ru", {
-	month: "long",
-	day: "numeric"
-});
-const asks = new Array(2)
-asks[0] = new RegExp(/задано/i)
-asks[1] = new RegExp(/задали/i)
-updates.hear(asks, async(context) => {
+	const asks = new Array(2)
+	asks[0] = new RegExp(/задано/i)
+	asks[1] = new RegExp(/задали/i)
+	updates.hear(asks, async(context) => {
 	await context.send({
 		message: 'Я тут увидел, что кто-то из вас спрашивает ДЗ. Выберите, какой день вам нужен:',
 		keyboard: Keyboard.keyboard([
@@ -1161,9 +600,9 @@ updates.hear(asks, async(context) => {
 		})
 	})
 
-})
+	})
 
-updates.hear('/дата', async(context) => {
+	updates.hear('/дата', async(context) => {
 	await context.send({
 		message: 'Выберите, какой день вам нужен:',
 		keyboard: Keyboard.keyboard([
@@ -1222,83 +661,83 @@ updates.hear('/дата', async(context) => {
 		})
 	})
 
-})
+	})
 
-hearCommand('monday', async(context) => {
+	hearCommand('monday', async(context) => {
 	await context.send(`
 	Итак, вот домашка на понедельник
 ${Monday.join('\n')}`)
-})
+	})
 
-hearCommand('tuesday', async(context) => {
+	hearCommand('tuesday', async(context) => {
 	await context.send(`
 	Итак, вот домашка на вторник 
 ${Tuesday.join('\n')}`)
-})
+	})
 
-hearCommand('wednesday', async(context) => {
+	hearCommand('wednesday', async(context) => {
 	await context.send(`
 	Итак, вот домашка на среду 
 ${Wednesday.join('\n')}`)
-})
+	})
 
-hearCommand('thursday', async(context) => {
+	hearCommand('thursday', async(context) => {
 	await context.send(`
 	Итак, вот домашка на четверг
 ${Thursday.join('\n')}`)
-})
+	})
 
-hearCommand('friday', async(context) => {
+	hearCommand('friday', async(context) => {
 	await context.send(`
 	Итак, вот домашка на пятницу
 ${Friday.join('\n')}`)
-})
+	})
 
-hearCommand('saturday', async(context) => {
+	hearCommand('saturday', async(context) => {
 	await context.send(`
 	Итак, вот домашка на субботу 
 ${Saturday.join('\n')}`)
-})
+	})
 
 
-updates.hear(/^\/понедельник/i, async(context) => {
+	updates.hear(/^\/понедельник/i, async(context) => {
 	context.send(`Господа, кто-то из вас не может выучить мои команды. Мне жаль, но я вас могу понять, поэтому держите 
 домашку на понедельник:
 ${Monday.join('\n')}`)
-})
+	})
 
-updates.hear(/^\/вторник/i, async(context) => {
+	updates.hear(/^\/вторник/i, async(context) => {
 	context.send(`Господа, кто-то из вас не может выучить мои команды. Мне жаль, но я вас могу понять, поэтому держите 
 домашку на вторник:
 ${Tuesday.join('\n')}`)
-})
+	})
 
-updates.hear(/^\/среда/i, async(context) => {
+	updates.hear(/^\/среда/i, async(context) => {
 	context.send(`Господа, кто-то из вас не может выучить мои команды. Мне жаль, но я вас могу понять, поэтому держите 
 домашку на среду:
 ${Wednesday.join('\n')}`)
-})
+	})
 
-updates.hear(/^\/четверг/i, async(context) => {
+	updates.hear(/^\/четверг/i, async(context) => {
 	context.send(`Господа, кто-то из вас не может выучить мои команды. Мне жаль, но я вас могу понять, поэтому держите 
 домашку на четверг:
 ${Thursday.join('\n')}`)
-})
+	})
 
-updates.hear(/^\/пятница/i, async(context) => {
+	updates.hear(/^\/пятница/i, async(context) => {
 	context.send(`Господа, кто-то из вас не может выучить мои команды. Мне жаль, но я вас могу понять, поэтому держите 
 домашку на пятницу:
 ${Friday.join('\n')}`)
-})
+	})
 
-updates.hear(/^\/суббота/i, async(context) => {
+	updates.hear(/^\/суббота/i, async(context) => {
 	context.send(`Господа, кто-то из вас не может выучить мои команды. Мне жаль, но я вас могу понять, поэтому держите 
 домашку на cубботу:
 ${Saturday.join('\n')}`)
-})
+	})
 
 
-updates.hear('/insert ?', async(context) => {
+	updates.hear('/insert ?', async(context) => {
 	await context.send(`
 Справка по команде /insert.
 Она позволяет добавлять домашнее задание для каждого предмета моментально (На самом деле Саша не хочет все вводить вручную, процесс нужно автоматизировать)
@@ -1306,11 +745,11 @@ updates.hear('/insert ?', async(context) => {
 Вы пишите: /insert название_предмета сама_домашка
 Затем бот отправит вам обновленное дз по вашему предмету, и все будут счастливы!
 Всем мир`)
-})
+	})
 
-updates.hear('/дз все', async(context) =>{
-	await context.send(Sunday.join('\n'))
-})
+	updates.hear('/дз все', async(context) =>{
+		await context.send(Sunday.join('\n'))
+	})
 
 updates.hear('/дз', async(context) => {
 	if(Time.getDay() === 1)
@@ -1446,7 +885,7 @@ updates.hear('/дз завтра', async(context) => {
 
 updates.hear('/help', async(context) => {
 	await context.send(`Итак, вот вам более-менее краткая документация.
-Мой исходный код: https://github.com/FloydReme/bot631
+Мой исходный код: 
 	
 Краткая сводка по моим командам: /start
 
@@ -1479,42 +918,26 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 		}
 
 		const link1 = res.links[0]
-        const link2 = res.links[1]
-        const link3 = res.links[2]
+    const link2 = res.links[1]
+    const link3 = res.links[2]
 		
 		Promise.all([
-		webshot(link1.href, 'images/GDZ1.png', settings, function(error) 
+		webshot(link1.href, 'images/GDZ1.png', settings, function() 
 		{
 			context.send('ГДЗ номер 1:\n' + link1.href)
 			context.sendPhoto('images/GDZ1.png')
-			if(error)
-		{
-			context.send('Простите, у меня случилась ошибка :с')
-		}
 		}),
-		webshot(link2.href, 'images/GDZ2.png', settings, function(error) 
+		webshot(link2.href, 'images/GDZ2.png', settings, function() 
 		{
 			context.send('ГДЗ номер 2:\n' + link2.href) 
 			context.sendPhoto('images/GDZ2.png')
-			if(error)
-		{
-			context.send('Простите, у меня случилась ошибка :с')
-		}
 		}),
-		webshot(link3.href, 'images/GDZ3.png', settings, function(error) 
+		webshot(link3.href, 'images/GDZ3.png', settings, function() 
 		{
 			context.send('ГДЗ номер 3:\n' + link3.href)
 			context.sendPhoto('images/GDZ3.png')
-			if(error)
-		{
-			context.send('Простите, у меня случилась ошибка :с')
-		}
 		})
 		])
-		if(error)
-		{
-			context.send('Простите, у меня случилась ошибка :с')
-		}
 	})
 })
 
@@ -1524,7 +947,7 @@ updates.hear(/^\/отзыв (.+)/i, async(context) => {
 	await context.send('Хорошо, твой отзыв будет отправлен Саше, спасибо :)')
 	api.messages.send({
 		message: 'НОВЫЙ ОТЗЫВ: ' + feedback,
-		domain: 'egoromanov'
+		domain: 'YOUR_DOMAIN'
 	})
 })
 
@@ -1551,29 +974,7 @@ ${Schedule[5].join(' ')}`)
 })
 
 
-const reg2 = new Array(10)
-reg2[0] = new RegExp(/ганц/i)
-reg2[1] = new RegExp(/ганца/i)
-reg2[2] = new RegExp(/ганцу/i)
-reg2[3] = new RegExp(/ганце/i)
-reg2[4] = new RegExp(/ганцем/i)
-reg2[5] = new RegExp(/богдан/i)
-reg2[6] = new RegExp(/богдану/i)
-reg2[7] = new RegExp(/богдана/i)
-reg2[8] = new RegExp(/богданом/i)
-reg2[9] = new RegExp(/богдане/i)
-const answers2 = new Array(3)
-answers2[0] = "Ruhm der Ukraine"
-answers2[1] = "Bogdan ist der Sinn des Lebens"
-answers2[2] = "der beste Mann Kappa"
-const random2 = answers2[Math.floor(Math.random() * answers2.length)]
-updates.hear(reg2, async(context) => {
-	await context.send(random2)
-})
 
-/*updates.hear(/спасибо/i, async(context) =>  {
-	await context.send('Не за что! Рад помочь')
-})*/
 const rozhi = new Array(45)
 rozhi[0] = 'photo-168462227_456239034'
 rozhi[1] = 'photo-168462227_456239035'
@@ -1721,40 +1122,6 @@ updates.on('message', async(context,next) => {
 })
 
 
-/*const reg3 = new Array(18)
-reg3[0] = new RegExp(/новосельцев/i)
-reg3[1] = new RegExp(/новос/i)
-reg3[2] = new RegExp(/навос/i)
-reg3[3] = new RegExp(/навоз/i)
-reg3[4] = new RegExp(/новосельцева/i)
-reg3[5] = new RegExp(/новосельцеву/i)
-reg3[6] = new RegExp(/новосельцеве/i)
-reg3[7] = new RegExp(/новосельцевым/i)
-reg3[8] = new RegExp(/новоса/i)
-reg3[9] = new RegExp(/новоса/i)
-reg3[10] = new RegExp(/новосу/i)
-reg3[11] = new RegExp(/новосе/i)
-reg3[12] = new RegExp(/навоса/i)
-reg3[13] = new RegExp(/навосу/i)
-reg3[14] = new RegExp(/навосе/i)
-reg3[15] = new RegExp(/навоса/i)
-reg3[16] = new RegExp(/навосу/i)
-reg3[17] = new RegExp(/навозу/i)
-const answers3 = new Array(3)
-answers3[0] = "ЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ"
-answers3[1] = "ПОМАЦАЙ ПIД МАТРАЦЕМ"
-answers3[2] = "Продам Брата. Дорого"
-const random3 = answers3[Math.floor(Math.random() * answers3.length)]
-updates.hear(reg3, async(context) => {
-	await context.send(random3)
-})*/
-
-
-
-//updates.hear(/ганж/i, async(context) => {
-//	context.send('Ты рамсы попутал, пес?')
-//})
-
 updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	const victim = context.$match[1]
 	if(context.senderId === 368418604)
@@ -1780,88 +1147,6 @@ updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	}
 })
 
-/*const reg4 = new Array(10)
-reg4[0] = new RegExp(/рыжий/i)
-reg4[1] = new RegExp(/рыжего/i)
-reg4[2] = new RegExp(/рыжему/i)
-reg4[3] = new RegExp(/рыжим/i)
-reg4[4] = new RegExp(/даня/i)
-reg4[5] = new RegExp(/дани/i)
-reg4[6] = new RegExp(/дане/i)
-reg4[7] = new RegExp(/пономарь/i)
-reg4[8] = new RegExp(/пономарев/i)
-reg4[9] = new RegExp(/пономарева/i)
-const answers4 = new Array(3)
-answers4[0] = "ЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ"
-answers4[1] = "ПАЦАНЫ ПТУ ВАЩЕ ЗАЕБИСЬ, ВСЕМ СОВЕТУЮ. ОТ ОДНОЙ ПАРЫ ПОУМНЕЛ НА 200 ХП"
-answers4[2] = "Я НЕ ДАНИИЛ СЦУКА"
-const random4 = answers4[Math.floor(Math.random() * answers3.length)]
-updates.hear(reg4, async(context) => {
-	await context.send(random4)
-})*/
-
-/*
-
-const answers1 = new Array(4)
-answers1[0] = "Говнокодера вызывали? (っಠ‿ಠ)っ"
-answers1[1] = "Если ты ругаешь Мироша, то ты пидор ( ͡° ͜ʖ ͡°)"
-answers1[2] = "Ты что-то против меня имеешь? Го раз на раз выйдем, а не в интернете базарь (ﾒ￣▽￣)︻┳═一 "
-answers1[3] = "Я хорош собой, и вы это знаете (ʘ ͜ʖ ʘ)"
-const random1 = answers1[Math.floor(Math.random() * answers1.length)]
-updates.hear(reg1, async(context) => {
-	await context.send(random1)
-})*/
-
-/*const reg4 = new Array(29)
-reg4[0] = new RegExp(/армия/i)
-reg4[1] = new RegExp(/армии/i)
-reg4[2] = new RegExp(/армию/i)
-reg4[3] = new RegExp(/армией/)
-reg4[4] = new RegExp(/армейка/i)
-reg4[5] = new RegExp(/армейки/i)
-reg4[6] = new RegExp(/армейкою/i)
-reg4[7] = new RegExp(/армейкой/i)
-reg4[8] = new RegExp(/иди служи/i)
-reg4[9] = new RegExp(/вдв/i)
-reg4[10] = new RegExp(/десантура/i)
-reg4[11] = new RegExp(/иди в армию/i)
-reg4[11] = new RegExp(/армея/i)
-reg4[12] = new RegExp(/армеи/i)
-reg4[13] = new RegExp(/армею/i)
-reg4[14] = new RegExp(/армеей/i)
-reg4[15] = new RegExp(/ормейка/i)
-reg4[16] = new RegExp(/ормейки/i)
-reg4[17] = new RegExp(/ормейку/i)
-reg4[18] = new RegExp(/ввс/i)
-reg4[19] = new RegExp(/вск/i)
-reg4[20] = new RegExp(/дезертир/i)
-reg4[21] = new RegExp(/дезертиры/i)
-reg4[22] = new RegExp(/дезертира/i)
-reg4[23] = new RegExp(/дезертиров/i)
-reg4[24] = new RegExp(/служба/i)
-reg4[25] = new RegExp(/службы/i)
-reg4[26] = new RegExp(/арм/i)
-reg4[27] = new RegExp(/орм/i)
-reg4[28] = new RegExp(/вмф/i)
-const kukarek = new Array(6)
-kukarek[0] = 'ДЕДЫ ВОЕВАЛЕ И Я ПОВОЮЮ'
-kukarek[1] = 'МЯКИШ ПЕТУХ АРМИЯ СИЛА АЛЛАХ АКБАР'
-kukarek[2] = 'ОРМЕЙКА ТОПЧАН. ВСЕМ СОВЕТУЮ'
-kukarek[3] = 'КУКАРЕКУУУУУУУ'
-kukarek[4] = 'Однажды меня спросили: "Как это - быть опущенным дедами?" Я ответил: "Через 2 месяца не так классно, как хотелось бы"'
-kukarek[4] = 'Русские сила, америка - могила'
-kukarek[5] = 'Я СРОЧНИК. КУКАРЕКУЮ ГДЕ ХОЧУ'
-const petuhphoto = new Array(2)
-petuhphoto[0] = 'photo-168462227_456239032'
-petuhphoto[1] = 'photo-168462227_456239031'
-const randomKukarek2 = petuhphoto[Math.floor(Math.random() * petuhphoto.length)]
-const randomKukarek = kukarek[Math.floor(Math.random() * kukarek.length)]
-updates.hear(reg4, async(context) => {
-	await context.send({
-		message: randomKukarek,
-		attachment: randomKukarek2
-	})
-})*/
 updates.hear('/citgen', async(context) => {
 	await context.send('Citgen accepted')
 	var text = []
