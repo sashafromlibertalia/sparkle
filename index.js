@@ -13,11 +13,11 @@ const fs = require('fs')
 var moment = require('moment');
 moment().format();
 
-const TOKEN = "9e95f643f84f4f92ebffe153eaf266de5702538e3b82b9028cd0e477820be927a3759863f0dd31bc22f46"
+const TOKEN = "YOUR_TOKEN"
 
 vk.setOptions({
 	token: TOKEN,
-	pollingGroupId: 168462227,
+	pollingGroupId: YOUR_GROUP_ID,
 	peer_id: 2000000001
 })
 
@@ -200,7 +200,6 @@ Schedule[5][5] = "6. ПРЕДМЕТ | 🕐 13:10 - 13:50 | 🚪 КАБИНЕТ\n
 
 
 updates.hear('/завтра', async(context) => {
-	
 	for(i = 0; i < 7; i++) {
 		if(moment().day() === i) {
 			await context.send(`Расписание на завтра: \n ${Schedule[i].join(' ')}`)
@@ -331,84 +330,85 @@ updates.hear('/уроки', async(context) => {
 })
 
 
-const url = 'https://github.com/FloydReme/bot631/blob/master/domashka.txt'
+const url = 'YOUR_URL'
 request(url, async function(error, res, body) {
 	const $ = cheerio.load(body)
 	const Englishdz = $('#LC2').text()
-	const Russiandz = $('#LC4').text()
-	const Literaturedz=  $('#LC6').text()
-	const Germandz = $('#LC8').text()
-	const Frenchdz = $('#LC10').text()
-	const Algebradz = $('#LC12').text()
-	const Geometrydz = $('#LC14').text()
-	const Biologydz = $('#LC16').text()
-	const Physicsdz = $('#LC20').text()
-	const Chemistrydz = $('#LC18').text()
-	const CompSciencedz= $('#LC22').text()
-	const Geographydz = $('#LC24').text()
-	const Mhkdz = $('#LC26').text()
-	const History_dz = $('#LC28').text()
-	const Societydz = $('#LC30').text()
-	const OBJdz = $('#LC32').text()
-	const DPUAlgebra = $('#LC34').text()
+	const Russiandz = $('#LC5').text()
+	const Literaturedz=  $('#LC8').text()
+	const Germandz = $('#LC11').text()
+	const Frenchdz = $('#LC14').text()
+	const Algebradz = $('#LC17').text()
+	const Geometrydz = $('#LC20').text()
+	const Biologydz = $('#LC23').text()
+	const Physicsdz = $('#LC26').text()
+	const Chemistrydz = $('#LC29').text()
+	const CompSciencedz= $('#LC32').text()
+	const Geographydz = $('#LC35').text()
+	const Mhkdz = $('#LC38').text()
+	const History_dz = $('#LC41').text()
+	const Societydz = $('#LC44').text()
+	const OBJdz = $('#LC47').text()
+	const DPUAlgebra = $('#LC50').text()
 
 	const predmeti = new Array(16)
 	predmeti[0] = $('#LC1').text() //English
-	predmeti[1] = $('#LC3').text() //Russian
-	predmeti[2] = $('#LC5').text() //Literature
-	predmeti[3] = $('#LC7').text() //German
-	predmeti[4] = $('#LC9').text() //French
-	predmeti[5] = $('#LC11').text() //Algebra
-	predmeti[6] = $('#LC13').text() //Geometry
-	predmeti[7] = $('#LC15').text() //Biology
-	predmeti[8] = $('#LC17').text() //Сhemistry
-	predmeti[9] = $('#LC19').text() //Physics
-	predmeti[10] = $('#LC21').text() //СompScience
-	predmeti[11] = $('#LC23').text() //Geography
-	predmeti[12] = $('#LC25').text() //Mhk
-	predmeti[13] = $('#LC27').text() //History
-	predmeti[14] = $('#LC29').text() //Society
-	predmeti[15] = $('#LC31').text() // OBJ
-	predmeti[16] = $('#LC33').text() // ДПУ Алгебра
+	predmeti[1] = $('#LC4').text() //Russian
+	predmeti[2] = $('#LC7').text() //Literature
+	predmeti[3] = $('#LC10').text() //German
+	predmeti[4] = $('#LC13').text() //French
+	predmeti[5] = $('#LC16').text() //Algebra
+	predmeti[6] = $('#LC19').text() //Geometry
+	predmeti[7] = $('#LC22').text() //Biology
+	predmeti[8] = $('#LC25').text() //Сhemistry
+	predmeti[9] = $('#LC28').text() //Physics
+	predmeti[10] = $('#LC31').text() //СompScience
+	predmeti[11] = $('#LC34').text() //Geography
+	predmeti[12] = $('#LC37').text() //Mhk
+	predmeti[13] = $('#LC40').text() //History
+	predmeti[14] = $('#LC43').text() //Society
+	predmeti[15] = $('#LC46').text() // OBJ
+	predmeti[16] = $('#LC49').text() // ДПУ Алгебра
 	
+	const line = $('#LC3').text() 
 
 	const Monday = new Array(4)
-	Monday[0] = predmeti[13] + History_dz
-	Monday[1] = predmeti[1] + Russiandz
-	Monday[2] = predmeti[8] + Chemistrydz
-	Monday[3] = predmeti[0] + Englishdz
+	Monday[0] = predmeti[13] + History_dz + `\n${line}`
+	Monday[1] = predmeti[1] + Russiandz + `\n${line}`
+	Monday[2] = predmeti[8] + Chemistrydz + `\n${line}`
+	Monday[3] = predmeti[0] + Englishdz + `\n${line}`
 
 	const Tuesday = new Array(5)
-	Tuesday[0] = predmeti[2] + Literaturedz
-	Tuesday[1] = predmeti[7] + Biologydz
-	Tuesday[2] = predmeti[1] + Russiandz
-	Tuesday[3] = predmeti[14] + Societydz
-	Tuesday[4] = predmeti[5] + Algebradz
+	Tuesday[0] = predmeti[2] + Literaturedz + `\n${line}`
+	Tuesday[1] = predmeti[7] + Biologydz + `\n${line}`
+	Tuesday[2] = predmeti[1] + Russiandz + `\n${line}`
+	Tuesday[3] = predmeti[14] + Societydz + `\n${line}`
+	Tuesday[4] = predmeti[5] + Algebradz + `\n${line}`
 
 	const Wednesday = new Array(5)
-	Wednesday[0] = predmeti[6] + Geometrydz
-	Wednesday[1] = predmeti[0] + Englishdz
-	Wednesday[2] = predmeti[12] + Mhkdz
-	Wednesday[3] = predmeti[9] + Physicsdz
-	Wednesday[4] = predmeti[4] + Frenchdz
+	Wednesday[0] = predmeti[6] + Geometrydz + `\n${line}`
+	Wednesday[1] = predmeti[0] + Englishdz + `\n${line}`
+	Wednesday[2] = predmeti[12] + Mhkdz + `\n${line}`
+	Wednesday[3] = predmeti[9] + Physicsdz + `\n${line}`
+	Wednesday[4] = predmeti[4] + Frenchdz + `\n${line}`
 
 	const Thursday = new Array(5)
-	Thursday[0] = predmeti[9] + Physicsdz
-	Thursday[1] = predmeti[10] + CompSciencedz
-	Thursday[2] = predmeti[5] + Algebradz
-	Thursday[3] = predmeti[13] + History_dz
-	Thursday[4] = predmeti[16] + DPUAlgebra
+	Thursday[0] = predmeti[9] + Physicsdz + `\n${line}`
+	Thursday[1] = predmeti[10] + CompSciencedz + `\n${line}`
+	Thursday[2] = predmeti[5] + Algebradz + `\n${line}`
+	Thursday[3] = predmeti[13] + History_dz + `\n${line}`
+	Thursday[4] = predmeti[16] + DPUAlgebra + `\n${line}`
 
 	const Friday = new Array(3)
-	Friday[0] = predmeti[11] + Geographydz
-	Friday[1] = predmeti[2] + Literaturedz
-	Friday[2] = predmeti[0] + Englishdz
+	Friday[0] = predmeti[11] + Geographydz + `\n${line}`
+	Friday[1] = predmeti[2] + Literaturedz + `\n${line}`
+	Friday[2] = predmeti[0] + Englishdz + `\n${line}`
 
 	const Saturday = new Array(5)
-	Saturday[0] = predmeti[6] + Geometrydz
-	Saturday[1] = predmeti[14] + Societydz
-	Saturday[2] = predmeti[15] + OBJdz
-	Saturday[3] = predmeti[4] + Frenchdz
+	Saturday[0] = predmeti[6] + Geometrydz + `\n${line}`
+	Saturday[1] = predmeti[14] + Societydz + `\n${line}`
+	Saturday[2] = predmeti[15] + OBJdz + `\n${line}`
+	Saturday[3] = predmeti[4] + Frenchdz + `\n${line}`
 	
 	const preds = new Array(17)
 	preds[0] = {
@@ -752,133 +752,49 @@ ${Saturday.join('\n')}`)
 	})
 
 updates.hear('/дз', async(context) => {
-	if(Time.getDay() === 1)
-	{
 		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Monday.join('\n')
-		await context.send('Домашка с понедельника ' + formatter.format(Time) + ' \n'  + x)
-	}
-	if(Time.getDay() === 2)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Tuesday.join('\n')
-		await context.send('Домашка со вторника '+ formatter.format(Time) + ' \n'  + x)
-	}
-	if(Time.getDay() === 3)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Wednesday.join('\n')
-		await context.send('Домашка со среды '+ formatter.format(Time) + ' \n'  + x)
-	}
-	if(Time.getDay() === 4)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Thursday.join('\n')
-		await context.send('Домашка с четверга '+ formatter.format(Time) + ' \n' + x)
-	}
-	if(Time.getDay() === 5)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Friday.join('\n')
-		await context.send('Домашка с пятницы '+ formatter.format(Time) + ' \n'  + x)
-	}
-	if(Time.getDay() === 6)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Saturday.join('\n')
-		await context.send('Домашка с субботы ' + formatter.format(Time) + ' \n' + x)
-	}
-	if(Time.getDay() === 0)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Sunday.join('\n')
-		await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + formatter.format(Time) + ' \n'  + x)
-	}})
+				month: "long",
+				day: "numeric"
+		});
+
+		for(i = 1; i < 7; i++) {
+			if (moment().day() === i) {
+				await context.send('Домашка с текущего дня ' + formatter.format(Time) + ' \n'  + Days[i-1].join('\n'));
+			}
+		}
+
+		if(moment().day() === 0) {
+			await context.send('Поздравляю с единственным выходным. Проведите его с пользой. Домашка на всю неделю: ' + formatter.format(Time) + ' \n'  + Sunday.join('\n'));
+		}
+	})
+
 updates.hear('/дз завтра', async(context) => {
-	if(Time.getDay() === 1)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Tuesday.join('\n')
-		await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + x)
+	var formatter = new Intl.DateTimeFormat("ru", {
+		month: "long",
+		day: "numeric"
+	});
+
+	for(i = 0; i < 7; i++) {
+		if (moment().day() === i) {
+			await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'))
+		}
 	}
-	if(Time.getDay() === 2)
-	{
+})
+ 
+  /* Убрать, когда начнется новый учебный год
+	updates.on('message', async(context) => {
 		var formatter = new Intl.DateTimeFormat("ru", {
 			month: "long",
 			day: "numeric"
-		  });
-		const x = Wednesday.join('\n')
-		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n'  + x)
-	}
-	if(Time.getDay() === 3)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Thursday.join('\n')
-		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n'  + x)
-	}
-	if(Time.getDay() === 4)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Friday.join('\n')
-		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n' + x)
-	}
-	if(Time.getDay() === 5)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Saturday.join('\n')
-		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n'  + x)
-	}
-	if(Time.getDay() === 6)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Sunday.join('\n')
-		await context.send(x)
-	}
-	if(Time.getDay() === 0)
-	{
-		var formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		  });
-		const x = Monday.join('\n')
-		await context.send('Домашка на завтра. Сегодня '+ formatter.format(Time) + ' \n'  + x)
-}})	
+		});
+			
+		for(i = 0; i < 7; i++) {
+			if(moment().day() === i && moment().hour() === 15 && moment().minute() === 30) {
+				await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'))
+			}
+		}
+	})
+	*/
 })
 
 
@@ -973,54 +889,11 @@ ${Schedule[4].join(' ')}
 ${Schedule[5].join(' ')}`)
 })
 
-
-
-const rozhi = new Array(45)
-rozhi[0] = 'photo-168462227_456239034'
-rozhi[1] = 'photo-168462227_456239035'
-rozhi[2] = 'photo-168462227_456239036'
-rozhi[3] = 'photo-168462227_456239037'
-rozhi[4] = 'photo-168462227_456239038'
-rozhi[5] = 'photo-168462227_456239039'
-rozhi[6] = 'photo-168462227_456239040'
-rozhi[7] = 'photo-168462227_456239041'
-rozhi[8] = 'photo-168462227_456239042'
-rozhi[9] = 'photo-168462227_456239043'
-rozhi[10] = 'photo-168462227_456239044'
-rozhi[11] = 'photo-168462227_456239045'
-rozhi[12] = 'photo-168462227_456239046'
-rozhi[13] = 'photo-168462227_456239047'
-rozhi[14] = 'photo-168462227_456239048'
-rozhi[15] = 'photo-168462227_456239049'
-rozhi[16] = 'photo-168462227_456239050'
-rozhi[17] = 'photo-168462227_456239051'
-rozhi[18] = 'photo-168462227_456239052'
-rozhi[19] = 'photo-168462227_456239053'
-rozhi[20] = 'photo-168462227_456239054'
-rozhi[21] = 'photo-168462227_456239055'
-rozhi[22] = 'photo-168462227_456239056'
-rozhi[23] = 'photo-168462227_456239057'
-rozhi[24] = 'photo-168462227_456239058'
-rozhi[25] = 'photo-168462227_456239059'
-rozhi[26] = 'photo-168462227_456239060'
-rozhi[27] = 'photo-168462227_456239061'
-rozhi[28] = 'photo-168462227_456239062'
-rozhi[29] = 'photo-168462227_456239063'
-rozhi[30] = 'photo-168462227_456239064'
-rozhi[31] = 'photo-168462227_456239065'
-rozhi[32] = 'photo-168462227_456239066'
-rozhi[33] = 'photo-168462227_456239067'
-rozhi[34] = 'photo-168462227_456239068'
-rozhi[35] = 'photo-168462227_456239069'
-rozhi[36] = 'photo-168462227_456239070'
-rozhi[37] = 'photo-168462227_456239071'
-rozhi[38] = 'photo-168462227_456239072'
-rozhi[39] = 'photo-168462227_456239073'
-rozhi[40] = 'photo-168462227_456239074'
-rozhi[41] = 'photo-168462227_456239075'
-rozhi[42] = 'photo-168462227_456239076'
-rozhi[43] = 'photo-168462227_456239077'
-rozhi[44] = 'photo-168462227_456239078'
+const rozhi = new Array(4) //Любое число
+rozhi[0] = 'PHOTO_ID'
+rozhi[1] = 'PHOTO_ID'
+rozhi[2] = 'PHOTO_ID'
+rozhi[3] = 'PHOTO_ID'
 
 updates.on('message', async(context,next) => {
 	if((context.isInbox || context.isOutbox) && context.text === '/рожа' )
@@ -1121,10 +994,9 @@ updates.on('message', async(context,next) => {
 	}
 })
 
-
 updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	const victim = context.$match[1]
-	if(context.senderId === 368418604)
+	if(context.senderId === YOUR_ID)
 	{
 		if(isNaN(victim))
 		{
