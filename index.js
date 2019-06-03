@@ -13,11 +13,11 @@ const fs = require('fs')
 var moment = require('moment');
 moment().format();
 
-const TOKEN = "YOUR_TOKEN"
+const TOKEN = "9e95f643f84f4f92ebffe153eaf266de5702538e3b82b9028cd0e477820be927a3759863f0dd31bc22f46"
 
 vk.setOptions({
 	token: TOKEN,
-	pollingGroupId: GROUP_ID,
+	pollingGroupId: 168462227,
 	peer_id: 2000000001
 })
 
@@ -80,7 +80,7 @@ vk.updates.hear('/start', async(context) => {
 /insert - добавляй в бота домашку, если ты его знаешь, а другие - нет
 /insert ? - справка по команде /insert
 /дата - узнай дз на конкретный день
-/отзыв - напиши отзыв, и ВАШЕ_ИМЯ его увидит. ВАЖНО: отзыв анонимен
+/отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен
 /завтра - узнаешь расписание на завтрашний день
 /неделя - расписание на всю неделю
 /рожа - шутки
@@ -330,7 +330,7 @@ updates.hear('/уроки', async(context) => {
 })
 
 
-const url = 'YOUR_URL'
+const url = 'https://github.com/sashafromlibertalia/SchoolBot/blob/master/domashka.txt'
 request(url, async function(error, res, body) {
 	const $ = cheerio.load(body)
 	const Englishdz = $('#LC2').text()
@@ -482,23 +482,23 @@ request(url, async function(error, res, body) {
 
 
 	const Sunday = new Array(17)
-	Sunday[0] = predmeti[0] + preds[0].dz
-	Sunday[1] = predmeti[1] + preds[1].dz
-	Sunday[2] = predmeti[2] + preds[2].dz
-	Sunday[3] = predmeti[13] + preds[13].dz
-	Sunday[4] = predmeti[10] + preds[10].dz
-	Sunday[5] = predmeti[7] + preds[7].dz
-	Sunday[6] = predmeti[5] + preds[5].dz
-	Sunday[7] = predmeti[11] + preds[11].dz
-	Sunday[8] = predmeti[6] + preds[6].dz
-	Sunday[9] = predmeti[14] + preds[14].dz
-	Sunday[10] = predmeti[9] + preds[9].dz
-	Sunday[11] = predmeti[8]+ preds[8].dz
-	Sunday[12] = predmeti[12] + preds[12].dz
-	Sunday[13] = predmeti[4] + preds[4].dz
-	Sunday[14] = predmeti[3] + preds[3].dz
-	Sunday[15] = predmeti[15] + preds[15].dz
-	Sunday[16] = predmeti[16] + preds[16].dz
+	Sunday[0] = predmeti[0] + preds[0].dz + `\n${line}`
+	Sunday[1] = predmeti[1] + preds[1].dz + `\n${line}`
+	Sunday[2] = predmeti[2] + preds[2].dz + `\n${line}`
+	Sunday[3] = predmeti[13] + preds[13].dz + `\n${line}`
+	Sunday[4] = predmeti[10] + preds[10].dz + `\n${line}`
+	Sunday[5] = predmeti[7] + preds[7].dz + `\n${line}`
+	Sunday[6] = predmeti[5] + preds[5].dz + `\n${line}`
+	Sunday[7] = predmeti[11] + preds[11].dz + `\n${line}`
+	Sunday[8] = predmeti[6] + preds[6].dz + `\n${line}`
+	Sunday[9] = predmeti[14] + preds[14].dz + `\n${line}`
+	Sunday[10] = predmeti[9] + preds[9].dz + `\n${line}`
+	Sunday[11] = predmeti[8]+ preds[8].dz + `\n${line}`
+	Sunday[12] = predmeti[12] + preds[12].dz + `\n${line}`
+	Sunday[13] = predmeti[4] + preds[4].dz + `\n${line}`
+	Sunday[14] = predmeti[3] + preds[3].dz + `\n${line}`
+	Sunday[15] = predmeti[15] + preds[15].dz + `\n${line}`
+	Sunday[16] = predmeti[16] + preds[16].dz + `\n${line}`
 
 	const Days = [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
 	
@@ -863,7 +863,7 @@ updates.hear(/^\/отзыв (.+)/i, async(context) => {
 	await context.send('Хорошо, твой отзыв будет отправлен Саше, спасибо :)')
 	api.messages.send({
 		message: 'НОВЫЙ ОТЗЫВ: ' + feedback,
-		domain: 'YOUR_DOMAIN'
+		domain: 'sashafromlibertalia'
 	})
 })
 
@@ -996,7 +996,7 @@ updates.on('message', async(context,next) => {
 
 updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	const victim = context.$match[1]
-	if(context.senderId === YOUR_ID)
+	if(context.senderId === 368418604)
 	{
 		if(isNaN(victim))
 		{
