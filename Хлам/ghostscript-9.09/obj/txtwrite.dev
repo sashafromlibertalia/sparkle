@@ -1,0 +1,1 @@
+-dev2 txtwrite -obj ./obj/gdevtxtw.o ./obj/gdevagl.o

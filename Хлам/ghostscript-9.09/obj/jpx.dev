@@ -1,0 +1,4 @@
+-obj ./obj/zfjpx_openjpeg.o
+-include ./obj/sjpx
+-include ./obj/openjpeg
+-oper zfjpx

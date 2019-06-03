@@ -1,0 +1,13 @@
+-obj ./obj/tif_aux.o ./obj/tif_close.o ./obj/tif_codec.o ./obj/tif_color.o
+./obj/tif_compress.o ./obj/tif_dir.o ./obj/tif_dirinfo.o ./obj/tif_dirread.o
+./obj/tif_dirwrite.o ./obj/tif_dumpmode.o ./obj/tif_error.o ./obj/tif_extension.o
+./obj/tif_fax3.o ./obj/tif_fax3sm.o ./obj/tif_flush.o ./obj/tif_getimage.o
+./obj/tif_jbig.o ./obj/tif_jpeg.o ./obj/tif_luv.o ./obj/tif_lzw.o
+./obj/tif_next.o ./obj/tif_ojpeg.o ./obj/tif_open.o ./obj/tif_packbits.o
+./obj/tif_pixarlog.o ./obj/tif_predict.o ./obj/tif_print.o ./obj/tif_read.o
+./obj/tif_strip.o ./obj/tif_swab.o ./obj/tif_thunder.o ./obj/tif_tile.o
+./obj/tif_version.o ./obj/tif_warning.o ./obj/tif_write.o
+./obj/tif_zip.o
+./obj/gstiffio.o
+-include ./obj/jpegd.dev
+-include ./obj/jpege.dev

@@ -1,0 +1,2 @@
+-dev2 tiffsep1 -include ./obj/page -obj ./obj/gdevtsep.o ./obj/gsequivc.o ./obj/minftrsz.o ./obj/gdevdevn.o ./obj/gsequivc.o ./obj/gdevppla.o
+-include ./obj/tiffs

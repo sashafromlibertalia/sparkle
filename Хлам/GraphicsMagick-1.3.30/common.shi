@@ -1,0 +1,19 @@
+# -*- shell-script -*-
+# Copyright (C) 2012-2017 GraphicsMagick Group
+# Definitions of optional features and configuration values for this build.
+# Intended for use by test scripts.
+MAGICK_FEATURES='BZLIB PNG PS TTF XML ZLIB'
+top_srcdir='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30'
+top_builddir='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30'
+
+set -a
+GM="${MEMCHECK} /Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/utilities/gm"
+LD_LIBRARY_PATH="/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/magick/.libs:${LD_LIBRARY_PATH}"
+
+MAGICK_CODER_MODULE_PATH='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/coders'
+MAGICK_CONFIGURE_PATH='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config:/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/config'
+MAGICK_FILTER_MODULE_PATH='/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/filters'
+MAGICK_CODER_STABILITY='BROKEN'
+
+PATH="/Users/FloydReme/Documents/Программирование/Боты/631/хлам/graphicsmagick-1.3.30/utilities:${PATH}"
+set +a

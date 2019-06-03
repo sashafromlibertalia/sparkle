@@ -1,0 +1,2 @@
+-obj ./obj/gdevfax.o ./obj/minftrsz.o
+-include ./obj/cfe -include ./obj/libtiff

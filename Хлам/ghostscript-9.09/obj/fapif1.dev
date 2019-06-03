@@ -1,0 +1,4 @@
+-obj ./obj/fapi_ft.o ./obj/write_t1.o
+./obj/write_t2.o ./obj/wrfont.o
+-include ./obj/freetype
+-fapi fapi_ft
