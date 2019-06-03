@@ -12,11 +12,11 @@ const fs = require('fs')
 var moment = require('moment');
 moment().format();
 
-const TOKEN = "YOUR_TOKEN"
+const TOKEN = "9e95f643f84f4f92ebffe153eaf266de5702538e3b82b9028cd0e477820be927a3759863f0dd31bc22f46"
 
 vk.setOptions({
 	token: TOKEN,
-	pollingGroupId: YOUR_GROUP_ID,
+	pollingGroupId: 168462227,
 	peer_id: 2000000001
 })
 
@@ -70,7 +70,7 @@ const hearCommand = (name, conditions, handle) => {
 vk.updates.hear('/start', async(context) => {
 	context.send({
 		message: `Привет! 
-Я - Бот, созданный специально для НАЗВАНИЕ_ВАШЕГО_ЗАВЕДЕНИЯ. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
+Я - Бот, созданный специально для 11А гимназии 631. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
 /дз - ДОМАШКА
 /урок - оповещает тебя, какой сейчас урок
 /уроки - получи расписание на сегодняшний день
@@ -78,7 +78,7 @@ vk.updates.hear('/start', async(context) => {
 /insert - добавляй в бота домашку, если ты его знаешь, а другие - нет
 /insert ? - справка по команде /insert
 /дата - узнай дз на конкретный день
-/отзыв - напиши отзыв, и ВАШЕ_ИМЯ его увидит. ВАЖНО: отзыв анонимен
+/отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен
 /завтра - узнаешь расписание на завтрашний день
 /неделя - расписание на всю неделю
 /рожа - шутки
@@ -328,7 +328,7 @@ updates.hear('/уроки', async(context) => {
 })
 
 
-const url = 'YOUR_URL'
+const url = 'https://github.com/sashafromlibertalia/SchoolBot/blob/master/domashka.txt'
 request(url, async function(error, res, body) {
 	const $ = cheerio.load(body)
 	const Englishdz = $('#LC2').text()
@@ -817,7 +817,7 @@ updates.hear(/^\/отзыв (.+)/i, async(context) => {
 	await context.send('Хорошо, твой отзыв будет отправлен Саше, спасибо :)')
 	api.messages.send({
 		message: 'НОВЫЙ ОТЗЫВ: ' + feedback,
-		domain: 'YOUR_DOMAIN'
+		domain: 'sashafromlibertalia'
 	})
 })
 
@@ -950,7 +950,7 @@ updates.on('message', async(context,next) => {
 
 updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	const victim = context.$match[1]
-	if(context.senderId === YOUR_ID)
+	if(context.senderId === 368418604)
 	{
 		if(isNaN(victim))
 		{
