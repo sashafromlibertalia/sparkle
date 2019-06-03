@@ -1044,7 +1044,7 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 	google.resultsPerPage = 3;
 	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
 	console.log(textUser)
-	google(textUser, function (err,res) {
+	google('node js best practices', function (err,res) {
 	if (err) console.error(err)
 
     const settings = {
@@ -1060,31 +1060,31 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 		userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)' + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
 	}
 
+	for (var i = 0; i < res.links.length; ++i) {
+		var link = res.links[i];
+		context.send(`${link.title} + ' - ' + ${link.href}`)
+	}
+
 	const link1 = res.links[0]
     const link2 = res.links[1]
     const link3 = res.links[2]
-		Promise.all([
+	/*Promise.all([
 		webshot(link1.href, 'images/GDZ1.png', settings, function(err) 
 		{
 			context.send('ГДЗ номер 1:\n' + link1.href)
-			context.sendPhoto('images/GDZ1.png')
-			
+			context.sendPhoto('images/GDZ1.png')	
 		}),
 		webshot(link2.href, 'images/GDZ2.png', settings, function(error) 
 		{
 			context.send('ГДЗ номер 2:\n' + link2.href) 
-			context.sendPhoto('images/GDZ2.png')
-			
+			context.sendPhoto('images/GDZ2.png')	
 		}),
 		webshot(link3.href, 'images/GDZ3.png', settings, function(error) 
 		{
 			context.send('ГДЗ номер 3:\n' + link3.href)
-			context.sendPhoto('images/GDZ3.png')
-		
+			context.sendPhoto('images/GDZ3.png')	
 		})
-		])
-	
-		
+		])*/
 	})
 })
 
