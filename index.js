@@ -1080,6 +1080,3 @@ updates.hear('/citgen', async(context) => {
 		})
 	}
 })
-
-
-
