@@ -13,11 +13,11 @@ const fs = require('fs')
 var moment = require('moment');
 moment().format();
 
-const TOKEN = "9e95f643f84f4f92ebffe153eaf266de5702538e3b82b9028cd0e477820be927a3759863f0dd31bc22f46"
+const TOKEN = "YOUR_TOKEN"
 
 vk.setOptions({
 	token: TOKEN,
-	pollingGroupId: 168462227,
+	pollingGroupId: GROUP_ID,
 	peer_id: 2000000001
 })
 
@@ -138,7 +138,7 @@ hearCommand('ball', async(context) => {
 })
 
 hearCommand('else', async(context) => {
-	await context.send('Раз эта кнопка у вас все еще есть, значит я страдаю от острой игровой недостаточности. Если у вас есть идеи, которые может реализовать этот бот в игровой форме - пишите Саше, он сможет :)')
+	await context.send('Раз эта кнопка у вас все еще есть, значит я страдаю от острой игровой недостаточности. Если у вас есть идеи, которые может реализовать этот бот в игровой форме - пишите ВАШЕ_ИМЯ, он сможет :)')
 })
 
 hearCommand('cancel', async(context) => {
@@ -330,7 +330,7 @@ updates.hear('/уроки', async(context) => {
 })
 
 
-const url = 'https://github.com/sashafromlibertalia/SchoolBot/blob/master/domashka.txt'
+const url = 'YOUR_URL'
 request(url, async function(error, res, body) {
 	const $ = cheerio.load(body)
 	const Englishdz = $('#LC2').text()
@@ -740,7 +740,7 @@ ${Saturday.join('\n')}`)
 	updates.hear('/insert ?', async(context) => {
 	await context.send(`
 Справка по команде /insert.
-Она позволяет добавлять домашнее задание для каждого предмета моментально (На самом деле Саша не хочет все вводить вручную, процесс нужно автоматизировать)
+Она позволяет добавлять домашнее задание для каждого предмета моментально
 Итак, как она работает?
 Вы пишите: /insert название_предмета сама_домашка
 Затем бот отправит вам обновленное дз по вашему предмету, и все будут счастливы!
@@ -801,7 +801,7 @@ updates.on('message', async(context) => {
 
 updates.hear('/help', async(context) => {
 	await context.send(`Итак, вот вам более-менее краткая документация.
-Мой исходный код: 
+Мой исходный код: https://github.com/sashafromlibertalia/SchoolBot
 	
 Краткая сводка по моим командам: /start
 
