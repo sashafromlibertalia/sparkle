@@ -15,6 +15,7 @@
     "intl": "^1.2.5",
     "moment": "^2.24.0",
     "vk-io": "^4.0.0-rc.18",
-    "webshot": "^0.18.0"
+    "webshot": "^0.18.0",
+    "google-search-scraper": "^0.1.0"
   }
 }
