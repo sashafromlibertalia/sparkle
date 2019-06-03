@@ -7,16 +7,16 @@ const cheerio = require('cheerio')
 const request = require('request')
 const Intl = require('intl')
 var webshot = require('webshot')
-const gm = require('gm')
+const gm = require('gm').subClass({imageMagick:true})
 const fs = require('fs')
 var moment = require('moment');
 moment().format();
 
-const TOKEN = "9e95f643f84f4f92ebffe153eaf266de5702538e3b82b9028cd0e477820be927a3759863f0dd31bc22f46"
+const TOKEN = "YOUR_TOKEN"
 
 vk.setOptions({
 	token: TOKEN,
-	pollingGroupId: 168462227,
+	pollingGroupId: YOUR_GROUP_ID,
 	peer_id: 2000000001
 })
 
@@ -70,16 +70,15 @@ const hearCommand = (name, conditions, handle) => {
 vk.updates.hear('/start', async(context) => {
 	context.send({
 		message: `Привет! 
-Я - Бот, созданный специально для 11A гимназии 631. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
+Я - Бот, созданный специально для НАЗВАНИЕ_ВАШЕГО_ЗАВЕДЕНИЯ. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
 /дз - ДОМАШКА
 /урок - оповещает тебя, какой сейчас урок
 /уроки - получи расписание на сегодняшний день
 /игры - не знаю зачем, но у меня есть игры 
-/гдз - гугли гдз и я постараюсь прислать его тебе
 /insert - добавляй в бота домашку, если ты его знаешь, а другие - нет
 /insert ? - справка по команде /insert
 /дата - узнай дз на конкретный день
-/отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен
+/отзыв - напиши отзыв, и ВАШЕ_ИМЯ его увидит. ВАЖНО: отзыв анонимен
 /завтра - узнаешь расписание на завтрашний день
 /неделя - расписание на всю неделю
 /рожа - шутки
@@ -329,7 +328,7 @@ updates.hear('/уроки', async(context) => {
 })
 
 
-const url = 'https://github.com/sashafromlibertalia/SchoolBot/blob/master/domashka.txt'
+const url = 'YOUR_URL'
 request(url, async function(error, res, body) {
 	const $ = cheerio.load(body)
 	const Englishdz = $('#LC2').text()
@@ -818,7 +817,7 @@ updates.hear(/^\/отзыв (.+)/i, async(context) => {
 	await context.send('Хорошо, твой отзыв будет отправлен Саше, спасибо :)')
 	api.messages.send({
 		message: 'НОВЫЙ ОТЗЫВ: ' + feedback,
-		domain: 'sashafromlibertalia'
+		domain: 'YOUR_DOMAIN'
 	})
 })
 
@@ -951,7 +950,7 @@ updates.on('message', async(context,next) => {
 
 updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	const victim = context.$match[1]
-	if(context.senderId === 368418604)
+	if(context.senderId === YOUR_ID)
 	{
 		if(isNaN(victim))
 		{
@@ -1001,7 +1000,7 @@ updates.hear('/citgen', async(context) => {
 				}
 			}
 			imagekek[i] = await api.users.get({
-				user_ids: context.forwards[i].from_id,
+				user_ids: context.forwards[i].senderId,
 				fields: 'photo_100',
 				name_case: 'nom'
 			})
@@ -1020,11 +1019,15 @@ updates.hear('/citgen', async(context) => {
 			console.log('done');
 		});
 
+		console.log(context.forwards)
+
 		gm(640,400, "#000000")
 		.fill('#FFFFFF')
-		.drawText(30,42,'Цитаты великих людей').font('HelveticaNeue.ttf',30)
-		.drawText(200,200,text.join('\n')).font('HelveticaNeue.ttf',20)
-		.drawText(380,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`).fontSize(35)
+		.font('HelveticaNeue.ttf')
+		.fontSize(30)
+		.drawText(30,42,'Цитаты великих людей')
+		.drawText(30,110,`«${text.join('\n')}»`)
+		.drawText(30,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`)
 		.write('rofl.png', async function(err) {
 			if(err)
 			{
@@ -1037,16 +1040,12 @@ updates.hear('/citgen', async(context) => {
 })
 
 
-
 //TO-DO
-updates.hear(/^\/гдз (.+)/i, async (context) => {
+/*updates.hear(/^\/гдз (.+)/i, async (context) => {
 	const textUser = context.$match[1];
-	google.resultsPerPage = 3;
 	context.send('Я нашел тут пару ГДЗ по твоему запросу, глянь их:')
-	console.log(textUser)
-	google('node js best practices', function (err,res) {
-	if (err) console.error(err)
-
+	const link1 = cheerio.load(`https://yandex.ru/search/?text=${textUser}`)
+    
     const settings = {
 	    streamType: 'png',
 		windowSize: {
@@ -1060,16 +1059,9 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 		userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us)' + ' AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
 	}
 
-	for (var i = 0; i < res.links.length; ++i) {
-		var link = res.links[i];
-		context.send(`${link.title} + ' - ' + ${link.href}`)
-	}
 
-	const link1 = res.links[0]
-    const link2 = res.links[1]
-	const link3 = res.links[2]
 	console.log(link1)
-	/*Promise.all([
+	Promise.all([
 		webshot(link1.href, 'images/GDZ1.png', settings, function(err) 
 		{
 			context.send('ГДЗ номер 1:\n' + link1.href)
@@ -1085,10 +1077,9 @@ updates.hear(/^\/гдз (.+)/i, async (context) => {
 			context.send('ГДЗ номер 3:\n' + link3.href)
 			context.sendPhoto('images/GDZ3.png')	
 		})
-		])*/
-	})
+		])
 })
-
+*/
 
 
 /* Have a nice day */
