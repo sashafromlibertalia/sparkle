@@ -781,8 +781,8 @@ updates.hear('/дз завтра', async(context) => {
 	}
 })
  
-  /* Убрать, когда начнется новый учебный год
-	updates.on('message', async(context) => {
+/* Убрать, когда начнется новый учебный год
+updates.on('message', async(context) => {
 		var formatter = new Intl.DateTimeFormat("ru", {
 			month: "long",
 			day: "numeric"
@@ -1080,4 +1080,6 @@ updates.hear('/citgen', async(context) => {
 		})
 	}
 })
+
+
 
