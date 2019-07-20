@@ -21,7 +21,7 @@ vk.setOptions({
 })
 
 //Cоздаем сервер
-require('https').createServer().listen(process.env.PORT || 5000).on('request', function(request, res){
+require('https').createServer().listen(process.env.PORT || 8000).on('request', function(request, res){
 	res.end('')
 });
 
@@ -330,24 +330,24 @@ updates.hear('/уроки', async(context) => {
 
 const url = 'https://github.com/sashafromlibertalia/SchoolBot/blob/master/domashka.txt'
 request(url, async function(error, res, body) {
-	const $ = cheerio.load(body)
-	const Englishdz = $('#LC2').text()
-	const Russiandz = $('#LC5').text()
-	const Literaturedz=  $('#LC8').text()
-	const Germandz = $('#LC11').text()
-	const Frenchdz = $('#LC14').text()
-	const Algebradz = $('#LC17').text()
-	const Geometrydz = $('#LC20').text()
-	const Biologydz = $('#LC23').text()
-	const Physicsdz = $('#LC26').text()
-	const Chemistrydz = $('#LC29').text()
-	const CompSciencedz= $('#LC32').text()
-	const Geographydz = $('#LC35').text()
-	const Mhkdz = $('#LC38').text()
-	const History_dz = $('#LC41').text()
-	const Societydz = $('#LC44').text()
-	const OBJdz = $('#LC47').text()
-	const DPUAlgebra = $('#LC50').text()
+	const $ = cheerio.load(body),
+	Englishdz = $('#LC2').text(),
+	Russiandz = $('#LC5').text(),
+ 	Literaturedz=  $('#LC8').text(),	
+ 	Germandz = $('#LC11').text(),
+	Frenchdz = $('#LC14').text(),
+	Algebradz = $('#LC17').text(),
+	Geometrydz = $('#LC20').text(),
+	Biologydz = $('#LC23').text(),
+	Physicsdz = $('#LC26').text(),
+	Chemistrydz = $('#LC29').text(),
+	CompSciencedz= $('#LC32').text(),
+	Geographydz = $('#LC35').text(),
+	Mhkdz = $('#LC38').text(),
+	History_dz = $('#LC41').text(),
+	Societydz = $('#LC44').text(),
+	OBJdz = $('#LC47').text(),
+	DPUAlgebra = $('#LC50').text();
 
 	const predmeti = new Array(16)
 	predmeti[0] = $('#LC1').text() //English
@@ -974,10 +974,9 @@ updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 })
 
 updates.hear('/citgen', async(context) => {
-	await context.send('Citgen accepted')
 	var text = []
-	if(context.hasForwards)
-	{
+	if(context.hasForwards) {
+		await context.send('Citgen одобрен, ща будет ржака')
 		imagekek = []
 
 		if(context.forwards.length === 1)
@@ -1001,7 +1000,7 @@ updates.hear('/citgen', async(context) => {
 			}
 			imagekek[i] = await api.users.get({
 				user_ids: context.forwards[i].senderId,
-				fields: 'photo_100',
+				fields: 'photo_200',
 				name_case: 'nom'
 			})
 		}
@@ -1015,27 +1014,31 @@ updates.hear('/citgen', async(context) => {
 			});
 		};
 
-		download(imagekek[0][0].photo_100, 'ava.png', function(){
+		download(imagekek[0][0].photo_200, 'ava.png', function(){
 			console.log('done');
 		});
 
-		console.log(context.forwards)
+	
 
 		gm(640,400, "#000000")
 		.fill('#FFFFFF')
 		.font('HelveticaNeue.ttf')
 		.fontSize(30)
-		.drawText(30,42,'Цитаты великих людей')
+		.drawText(30,42, 'Цитаты великих людей')
+		.in('-page', '+30+100')
+		.in('ava.png')
 		.drawText(30,110,`«${text.join('\n')}»`)
 		.drawText(30,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`)
+		.mosaic() 
 		.write('rofl.png', async function(err) {
-			if(err)
-			{
+			if(err) {
 				console.log(err)
 			}
-			await context.sendPhoto('rofl.png')
-			await fs.unlink('rofl.png')
+			await context.sendPhoto('rofl.png');
+			await fs.unlink('rofl.png');
 		})
+	} else {
+		await context.send('А че цитгенить то будем?')
 	}
 })
 
