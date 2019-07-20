@@ -1020,10 +1020,9 @@ updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 })
 
 updates.hear('/citgen', async(context) => {
-	await context.send('Citgen accepted')
 	var text = []
-	if(context.hasForwards)
-	{
+	if(context.hasForwards) {
+		await context.send('Citgen accepted')
 		imagekek = []
 
 		if(context.forwards.length === 1)
@@ -1047,7 +1046,7 @@ updates.hear('/citgen', async(context) => {
 			}
 			imagekek[i] = await api.users.get({
 				user_ids: context.forwards[i].from_id,
-				fields: 'photo_100',
+				fields: 'photo_200',
 				name_case: 'nom'
 			})
 		}
@@ -1061,22 +1060,30 @@ updates.hear('/citgen', async(context) => {
 			});
 		};
 
-		download(imagekek[0][0].photo_100, 'ava.png', function(){
+		download(imagekek[0][0].photo_200, 'ava.png', function(){
 			console.log('done');
-		});
-
-		gm(640,400, "#000000")
-		.fill('#FFFFFF')
-		.drawText(30,42,'Цитаты великих людей').font('HelveticaNeue.ttf',30)
-		.drawText(200,200,text.join('\n')).font('HelveticaNeue.ttf',20)
-		.drawText(380,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`).fontSize(35)
-		.write('rofl.png', async function(err) {
-			if(err)
-			{
+			gm(640,400, "#000000")
+			.fill('#FFFFFF')
+			.font('HelveticaNeue.ttf')
+			.fontSize(30)
+			.drawText(30,42, 'Золотые слова')
+			.in('-page', '+30+85')
+			.in('ava.png')
+			.fontSize(20)
+			.drawText(260,110,`«${text.join('\n')}»`)
+			.fontSize(30)
+			.drawText(30,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`)
+			.mosaic() 
+			.write('rofl.png', async function(err) {
+			if(err) {
 				console.log(err)
 			}
-			await context.sendPhoto('rofl.png')
-			await fs.unlink('rofl.png')
+			await context.sendPhoto('rofl.png');
+			await fs.unlink('rofl.png');
 		})
+		});
+	}
+	else {
+		await context.send('Citgen error - no forwards')
 	}
 })
