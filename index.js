@@ -1016,27 +1016,26 @@ updates.hear('/citgen', async(context) => {
 
 		download(imagekek[0][0].photo_200, 'ava.png', function(){
 			console.log('done');
-		});
-
-	
-
-		gm(640,400, "#000000")
-		.fill('#FFFFFF')
-		.font('HelveticaNeue.ttf')
-		.fontSize(30)
-		.drawText(30,42, 'Цитаты великих людей')
-		.in('-page', '+30+100')
-		.in('ava.png')
-		.drawText(30,110,`«${text.join('\n')}»`)
-		.drawText(30,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`)
-		.mosaic() 
-		.write('rofl.png', async function(err) {
+			gm(640,400, "#000000")
+			.fill('#FFFFFF')
+			.font('HelveticaNeue.ttf')
+			.fontSize(30)
+			.drawText(30,42, 'Золотые слова')
+			.in('-page', '+30+85')
+			.in('ava.png')
+			.fontSize(20)
+			.drawText(260,110,`«${text.join('\n')}»`)
+			.fontSize(30)
+			.drawText(30,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`)
+			.mosaic() 
+			.write('rofl.png', async function(err) {
 			if(err) {
 				console.log(err)
 			}
 			await context.sendPhoto('rofl.png');
 			await fs.unlink('rofl.png');
 		})
+		});
 	} else {
 		await context.send('А че цитгенить то будем?')
 	}
