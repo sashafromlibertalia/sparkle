@@ -974,11 +974,9 @@ updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 })
 
 updates.hear('/citgen', async(context) => {
-	var text = [],
-		imagekek = [];
-	
-
 	if(context.hasReplyMessage) {
+		var text = [],
+		imagekek = [];
 		await context.send('Citgen одобрен, ща будет ржака')
 
 
@@ -1023,12 +1021,11 @@ updates.hear('/citgen', async(context) => {
 			await fs.unlink('rofl.png');
 		})
 		});
-	} else {
-		await context.send('А че цитгенить то будем?')
-	}
-	if(context.hasForwards) {
+	} 
+	else if(context.hasForwards) {
+		var text = [],
+		imagekek = [];
 		await context.send('Citgen одобрен, ща будет ржака')
-		imagekek = []
 
 	
 		if(context.forwards.length === 1)
@@ -1095,9 +1092,6 @@ updates.hear('/citgen', async(context) => {
 	else {
 		await context.send('А че цитгенить то будем?')
 	}
-	
-
-	
 })
 
 
