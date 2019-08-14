@@ -1049,15 +1049,13 @@ updates.hear('/citgen', async(context) => {
 			}
 			imagekek[i] = await api.users.get({
 				user_ids: context.forwards[i].senderId,
-				fields: 'photo_200',
+				fields: 'photo_200, photo_200_orig',
 				name_case: 'nom'
 			})
 		}
 
 
 		
-
-
 		var download = function(uri, filename, callback){
 			request.head(uri, function(err, res, body){
 			  console.log('content-type:', res.headers['content-type']);
@@ -1065,29 +1063,61 @@ updates.hear('/citgen', async(context) => {
 			  request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
 			});
 		};
+	
+		console.log(imagekek[0][0].photo_200)
+		console.log(imagekek[0][0].photo_200_orig)
 
-		download(imagekek[0][0].photo_200, 'ava.png', function(){
-			console.log('done');
-			gm(640,400, "#000000")
-			.fill('#FFFFFF')
-			.font('HelveticaNeue.ttf')
-			.fontSize(30)
-			.drawText(30,42, 'Золотые слова')
-			.in('-page', '+30+85')
-			.in('ava.png')
-			.fontSize(20)
-			.drawText(260,110,`«${text.join('\n')}»`)
-			.fontSize(30)
-			.drawText(30,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`)
-			.mosaic() 
-			.write('rofl.png', async function(err) {
-			if(err) {
-				console.log(err)
-			}
-			await context.sendPhoto('rofl.png');
-			await fs.unlink('rofl.png');
-		})
-		});
+		
+	
+		if (imagekek[0][0].photo_200 === undefined ) {
+			download(imagekek[0][0].photo_200_orig, 'ava.png', function(){
+				console.log('done');
+				gm(640,400, "#000000")
+				.fill('#FFFFFF')
+				.font('HelveticaNeue.ttf')
+				.fontSize(30)
+				.drawText(30,42, 'Золотые слова')
+				.in('-page', '+30+85')
+				.in('ava.png')
+				.fontSize(20)
+				.drawText(260,110,`«${text.join('\n')}»`)
+				.fontSize(30)
+				.drawText(30,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`)
+				.mosaic() 
+				.write('rofl.png', async function(err) {
+				if(err) {
+					console.log(err)
+				}
+				await context.sendPhoto('rofl.png');
+				await fs.unlink('rofl.png');
+			})
+			});
+		} else {
+			download(imagekek[0][0].photo_200, 'ava.png', function(){
+				console.log('done');
+				gm(640,400, "#000000")
+				.fill('#FFFFFF')
+				.font('HelveticaNeue.ttf')
+				.fontSize(30)
+				.drawText(30,42, 'Золотые слова')
+				.in('-page', '+30+85')
+				.in('ava.png')
+				.fontSize(20)
+				.drawText(260,110,`«${text.join('\n')}»`)
+				.fontSize(30)
+				.drawText(30,370, `© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`)
+				.mosaic() 
+				.write('rofl.png', async function(err) {
+				if(err) {
+					console.log(err)
+				}
+				await context.sendPhoto('rofl.png');
+				await fs.unlink('rofl.png');
+			})
+			});
+		}
+
+		
 	} 
 	else {
 		await context.send('А че цитгенить то будем?')
