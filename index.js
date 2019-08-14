@@ -974,11 +974,64 @@ updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 })
 
 updates.hear('/citgen', async(context) => {
-	var text = []
+	var text = [],
+		imagekek = [];
+	
+
+	if(context.hasReplyMessage) {
+		await context.send('Citgen одобрен, ща будет ржака')
+
+
+		text = context.replyMessage.text
+
+	
+		imagekek = await api.users.get({
+			user_ids: context.replyMessage.senderId,
+			fields: 'photo_200',
+			name_case: 'nom'
+		})
+
+		console.log(imagekek[0])
+
+		var download = function(uri, filename, callback){
+			request.head(uri, function(err, res, body){
+			  console.log('content-type:', res.headers['content-type']);
+			  console.log('content-length:', res.headers['content-length']);
+			  request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+			});
+		};
+
+		download(imagekek[0].photo_200, 'ava.png', function(){
+			console.log('done');
+			gm(640,400, "#000000")
+			.fill('#FFFFFF')
+			.font('HelveticaNeue.ttf')
+			.fontSize(30)
+			.drawText(30,42, 'Золотые слова')
+			.in('-page', '+30+85')
+			.in('ava.png')
+			.fontSize(20)
+			.drawText(260,110,`«${text}»`)
+			.fontSize(30)
+			.drawText(30,370, `© ${imagekek[0].first_name} ${imagekek[0].last_name}`)
+			.mosaic() 
+			.write('rofl.png', async function(err) {
+			if(err) {
+				console.log(err)
+			}
+			await context.sendPhoto('rofl.png');
+			await fs.unlink('rofl.png');
+		})
+		});
+	} else {
+		await context.send('А че цитгенить то будем?')
+	}
+
 	if(context.hasForwards) {
 		await context.send('Citgen одобрен, ща будет ржака')
 		imagekek = []
 
+	
 		if(context.forwards.length === 1)
 		{
 			text[0] = context.forwards[0].text
@@ -1004,6 +1057,9 @@ updates.hear('/citgen', async(context) => {
 				name_case: 'nom'
 			})
 		}
+
+
+		
 
 
 		var download = function(uri, filename, callback){
