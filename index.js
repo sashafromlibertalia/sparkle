@@ -1026,7 +1026,6 @@ updates.hear('/citgen', async(context) => {
 	} else {
 		await context.send('А че цитгенить то будем?')
 	}
-
 	if(context.hasForwards) {
 		await context.send('Citgen одобрен, ща будет ржака')
 		imagekek = []
@@ -1092,9 +1091,13 @@ updates.hear('/citgen', async(context) => {
 			await fs.unlink('rofl.png');
 		})
 		});
-	} else {
+	} 
+	else {
 		await context.send('А че цитгенить то будем?')
 	}
+	
+
+	
 })
 
 
