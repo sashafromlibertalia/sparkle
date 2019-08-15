@@ -31,7 +31,7 @@ updates.startPolling();
 //Обработчик сообщений и клавиатуры
 updates.use(async (context, next) => {
 	if (context.is('message')) {
-		let { messagePayload } = context;
+		const { messagePayload } = context;
 
 		context.state.command = messagePayload && messagePayload.command
 			? messagePayload.command
@@ -62,8 +62,6 @@ let hearCommand = (name, conditions, handle) => {
 	);
 };
 
-
-citgen.start();
 
 updates.hear('/start', async(context) => {
 	context.send({
@@ -124,6 +122,7 @@ hearCommand('ball', async(context) => {
 	
 	— Шанc, что мы - дружный класс.
 	— Вероятность - 100%`);
+
 	updates.hear(/шанс/i, async(context) => {		
 	let chances = new Array(6);
 	chances[0] = "Вероятность близка к нулю :(";
@@ -143,8 +142,6 @@ hearCommand('else', async(context) => {
 hearCommand('cancel', async(context) => {
 	await context.send('Хорошо, я выключу клавиатуру!');
 });
-
-let Time = new Date();
 
 
 updates.hear('/завтра', async(context) => {
@@ -173,95 +170,14 @@ if(moment().hour() === 7 && moment().minute() === 40) {
 	}
 }*/
 
-updates.hear('/урок', async(context) => {
-	for(j = 1; j < 7; j++) {
-		//Первый урок
-		for(i = 30; i < 59; i++) {
-			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][0]);
-			}
-			break;
-		}
-		for(i = 0; i < 10; i++) {
-			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) {	
-				context.send('В данный момент проходит ' + Schedule[j-1][0]);
-			}
-			break;
-		}
-
-		//Второй урок
-		for(i = 20; i < 59; i++) {
-			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][1]);
-			}
-			break;
-		}
-		while(i = 0) {
-			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][1]);
-			}
-			break;
-		}
+let url = config.homeworkParserURL, 
+    Time = new Date();
 
 
-		//Третий урок
-		for(i = 15; i < 55; i++) {
-			if(moment().hour() === 10 && moment().day() === j && moment().minute() === i && Schedule[j-1][2] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][2]);
-			}
-			break;
-		}
+/*Парсер */
+request(url, async function(err, res, body) {
+    if (err) throw err
 
-
-		//Четвертый урок
-		for(i = 15; i < 55; i++) {
-			if(moment().hour() === 11 && moment().day() === j && moment().minute() === i && Schedule[j-1][3] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][3]);
-			}
-			break;
-		}
-
-
-		//Пятый урок
-		for(i = 10; i < 50; i++) {
-			if(moment().hour() === 12 && moment().day() === j && moment().minute() === i && Schedule[j-1][4] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][4]);
-			}
-			break;
-		}
-
-
-		//Шестой урок
-		for(i = 10; i < 50; i++) {
-			if(moment().hour() === 13 && moment().day() === j && moment().minute() === i && Schedule[j-1][5] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][5]);
-			}
-			break;
-		}
-
-
-		//Седьмой урок
-		for(i = 10; i < 50; i++) {
-			if(moment().hour() === 14 && moment().day() === j && moment().minute() === i && Schedule[j-1][6] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][6]);
-			}
-			break;
-		}
-	}
-})
-
-
-updates.hear('/уроки', async(context) => {
-	for(i = 1; i < 7; i++) {
-		if(moment().day() === i) {
-			await context.send('Расписание на сегодня:\n' + Schedule[i-1].join(' '));
-		};
-	}
-});
-
-
-let url = config.homeworkParserURL;
-request(url, async function(error, res, body) {
 	let $ = cheerio.load(body),
 		Englishdz = $('#LC2').text(),
 		Russiandz = $('#LC5').text(),
@@ -279,7 +195,9 @@ request(url, async function(error, res, body) {
 		History_dz = $('#LC41').text(),
 		Societydz = $('#LC44').text(),
 		OBJdz = $('#LC47').text(),
-		DPUAlgebra = $('#LC50').text();
+        DPUAlgebra = $('#LC50').text();
+        
+    
 
 	let predmeti = new Array(16);
 		predmeti[0] = $('#LC1').text(); //Английский
@@ -713,6 +631,91 @@ updates.on('message', async(context) => {
 	*/
 })
 
+updates.hear('/урок', async(context) => {
+	for(j = 1; j < 7; j++) {
+		//Первый урок
+		for(i = 30; i < 59; i++) {
+			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][0]);
+			}
+			break;
+		}
+		for(i = 0; i < 10; i++) {
+			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) {	
+				context.send('В данный момент проходит ' + Schedule[j-1][0]);
+			}
+			break;
+		}
+
+		//Второй урок
+		for(i = 20; i < 59; i++) {
+			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][1]);
+			}
+			break;
+		}
+		while(i = 0) {
+			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][1]);
+			}
+			break;
+		}
+
+
+		//Третий урок
+		for(i = 15; i < 55; i++) {
+			if(moment().hour() === 10 && moment().day() === j && moment().minute() === i && Schedule[j-1][2] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][2]);
+			}
+			break;
+		}
+
+
+		//Четвертый урок
+		for(i = 15; i < 55; i++) {
+			if(moment().hour() === 11 && moment().day() === j && moment().minute() === i && Schedule[j-1][3] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][3]);
+			}
+			break;
+		}
+
+
+		//Пятый урок
+		for(i = 10; i < 50; i++) {
+			if(moment().hour() === 12 && moment().day() === j && moment().minute() === i && Schedule[j-1][4] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][4]);
+			}
+			break;
+		}
+
+
+		//Шестой урок
+		for(i = 10; i < 50; i++) {
+			if(moment().hour() === 13 && moment().day() === j && moment().minute() === i && Schedule[j-1][5] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][5]);
+			}
+			break;
+		}
+
+
+		//Седьмой урок
+		for(i = 10; i < 50; i++) {
+			if(moment().hour() === 14 && moment().day() === j && moment().minute() === i && Schedule[j-1][6] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][6]);
+			}
+			break;
+		}
+	}
+})
+
+updates.hear('/уроки', async(context) => {
+	for(i = 1; i < 7; i++) {
+		if(moment().day() === i) {
+			await context.send('Расписание на сегодня:\n' + Schedule[i-1].join(' '));
+		};
+	}
+});
+
 
 updates.hear('/help', async(context) => {
 	await context.send(`Итак, вот вам более-менее краткая документация.
@@ -773,35 +776,35 @@ updates.on('message', async(context,next) => {
 		await context.send({
 			message: 'Cколько лиц ты хочешь получить, мой юный извращенец?',
 			keyboard: Keyboard.keyboard([
-					[
-						Keyboard.textButton({
+				[
+					Keyboard.textButton({
 						label: `1`,
 						payload: {
 							command: 'one'
 						},
 						color: Keyboard.POSITIVE_COLOR
 					}),
-						Keyboard.textButton({
-						label: `2`,
-						payload: {
-							command: 'two'
-						},
-						color: Keyboard.POSITIVE_COLOR,
-					}), 
-						Keyboard.textButton({
+					Keyboard.textButton({
+					label: `2`,
+					payload: {
+						command: 'two'
+					},
+					color: Keyboard.POSITIVE_COLOR,
+				}), 
+					Keyboard.textButton({
 						label: `3`,
 						payload: {
 							command: 'three'
+					},
+					color: Keyboard.POSITIVE_COLOR
+				})],
+				[
+					Keyboard.textButton({
+						label: `4`,
+						payload: {
+							command: 'four'
 						},
-						color: Keyboard.POSITIVE_COLOR
-					})],
-					[
-						Keyboard.textButton({
-							label: `4`,
-							payload: {
-								command: 'four'
-							},
-							color: Keyboard.POSITIVE_COLOR}),
+						color: Keyboard.POSITIVE_COLOR}),
 						Keyboard.textButton({
 							label: `5`,
 							payload: {
@@ -865,7 +868,7 @@ updates.on('message', async(context,next) => {
 	}
 });
 
-
+citgen.start();
 
 //TO-DO
 /*updates.hear(/^\/гдз (.+)/i, async (context) => {
@@ -909,4 +912,24 @@ updates.on('message', async(context,next) => {
 */
 
 
-/* Have a nice day */
+/* Хорошего дня */
+
+
+
+
+
+/*
+MIT License
+
+Copyright (c) 2019 Alexander M.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+*/
