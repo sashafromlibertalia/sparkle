@@ -6,7 +6,7 @@ let {VK} = require('vk-io'),
 
 vk.setOptions({
 	token: config.TOKEN,
-	pollingGroupId: config.poullingGroupID,
+	pollingGroupId: config.poolingGroupID,
 	peer_id: config.peerID
 });
 
