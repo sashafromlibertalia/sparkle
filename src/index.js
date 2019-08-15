@@ -1,5 +1,5 @@
 let {VK} = require('vk-io'),
-	{Keyboard} = require('vk-io'),
+	{ Keyboard } = require('vk-io'),
 	config = require('./config'),
 	citgen = require('./citgen'),
 	Schedule = require('./schedule'),
@@ -9,7 +9,8 @@ let {VK} = require('vk-io'),
 	cheerio = require('cheerio'),
 	request = require('request'),
 	Intl = require('intl'),
-	moment = require('moment');
+	moment = require('moment'),
+	Time = new Date();
 
 moment().format();
 
@@ -24,6 +25,7 @@ vk.setOptions({
 require('http').createServer().listen(process.env.PORT || 8000).on('request', function(request, res){
 	res.end('');
 });
+
 
 api.baseUrl = 'https://api.vk.com/method/';
 updates.startPolling();
@@ -109,11 +111,8 @@ hearCommand('игры', async (context) => {
 				},
 				color: Keyboard.NEGATIVE_COLOR
 			})
-		],
-		{
-			oneTime: true
-		})
-	});
+		]).oneTime()
+	})
 });
 
 hearCommand('ball', async(context) => {
@@ -123,16 +122,16 @@ hearCommand('ball', async(context) => {
 	— Шанc, что мы - дружный класс.
 	— Вероятность - 100%`);
 
-	updates.hear(/шанс/i, async(context) => {		
-	let chances = new Array(6);
-	chances[0] = "Вероятность близка к нулю :(";
-  	chances[1] = "Я считаю, что 50 на 50";
-  	chances[2] = "Вероятность - 100%";
-  	chances[3] = "Я полагаю, что вероятность близка к 100%";
-  	chances[4] = "Маловероятно, но шанс есть";
-  	chances[5] = "Вероятность нулевая, ничего не поделать";
-	await context.send(chances[Math.floor(Math.random() * chances.length)]);
-});
+	updates.hear(/шанс/i, (context) => {	
+		let chances = new Array(6);
+		chances[0] = "Вероятность близка к нулю :(";
+  		chances[1] = "Я считаю, что 50 на 50";
+  		chances[2] = "Вероятность - 100%";
+  		chances[3] = "Я полагаю, что вероятность близка к 100%";
+  		chances[4] = "Маловероятно, но шанс есть";
+  		chances[5] = "Вероятность нулевая, ничего не поделать";
+		context.send(chances[Math.floor(Math.random() * chances.length)]);
+	});
 });
 
 hearCommand('else', async(context) => {
@@ -170,8 +169,93 @@ if(moment().hour() === 7 && moment().minute() === 40) {
 	}
 }*/
 
-let url = config.homeworkParserURL, 
-    Time = new Date();
+updates.hear('/урок', async(context) => {
+	for(j = 1; j < 7; j++) {
+		//Первый урок
+		for(i = 30; i < 59; i++) {
+			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][0]);
+			}
+			break;
+		}
+		for(i = 0; i < 10; i++) {
+			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) {	
+				context.send('В данный момент проходит ' + Schedule[j-1][0]);
+			}
+			break;
+		}
+
+		//Второй урок
+		for(i = 20; i < 59; i++) {
+			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][1]);
+			}
+			break;
+		}
+		while(i = 0) {
+			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][1]);
+			}
+			break;
+		}
+
+
+		//Третий урок
+		for(i = 15; i < 55; i++) {
+			if(moment().hour() === 10 && moment().day() === j && moment().minute() === i && Schedule[j-1][2] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][2]);
+			}
+			break;
+		}
+
+
+		//Четвертый урок
+		for(i = 15; i < 55; i++) {
+			if(moment().hour() === 11 && moment().day() === j && moment().minute() === i && Schedule[j-1][3] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][3]);
+			}
+			break;
+		}
+
+
+		//Пятый урок
+		for(i = 10; i < 50; i++) {
+			if(moment().hour() === 12 && moment().day() === j && moment().minute() === i && Schedule[j-1][4] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][4]);
+			}
+			break;
+		}
+
+
+		//Шестой урок
+		for(i = 10; i < 50; i++) {
+			if(moment().hour() === 13 && moment().day() === j && moment().minute() === i && Schedule[j-1][5] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][5]);
+			}
+			break;
+		}
+
+
+		//Седьмой урок
+		for(i = 10; i < 50; i++) {
+			if(moment().hour() === 14 && moment().day() === j && moment().minute() === i && Schedule[j-1][6] != undefined) {
+				context.send('В данный момент проходит ' + Schedule[j-1][6]);
+			}
+			break;
+		}
+	}
+})
+
+updates.hear('/уроки', async(context) => {
+	for(i = 1; i < 7; i++) {
+		if(moment().day() === i) {
+			await context.send('Расписание на сегодня:\n' + Schedule[i-1].join(' '));
+		};
+	}
+});
+
+
+let url = config.homeworkParserURL;
 
 
 /*Парсер */
@@ -436,10 +520,7 @@ request(url, async function(err, res, body) {
 				},
 				color: Keyboard.NEGATIVE_COLOR
 			})
-		],
-			{
-				oneTime: true
-			})
+		]).oneTime()
 	   	});
     });
 
@@ -496,10 +577,7 @@ request(url, async function(err, res, body) {
 				},
 				color: Keyboard.NEGATIVE_COLOR
 			})
-		],
-		{
-			oneTime: true
-		})
+		]).oneTime()
 		});
 	});
 
@@ -630,91 +708,6 @@ updates.on('message', async(context) => {
 	})
 	*/
 })
-
-updates.hear('/урок', async(context) => {
-	for(j = 1; j < 7; j++) {
-		//Первый урок
-		for(i = 30; i < 59; i++) {
-			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][0]);
-			}
-			break;
-		}
-		for(i = 0; i < 10; i++) {
-			if(moment().hour() === 8 && moment().day() === j && moment().minute() === i && Schedule[j-1][0] != undefined) {	
-				context.send('В данный момент проходит ' + Schedule[j-1][0]);
-			}
-			break;
-		}
-
-		//Второй урок
-		for(i = 20; i < 59; i++) {
-			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][1]);
-			}
-			break;
-		}
-		while(i = 0) {
-			if(moment().hour() === 9 && moment().day() === j && moment().minute() === i && Schedule[j-1][1] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][1]);
-			}
-			break;
-		}
-
-
-		//Третий урок
-		for(i = 15; i < 55; i++) {
-			if(moment().hour() === 10 && moment().day() === j && moment().minute() === i && Schedule[j-1][2] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][2]);
-			}
-			break;
-		}
-
-
-		//Четвертый урок
-		for(i = 15; i < 55; i++) {
-			if(moment().hour() === 11 && moment().day() === j && moment().minute() === i && Schedule[j-1][3] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][3]);
-			}
-			break;
-		}
-
-
-		//Пятый урок
-		for(i = 10; i < 50; i++) {
-			if(moment().hour() === 12 && moment().day() === j && moment().minute() === i && Schedule[j-1][4] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][4]);
-			}
-			break;
-		}
-
-
-		//Шестой урок
-		for(i = 10; i < 50; i++) {
-			if(moment().hour() === 13 && moment().day() === j && moment().minute() === i && Schedule[j-1][5] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][5]);
-			}
-			break;
-		}
-
-
-		//Седьмой урок
-		for(i = 10; i < 50; i++) {
-			if(moment().hour() === 14 && moment().day() === j && moment().minute() === i && Schedule[j-1][6] != undefined) {
-				context.send('В данный момент проходит ' + Schedule[j-1][6]);
-			}
-			break;
-		}
-	}
-})
-
-updates.hear('/уроки', async(context) => {
-	for(i = 1; i < 7; i++) {
-		if(moment().day() === i) {
-			await context.send('Расписание на сегодня:\n' + Schedule[i-1].join(' '));
-		};
-	}
-});
 
 
 updates.hear('/help', async(context) => {
