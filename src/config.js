@@ -1,5 +1,5 @@
 let config = {
-    TOKEN: '9',
+    TOKEN: '',
     poullingGroupID: '', //Int
     peerID: 2000000001, /* Стандартное значение*/
     homeworkParserURL: '' /* Ссылка, откуда будет парсится д/з */,
