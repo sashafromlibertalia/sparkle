@@ -10,7 +10,11 @@ let {VK} = require('vk-io'),
 	request = require('request'),
 	Intl = require('intl'),
 	moment = require('moment'),
-	Time = new Date();
+	Time = new Date(),
+	formatter = new Intl.DateTimeFormat("ru", {
+		month: "long",
+		day: "numeric"
+	});
 
 moment().format();
 
@@ -28,7 +32,6 @@ require('http').createServer().listen(process.env.PORT || 8000).on('request', fu
 
 
 api.baseUrl = 'https://api.vk.com/method/';
-updates.startPolling();
 
 //Обработчик сообщений и клавиатуры
 updates.use(async (context, next) => {
@@ -40,10 +43,10 @@ updates.use(async (context, next) => {
 			: null;
 	}
 
-	await next();
+	return next();
 });
 
-let hearCommand = (name, conditions, handle) => {
+const hearCommand = (name, conditions, handle) => {
 	if (typeof handle !== 'function') {
 		handle = conditions;
 		conditions = [`/${name}`];
@@ -53,7 +56,7 @@ let hearCommand = (name, conditions, handle) => {
 		conditions = [conditions];
 	}
 
-	updates.hear(
+	vk.updates.hear(
 		[
 			(text, { state }) => (
 				state.command === name
@@ -85,37 +88,40 @@ updates.hear('/start', async(context) => {
 /help - моя документация`});
 });
 
-hearCommand('игры', async (context) => {
+updates.hear('/игры', async(context) => {
+
+	let gamesKeyboard = Keyboard.keyboard([
+		[
+			Keyboard.textButton({
+			label: 'Шар Вероятностей',
+			payload: {
+				command: 'ball'
+			},
+			color: Keyboard.POSITIVE_COLOR
+		}),
+			Keyboard.textButton({
+			label: 'Что-то еще...',
+			payload: {
+				command: 'else'
+			},
+			color: Keyboard.POSITIVE_COLOR
+		})],
+			Keyboard.textButton({
+			label: 'Закрыть клавиатуру',
+			payload: {
+				command: 'cancel'
+			},
+			color: Keyboard.NEGATIVE_COLOR
+		})
+	]).oneTime();
+
 	await context.send({
 		message: 'Вот список моих игр',
-		keyboard: Keyboard.keyboard([
-			[
-				Keyboard.textButton({
-				label: 'Шар Вероятностей',
-				payload: {
-					command: 'ball'
-				},
-				color: Keyboard.POSITIVE_COLOR
-			}),
-                Keyboard.textButton({
-				label: 'Что-то еще...',
-				payload: {
-					command: 'else'
-				},
-				color: Keyboard.POSITIVE_COLOR
-			})],
-                Keyboard.textButton({
-				label: 'Закрыть клавиатуру',
-				payload: {
-					command: 'cancel'
-				},
-				color: Keyboard.NEGATIVE_COLOR
-			})
-		]).oneTime()
+		keyboard: gamesKeyboard
 	})
-});
+})
 
-hearCommand('ball', async(context) => {
+hearCommand('ball', async(context, next) => {
 	await context.send(`Как играть в эту игру? Очень просто! Ты пишешь "шанc" и свое утверждение, а я отвечаю вероятностью.
 	Пример:
 	
@@ -129,7 +135,8 @@ hearCommand('ball', async(context) => {
   		chances[2] = "Вероятность - 100%";
   		chances[3] = "Я полагаю, что вероятность близка к 100%";
   		chances[4] = "Маловероятно, но шанс есть";
-  		chances[5] = "Вероятность нулевая, ничего не поделать";
+		chances[5] = "Вероятность нулевая, ничего не поделать";
+		  
 		context.send(chances[Math.floor(Math.random() * chances.length)]);
 	});
 });
@@ -256,10 +263,61 @@ updates.hear('/уроки', async(context) => {
 
 
 let url = config.homeworkParserURL;
-
-
 /*Парсер */
 request(url, async function(err, res, body) {
+	let weekKeyboard = Keyboard.keyboard([[
+			Keyboard.textButton({
+				label: `Понедельник`,
+				payload: {
+					command: 'monday'
+				},
+				color: Keyboard.POSITIVE_COLOR
+			}), 
+			Keyboard.textButton({
+				label: `Вторник`,
+				payload: {
+					command: 'tuesday'
+				},
+				color: Keyboard.POSITIVE_COLOR,
+			}), 
+			Keyboard.textButton({
+				label: `Среда`,
+				payload: {
+					command: 'wednesday'
+				},
+				color: Keyboard.POSITIVE_COLOR
+			})],
+		[
+			Keyboard.textButton({
+				label: `Четверг`,
+				payload: {
+					command: 'thursday'
+				},
+			color: Keyboard.POSITIVE_COLOR
+		}),
+			Keyboard.textButton({
+				label: `Пятница`,
+				payload: {
+					command: 'friday'
+				},
+			color: Keyboard.POSITIVE_COLOR
+		}),
+			Keyboard.textButton({
+				label: `Суббота`,
+				payload: {
+					command: 'saturday'
+				},
+			color: Keyboard.POSITIVE_COLOR
+		})],
+			Keyboard.textButton({
+			label: `Закрыть клавиатуру`,
+			payload: {
+				command: 'cancel'
+			},
+			color: Keyboard.NEGATIVE_COLOR
+		})
+	]).oneTime();
+
     if (err) throw err
 
 	let $ = cheerio.load(body),
@@ -464,120 +522,21 @@ request(url, async function(err, res, body) {
 	};
 	});
 
-	let asks = new Array(2);
+	const asks = new Array(2);
 	asks[0] = new RegExp(/задано/i);
 	asks[1] = new RegExp(/задали/i);
+	
 	updates.hear(asks, async(context) => {
-			await context.send({
+		await context.send({
 			message: 'Я тут увидел, что кто-то из вас спрашивает ДЗ. Выберите, какой день вам нужен:',
-			keyboard: Keyboard.keyboard([
-			[
-				Keyboard.textButton({
-				label: `Понедельник`,
-				payload: {
-					command: 'monday'
-				},
-				color: Keyboard.POSITIVE_COLOR
-			}),
-                Keyboard.textButton({
-				label: `Вторник`,
-				payload: {
-					command: 'tuesday'
-				},
-				color: Keyboard.POSITIVE_COLOR,
-			}), 
-			    Keyboard.textButton({
-				label: `Среда`,
-				payload: {
-					command: 'wednesday'
-				},
-				color: Keyboard.POSITIVE_COLOR
-			})],
-			[
-				Keyboard.textButton({
-					label: `Четверг`,
-					payload: {
-						command: 'thursday'
-					},
-					color: Keyboard.POSITIVE_COLOR}),
-				Keyboard.textButton({
-					label: `Пятница`,
-					payload: {
-						command: 'friday'
-					},
-					color: Keyboard.POSITIVE_COLOR}),
-				Keyboard.textButton({
-					label: `Суббота`,
-					payload: {
-						command: 'saturday'
-					},
-					color: Keyboard.POSITIVE_COLOR})
-				],
-                Keyboard.textButton({
-				label: `Закрыть клавиатуру`,
-				payload: {
-					command: 'cancel'
-				},
-				color: Keyboard.NEGATIVE_COLOR
-			})
-		]).oneTime()
-	   	});
-    });
+			keyboard: weekKeyboard
+		});
+	})
 
 	updates.hear('/дата', async(context) => {
 		await context.send({
-		message: 'Выберите, какой день вам нужен:',
-		keyboard: Keyboard.keyboard([
-			[
-				Keyboard.textButton({
-				label: `Понедельник`,
-				payload: {
-					command: 'monday'
-				},
-				color: Keyboard.POSITIVE_COLOR
-			}),
-                Keyboard.textButton({
-				label: `Вторник`,
-				payload: {
-					command: 'tuesday'
-				},
-				color: Keyboard.POSITIVE_COLOR,
-			}), 
-			    Keyboard.textButton({
-				label: `Среда`,
-				payload: {
-					command: 'wednesday'
-				},
-				color: Keyboard.POSITIVE_COLOR
-			})],
-			[
-				Keyboard.textButton({
-					label: `Четверг`,
-					payload: {
-						command: 'thursday'
-					},
-					color: Keyboard.POSITIVE_COLOR}),
-				Keyboard.textButton({
-					label: `Пятница`,
-					payload: {
-						command: 'friday'
-					},
-					color: Keyboard.POSITIVE_COLOR}),
-				Keyboard.textButton({
-					label: `Суббота`,
-					payload: {
-						command: 'saturday'
-					},
-					color: Keyboard.POSITIVE_COLOR})
-				],
-                Keyboard.textButton({
-				label: `Закрыть клавиатуру`,
-				payload: {
-					command: 'cancel'
-				},
-				color: Keyboard.NEGATIVE_COLOR
-			})
-		]).oneTime()
+			message: 'Выберите, какой день вам нужен:',
+			keyboard: weekKeyboard
 		});
 	});
 
@@ -664,14 +623,10 @@ request(url, async function(err, res, body) {
 	});
 
 	updates.hear('/дз', async(context) => {
-		let formatter = new Intl.DateTimeFormat("ru", {
-				month: "long",
-				day: "numeric"
-		});
 
 		for(i = 1; i < 7; i++) {
 			if (moment().day() === i) {
-				await context.send('Домашка с текущего дня ' + formatter.format(Time) + ' \n'  + Days[i-1].join('\n'));
+				await context.send('Домашка с текущего дня (' + formatter.format(Time) + ') \n'  + Days[i-1].join('\n'));
 			};
 		};
 
@@ -681,25 +636,16 @@ request(url, async function(err, res, body) {
 	});
 
 	updates.hear('/дз завтра', async(context) => {
-		let formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-	});
-
 	for(i = 0; i < 7; i++) {
 		if (moment().day() === i) {
 			await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'));
 		};
 	};
 });
+	});
  
 /* Убрать, когда начнется новый учебный год
 updates.on('message', async(context) => {
-		let formatter = new Intl.DateTimeFormat("ru", {
-			month: "long",
-			day: "numeric"
-		});
-			
 		for(i = 0; i < 7; i++) {
 			if(moment().day() === i && moment().hour() === 15 && moment().minute() === 30) {
 				await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'))
@@ -707,7 +653,7 @@ updates.on('message', async(context) => {
 		}
 	})
 	*/
-})
+
 
 
 updates.hear('/help', async(context) => {
@@ -818,10 +764,7 @@ updates.on('message', async(context,next) => {
 						},
 						color: Keyboard.NEGATIVE_COLOR
 					})
-				],
-			{
-				oneTime: true
-			})
+				])
 		});
 
 		hearCommand('one', async(context) => {
@@ -862,6 +805,7 @@ updates.on('message', async(context,next) => {
 });
 
 citgen.start();
+updates.startPolling();
 
 //TO-DO
 /*updates.hear(/^\/гдз (.+)/i, async (context) => {
