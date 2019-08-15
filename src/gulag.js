@@ -4,6 +4,12 @@ let {VK} = require('vk-io'),
     {updates} = vk,
 	{api} = vk;
 
+vk.setOptions({
+	token: config.TOKEN,
+	pollingGroupId: config.poullingGroupID,
+	peer_id: config.peerID
+});
+
 let gulag = updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	let victim = context.$match[1]
 	if(context.senderId === config.adminID) {
@@ -25,4 +31,4 @@ let gulag = updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	}
 });
 
-module.exports = gulag
+module.exports = gulag;
