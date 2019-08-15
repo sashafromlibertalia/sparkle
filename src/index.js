@@ -3,6 +3,7 @@ let {VK} = require('vk-io'),
 	config = require('./config'),
 	citgen = require('./citgen'),
 	Schedule = require('./schedule'),
+	gulag = require('./gulag',)
 	vk = new VK(),
 	{updates} = vk,
 	{api} = vk,
@@ -89,7 +90,6 @@ updates.hear('/start', async(context) => {
 });
 
 updates.hear('/игры', async(context) => {
-
 	let gamesKeyboard = Keyboard.keyboard([
 		[
 			Keyboard.textButton({
@@ -121,7 +121,7 @@ updates.hear('/игры', async(context) => {
 	})
 })
 
-hearCommand('ball', async(context, next) => {
+hearCommand('ball', async(context) => {
 	await context.send(`Как играть в эту игру? Очень просто! Ты пишешь "шанc" и свое утверждение, а я отвечаю вероятностью.
 	Пример:
 	
@@ -805,6 +805,7 @@ updates.on('message', async(context,next) => {
 });
 
 citgen.start();
+gulag.start();
 updates.startPolling();
 
 //TO-DO

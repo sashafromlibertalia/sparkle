@@ -4,7 +4,7 @@ let {VK} = require('vk-io'),
     {updates} = vk,
 	{api} = vk;
 
-updates.hear(/^\/вгулаг (.+)/i, async(context) => {
+let gulag = updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 	let victim = context.$match[1]
 	if(context.senderId === config.adminID) {
 		if(isNaN(victim)) {
@@ -24,3 +24,5 @@ updates.hear(/^\/вгулаг (.+)/i, async(context) => {
 		await context.send(`Упс, ошибочка. У вас нет доступа к этой команде`);
 	}
 });
+
+module.exports = gulag
