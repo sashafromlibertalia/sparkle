@@ -1,6 +1,6 @@
-![alt text](https://pp.userapi.com/c845216/v845216900/9c0b3/MupX9Y9CqOg.jpg)
+![alt text](https://pp.userapi.com/c851036/v851036626/18eb61/eVj7Z4ATJY8.jpg)
 
-# Bot
+# SchoolBot
 
 Специальный бот на Node.Js, написанный для моей школьной беседы.
 
@@ -21,6 +21,4 @@
 >`/help` - краткая документация
 
 # Мои контакты
-Если вы хотите иметь подобного бота с уникальным функционалом для своей школы/университета, можете связаться со мной:
-* [Telegram](https://t.me/sashafromlibertalia)
-* sashafromlibertalia@gmail.com
+Если вы хотите иметь подобного бота с уникальным функционалом для своей школы/университета, можете заказать его у *[меня](sashafromkvartalka.com/order).
