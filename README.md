@@ -18,7 +18,7 @@ $ git clone https://github.com/sashafromlibertalia/SchoolBot.git
 ```js
 let config = {
     TOKEN: '',  // Сюда вы пишите токен группы, полученный с помощью LongPoll
-    poullingGroupID: '', // ID вашей группы, Int
+    poolingGroupID: '', // ID вашей группы, Int
     peerID: 2000000001, // см. документацию ВКонтакте
     homeworkParserURL: '', // Ссылка на файл domashka.txt (Рекомендую хранить его на GitHub в репозитории с ботом)
     className: '', //Ваш класс (или группа)
