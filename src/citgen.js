@@ -1,11 +1,20 @@
 let {VK} = require('vk-io'),
-    vk = new VK(),
+	vk = new VK(),
+	config = require('./config'),
     {updates} = vk,
-    {api} = vk,
+	{api} = vk,
+	request = require('request'),
 	gm = require('gm').subClass({imageMagick:true}),
 	fs = require('fs');
 
-updates.hear('/citgen', async(context) => {
+vk.setOptions({
+		token: config.TOKEN,
+		pollingGroupId: config.poullingGroupID,
+		peer_id: config.peerID
+});
+
+let citgen = updates.hear('/citgen', async(context) => {
+	console.log(context)
 	if(context.hasReplyMessage) {
 		var text = [],
 		imagekek = [];
@@ -55,6 +64,7 @@ updates.hear('/citgen', async(context) => {
 		});
 	} 
 	else if(context.hasForwards) {
+	
 		var text = [],
 		imagekek = [];
 		await context.send('Citgen одобрен, ща будет ржака')
@@ -156,3 +166,4 @@ updates.hear('/citgen', async(context) => {
 	}
 })
 
+module.exports = citgen;
