@@ -705,6 +705,7 @@ ${Schedule[5].join(' ')}`)
 
 
 citgen.start();
+gulag.start();
 updates.startPolling();
 
 //TO-DO
