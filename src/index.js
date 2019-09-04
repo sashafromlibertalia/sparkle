@@ -26,14 +26,9 @@ vk.setOptions({
 })
 
 // Cоздаем сервер
-require('http').createServer().listen(process.env.PORT || 5000).on('request', function (request, res) {
+require('http').createServer().listen(process.env.PORT || 8000).on('request', function (request, res) {
   res.end('')
 })
-
-
-citgen.start()
-gulag.start()
-updates.startPolling()
 
 api.baseUrl = 'https://api.vk.com/method/'
 
@@ -134,10 +129,10 @@ hearCommand('ball', async (context) => {
   updates.hear(/шанс/i, (context) => {
     const chances = new Array(6)
     chances[0] = 'Вероятность близка к нулю :('
-  	chances[1] = 'Я считаю, что 50 на 50'
-  	chances[2] = 'Вероятность - 100%'
-  	chances[3] = 'Я полагаю, что вероятность близка к 100%'
-  	chances[4] = 'Маловероятно, но шанс есть'
+  		chances[1] = 'Я считаю, что 50 на 50'
+  		chances[2] = 'Вероятность - 100%'
+  		chances[3] = 'Я полагаю, что вероятность близка к 100%'
+  		chances[4] = 'Маловероятно, но шанс есть'
     chances[5] = 'Вероятность нулевая, ничего не поделать'
 
     context.send(chances[Math.floor(Math.random() * chances.length)])
@@ -160,6 +155,7 @@ updates.hear('/завтра', async (context) => {
   }
 })
 
+
 let greeting = new Array(4)
 greeting[0] = "Итак, мои дорогие, начался новый учебный день. Я желаю вам всем хороших оценок по всем предметам, удачи :)\n Расписание на сегодня:\n";
 greeting[1] = "И снова всем приветик, господа. Скучали? Я знаю, что нет. Вот вам расписание на сегодня: \n";
@@ -175,7 +171,7 @@ if(moment().hour() === 7 && moment().minute() === 40) {
 			})
 		}
 	}
-} 
+}
 
 updates.hear('/урок', async (context) => {
   for (j = 1; j < 7; j++) {
@@ -318,8 +314,8 @@ request(url, async function (err, res, body) {
   const $ = cheerio.load(body)
   const Englishdz = $('#LC2').text()
   const Russiandz = $('#LC5').text()
- 	const Literaturedz = $('#LC8').text()
- 	const Germandz = $('#LC11').text()
+ 		const Literaturedz = $('#LC8').text()
+ 		const Germandz = $('#LC11').text()
   const Frenchdz = $('#LC14').text()
   const Algebradz = $('#LC17').text()
   const Geometrydz = $('#LC20').text()
@@ -335,7 +331,7 @@ request(url, async function (err, res, body) {
   const DPUAlgebra = $('#LC50').text()
   const AstronomyDZ = $('#LC53').text()
 
-  const predmeti = new Array(17)
+  const predmeti = new Array(18)
   predmeti[0] = $('#LC1').text() // Английский
   predmeti[1] = $('#LC4').text() // Русский
   predmeti[2] = $('#LC7').text() // Литература
@@ -358,42 +354,43 @@ request(url, async function (err, res, body) {
   const	line = $('#LC3').text()
 
   const Monday = new Array(3)
-  Monday[0] = predmeti[2] + Literaturedz + `\n${line}`
-  Monday[1] = predmeti[1] + Russiandz + `\n${line}`
-  Monday[2] = predmeti[0] + Englishdz + `\n${line}`
+Monday[0] = predmeti[2] + Literaturedz + `\n${line}`
+Monday[1] = predmeti[1] + Russiandz + `\n${line}`
+Monday[2] = predmeti[0] + Englishdz + `\n${line}`
 
-  const Tuesday = new Array(5)
-  Tuesday[0] = predmeti[7] + Biologydz + `\n${line}`
-  Tuesday[1] = predmeti[9] + Physicsdz + `\n${line}`
-  Tuesday[2] = predmeti[14] + Societydz + `\n${line}`
-  Tuesday[3] = predmeti[8] + Chemistrydz + `\n${line}`
-  Tuesday[4] = predmeti[5] + Algebradz + `\n${line}`
+const Tuesday = new Array(5)
+Tuesday[0] = predmeti[7] + Biologydz + `\n${line}`
+Tuesday[1] = predmeti[9] + Physicsdz + `\n${line}`
+Tuesday[2] = predmeti[14] + Societydz + `\n${line}`
+Tuesday[3] = predmeti[8] + Chemistrydz + `\n${line}`
+Tuesday[4] = predmeti[5] + Algebradz + `\n${line}`
 
-  const Wednesday = new Array(4)
-  Wednesday[0] = predmeti[0] + Englishdz + `\n${line}`
-  Wednesday[1] = predmeti[5] + Algebradz + `\n${line}`
-  Wednesday[2] = predmeti[17] + AstronomyDZ + `\n${line}`
-  Wednesday[3] = predmeti[4] + Frenchdz + `\n${line}`
+const Wednesday = new Array(4)
+Wednesday[0] = predmeti[0] + Englishdz + `\n${line}`
+Wednesday[1] = predmeti[5] + Algebradz + `\n${line}`
+Wednesday[2] = predmeti[17] + AstronomyDZ + `\n${line}`
+Wednesday[3] = predmeti[4] + Frenchdz + `\n${line}`
 
-  const Thursday = new Array(5)
-  Thursday[0] = predmeti[15] + OBJdz + `\n${line}`
-  Thursday[1] = predmeti[6] + Geometrydz + `\n${line}`
-  Thursday[2] = predmeti[1] + Russiandz + `\n${line}`
-  Thursday[3] = predmeti[12] + Mhkdz + `\n${line}`
-  Thursday[4] = predmeti[2] + Literaturedz + `\n${line}`
+const Thursday = new Array(5)
+Thursday[0] = predmeti[15] + OBJdz + `\n${line}`
+Thursday[1] = predmeti[6] + Geometrydz + `\n${line}`
+Thursday[2] = predmeti[1] + Russiandz + `\n${line}`
+Thursday[3] = predmeti[12] + Mhkdz + `\n${line}`
+Thursday[4] = predmeti[2] + Literaturedz + `\n${line}`
 
-  const Friday = new Array(4)
-  Friday[0] = predmeti[0] + Englishdz + `\n${line}`
-  Friday[1] = predmeti[13] + History_dz + `\n${line}`
-  Friday[2] = predmeti[10] + CompSciencedz + `\n${line}`
-  Friday[3] = predmeti[11] + Geographydz + `\n${line}`
+const Friday = new Array(4)
+Friday[0] = predmeti[0] + Englishdz + `\n${line}`
+Friday[1] = predmeti[13] + History_dz + `\n${line}`
+Friday[2] = predmeti[10] + CompSciencedz + `\n${line}`
+Friday[3] = predmeti[11] + Geographydz + `\n${line}`
 
-  const Saturday = new Array(5)
-  Saturday[0] = predmeti[13] + History_dz + `\n${line}`
-  Saturday[1] = predmeti[9] + Physicsdz + `\n${line}`
-  Saturday[2] = predmeti[6] + Geometrydz + `\n${line}`
-  Saturday[3] = predmeti[4] + Frenchdz + `\n${line}`
-  Saturday[4] = predmeti[14] + Societydz + `\n${line}`
+const Saturday = new Array(5)
+Saturday[0] = predmeti[13] + History_dz + `\n${line}`
+Saturday[1] = predmeti[9] + Physicsdz + `\n${line}`
+Saturday[2] = predmeti[6] + Geometrydz + `\n${line}`
+Saturday[3] = predmeti[4] + Frenchdz + `\n${line}`
+Saturday[4] = predmeti[14] + Societydz + `\n${line}`
+
 
   const preds = new Array(17)
   preds[0] = {
@@ -469,7 +466,7 @@ request(url, async function (err, res, body) {
     dz: AstronomyDZ
   }
 
-  const Sunday = new Array(17)
+  const Sunday = new Array(18)
   Sunday[0] = predmeti[0] + preds[0].dz + `\n${line}`
   Sunday[1] = predmeti[1] + preds[1].dz + `\n${line}`
   Sunday[2] = predmeti[2] + preds[2].dz + `\n${line}`
@@ -638,13 +635,15 @@ request(url, async function (err, res, body) {
   })
 })
 
-updates.on('message', async(context) => {
-		for(i = 0; i < 7; i++) {
-			if(moment().day() === i && moment().hour() === 15 && moment().minute() === 30) {
-				await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'))
-			}
-		}
-})
+
+
+  
+  for(i = 0; i < 7; i++) {
+    if(moment().day() === i && moment().hour() === 15 && moment().minute() === 30) {
+       context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'))
+    }
+  }
+
 
 updates.hear('/help', async (context) => {
   await context.send(`Итак, вот вам более-менее краткая документация.
@@ -792,6 +791,10 @@ updates.on('message', async (context, next) => {
     await next()
   }
 })
+
+citgen.start()
+gulag.start()
+updates.startPolling()
 
 // TO-DO
 /* updates.hear(/^\/гдз (.+)/i, async (context) => {
