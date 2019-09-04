@@ -1,32 +1,33 @@
-const { VK } = require('vk-io')
-const { Keyboard } = require('vk-io')
-const config = require('./config')
-const citgen = require('./citgen')
-const Schedule = require('./schedule')
-const gulag = require('./gulag')
-vk = new VK(),
-{ updates } = vk,
-{ api } = vk,
-cheerio = require('cheerio'),
-request = require('request'),
-Intl = require('intl'),
-moment = require('moment'),
-Time = new Date(),
-formatter = new Intl.DateTimeFormat('ru', {
-  month: 'long',
-  day: 'numeric'
-})
+let {VK} = require('vk-io'),
+	{ Keyboard } = require('vk-io'),
+	config = require('./config'),
+	citgen = require('./citgen'),
+	Schedule = require('./schedule'),
+	gulag = require('./gulag'),
+	vk = new VK(),
+	{updates} = vk,
+	{api} = vk,
+	cheerio = require('cheerio'),
+	request = require('request'),
+	Intl = require('intl'),
+	moment = require('moment'),
+	Time = new Date(),
+	formatter = new Intl.DateTimeFormat("ru", {
+		month: "long",
+		day: "numeric"
+	});
 
 moment().format()
 
 vk.setOptions({
   token: config.TOKEN,
-  pollingGroupId: config.poullingGroupID,
+  pollingGroupId: config.pollingGroupId,
   peer_id: config.peerID
 })
 
 // Cоздаем сервер
-require('http').createServer().listen(process.env.PORT || 8000).on('request', function (request, res) {
+require('http').createServer().listen(process.env.PORT || 5000).on('request', function (request, res) {
+  console.log('works')
   res.end('')
 })
 
@@ -129,10 +130,10 @@ hearCommand('ball', async (context) => {
   updates.hear(/шанс/i, (context) => {
     const chances = new Array(6)
     chances[0] = 'Вероятность близка к нулю :('
-  		chances[1] = 'Я считаю, что 50 на 50'
-  		chances[2] = 'Вероятность - 100%'
-  		chances[3] = 'Я полагаю, что вероятность близка к 100%'
-  		chances[4] = 'Маловероятно, но шанс есть'
+  	chances[1] = 'Я считаю, что 50 на 50'
+  	chances[2] = 'Вероятность - 100%'
+  	chances[3] = 'Я полагаю, что вероятность близка к 100%'
+  	chances[4] = 'Маловероятно, но шанс есть'
     chances[5] = 'Вероятность нулевая, ничего не поделать'
 
     context.send(chances[Math.floor(Math.random() * chances.length)])
