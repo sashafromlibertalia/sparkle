@@ -638,11 +638,11 @@ Saturday[4] = predmeti[14] + Societydz + `\n${line}`
 
 
   
-  for(i = 0; i < 7; i++) {
-    if(moment().day() === i && moment().hour() === 15 && moment().minute() === 30) {
-       context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'))
-    }
+for(i = 0; i < 7; i++) {
+  if(moment().day() === i && moment().hour() === 15 && moment().minute() === 30) {
+    context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'))
   }
+}
 
 
 updates.hear('/help', async (context) => {
