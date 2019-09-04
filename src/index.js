@@ -1,21 +1,21 @@
-let {VK} = require('vk-io'),
-	{ Keyboard } = require('vk-io'),
-	config = require('./config'),
-	citgen = require('./citgen'),
-	Schedule = require('./schedule'),
-	gulag = require('./gulag'),
-	vk = new VK(),
-	{updates} = vk,
-	{api} = vk,
-	cheerio = require('cheerio'),
-	request = require('request'),
-	Intl = require('intl'),
-	moment = require('moment'),
-	Time = new Date(),
-	formatter = new Intl.DateTimeFormat("ru", {
-		month: "long",
-		day: "numeric"
-	});
+const { VK } = require('vk-io')
+const { Keyboard } = require('vk-io')
+const config = require('./config')
+const citgen = require('./citgen')
+const Schedule = require('./schedule')
+const gulag = require('./gulag')
+const vk = new VK()
+const { updates } = vk
+const { api } = vk
+const cheerio = require('cheerio')
+const request = require('request')
+const Intl = require('intl')
+const moment = require('moment')
+const Time = new Date()
+const formatter = new Intl.DateTimeFormat('ru', {
+  month: 'long',
+  day: 'numeric'
+})
 
 moment().format()
 
@@ -27,9 +27,13 @@ vk.setOptions({
 
 // Cоздаем сервер
 require('http').createServer().listen(process.env.PORT || 5000).on('request', function (request, res) {
-  console.log('works')
   res.end('')
 })
+
+
+citgen.start()
+gulag.start()
+updates.startPolling()
 
 api.baseUrl = 'https://api.vk.com/method/'
 
@@ -167,7 +171,7 @@ if(moment().hour() === 7 && moment().minute() === 40) {
 		if(moment().day() === i) {
 			api.messages.send({
 				message: random_greeting + Schedule[i-1],
-				peer_id: 2000000001
+				peer_id: config.peerID
 			})
 		}
 	}
@@ -788,10 +792,6 @@ updates.on('message', async (context, next) => {
     await next()
   }
 })
-
-citgen.start()
-gulag.start()
-updates.startPolling()
 
 // TO-DO
 /* updates.hear(/^\/гдз (.+)/i, async (context) => {
