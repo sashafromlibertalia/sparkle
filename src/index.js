@@ -155,7 +155,6 @@ updates.hear('/завтра', async (context) => {
   }
 })
 
-/* Убрать комментарий, когда начнется новый учебный год
 let greeting = new Array(4)
 greeting[0] = "Итак, мои дорогие, начался новый учебный день. Я желаю вам всем хороших оценок по всем предметам, удачи :)\n Расписание на сегодня:\n";
 greeting[1] = "И снова всем приветик, господа. Скучали? Я знаю, что нет. Вот вам расписание на сегодня: \n";
@@ -171,7 +170,7 @@ if(moment().hour() === 7 && moment().minute() === 40) {
 			})
 		}
 	}
-} */
+} 
 
 updates.hear('/урок', async (context) => {
   for (j = 1; j < 7; j++) {
@@ -314,8 +313,8 @@ request(url, async function (err, res, body) {
   const $ = cheerio.load(body)
   const Englishdz = $('#LC2').text()
   const Russiandz = $('#LC5').text()
- 		const Literaturedz = $('#LC8').text()
- 		const Germandz = $('#LC11').text()
+ 	const Literaturedz = $('#LC8').text()
+ 	const Germandz = $('#LC11').text()
   const Frenchdz = $('#LC14').text()
   const Algebradz = $('#LC17').text()
   const Geometrydz = $('#LC20').text()
@@ -329,8 +328,9 @@ request(url, async function (err, res, body) {
   const Societydz = $('#LC44').text()
   const OBJdz = $('#LC47').text()
   const DPUAlgebra = $('#LC50').text()
+  const AstronomyDZ = $('#LC53').text()
 
-  const predmeti = new Array(16)
+  const predmeti = new Array(17)
   predmeti[0] = $('#LC1').text() // Английский
   predmeti[1] = $('#LC4').text() // Русский
   predmeti[2] = $('#LC7').text() // Литература
@@ -348,46 +348,47 @@ request(url, async function (err, res, body) {
   predmeti[14] = $('#LC43').text() // Обществознание
   predmeti[15] = $('#LC46').text() // ОБЖ
   predmeti[16] = $('#LC49').text() // ДПУ Алгебра
+  predmeti[17] = $('#LC52').text() // Астрономия
 
   const	line = $('#LC3').text()
 
-  const Monday = new Array(4)
-  Monday[0] = predmeti[13] + History_dz + `\n${line}`
+  const Monday = new Array(3)
+  Monday[0] = predmeti[2] + Literaturedz + `\n${line}`
   Monday[1] = predmeti[1] + Russiandz + `\n${line}`
-  Monday[2] = predmeti[8] + Chemistrydz + `\n${line}`
-  Monday[3] = predmeti[0] + Englishdz + `\n${line}`
+  Monday[2] = predmeti[0] + Englishdz + `\n${line}`
 
   const Tuesday = new Array(5)
-  Tuesday[0] = predmeti[2] + Literaturedz + `\n${line}`
-  Tuesday[1] = predmeti[7] + Biologydz + `\n${line}`
-  Tuesday[2] = predmeti[1] + Russiandz + `\n${line}`
-  Tuesday[3] = predmeti[14] + Societydz + `\n${line}`
+  Tuesday[0] = predmeti[7] + Biologydz + `\n${line}`
+  Tuesday[1] = predmeti[9] + Physicsdz + `\n${line}`
+  Tuesday[2] = predmeti[14] + Societydz + `\n${line}`
+  Tuesday[3] = predmeti[8] + Chemistrydz + `\n${line}`
   Tuesday[4] = predmeti[5] + Algebradz + `\n${line}`
 
-  const Wednesday = new Array(5)
-  Wednesday[0] = predmeti[6] + Geometrydz + `\n${line}`
-  Wednesday[1] = predmeti[0] + Englishdz + `\n${line}`
-  Wednesday[2] = predmeti[12] + Mhkdz + `\n${line}`
-  Wednesday[3] = predmeti[9] + Physicsdz + `\n${line}`
-  Wednesday[4] = predmeti[4] + Frenchdz + `\n${line}`
+  const Wednesday = new Array(4)
+  Wednesday[0] = predmeti[0] + Englishdz + `\n${line}`
+  Wednesday[1] = predmeti[5] + Algebradz + `\n${line}`
+  Wednesday[2] = predmeti[17] + AstronomyDZ + `\n${line}`
+  Wednesday[3] = predmeti[4] + Frenchdz + `\n${line}`
 
   const Thursday = new Array(5)
-  Thursday[0] = predmeti[9] + Physicsdz + `\n${line}`
-  Thursday[1] = predmeti[10] + CompSciencedz + `\n${line}`
-  Thursday[2] = predmeti[5] + Algebradz + `\n${line}`
-  Thursday[3] = predmeti[13] + History_dz + `\n${line}`
-  Thursday[4] = predmeti[16] + DPUAlgebra + `\n${line}`
+  Thursday[0] = predmeti[15] + OBJdz + `\n${line}`
+  Thursday[1] = predmeti[6] + Geometrydz + `\n${line}`
+  Thursday[2] = predmeti[1] + Russiandz + `\n${line}`
+  Thursday[3] = predmeti[12] + Mhkdz + `\n${line}`
+  Thursday[4] = predmeti[2] + Literaturedz + `\n${line}`
 
-  const Friday = new Array(3)
-  Friday[0] = predmeti[11] + Geographydz + `\n${line}`
-  Friday[1] = predmeti[2] + Literaturedz + `\n${line}`
-  Friday[2] = predmeti[0] + Englishdz + `\n${line}`
+  const Friday = new Array(4)
+  Friday[0] = predmeti[0] + Englishdz + `\n${line}`
+  Friday[1] = predmeti[13] + History_dz + `\n${line}`
+  Friday[2] = predmeti[10] + CompSciencedz + `\n${line}`
+  Friday[3] = predmeti[11] + Geographydz + `\n${line}`
 
   const Saturday = new Array(5)
-  Saturday[0] = predmeti[6] + Geometrydz + `\n${line}`
-  Saturday[1] = predmeti[14] + Societydz + `\n${line}`
-  Saturday[2] = predmeti[15] + OBJdz + `\n${line}`
+  Saturday[0] = predmeti[13] + History_dz + `\n${line}`
+  Saturday[1] = predmeti[9] + Physicsdz + `\n${line}`
+  Saturday[2] = predmeti[6] + Geometrydz + `\n${line}`
   Saturday[3] = predmeti[4] + Frenchdz + `\n${line}`
+  Saturday[4] = predmeti[14] + Societydz + `\n${line}`
 
   const preds = new Array(17)
   preds[0] = {
@@ -458,6 +459,10 @@ request(url, async function (err, res, body) {
     namesubj: predmeti[16],
     dz: DPUAlgebra
   }
+  preds[17] = {
+    namesubj: predmeti[17],
+    dz: AstronomyDZ
+  }
 
   const Sunday = new Array(17)
   Sunday[0] = predmeti[0] + preds[0].dz + `\n${line}`
@@ -477,6 +482,7 @@ request(url, async function (err, res, body) {
   Sunday[14] = predmeti[3] + preds[3].dz + `\n${line}`
   Sunday[15] = predmeti[15] + preds[15].dz + `\n${line}`
   Sunday[16] = predmeti[16] + preds[16].dz + `\n${line}`
+  Sunday[17] = predmeti[17] + preds[17].dz + `\n${line}`
 
   const Days = [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
 
@@ -627,15 +633,13 @@ request(url, async function (err, res, body) {
   })
 })
 
-/* Убрать, когда начнется новый учебный год
 updates.on('message', async(context) => {
 		for(i = 0; i < 7; i++) {
 			if(moment().day() === i && moment().hour() === 15 && moment().minute() === 30) {
 				await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'))
 			}
 		}
-	})
-	*/
+})
 
 updates.hear('/help', async (context) => {
   await context.send(`Итак, вот вам более-менее краткая документация.
