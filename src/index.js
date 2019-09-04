@@ -4,6 +4,8 @@ const config = require('./config')
 const citgen = require('./citgen')
 const Schedule = require('./schedule')
 const gulag = require('./gulag')
+const shpora = require('./shpora')
+const shporaList = require('./shpora')
 const vk = new VK()
 const { updates } = vk
 const { api } = vk
@@ -794,6 +796,8 @@ updates.on('message', async (context, next) => {
 
 citgen.start()
 gulag.start()
+shpora.start()
+shporaList.start()
 updates.startPolling()
 
 // TO-DO
