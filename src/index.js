@@ -392,7 +392,7 @@ Saturday[3] = predmeti[4] + Frenchdz + `\n${line}`
 Saturday[4] = predmeti[14] + Societydz + `\n${line}`
 
 
-  const preds = new Array(17)
+  const preds = new Array(18)
   preds[0] = {
     namesubj: predmeti[0],
     dz: Englishdz
