@@ -12,6 +12,8 @@ vk.setOptions({
 let listText = []
 let listPhoto = []
 
+function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
+
 const shpora = updates.hear(/^\/шпора добавить (.+)/i, async(context) => {
     let category = context.$match[1]
     if (context.hasAttachments('photo')) {
@@ -23,6 +25,7 @@ const shpora = updates.hear(/^\/шпора добавить (.+)/i, async(contex
       await context.send('Ошибка! Чтобы добавить шпору, прикрепите документ или фотографию к сообщению')
     }
 })
+
 
 
 
@@ -40,10 +43,11 @@ const shporaList = updates.hear('/шпора список', async(context) => {
 const shporaRemove = updates.hear(/^\/шпора удалить (.+)/i, async(context) => {
   let item = context.$match[1]
   if (listText.includes(item)) {
-    listText.splice(i)
-      setTimeout(function() {
-        context.send('Удалено')
-      }, 500)
+    listText.splice(listText.indexOf(item))
+    listPhoto.splice(listText.indexOf(item))
+    setTimeout(function() {
+      context.send('Удалено')
+    }, 500)
   } else {
     setTimeout(function() {
       context.send('Такой шпоры не существует :(')
@@ -55,6 +59,8 @@ const shporaGet = updates.hear(/^\/шпора (.+)/i, async(context) => {
   let item = context.$match[1]
   if (listText.includes(item)) {
     context.sendPhoto(listPhoto[listText.indexOf(item)])
+  } else if (isNumber(item)) {
+    context.sendPhoto(listPhoto[item-1])
   } else {
     setTimeout(function() {
       context.send('Такой шпоры не существует :(')
