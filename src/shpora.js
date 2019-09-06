@@ -16,13 +16,11 @@ const shpora = updates.hear(/^\/шпора добавить (.+)/i, async(contex
     let category = context.$match[1]
     if (context.hasAttachments('photo')) {
       const [attached] = context.getAttachments('photo')
-      console.log(attached)
       list.push({
         text: category,
         attachment: attached.largePhoto
       })
       await context.send('Добавлено ✅')
-      console.log(list)
     } else {
       await context.send('Ошибка! Чтобы добавить шпору, прикрепите документ или фотографию к сообщению')
     }
@@ -41,7 +39,21 @@ const shporaList = updates.hear('/шпора список', async(context) => {
   await context.send(message)
 })
 
-
+const shporaRemove = updates.hear(/^\/шпора удалить (.+)/i, async(context) => {
+  let item = context.$match[1]
+  for (let i = 0; i < list.length; i++) {
+    if (item === list[i].text) {
+      list.splice(i)
+      setTimeout(function() {
+        context.send('Удалено')
+      }, 500)
+    } else {
+      setTimeout(function() {
+        context.send('Такой шпоры не существует :(')
+      }, 800)
+    }
+  }
+})
 
 const shporaGet = updates.hear(/^\/шпора (.+)/i, async(context) => {
   let item = context.$match[1]
@@ -49,12 +61,17 @@ const shporaGet = updates.hear(/^\/шпора (.+)/i, async(context) => {
     if (item === list[i].text) {
       context.sendPhoto(list[i].attachment)
     } else {
-      context.send('Такой шпоры не существует :(')
+      setTimeout(function() {
+        context.send('Такой шпоры не существует :(')
+      }, 500)
     }
   }
 })
 
 
+
+
 module.exports = shpora
 module.exports = shporaList
 module.exports = shporaGet
+module.exports = shporaRemove
