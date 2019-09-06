@@ -2,7 +2,6 @@ const { VK } = require('vk-io')
 const vk = new VK()
 const config = require('./config')
 const { updates } = vk
-const { upload } = vk
 
 vk.setOptions({
   token: config.TOKEN,
@@ -10,16 +9,15 @@ vk.setOptions({
   peer_id: config.peerID
 })
 
-let list = []
+let listText = []
+let listPhoto = []
 
 const shpora = updates.hear(/^\/шпора добавить (.+)/i, async(context) => {
     let category = context.$match[1]
     if (context.hasAttachments('photo')) {
       const [attached] = context.getAttachments('photo')
-      list.push({
-        text: category,
-        attachment: attached.largePhoto
-      })
+      listText.push(category)
+      listPhoto.push(attached.largePhoto)
       await context.send('Добавлено ✅')
     } else {
       await context.send('Ошибка! Чтобы добавить шпору, прикрепите документ или фотографию к сообщению')
@@ -30,10 +28,10 @@ const shpora = updates.hear(/^\/шпора добавить (.+)/i, async(contex
 
 const shporaList = updates.hear('/шпора список', async(context) => {
   let message = ''
-  for (let i = 0; i < list.length; i++) {
-    message += `${i+1}. ${list[i].text}\n`
+  for (let i = 0; i < listText.length; i++) {
+    message += `${i+1}. ${listText[i]}\n`
   }
-  if (list.length === 0) {
+  if (listText.length === 0) {
     message = 'Список пуст'
   }
   await context.send(message)
@@ -41,30 +39,26 @@ const shporaList = updates.hear('/шпора список', async(context) => {
 
 const shporaRemove = updates.hear(/^\/шпора удалить (.+)/i, async(context) => {
   let item = context.$match[1]
-  for (let i = 0; i < list.length; i++) {
-    if (item === list[i].text) {
-      list.splice(i)
+  if (listText.includes(item)) {
+    listText.splice(i)
       setTimeout(function() {
         context.send('Удалено')
       }, 500)
-    } else {
-      setTimeout(function() {
-        context.send('Такой шпоры не существует :(')
-      }, 800)
-    }
+  } else {
+    setTimeout(function() {
+      context.send('Такой шпоры не существует :(')
+    }, 800)
   }
 })
 
 const shporaGet = updates.hear(/^\/шпора (.+)/i, async(context) => {
   let item = context.$match[1]
-  for (let i = 0; i < list.length; i++) {
-    if (item === list[i].text) {
-      context.sendPhoto(list[i].attachment)
-    } else {
-      setTimeout(function() {
-        context.send('Такой шпоры не существует :(')
-      }, 500)
-    }
+  if (listText.includes(item)) {
+    context.sendPhoto(listPhoto[listText.indexOf(item)])
+  } else {
+    setTimeout(function() {
+      context.send('Такой шпоры не существует :(')
+    }, 500)
   }
 })
 
