@@ -694,22 +694,22 @@ updates.hear(/^\/отзыв (.+)/i, async (context) => {
 updates.hear('/неделя', async (context) => {
   await context.send(`РАСПИСАНИЕ НА ВСЮ НЕДЕЛЮ:
 ПОНЕДЕЛЬНИК:
-${Schedule[0].join(' ')}
+${Schedule[0].join('')}
 
 ВТОРНИК:
-${Schedule[1].join(' ')}
+${Schedule[1].join('')}
 
 СРЕДА:
-${Schedule[2].join(' ')}
+${Schedule[2].join('')}
 
 ЧЕТВЕРГ:
-${Schedule[3].join(' ')}
+${Schedule[3].join('')}
 
 ПЯТНИЦА:
-${Schedule[4].join(' ')}
+${Schedule[4].join('')}
 
 СУББОТА:
-${Schedule[5].join(' ')}`)
+${Schedule[5].join('')}`)
 })
 
 const rozhi = new Array(4) // Любое число
