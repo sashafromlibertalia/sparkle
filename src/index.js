@@ -276,7 +276,6 @@ updates.hear('/уроки', async (context) => {
 
 const url = config.homeworkParserURL
 /* Парсер */
-setInterval(function() {
 request(url, async function (err, res, body) {
   const weekKeyboard = Keyboard.keyboard([[
     Keyboard.textButton({
@@ -656,9 +655,8 @@ Saturday[4] = predmeti[14] + Societydz + `\n${line}`
     };
   })
 })
-}, 120000)
 
-//1800000
+
 
 
   
