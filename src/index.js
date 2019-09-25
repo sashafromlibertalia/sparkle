@@ -392,12 +392,13 @@ Wednesday[1] = predmeti[5] + Algebradz + `\n${line}`
 Wednesday[2] = predmeti[17] + AstronomyDZ + `\n${line}`
 Wednesday[3] = predmeti[4] + Frenchdz + `\n${line}`
 
-const Thursday = new Array(5)
+const Thursday = new Array(6)
 Thursday[0] = predmeti[15] + OBJdz + `\n${line}`
 Thursday[1] = predmeti[6] + Geometrydz + `\n${line}`
 Thursday[2] = predmeti[1] + Russiandz + `\n${line}`
 Thursday[3] = predmeti[12] + Mhkdz + `\n${line}`
 Thursday[4] = predmeti[2] + Literaturedz + `\n${line}`
+Thursday[5] = predmeti[5] + Algebradz + `\n${line}`
 
 const Friday = new Array(4)
 Friday[0] = predmeti[0] + Englishdz + `\n${line}`
