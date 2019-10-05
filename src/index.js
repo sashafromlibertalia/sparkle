@@ -821,6 +821,15 @@ shpora.start()
 shporaList.start()
 updates.startPolling()
 
+
+updates.hear('/ержан', async (context) => {
+  await context.send(`${Monday.join('\n')}
+  
+  ${Tuesday.join('\n')}
+  
+  ${Wednesday.join('\n')}`)
+})
+
 // TO-DO
 /* updates.hear(/^\/гдз (.+)/i, async (context) => {
 	let textUser = context.$match[1];
