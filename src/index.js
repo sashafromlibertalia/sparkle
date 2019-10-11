@@ -255,11 +255,13 @@ hearCommand('cancel', async (context) => {
 
 updates.hear('/завтра', async (context) => {
   for (i = 0; i < 7; i++) {
-    if (moment().day() === i && is11A === true) {
-      await context.send(`Расписание на завтра: \n ${Schedule[i].a11.join(' ')}`)
-    }
-    else if (moment().day() === i) {
-      await context.send(`Расписание на завтра: \n ${Schedule[i].b11.join(' ')}`)
+    if (moment().day() === i) {
+      if (is11A === true) {
+        await context.send(`Расписание на завтра: \n ${Schedule[i].map(({a11}) => a11).join(' ')}`)
+      }
+      else {
+        await context.send(`Расписание на завтра: \n ${Schedule[i].map(({b11}) => b11).join(' ')}`)
+      }
     }
   }
 })
@@ -357,7 +359,12 @@ updates.hear('/урок', async (context) => {
 updates.hear('/уроки', async (context) => {
   for (i = 1; i < 7; i++) {
     if (moment().day() === i) {
-      await context.send('Расписание на сегодня:\n' + Schedule[i - 1].join(' '))
+      if (is11A === true) {
+        await context.send(`Расписание на завтра: \n ${Schedule[i-1].map(({a11}) => a11).join(' ')}`)
+      }
+      else {
+        await context.send(`Расписание на сегодня: \n ${Schedule[i-1].map(({b11}) => b11).join(' ')}`)
+      }
     };
   }
 })
@@ -986,24 +993,46 @@ updates.hear(/^\/отзыв (.+)/i, async (context) => {
 })
 
 updates.hear('/неделя', async (context) => {
-  await context.send(`РАСПИСАНИЕ НА ВСЮ НЕДЕЛЮ:
+  if (is11A === true) {
+    await context.send(`РАСПИСАНИЕ НА ВСЮ НЕДЕЛЮ:
 ПОНЕДЕЛЬНИК:
-${Schedule[0].join('')}
+${Schedule[0].map(({a11}) => a11).join(' ')}
 
 ВТОРНИК:
-${Schedule[1].join('')}
+${Schedule[1].map(({a11}) => a11).join(' ')}
 
 СРЕДА:
-${Schedule[2].join('')}
+${Schedule[2].map(({a11}) => a11).join(' ')}
 
 ЧЕТВЕРГ:
-${Schedule[3].join('')}
+${Schedule[3].map(({a11}) => a11).join(' ')}
 
 ПЯТНИЦА:
-${Schedule[4].join('')}
+${Schedule[4].map(({a11}) => a11).join(' ')}
 
 СУББОТА:
-${Schedule[5].join('')}`)
+${Schedule[5].map(({a11}) => a11).join(' ')}`)
+  }
+  else {
+    await context.send(`РАСПИСАНИЕ НА ВСЮ НЕДЕЛЮ:
+ПОНЕДЕЛЬНИК:
+${Schedule[0].map(({b11}) => b11).join(' ')}
+
+ВТОРНИК:
+${Schedule[1].map(({b11}) => b11).join(' ')}
+
+СРЕДА:
+${Schedule[2].map(({b11}) => b11).join(' ')}
+
+ЧЕТВЕРГ:
+${Schedule[3].map(({b11}) => b11).join(' ')}
+
+ПЯТНИЦА:
+${Schedule[4].map(({b11}) => b11).join(' ')}
+
+СУББОТА:
+${Schedule[5].map(({b11}) => b11).join(' ')}`)
+  }
 })
 
 const rozhi = new Array(4) // Любое число
