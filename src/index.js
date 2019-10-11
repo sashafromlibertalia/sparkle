@@ -18,6 +18,7 @@ const formatter = new Intl.DateTimeFormat('ru', {
   month: 'long',
   day: 'numeric'
 })
+let is11A = true
 
 moment().format()
 
@@ -69,10 +70,54 @@ const hearCommand = (name, conditions, handle) => {
 }
 
 
+updates.hear('/класс', async(context) => {
+  const classKeyboard = Keyboard.keyboard([
+    [
+      Keyboard.textButton({
+        label: '11А',
+        payload: {
+          command: '11А'
+        },
+        color: Keyboard.POSITIVE_COLOR
+      }),
+      Keyboard.textButton({
+        label: '11Б',
+        payload: {
+          command: '11Б'
+        },
+        color: Keyboard.POSITIVE_COLOR
+      })],
+    Keyboard.textButton({
+      label: 'Закрыть клавиатуру',
+      payload: {
+        command: 'cancel'
+      },
+      color: Keyboard.NEGATIVE_COLOR
+    })
+  ]).oneTime()
+
+  await context.send({
+    message: 'В каком классе я сейчас нахожусь?',
+    keyboard: classKeyboard
+  })
+})
+
+hearCommand('11А', async(context) => {
+  await context.send('Принято')
+  is11A = true
+})
+hearCommand('11Б', async(context) => {
+  await context.send('Принято')
+  is11A = false
+})
+
+
+
 updates.hear('/start', async (context) => {
-  context.send({
+  if (is11A === true) {
+    context.send({
     message: `Привет! 
-Я - Бот, созданный специально для ${config.className} ${config.schoolName}. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
+Я - Бот, созданный специально для ${config.className.a11} ${config.schoolName}. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
 /дата - узнай дз на конкретный день
 ———————————
 /дз - отправляет домашние задания с текущего дня
@@ -106,7 +151,46 @@ updates.hear('/start', async (context) => {
 /citgen - перешлите чье-то сообщение и пишите эту команду
 ———————————
 /help - моя документация`
-  })
+    })
+  } else {
+    context.send({
+    message: `Привет! 
+Я - Бот, созданный специально для ${config.className.b11} ${config.schoolName}. К черту эту прелюдию, я могу еще долго распинаться, но вот мой список команд:
+/дата - узнай дз на конкретный день
+———————————
+/дз - отправляет домашние задания с текущего дня
+———————————
+/дз завтра - отправляет домашние задания на завтра
+———————————
+/дз все - отправляет домашние задания на всю неделю
+———————————
+/добавить - добавляй в бота домашку, если ты его знаешь, а другие - нет
+———————————
+/добавить ? - справка по команде /добавить
+———————————
+/завтра - узнаешь расписание на завтрашний день
+———————————
+/игры - отправляет клавиатуру с выбором игр (да-да, не удивляйтесь)
+———————————
+/неделя - расписание на всю неделю
+———————————
+/отзыв - напиши отзыв, и ${config.adminName} его увидит. ВАЖНО: отзыв анонимен 
+———————————
+/урок - оповещает об уроке, проходящем в данный момент
+———————————
+/уроки - отправляет расписание на текущий день
+———————————
+/шпора - добавляй важные фото/документы/шпоры, чтобы не искать потом по всей беседе
+———————————
+/шпора список - список шпор
+———————————
+/шпора ? - инструкция
+———————————
+/citgen - перешлите чье-то сообщение и пишите эту команду
+———————————
+/help - моя документация`
+    })
+  }
 })
 
 updates.hear('/игры', async (context) => {
@@ -171,9 +255,12 @@ hearCommand('cancel', async (context) => {
 
 updates.hear('/завтра', async (context) => {
   for (i = 0; i < 7; i++) {
-    if (moment().day() === i) {
-      await context.send(`Расписание на завтра: \n ${Schedule[i].join(' ')}`)
-    };
+    if (moment().day() === i && is11A === true) {
+      await context.send(`Расписание на завтра: \n ${Schedule[i].a11.join(' ')}`)
+    }
+    else if (moment().day() === i) {
+      await context.send(`Расписание на завтра: \n ${Schedule[i].b11.join(' ')}`)
+    }
   }
 })
 

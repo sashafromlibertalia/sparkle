@@ -3,7 +3,10 @@ let config = {
   pollingGroupId: 168462227, // Int
   peerID: 2000000001, /* Стандартное значение */
   homeworkParserURL: 'https://github.com/sashafromlibertalia/SchoolBot/blob/master/domashka.txt' /* Ссылка, откуда будет парсится д/з */,
-  className: '11А',
+  className: {
+    a11: '11А',
+    b11: '11Б'
+  },
   schoolName: 'гимназии 631',
   adminName: 'Саша',
   adminNameDat: 'Саше', /* Нужен для команды /отзыв */
