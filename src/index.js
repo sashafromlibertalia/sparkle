@@ -360,7 +360,7 @@ updates.hear('/уроки', async (context) => {
   for (i = 1; i < 7; i++) {
     if (moment().day() === i) {
       if (is11A === true) {
-        await context.send(`Расписание на завтра: \n ${Schedule[i-1].map(({a11}) => a11).join(' ')}`)
+        await context.send(`Расписание на сегодня: \n ${Schedule[i-1].map(({a11}) => a11).join(' ')}`)
       }
       else {
         await context.send(`Расписание на сегодня: \n ${Schedule[i-1].map(({b11}) => b11).join(' ')}`)
