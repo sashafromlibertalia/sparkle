@@ -728,10 +728,14 @@ Saturday[4] = predmeti[14] + Societydz + `\n${line}`
   })
 
   updates.hear('/ержан', async (context) => {
-    await context.send(`${Monday.join('\n')}
+    await context.send(`
+    ПОНЕДЕЛЬНИК:
+    ${Monday.join('\n')}
     
+    ВТОРНИК:
     ${Tuesday.join('\n')}
     
+    СРЕДА:
     ${Wednesday.join('\n')}`)
   })
 
