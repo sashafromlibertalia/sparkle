@@ -727,6 +727,14 @@ Saturday[4] = predmeti[14] + Societydz + `\n${line}`
 Всем мир`)
   })
 
+  updates.hear('/ержан', async (context) => {
+    await context.send(`${Monday.join('\n')}
+    
+    ${Tuesday.join('\n')}
+    
+    ${Wednesday.join('\n')}`)
+  })
+
   updates.hear('/дз все', async (context) => {
     await context.send(Sunday.join('\n'))
   })
@@ -1136,6 +1144,7 @@ updates.on('message', async (context, next) => {
   }
 })
 
+
 citgen.start()
 gulag.start()
 shpora.start()
@@ -1143,13 +1152,6 @@ shporaList.start()
 updates.startPolling()
 
 
-updates.hear('/ержан', async (context) => {
-  await context.send(`${Monday.join('\n')}
-  
-  ${Tuesday.join('\n')}
-  
-  ${Wednesday.join('\n')}`)
-})
 
 // TO-DO
 /* updates.hear(/^\/гдз (.+)/i, async (context) => {
