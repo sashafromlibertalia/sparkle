@@ -473,6 +473,7 @@ request(url, async function (err, res, body) {
 Monday[0] = predmeti[2] + Literaturedz + `\n${line}`
 Monday[1] = predmeti[1] + Russiandz + `\n${line}`
 Monday[2] = predmeti[0] + Englishdz + `\n${line}`
+Monday[3] = predmeti[12] + Mhkdz + `\n${line}`
 
 const Tuesday = new Array(5)
 Tuesday[0] = predmeti[7] + Biologydz + `\n${line}`
@@ -488,17 +489,16 @@ Wednesday[2] = predmeti[17] + AstronomyDZ + `\n${line}`
 Wednesday[3] = predmeti[4] + Frenchdz + `\n${line}`
 
 const Thursday = new Array(6)
-Thursday[0] = predmeti[15] + OBJdz + `\n${line}`
-Thursday[1] = predmeti[6] + Geometrydz + `\n${line}`
-Thursday[2] = predmeti[1] + Russiandz + `\n${line}`
-Thursday[3] = predmeti[12] + Mhkdz + `\n${line}`
-Thursday[4] = predmeti[2] + Literaturedz + `\n${line}`
-Thursday[5] = predmeti[5] + Algebradz + `\n${line}`
+Thursday[0] = predmeti[6] + Geometrydz + `\n${line}`
+Thursday[1] = predmeti[1] + Russiandz + `\n${line}`
+Thursday[2] = predmeti[10] + CompSciencedz + `\n${line}`
+Thursday[3] = predmeti[2] + Literaturedz + `\n${line}`
+Thursday[4] = predmeti[5] + Algebradz + `\n${line}`
 
 const Friday = new Array(4)
 Friday[0] = predmeti[0] + Englishdz + `\n${line}`
 Friday[1] = predmeti[13] + History_dz + `\n${line}`
-Friday[2] = predmeti[10] + CompSciencedz + `\n${line}`
+Friday[2] = predmeti[15] + OBJdz + `\n${line}`
 Friday[3] = predmeti[11] + Geographydz + `\n${line}`
 
 const Saturday = new Array(5)
