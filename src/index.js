@@ -430,8 +430,8 @@ request(url, async function (err, res, body) {
   const $ = cheerio.load(body)
   const Englishdz = $('#LC2').text()
   const Russiandz = $('#LC5').text()
- 		const Literaturedz = $('#LC8').text()
- 		const Germandz = $('#LC11').text()
+ 	const Literaturedz = $('#LC8').text()
+ 	const Germandz = $('#LC11').text()
   const Frenchdz = $('#LC14').text()
   const Algebradz = $('#LC17').text()
   const Geometrydz = $('#LC20').text()
@@ -729,14 +729,14 @@ Saturday[4] = predmeti[14] + Societydz + `\n${line}`
 
   updates.hear('/ержан', async (context) => {
     await context.send(`
-    ПОНЕДЕЛЬНИК:
-    ${Monday.join('\n')}
+ПОНЕДЕЛЬНИК:
+${Monday.join('\n')}
     
-    ВТОРНИК:
-    ${Tuesday.join('\n')}
+ВТОРНИК:
+${Tuesday.join('\n')}
     
-    СРЕДА:
-    ${Wednesday.join('\n')}`)
+СРЕДА:
+${Wednesday.join('\n')}`)
   })
 
   updates.hear('/дз все', async (context) => {
