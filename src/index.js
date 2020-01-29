@@ -654,67 +654,67 @@ Saturday[4] = predmeti[14] + Societydz + `\n${line}`
   hearCommand('monday', async (context) => {
     await context.send(`
 		Итак, вот домашка на понедельник
-		${Monday.join('\n')}`)
+${Monday.join('\n')}`)
   })
 
   hearCommand('tuesday', async (context) => {
     await context.send(`
 		Итак, вот домашка на вторник 
-		${Tuesday.join('\n')}`)
+${Tuesday.join('\n')}`)
   })
 
   hearCommand('wednesday', async (context) => {
     await context.send(`
 		Итак, вот домашка на среду 
-		${Wednesday.join('\n')}`)
+${Wednesday.join('\n')}`)
   })
 
   hearCommand('thursday', async (context) => {
     await context.send(`
 		Итак, вот домашка на четверг
-		${Thursday.join('\n')}`)
+${Thursday.join('\n')}`)
   })
 
   hearCommand('friday', async (context) => {
     await context.send(`
 		Итак, вот домашка на пятницу
-		${Friday.join('\n')}`)
+${Friday.join('\n')}`)
   })
 
   hearCommand('saturday', async (context) => {
     await context.send(`
 		Итак, вот домашка на субботу 
-		${Saturday.join('\n')}`)
+${Saturday.join('\n')}`)
   })
 
   updates.hear(/^\/понедельник/i, async (context) => {
     context.send(`Домашка на понедельник:
-		${Monday.join('\n')}`)
+${Monday.join('\n')}`)
   })
 
   updates.hear(/^\/вторник/i, async (context) => {
     context.send(`Домашка на вторник:
-		${Tuesday.join('\n')}`)
+${Tuesday.join('\n')}`)
   })
 
   updates.hear(/^\/среда/i, async (context) => {
     context.send(`Домашка на среду:
-		${Wednesday.join('\n')}`)
+${Wednesday.join('\n')}`)
   })
 
   updates.hear(/^\/четверг/i, async (context) => {
     context.send(`Домашка на четверг:
-		${Thursday.join('\n')}`)
+${Thursday.join('\n')}`)
   })
 
   updates.hear(/^\/пятница/i, async (context) => {
     context.send(`Домашка на пятницу:
-		${Friday.join('\n')}`)
+${Friday.join('\n')}`)
   })
 
   updates.hear(/^\/суббота/i, async (context) => {
     context.send(`Домашка на cубботу:
-		${Saturday.join('\n')}`)
+${Saturday.join('\n')}`)
   })
 
   updates.hear('/добавить ?', async (context) => {
@@ -766,7 +766,7 @@ ${Wednesday.join('\n')}`)
 
 for(i = 0; i < 7; i++) {
   if(moment().day() === i && moment().hour() === 15 && moment().minute() === 30) {
-    context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n'  + Days[i].join('\n'))
+    context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + '\n'  + Days[i].join('\n'))
   }
 }
 
