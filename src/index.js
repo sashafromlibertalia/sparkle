@@ -740,7 +740,24 @@ ${Wednesday.join('\n')}`)
   })
 
   updates.hear('/дз все', async (context) => {
-    await context.send(Sunday.join('\n'))
+    await context.send(`
+ПОНЕДЕЛЬНИК:
+${Monday.join('\n')}
+
+ВТОРНИК:
+${Tuesday.join('\n')}
+
+СРЕДА:
+${Wednesday.join('\n')}
+
+ЧЕТВЕРГ:
+${Thursday.join('\n')}
+
+ПЯТНИЦА: 
+${Friday.join('\n')}
+
+СУББОТА:
+${Saturday.join('\n')}`)
   })
 
   updates.hear('/дз', async (context) => {
