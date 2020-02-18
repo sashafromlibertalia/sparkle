@@ -1025,22 +1025,22 @@ updates.hear('/неделя', async (context) => {
   if (is11A === true) {
     await context.send(`РАСПИСАНИЕ НА ВСЮ НЕДЕЛЮ:
 ПОНЕДЕЛЬНИК:
-${Schedule[0].map(({a11}) => a11).join(' ')}
+${Schedule[0].map(({a11}) => a11).join('')}
 
 ВТОРНИК:
-${Schedule[1].map(({a11}) => a11).join(' ')}
+${Schedule[1].map(({a11}) => a11).join('')}
 
 СРЕДА:
-${Schedule[2].map(({a11}) => a11).join(' ')}
+${Schedule[2].map(({a11}) => a11).join('')}
 
 ЧЕТВЕРГ:
-${Schedule[3].map(({a11}) => a11).join(' ')}
+${Schedule[3].map(({a11}) => a11).join('')}
 
 ПЯТНИЦА:
-${Schedule[4].map(({a11}) => a11).join(' ')}
+${Schedule[4].map(({a11}) => a11).join('')}
 
 СУББОТА:
-${Schedule[5].map(({a11}) => a11).join(' ')}`)
+${Schedule[5].map(({a11}) => a11).join('')}`)
   }
   else {
     await context.send(`РАСПИСАНИЕ НА ВСЮ НЕДЕЛЮ:
