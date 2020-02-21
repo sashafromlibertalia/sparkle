@@ -476,7 +476,7 @@ Monday[2] = predmeti[0] + Englishdz + `\n${line}`
 Monday[3] = predmeti[12] + Mhkdz + `\n${line}`
 
 const Tuesday = new Array(5)
-Tuesday[0] = predmeti[7] + Biologydz + `\n${line}`
+Tuesday[0] = predmeti[15] + OBJdz + `\n${line}`
 Tuesday[1] = predmeti[9] + Physicsdz + `\n${line}`
 Tuesday[2] = predmeti[14] + Societydz + `\n${line}`
 Tuesday[3] = predmeti[8] + Chemistrydz + `\n${line}`
@@ -498,7 +498,7 @@ Thursday[4] = predmeti[5] + Algebradz + `\n${line}`
 const Friday = new Array(4)
 Friday[0] = predmeti[0] + Englishdz + `\n${line}`
 Friday[1] = predmeti[13] + History_dz + `\n${line}`
-Friday[2] = predmeti[15] + OBJdz + `\n${line}`
+Friday[2] = predmeti[7] + Biologydz + `\n${line}`
 Friday[3] = predmeti[11] + Geographydz + `\n${line}`
 
 const Saturday = new Array(5)
