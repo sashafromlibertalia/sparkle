@@ -9,12 +9,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "^1.0.0-rc.5",
     "gm": "^1.23.1",
     "google": "^2.1.0",
     "intl": "^1.2.5",
-    "moment": "^2.24.0",
-    "vk-io": "^4.0.0-rc.20",
+    "moment": "^2.29.1",
+    "vk-io": "^4.1.4",
     "webshot": "^0.18.0"
   }
 }
