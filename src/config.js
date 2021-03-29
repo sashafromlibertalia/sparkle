@@ -1,13 +1,10 @@
 let config = {
-  TOKEN: '9e95f643f84f4f92ebffe153eaf266de5702538e3b82b9028cd0e477820be927a3759863f0dd31bc22f46',
+  TOKEN: '87322753850ec43c47043f1a45c052eee24cc123226ec82083df315f30f085d27d222e3fb0bf956fe43cd',
   pollingGroupId: 168462227, // Int
-  peerID: 2000000001, /* Стандартное значение */
+  peerID: 2000000004, /* Стандартное значение */
   homeworkParserURL: 'https://github.com/sashafromlibertalia/SchoolBot/blob/master/domashka.txt' /* Ссылка, откуда будет парсится д/з */,
-  className: {
-    a11: '11А',
-    b11: '11Б'
-  },
-  schoolName: 'гимназии 631',
+  className: 'М3106',
+  schoolName: 'Университета ИТМО',
   adminName: 'Саша',
   adminNameDat: 'Саше', /* Нужен для команды /отзыв */
   adminDomain: 'sashafromlibertalia',

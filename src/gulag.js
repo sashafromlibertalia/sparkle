@@ -1,20 +1,10 @@
-const { VK } = require('vk-io')
-const vk = new VK()
-const config = require('./config')
-const { updates } = vk
-const { api } = vk
+const BOT = require('./vk')
 
-vk.setOptions({
-  token: config.TOKEN,
-  pollingGroupId: config.poullingGroupID,
-  peer_id: config.peerID
-})
-
-const gulag = updates.hear(/^\/вгулаг (.+)/i, async (context) => {
+const gulag = BOT.MESSAGES.hear(/^\/вгулаг (.+)/i, async (context) => {
   const victim = context.$match[1]
   if (context.senderId === config.adminID) {
     if (isNaN(victim)) {
-      const [user] = await api.users.get({
+      const [user] = await BOT.API.users.get({
         user_ids: victim,
         name_case: 'nom'
       })
@@ -28,5 +18,3 @@ const gulag = updates.hear(/^\/вгулаг (.+)/i, async (context) => {
     await context.send('Упс, ошибочка. У вас нет доступа к этой команде')
   }
 })
-
-module.exports = gulag

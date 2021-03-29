@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vk-io/hear": "^1.0.2",
     "cheerio": "^1.0.0-rc.5",
     "gm": "^1.23.1",
     "google": "^2.1.0",
