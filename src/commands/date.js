@@ -11,6 +11,8 @@ const formatter = new Intl.DateTimeFormat('ru', {
 
 moment().format()
 
+
+// Клавиатура с днями недели
 const weekKeyboard = BOT.KEYBOARD.keyboard([
     [
         BOT.KEYBOARD.textButton({
