@@ -1,10 +1,10 @@
-const BOT = require('./vk')
+const BOT = require('../vk')
 let listText = []
 let listAttachment = []
 
 function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
-BOT.MESSAGES.hear(/^\/шпора добавить (.+)/i, async(context) => {
+const hear = BOT.MESSAGES.hear(/^\/шпора добавить (.+)/i, async(context) => {
     let category = context.$match[1]
     if (context.hasAttachments('photo')) {
       let [attached] = context.getAttachments('photo')
@@ -22,7 +22,7 @@ BOT.MESSAGES.hear(/^\/шпора добавить (.+)/i, async(context) => {
     }
 })
 
-BOT.MESSAGES.hear('/шпора список', async(context) => {
+const list = BOT.MESSAGES.hear('/шпора список', async(context) => {
   let message = ''
   for (let i = 0; i < listText.length; i++) {
     message += `${i+1}. ${listText[i]}\n`
@@ -33,7 +33,7 @@ BOT.MESSAGES.hear('/шпора список', async(context) => {
   await context.send(message)
 })
 
-BOT.MESSAGES.hear(/^\/шпора удалить (.+)/i, async(context) => {
+const remove = BOT.MESSAGES.hear(/^\/шпора удалить (.+)/i, async(context) => {
   let item = context.$match[1]
   if (listText.includes(item)) {
     listText.splice(listText.indexOf(item))
@@ -48,7 +48,7 @@ BOT.MESSAGES.hear(/^\/шпора удалить (.+)/i, async(context) => {
   }
 })
 
-BOT.MESSAGES.hear(/^\/шпора (.+)/i, async(context) => {
+const get = BOT.MESSAGES.hear(/^\/шпора (.+)/i, async(context) => {
   let item = context.$match[1]
   if (listText.includes(item)) {
     context.sendPhoto(listAttachment[listText.indexOf(item)])
@@ -60,3 +60,12 @@ BOT.MESSAGES.hear(/^\/шпора (.+)/i, async(context) => {
     }, 500)
   }
 })
+
+module.exports = {
+  run: function() {
+    hear
+    list
+    remove
+    get
+  }
+}

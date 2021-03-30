@@ -1,5 +1,5 @@
-const BOT = require('./vk')
-const kicker = BOT.MESSAGES.hear(/^\/вгулаг (.+)/i, async (context) => {
+const BOT = require('../vk')
+const kickerCommand = BOT.MESSAGES.hear(/^\/вгулаг (.+)/i, async (context) => {
   const victim = context.$match[1]
   if (context.senderId === BOT.CONFIG.ADMIN_ID) {
       if (isNaN(victim)) {
@@ -20,6 +20,6 @@ const kicker = BOT.MESSAGES.hear(/^\/вгулаг (.+)/i, async (context) => {
 
 module.exports = {
     run: function() {
-       kicker
+       kickerCommand
     }
 }

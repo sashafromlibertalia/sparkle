@@ -1,4 +1,4 @@
-const BOT = require('./vk')
+const BOT = require('../vk')
 const request = require('request')
 const gm = require('gm').subClass({
     imageMagick: true
@@ -6,7 +6,7 @@ const gm = require('gm').subClass({
 const fs = require('fs')
 
 
-const citgen = BOT.MESSAGES.hear('/citgen', async (context) => {
+const citgenCommand = BOT.MESSAGES.hear('/citgen', async (context) => {
     if (context.hasReplyMessage) {
         let text = []
         let imagekek = []
@@ -161,6 +161,6 @@ const citgen = BOT.MESSAGES.hear('/citgen', async (context) => {
 
 module.exports = {
     run: function() {
-        citgen
+        citgenCommand
     }
 }

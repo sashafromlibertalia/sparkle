@@ -1,7 +1,10 @@
 const BOT = require('./vk')
-const Games = require('./games')
-const Kicker = require('./kicker')
-const Citgen = require('./citgen')
+const Games = require('./commands/games')
+const Kicker = require('./commands/kicker')
+const SavedData = require('./commands/savedData')
+const DateC = require('./commands/date')
+const Citgen = require('./commands/citgen')
+
 const Intl = require('intl')
 const moment = require('moment')
 const Time = new Date()
@@ -149,7 +152,8 @@ ${Schedule[5].map(({b11}) => b11).join('')}`)
 
 Kicker.run()
 Citgen.run()
+DateC.run()
+SavedData.run()
 Games.run()
-
 
 BOT.VK.updates.start().catch(console.error);
