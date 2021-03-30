@@ -6,8 +6,7 @@ const gm = require('gm').subClass({
 const fs = require('fs')
 
 
-BOT.MESSAGES.hear('/citgen', async (context) => {
-    console.log(context)
+const citgen = BOT.MESSAGES.hear('/citgen', async (context) => {
     if (context.hasReplyMessage) {
         let text = []
         let imagekek = []
@@ -158,3 +157,10 @@ BOT.MESSAGES.hear('/citgen', async (context) => {
         await context.send('А че цитгенить то будем?')
     }
 })
+
+
+module.exports = {
+    run: function() {
+        citgen
+    }
+}

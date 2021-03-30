@@ -1,16 +1,15 @@
 const BOT = require('./vk')
 
-
 const hearCommand = (name, conditions, handle) => {
     if (typeof handle !== 'function') {
         handle = conditions;
         conditions = [`/${name}`];
     }
-  
+
     if (!Array.isArray(conditions)) {
         conditions = [conditions];
     }
-  
+
     BOT.MESSAGES.hear(
         [
             (text, {
@@ -22,10 +21,9 @@ const hearCommand = (name, conditions, handle) => {
         ],
         handle
     );
-  };
-  
+};
 
-BOT.MESSAGES.hear('/игры', async (context) => {
+const games = BOT.MESSAGES.hear('/игры', async (context) => { 
     const gamesKeyboard = BOT.KEYBOARD.keyboard([
         [
             BOT.KEYBOARD.textButton({
@@ -51,21 +49,21 @@ BOT.MESSAGES.hear('/игры', async (context) => {
             color: BOT.KEYBOARD.NEGATIVE_COLOR
         })
     ]).oneTime()
-  
+
     await context.send({
         message: 'Вот список моих игр',
         keyboard: gamesKeyboard
     })
-  })
-  
-hearCommand('ball', async (context) => {
+})
+
+const ball = hearCommand('ball', async (context) => {
     await context.send(`Как играть в эту игру? Очень просто! Ты пишешь "шанc" и свое утверждение, а я отвечаю вероятностью.
-  Пример:
-  
-  — Шанc, что мы - дружный класс.
-  — Вероятность - 100%`)
-  
-    BOT.MESSAGES.hear(/шанс/i, (context) => {
+Пример:
+
+— Шанc, что мы - дружный класс.
+— Вероятность - 100%`)
+
+    BOT.MESSAGES.hear(/шанс/i, async (context) => {
         const chances = new Array(6)
         chances[0] = 'Вероятность близка к нулю :('
         chances[1] = 'Я считаю, что 50 на 50'
@@ -73,17 +71,24 @@ hearCommand('ball', async (context) => {
         chances[3] = 'Я полагаю, что вероятность близка к 100%'
         chances[4] = 'Маловероятно, но шанс есть'
         chances[5] = 'Вероятность нулевая, ничего не поделать'
-  
-        context.send(chances[Math.floor(Math.random() * chances.length)])
+
+        await context.send(chances[Math.floor(Math.random() * chances.length)])
     })
-  })
-  
-hearCommand('else', async (context) => {
+})
+
+const Else = hearCommand('else', async (context) => {
     await context.send(`Раз эта кнопка у вас все еще есть, значит я страдаю от острой игровой недостаточности. Если у вас есть идеи, которые может реализовать этот бот в игровой форме - пишите ${BOT.CONFIG.adminNameDat}, он сможет :)`)
 })
-  
-hearCommand('cancel', async (context) => {
+
+const cancel = hearCommand('cancel', async (context) => {
     await context.send('Хорошо, я выключу клавиатуру!')
 })
 
-
+module.exports = {
+    run: function() {
+        games
+        ball
+        Else
+        cancel
+    }
+}

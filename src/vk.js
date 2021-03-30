@@ -4,8 +4,8 @@ const { Keyboard } = require('vk-io')
 const { HearManager } = require('@vk-io/hear');
 const vk = new VK({
   token: config.TOKEN,
-  pollingGroupId: config.poullingGroupID,
-  peer_id: config.peerID
+  pollingGroupId: config.POOLING_GROUP_ID,
+  peer_id: config.PEER_ID
 })
 const { api } = vk
 const hearManager = new HearManager();

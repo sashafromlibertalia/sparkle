@@ -3,7 +3,7 @@ const cheerio = require('cheerio')
 const request = require('request')
 
 const url = BOT.CONFIG.homeworkParserURL
-request(url, async function(err, res, body) {
+const req = request(url, async function(err, res, body) {
   const weekKeyboard = BOT.KEYBOARD.keyboard([
       [
         BOT.KEYBOARD.textButton({
@@ -403,3 +403,9 @@ ${Saturday.join('\n')}`)
       };
   })
 })
+
+module.exports = {
+    run: function() {
+        req
+    }
+}

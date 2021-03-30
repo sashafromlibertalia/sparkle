@@ -1,5 +1,7 @@
 const BOT = require('./vk')
-
+const Games = require('./games')
+const Kicker = require('./kicker')
+const Citgen = require('./citgen')
 const Intl = require('intl')
 const moment = require('moment')
 const Time = new Date()
@@ -11,13 +13,13 @@ const formatter = new Intl.DateTimeFormat('ru', {
 moment().format()
 
 // Cоздаем сервер
-require('http').createServer().listen(process.env.PORT || 8000).on('request', function(request, res) {
+require('http').createServer().listen(process.env.PORT || 8000).on('request', function(res) {
   res.end('')
 })
 
 BOT.MESSAGES.hear('/start', async (context) => {
   await context.send(`Привет! 👋
-🤖 Я - Бот, созданный специально для группы ${BOT.CONFIG.className} ${BOT.CONFIG.schoolName}. Я надеюсь, что буду очень полезен вам, и вы получите незабываемый опыт ☺️. Поскольку я могу многое, я привожу список основных моих команд:
+🤖 Я - Бот, созданный специально для группы ${BOT.CONFIG.NAME_GROUP} ${BOT.CONFIG.NAME_PLACE}. Я надеюсь, что буду очень полезен вам, и вы получите незабываемый опыт ☺️. Поскольку я могу многое, я привожу список основных моих команд:
 
 /дата - узнай дз на конкретный день
 ———————————
@@ -94,10 +96,11 @@ BOT.MESSAGES.hear('/команды', async (context) => {
 
 BOT.MESSAGES.hear(/^\/отзыв (.+)/i, async (context) => {
   const feedback = context.$match[1]
-  await context.send(`Хорошо, твой отзыв будет отправлен ${BOT.CONFIG.adminNameDat}, спасибо :)`)
-  api.messages.send({
+  await context.send(`Хорошо, твой отзыв будет отправлен ${BOT.CONFIG.NAME_ADMIN_DAT}, спасибо :)`)
+  BOT.API.messages.send({
       message: 'НОВЫЙ ОТЗЫВ: ' + feedback,
-      domain: BOT.CONFIG.adminDomain
+      domain: BOT.CONFIG.ADMIN_DOMAIN,
+      random_id: Math.floor(Math.random() * Math.floor(200))
   })
 })
 
@@ -142,6 +145,11 @@ ${Schedule[4].map(({b11}) => b11).join('')}
 ${Schedule[5].map(({b11}) => b11).join('')}`)
   }
 })
+
+
+Kicker.run()
+Citgen.run()
+Games.run()
 
 
 BOT.VK.updates.start().catch(console.error);
