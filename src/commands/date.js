@@ -67,12 +67,6 @@ const weekKeyboard = BOT.KEYBOARD.keyboard([
     }),
 ]).oneTime();
 
-
-
-function setHomeworkNext() {
-   
-}
-
 BOT.HEARCOMMAND("monday", async(context) => {
     await context.send(`Задания на понедельник:
     ${PARSER.DAYS[0].join('\n')}`)

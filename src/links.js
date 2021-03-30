@@ -21,7 +21,7 @@ const LESSONS = {
     },
     Programming: {
         lecture: {
-            text: "@online, У хвоста лекция началась:\n",
+            text: "@online, у Хвоста лекция началась:\n",
             link: "https://itmo.zoom.us/j/3148049243?pwd=eGc0THI5dWRvbEt4L212K0lhN2E4dz09"
         },
         practice: {
@@ -54,6 +54,9 @@ const LESSONS = {
             text: "Ребят земля нам пухом - практика по физике началась:\n",
             link: "https://itmo.zoom.us/j/84617656518?pwd=dldZSGpXVm9FNzV6dDJWU3hJanh5dz09"
         }
+    },
+    English: {
+        text: "Where's the money, Lebowski? Английский начинается пупсы, @online"
     }
 }
 

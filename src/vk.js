@@ -38,9 +38,15 @@ const hearCommand = (name, conditions, handle) => {
 };
 
 
+const RANDOMIZE = function RANDOM() {
+	console.log(Math.round(Math.random() * Number.MAX_SAFE_INTEGER))
+	return Math.round(Math.random() * Number.MAX_SAFE_INTEGER)
+}
+
 module.exports.VK = vk
 module.exports.MESSAGES = hearManager
 module.exports.KEYBOARD = Keyboard
 module.exports.CONFIG = config
 module.exports.API = api
 module.exports.HEARCOMMAND = hearCommand
+module.exports.RANDOM = RANDOMIZE

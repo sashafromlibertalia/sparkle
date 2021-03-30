@@ -4,6 +4,7 @@ const Kicker = require('./commands/kicker')
 const SavedData = require('./commands/savedData')
 const DateC = require('./commands/date')
 const Citgen = require('./commands/citgen')
+const Autosend = require('./automaticSender')
 
 require('http').createServer().listen(process.env.PORT || 8000).on('request', function(res) {
   res.end('')
@@ -76,7 +77,7 @@ BOT.MESSAGES.hear(/^\/отзыв (.+)/i, async (context) => {
   BOT.API.messages.send({
       message: 'НОВЫЙ ОТЗЫВ: ' + feedback,
       domain: BOT.CONFIG.ADMIN_DOMAIN,
-      random_id: Math.floor(Math.random() * Math.floor(200))
+      random_id: BOT.RANDOM()
   })
 })
 
@@ -84,6 +85,7 @@ BOT.MESSAGES.hear(/^\/отзыв (.+)/i, async (context) => {
 Kicker.run()
 Citgen.run()
 DateC.run()
+Autosend.run()
 SavedData.run()
 Games.run()
 
