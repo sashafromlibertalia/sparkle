@@ -32,7 +32,7 @@ const parseCommand = request(url, async function(err, res, body) {
 })
 
 module.exports = {
-    run: function() {
+    run() {
         parseCommand
     }
 }

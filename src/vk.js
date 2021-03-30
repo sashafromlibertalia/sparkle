@@ -4,7 +4,7 @@ const { Keyboard } = require('vk-io')
 const { HearManager } = require('@vk-io/hear');
 const vk = new VK({
   token: config.TOKEN,
-  pollingGroupId: config.POOLING_GROUP_ID,
+  pollingGroupId: config.POLLING_GROUP_ID,
   peer_id: config.PEER_ID
 })
 const { api } = vk
@@ -21,8 +21,26 @@ vk.updates.on('message_new', (context, next) => {
 });
 vk.updates.on('message_new', hearManager.middleware);
 
+const hearCommand = (name, conditions, handle) => {
+	if (typeof handle !== "function") {
+		handle = conditions;
+		conditions = [`/${name}`];
+	}
+
+	if (!Array.isArray(conditions)) {
+		conditions = [conditions];
+	}
+
+	hearManager.hear(
+		[(text, {state}) => state.command === name, ...conditions],
+		handle
+	);
+};
+
+
 module.exports.VK = vk
 module.exports.MESSAGES = hearManager
 module.exports.KEYBOARD = Keyboard
 module.exports.CONFIG = config
 module.exports.API = api
+module.exports.HEARCOMMAND = hearCommand

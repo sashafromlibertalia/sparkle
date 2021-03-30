@@ -62,7 +62,7 @@ const get = BOT.MESSAGES.hear(/^\/шпора (.+)/i, async(context) => {
 })
 
 module.exports = {
-  run: function() {
+  run() {
     hear
     list
     remove

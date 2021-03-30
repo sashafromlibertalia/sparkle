@@ -1,20 +1,14 @@
 const BOT = require("../vk");
 
-const hearCommand = (name, conditions, handle) => {
-	if (typeof handle !== "function") {
-		handle = conditions;
-		conditions = [`/${name}`];
-	}
+const Intl = require('intl')
+const moment = require('moment')
+const Time = new Date()
+const formatter = new Intl.DateTimeFormat('ru', {
+  month: 'long',
+  day: 'numeric'
+})
 
-	if (!Array.isArray(conditions)) {
-		conditions = [conditions];
-	}
-
-	BOT.MESSAGES.hear(
-		[(text, {state}) => state.command === name, ...conditions],
-		handle
-	);
-};
+moment().format()
 
 const weekKeyboard = BOT.KEYBOARD.keyboard([
     [
@@ -73,11 +67,35 @@ const weekKeyboard = BOT.KEYBOARD.keyboard([
 ]).oneTime();
 
 
-const asks = new Array(2);
-asks[0] = new RegExp(/задано/i);
-asks[1] = new RegExp(/задали/i);
+function monday() {
 
-const asksCommand = BOT.MESSAGES.hear(asks, async (context) => {
+}
+
+function tuesday() {
+
+}
+
+function wednesday() {
+
+}
+
+function thursday() {
+
+}
+
+function friday() {
+
+}
+
+function saturday() {
+
+}
+
+function setHomeworkNext() {
+   
+}
+
+const asksCommand = BOT.MESSAGES.hear([/задали/i, /задано/i], async (context) => {
 	await context.send({
 		message:
 			"Я тут увидел, что кто-то из вас спрашивает ДЗ. Выберите, какой день вам нужен:",
@@ -92,12 +110,20 @@ const dateCommand = BOT.MESSAGES.hear("/дата", async (context) => {
 	});
 });
 
+const tomorrowCommand = BOT.MESSAGES.hear("/дз завтра", async (context) => {
+    for (i = 0; i < 7; i++) {
+        if (moment().day() === i) {
+          await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n' + Days[i].join('\n'))
+        };
+    };
+});
 
 
 
 module.exports = {
-	run: function () {
+	run() {
 		dateCommand
         asksCommand
+        tomorrowCommand
 	},
 };

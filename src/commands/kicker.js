@@ -19,7 +19,7 @@ const kickerCommand = BOT.MESSAGES.hear(/^\/вгулаг (.+)/i, async (context)
 })
 
 module.exports = {
-    run: function() {
+    run() {
        kickerCommand
     }
 }

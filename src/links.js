@@ -8,7 +8,6 @@ const LESSONS = {
             text: "@online, там Бабушкину скучно. Будет баба золотом:\n",
             link: "Живо в дискорд!"
         }
-       
     },
     DiscreteMath: {
         lecture: {

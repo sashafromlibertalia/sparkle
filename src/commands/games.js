@@ -1,28 +1,5 @@
 const BOT = require('../vk')
 
-const hearCommand = (name, conditions, handle) => {
-    if (typeof handle !== 'function') {
-        handle = conditions;
-        conditions = [`/${name}`];
-    }
-
-    if (!Array.isArray(conditions)) {
-        conditions = [conditions];
-    }
-
-    BOT.MESSAGES.hear(
-        [
-            (text, {
-                state
-            }) => (
-                state.command === name
-            ),
-            ...conditions
-        ],
-        handle
-    );
-};
-
 const gamesCommand = BOT.MESSAGES.hear('/игры', async (context) => { 
     const gamesKeyboard = BOT.KEYBOARD.keyboard([
         [
@@ -56,7 +33,7 @@ const gamesCommand = BOT.MESSAGES.hear('/игры', async (context) => {
     })
 })
 
-const ballKCommand = hearCommand('ball', async (context) => {
+const ballKCommand = BOT.HEARCOMMAND('ball', async (context) => {
     await context.send(`Как играть в эту игру? Очень просто! Ты пишешь "шанc" и свое утверждение, а я отвечаю вероятностью.
 Пример:
 
@@ -76,16 +53,16 @@ const ballKCommand = hearCommand('ball', async (context) => {
     })
 })
 
-const elseKCommand = hearCommand('else', async (context) => {
+const elseKCommand = BOT.HEARCOMMAND('else', async (context) => {
     await context.send(`Раз эта кнопка у вас все еще есть, значит я страдаю от острой игровой недостаточности. Если у вас есть идеи, которые может реализовать этот бот в игровой форме - пишите ${BOT.CONFIG.adminNameDat}, он сможет :)`)
 })
 
-const cancelKCommand = hearCommand('cancel', async (context) => {
+const cancelKCommand = BOT.HEARCOMMAND('cancel', async (context) => {
     await context.send('Хорошо, я выключу клавиатуру!')
 })
 
 module.exports = {
-    run: function() {
+    run() {
         gamesCommand
         ballKCommand
         elseKCommand

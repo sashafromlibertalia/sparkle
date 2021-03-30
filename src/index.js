@@ -5,17 +5,6 @@ const SavedData = require('./commands/savedData')
 const DateC = require('./commands/date')
 const Citgen = require('./commands/citgen')
 
-const Intl = require('intl')
-const moment = require('moment')
-const Time = new Date()
-const formatter = new Intl.DateTimeFormat('ru', {
-  month: 'long',
-  day: 'numeric'
-})
-
-moment().format()
-
-// Cоздаем сервер
 require('http').createServer().listen(process.env.PORT || 8000).on('request', function(res) {
   res.end('')
 })
@@ -39,18 +28,6 @@ BOT.MESSAGES.hear('/start', async (context) => {
 /help - моя документация`)
 })
 
-BOT.MESSAGES.hear('/завтра', async (context) => {
-  for (i = 0; i < 7; i++) {
-      if (moment().day() === i) {
-          if (is11A === true) {
-              await context.send(`Расписание на завтра: \n${Schedule[i].map(({a11}) => a11).join('')}`)
-          } else {
-              await context.send(`Расписание на завтра: \n${Schedule[i].map(({b11}) => b11).join('')}`)
-          }
-      }
-  }
-})
-
 BOT.MESSAGES.hear('/help', async (context) => {
   await context.send(`Итак, вот вам более-менее краткая документация.
 Мой исходный код: https://github.com/sashafromlibertalia/SchoolBot
@@ -69,17 +46,13 @@ BOT.MESSAGES.hear('/help', async (context) => {
 
 BOT.MESSAGES.hear('/команды', async (context) => {
   await context.send(`Список всех моих команд:
-  /дата - узнай дз на конкретный день
-———————————
-/дз - отправляет домашние задания с текущего дня
+/дата - узнай дз на конкретный день
 ———————————
 /дз завтра - отправляет домашние задания на завтра
 ———————————
 /дз все - отправляет домашние задания на всю неделю
 ———————————
 /игры - отправляет клавиатуру с выбором игр (да-да, не удивляйтесь)
-———————————
-/неделя - расписание на всю неделю
 ———————————
 /отзыв - напиши отзыв, и Саша его увидит. ВАЖНО: отзыв анонимен 
 ———————————
@@ -105,48 +78,6 @@ BOT.MESSAGES.hear(/^\/отзыв (.+)/i, async (context) => {
       domain: BOT.CONFIG.ADMIN_DOMAIN,
       random_id: Math.floor(Math.random() * Math.floor(200))
   })
-})
-
-BOT.MESSAGES.hear('/неделя', async (context) => {
-  if (is11A === true) {
-      await context.send(`РАСПИСАНИЕ НА ВСЮ НЕДЕЛЮ:
-ПОНЕДЕЛЬНИК:
-${Schedule[0].map(({a11}) => a11).join('')}
-
-ВТОРНИК:
-${Schedule[1].map(({a11}) => a11).join('')}
-
-СРЕДА:
-${Schedule[2].map(({a11}) => a11).join('')}
-
-ЧЕТВЕРГ:
-${Schedule[3].map(({a11}) => a11).join('')}
-
-ПЯТНИЦА:
-${Schedule[4].map(({a11}) => a11).join('')}
-
-СУББОТА:
-${Schedule[5].map(({a11}) => a11).join('')}`)
-  } else {
-      await context.send(`РАСПИСАНИЕ НА ВСЮ НЕДЕЛЮ:
-ПОНЕДЕЛЬНИК:
-${Schedule[0].map(({b11}) => b11).join('')}
-
-ВТОРНИК:
-${Schedule[1].map(({b11}) => b11).join('')}
-
-СРЕДА:
-${Schedule[2].map(({b11}) => b11).join('')}
-
-ЧЕТВЕРГ:
-${Schedule[3].map(({b11}) => b11).join('')}
-
-ПЯТНИЦА:
-${Schedule[4].map(({b11}) => b11).join('')}
-
-СУББОТА:
-${Schedule[5].map(({b11}) => b11).join('')}`)
-  }
 })
 
 
