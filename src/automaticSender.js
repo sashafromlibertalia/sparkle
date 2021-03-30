@@ -1,0 +1,2 @@
+const BOT = require('./vk')
+

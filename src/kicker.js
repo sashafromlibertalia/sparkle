@@ -1,6 +1,6 @@
 const BOT = require('./vk')
 
-const gulag = BOT.MESSAGES.hear(/^\/вгулаг (.+)/i, async (context) => {
+BOT.MESSAGES.hear(/^\/вгулаг (.+)/i, async (context) => {
   const victim = context.$match[1]
   if (context.senderId === config.adminID) {
     if (isNaN(victim)) {

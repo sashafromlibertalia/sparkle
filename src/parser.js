@@ -1,4 +1,3 @@
-
 const BOT = require('./vk')
 const cheerio = require('cheerio')
 const request = require('request')
