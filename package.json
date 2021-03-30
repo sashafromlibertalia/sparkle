@@ -1,8 +1,8 @@
 {
   "name": "schoolbot",
   "version": "1.0.0",
-  "description": "",
-  "main": "./src/index.js",
+  "description": "![alt text](https://pp.userapi.com/c851036/v851036626/18eb61/eVj7Z4ATJY8.jpg)",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +17,14 @@
     "moment": "^2.29.1",
     "vk-io": "^4.1.4",
     "webshot": "^0.18.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashafromlibertalia/SchoolBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sashafromlibertalia/SchoolBot/issues"
+  },
+  "homepage": "https://github.com/sashafromlibertalia/SchoolBot#readme"
 }
