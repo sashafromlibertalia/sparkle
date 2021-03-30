@@ -4,7 +4,9 @@
   "description": "![alt text](https://pp.userapi.com/c851036/v851036626/18eb61/eVj7Z4ATJY8.jpg)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-prebuild": "export NPM_CONFIG_PRODUCTION=false; export NODE_ENV=; NPM_CONFIG_PRODUCTION=false NODE_ENV=development npm install --only=dev --dev",
+    "heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;"
   },
   "author": "",
   "license": "ISC",
@@ -26,5 +28,5 @@
   "bugs": {
     "url": "https://github.com/sashafromlibertalia/SchoolBot/issues"
   },
-  "homepage": "https://github.com/sashafromlibertalia/SchoolBot#readme"
+  "homepage": "https://github.com/sashafromlibertalia/SchoolBot#readme",
 }
