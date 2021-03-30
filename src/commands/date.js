@@ -1,4 +1,5 @@
 const BOT = require("../vk");
+const PARSER = require('./parser')
 
 const Intl = require('intl')
 const moment = require('moment')
@@ -67,33 +68,40 @@ const weekKeyboard = BOT.KEYBOARD.keyboard([
 ]).oneTime();
 
 
-function monday() {
-
-}
-
-function tuesday() {
-
-}
-
-function wednesday() {
-
-}
-
-function thursday() {
-
-}
-
-function friday() {
-
-}
-
-function saturday() {
-
-}
 
 function setHomeworkNext() {
    
 }
+
+BOT.HEARCOMMAND("monday", async(context) => {
+    await context.send(`Задания на понедельник:
+    ${PARSER.DAYS[0].join('\n')}`)
+})
+
+BOT.HEARCOMMAND("tuesday", async(context) => {
+    await context.send(`Задания на вторник:
+    ${PARSER.DAYS[1].join('\n')}`)
+})
+
+BOT.HEARCOMMAND("wednesday", async(context) => {
+    await context.send(`${PARSER.DAYS[2].join('\n')}`)
+})
+
+BOT.HEARCOMMAND("thursday", async(context) => {
+    await context.send(`Задания на четверг:
+    ${PARSER.DAYS[3].join('\n')}`)
+})
+
+BOT.HEARCOMMAND("friday", async(context) => {
+    await context.send(`Задания на пятницу:
+    ${PARSER.DAYS[4].join('\n')}`)
+})
+
+BOT.HEARCOMMAND("saturday", async(context) => {
+    await context.send(`Задания на субботу:
+    ${PARSER.DAYS[5].join('\n')}`)
+})
+
 
 const asksCommand = BOT.MESSAGES.hear([/задали/i, /задано/i], async (context) => {
 	await context.send({
@@ -111,19 +119,30 @@ const dateCommand = BOT.MESSAGES.hear("/дата", async (context) => {
 });
 
 const tomorrowCommand = BOT.MESSAGES.hear("/дз завтра", async (context) => {
-    for (i = 0; i < 7; i++) {
+    for (let i = 0; i < 7; i++) {
         if (moment().day() === i) {
-          await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n' + Days[i].join('\n'))
+           await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n' + PARSER.DAYS[i].join('\n'))
         };
     };
+});
+
+const allCommand = BOT.MESSAGES.hear("/дз все", async (context) => {
+    await context.send(`${PARSER.DAYS[0].join('\n')}
+    ${PARSER.DAYS[1].join('\n')}
+    ${PARSER.DAYS[3].join('\n')}
+    ${PARSER.DAYS[4].join('\n')}
+    ${PARSER.DAYS[5].join('\n')}`)
+    
 });
 
 
 
 module.exports = {
 	run() {
+        PARSER.run()
 		dateCommand
         asksCommand
         tomorrowCommand
+        allCommand
 	},
 };
