@@ -1,6 +1,5 @@
 const BOT = require("../vk");
 const PARSER = require('./parser')
-
 const Intl = require('intl')
 const moment = require('moment')
 const Time = new Date()
