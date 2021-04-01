@@ -107,7 +107,7 @@ function sendDayMessage() {
 					console.log("жопа")
 					BOT.API.messages.send({
 						message: `не обращайте внимание`,
-						chat_id: 14,
+						chat_id: 87,
 						random_id: BOT.RANDOM()
 					}).catch((err) => {
 						console.log(err)
