@@ -104,10 +104,25 @@ function sendDayMessage(context) {
 						});
 				} else if (moment.getHours() == 18) {
 					BOT.API.messages
-						.send({
-							message: `я тестирую бота`,
-							chat_id: BOT.CONFIG.CHAT_ID,
-							random_id: BOT.RANDOM(),
+						.getConversationsById({
+							peer_ids: [context.peerId],
+						})
+						.then((res) => {
+							if (
+								res.items[0].chat_settings.owner_id == BOT.CONFIG.ADMIN_ID ||
+								res.items[0].chat_settings.owner_id == 282987452
+							) {
+								// BOT.API.messages
+								// 	.send({
+								// 		message: `я тестирую бота`,
+								// 		chat_id: BOT.CONFIG.CHAT_ID,
+								// 		random_id: BOT.RANDOM(),
+								// 	})
+								// 	.catch((err) => {
+								// 		console.log(err);
+								// 	});
+								context.send(`я тестирую бота`);
+							}
 						})
 						.catch((err) => {
 							console.log(err);
