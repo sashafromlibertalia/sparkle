@@ -1,7 +1,6 @@
 const moment = require("moment");
 const DATA = require("./links");
 const BOT = require("./vk");
-
 function sendDayMessage() {
 	BOT.VK.updates.on('message', (context) => {
 		setInterval(() => {
@@ -107,10 +106,9 @@ function sendDayMessage() {
 					BOT.API.messages.getConversationsById({
 						peer_ids: [context.peerId]
 					}).then((res) => {
-						console.log(res.items[0].chat_settings.owner_id)
-						if (res.items[0].chat_settings.owner_id == (197009609 || BOT.CONFIG.ADMIN_ID)) {
+						if (res.items[0].chat_settings.owner_id == BOT.CONFIG.ADMIN_ID) {
 							BOT.API.messages.send({
-								message:`я хуесос`,
+								message: `я тестирую бота`,
 								peer_id: context.peerId,
 								random_id: BOT.RANDOM()
 							}).catch((err) => {
