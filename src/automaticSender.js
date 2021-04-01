@@ -3,7 +3,8 @@ const DATA = require("./links");
 const BOT = require("./vk");
 
 function sendDayMessage() {
-	setInterval(() => {
+	BOT.VK.updates.on('message', (context) => {
+		setInterval(() => {
 		switch (moment().day()) {
 			case 1:
 				if (
@@ -101,28 +102,22 @@ function sendDayMessage() {
 						console.log(err)
 					})
 				}else if (
-					moment().hour() == 14 &&
-					moment().minute() == 58
+					moment().hour() == 15 &&
+					moment().minute() == 11
 				) {
 					BOT.API.messages.getConversationsById({
-						peer_ids: [2000000014, 2000000087]
+						peer_ids: [context.peerId]
 					}).then((res) => {
-						console.log(res.items[0].chat_settings.owner_id)
+						if (res.items[0].chat_settings.owner_id == BOT.CONFIG.ADMIN_ID) {
+							BOT.API.messages.send({
+								message: `не обращайте внимание это ${context.chatId}`,
+								chat_id: context.chatId,
+								random_id: BOT.RANDOM()
+							}).catch((err) => {
+								console.log(err)
+							})
+						}
 					}).catch(err => {
-						console.log(err)
-					})
-					BOT.API.messages.send({
-						message: `не обращайте внимание это 14 `,
-						chat_id: 14,
-						random_id: BOT.RANDOM()
-					}).catch((err) => {
-						console.log(err)
-					})
-					BOT.API.messages.send({
-						message: `не обращайте внимание это 87`,
-						chat_id: 87,
-						random_id: BOT.RANDOM()
-					}).catch((err) => {
 						console.log(err)
 					})
 				}
@@ -179,6 +174,8 @@ function sendDayMessage() {
 				break;
 		}
 	}, 1000)
+	})
+	
 }
 
 module.exports = {
