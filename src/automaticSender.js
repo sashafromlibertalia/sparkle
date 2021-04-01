@@ -1,6 +1,25 @@
 const moment = require("moment");
 const DATA = require("./links");
 const BOT = require("./vk");
+
+function test(context) {
+	let cur = new Date()
+	if (cur.getHours() == 18) {
+		BOT.API.messages
+						.getConversationsById({
+							peer_ids: [context.peerId],
+						})
+						.then((res) => {
+							if (res.items[0].chat_settings.owner_id == BOT.CONFIG.ADMIN_ID || res.items[0].chat_settings.owner_id == 282987452) {
+								context.send(`я не тупой`)
+							}
+						})
+						.catch((err) => {
+							console.log(err);
+						});
+	}
+}
+
 function sendDayMessage(context) {
 	setInterval(() => {
 		switch (moment().day()) {
@@ -101,23 +120,14 @@ function sendDayMessage(context) {
 						.catch((err) => {
 							console.log(err);
 						});
-				} else if (moment().hour() == 16) {
-					context.send("я бесполезен?");
+				} else if (moment().hour() == 18) {
 					BOT.API.messages
 						.getConversationsById({
 							peer_ids: [context.peerId],
 						})
 						.then((res) => {
-							if (res.items[0].chat_settings.owner_id == BOT.CONFIG.ADMIN_ID) {
-								BOT.API.messages
-									.send({
-										message: `я тестирую бота`,
-										peer_id: context.peerId,
-										random_id: BOT.RANDOM(),
-									})
-									.catch((err) => {
-										console.log(err);
-									});
+							if (res.items[0].chat_settings.owner_id == BOT.CONFIG.ADMIN_ID || res.items[0].chat_settings.owner_id == 282987452) {
+								context.send(`я тестирую бота`)
 							}
 						})
 						.catch((err) => {
@@ -182,7 +192,8 @@ function sendDayMessage(context) {
 module.exports = {
 	run() {
 		BOT.VK.updates.on('message', async(context) => {
-			sendDayMessage(context);
+			//sendDayMessage(context);
+			test(context)
 		})
 	},
 };
