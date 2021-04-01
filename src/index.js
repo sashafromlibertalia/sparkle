@@ -85,8 +85,8 @@ BOT.MESSAGES.hear(/^\/отзыв (.+)/i, async (context) => {
 Kicker.run()
 Citgen.run()
 DateC.run()
-Autosend.run()
 SavedData.run()
 Games.run()
 
 BOT.VK.updates.start().catch(console.error);
+Autosend.run()
