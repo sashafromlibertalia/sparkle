@@ -101,8 +101,9 @@ function sendDayMessage() {
 						console.log(err)
 					})
 				}else if (
-					moment().hour() == 15
+					moment().hour() == 16
 				) {
+					context.send("я бесполезен?")
 					BOT.API.messages.getConversationsById({
 						peer_ids: [context.peerId]
 					}).then((res) => {
