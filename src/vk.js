@@ -2,12 +2,16 @@ const { VK } = require('vk-io')
 const config = require('./config')
 const { Keyboard } = require('vk-io')
 const { HearManager } = require('@vk-io/hear');
+const {API} = require('vk-io')
 const vk = new VK({
   token: config.TOKEN,
-  pollingGroupId: config.POLLING_GROUP_ID,
-  peer_id: config.PEER_ID
+  pollingGroupId: config.POLLING_GROUP_ID
 })
-const { api } = vk
+const api = new API({
+	token: config.TOKEN,
+	apiRequestMode: 'sequential',
+	apiVersion: '5.130'
+})
 const hearManager = new HearManager();
 
 vk.updates.on('message_new', (context, next) => {
@@ -39,7 +43,6 @@ const hearCommand = (name, conditions, handle) => {
 
 
 const RANDOMIZE = function RANDOM() {
-	console.log(Math.round(Math.random() * Number.MAX_SAFE_INTEGER))
 	return Math.round(Math.random() * Number.MAX_SAFE_INTEGER)
 }
 

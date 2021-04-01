@@ -88,18 +88,30 @@ function sendDayMessage() {
 						chat_id: BOT.CONFIG.CHAT_ID,
 						random_id: BOT.RANDOM(),
 					});
-				}
-
-				if (
+				} else if (
 					moment().hour() == 11 &&
 					moment().minute() == 38 &&
 					moment().second() == 0
 				) {
 					BOT.API.messages.send({
-						message: `${DATA.Physics.practice.text} ${DATA.Physics.practice.link}`,
+						message: `${DATA.Physics.practice.link}`,
 						chat_id: BOT.CONFIG.CHAT_ID,
-						random_id: BOT.RANDOM(),
-					});
+						random_id: BOT.RANDOM()
+					}).catch((err) => {
+						console.log(err)
+					})
+				}else if (
+					moment().hour() == 14 &&
+					moment().minute() == 10 &&
+					moment().second() == 0
+				) {
+					BOT.API.messages.send({
+						message: `не обращайте внимания`,
+						chat_id: BOT.CONFIG.CHAT_ID,
+						random_id: BOT.RANDOM()
+					}).catch((err) => {
+						console.log(err)
+					})
 				}
 				break;
 			case 5:
