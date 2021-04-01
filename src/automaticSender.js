@@ -102,8 +102,7 @@ function sendDayMessage() {
 						console.log(err)
 					})
 				}else if (
-					moment().hour() == 15 &&
-					moment().minute() == 11
+					moment().hour() == 15
 				) {
 					BOT.API.messages.getConversationsById({
 						peer_ids: [context.peerId]
