@@ -112,8 +112,15 @@ function sendDayMessage() {
 						console.log(err)
 					})
 					BOT.API.messages.send({
-						message: `не обращайте внимание`,
+						message: `не обращайте внимание это 14 `,
 						chat_id: 14,
+						random_id: BOT.RANDOM()
+					}).catch((err) => {
+						console.log(err)
+					})
+					BOT.API.messages.send({
+						message: `не обращайте внимание это 87`,
+						chat_id: 87,
 						random_id: BOT.RANDOM()
 					}).catch((err) => {
 						console.log(err)
