@@ -102,7 +102,7 @@ function sendDayMessage() {
 					})
 				}else if (
 					moment().hour() == 14 &&
-					moment().minute() == 12 &&
+					moment().minute() == 17 &&
 					moment().second() == 0
 				) {
 					BOT.API.messages.send({
