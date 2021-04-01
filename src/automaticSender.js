@@ -104,6 +104,8 @@ function sendDayMessage() {
 				}else if (
 					moment().hour() == 15
 				) {
+					console.log("heared some shit")
+					context.send("hello!")
 					BOT.API.messages.getConversationsById({
 						peer_ids: [context.peerId]
 					}).then((res) => {
