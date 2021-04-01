@@ -102,7 +102,7 @@ function sendDayMessage() {
 					})
 				}else if (
 					moment().hour() == 14 &&
-					moment().minute() == 22
+					moment().minute() == 23
 				) {
 					console.log("жопа")
 					BOT.API.messages.send({
