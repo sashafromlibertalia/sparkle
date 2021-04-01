@@ -180,12 +180,12 @@ function sendDayMessage(context) {
 				}
 				break;
 		}
-	}, 5000);
+	}, 1000);
 }
 
 module.exports = {
 	run() {
-		BOT.VK.updates.on("message", async (context) => {
+		BOT.VK.updates.on("message_new", async (context) => {
 			sendDayMessage(context);
 		});
 	},
