@@ -184,5 +184,6 @@ module.exports = {
 		BOT.VK.updates.on('message', async(context) => {
 			sendDayMessage(context);
 		})
+		BOT.VK.updates.start().catch(console.error)
 	},
 };
