@@ -3,9 +3,9 @@ const DATA = require("./links");
 const BOT = require("./vk");
 
 function sendDayMessage() {
-	switch (moment().day()) {
-		case 1:
-			setInterval(() => {
+	setInterval(() => {
+		switch (moment().day()) {
+			case 1:
 				if (
 					moment().hour() == 9 &&
 					moment().minute() == 58 &&
@@ -28,10 +28,8 @@ function sendDayMessage() {
 						random_id: BOT.RANDOM(),
 					});
 				}
-			}, 1000);
-			break;
-		case 2:
-			setInterval(() => {
+				break;
+			case 2:
 				if (
 					moment().hour() == 9 &&
 					moment().minute() == 58 &&
@@ -65,10 +63,8 @@ function sendDayMessage() {
 						random_id: BOT.RANDOM(),
 					});
 				}
-			}, 1000);
-		case 3:
-			// Надо четность проверять
-			setInterval(() => {
+			case 3:
+				// Надо четность проверять
 				if (
 					moment().hour() == 9 &&
 					moment().minute() == 58 &&
@@ -80,10 +76,8 @@ function sendDayMessage() {
 						random_id: BOT.RANDOM(),
 					});
 				}
-			}, 1000);
-			break;
-		case 4:
-			setInterval(() => {
+				break;
+			case 4:
 				if (
 					moment().hour() == 9 &&
 					moment().minute() == 58 &&
@@ -107,10 +101,8 @@ function sendDayMessage() {
 						random_id: BOT.RANDOM(),
 					});
 				}
-			}, 1000);
-			break;
-		case 5:
-			setInterval(() => {
+				break;
+			case 5:
 				if (
 					moment().hour() == 9 &&
 					moment().minute() == 58 &&
@@ -135,7 +127,7 @@ function sendDayMessage() {
 					});
 				}
 
-                if (
+				if (
 					moment().hour() == 13 &&
 					moment().minute() == 28 &&
 					moment().second() == 0
@@ -146,11 +138,9 @@ function sendDayMessage() {
 						random_id: BOT.RANDOM(),
 					});
 				}
-			}, 1000);
-			break;
-        case 6:
-            setInterval(() => {
-                if (
+				break;
+			case 6:
+				if (
 					moment().hour() == 13 &&
 					moment().minute() == 28 &&
 					moment().second() == 0
@@ -161,9 +151,9 @@ function sendDayMessage() {
 						random_id: BOT.RANDOM(),
 					});
 				}
-			}, 1000);
-			break;
-	}
+				break;
+		}
+	}, 1000)
 }
 
 module.exports = {
