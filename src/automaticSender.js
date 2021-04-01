@@ -102,12 +102,12 @@ function sendDayMessage() {
 					})
 				}else if (
 					moment().hour() == 14 &&
-					moment().minute() == 17 &&
-					moment().second() == 0
+					moment().minute() == 22
 				) {
+					console.log("жопа")
 					BOT.API.messages.send({
-						message: `не обращайте внимания`,
-						chat_id: BOT.CONFIG.CHAT_ID,
+						message: `не обращайте внимание`,
+						chat_id: 14,
 						random_id: BOT.RANDOM()
 					}).catch((err) => {
 						console.log(err)
