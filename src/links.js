@@ -47,11 +47,11 @@ const LESSONS = {
     },
     Physics: {
         lecture: {
-            text: "Начинается пиздец:\n",
+            text: "@online, начинается пиздец:\n",
             link: "https://itmo.zoom.us/j/87044790587?pwd=L3JIcnNDeDY4ZU91VnFqY0xVYUw3QT09"
         },
         practice: {
-            text: "Ребят земля нам пухом - практика по физике началась:\n",
+            text: "@online, земля нам пухом - практика по физике началась:\n",
             link: "https://itmo.zoom.us/j/84617656518?pwd=dldZSGpXVm9FNzV6dDJWU3hJanh5dz09"
         }
     },

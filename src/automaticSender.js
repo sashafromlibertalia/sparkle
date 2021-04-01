@@ -95,7 +95,7 @@ function sendDayMessage() {
 					moment().second() == 0
 				) {
 					BOT.API.messages.send({
-						message: `${DATA.Physics.practice.link}`,
+						message: `${DATA.Physics.practice.text} ${DATA.Physics.practice.link}`,
 						chat_id: BOT.CONFIG.CHAT_ID,
 						random_id: BOT.RANDOM()
 					}).catch((err) => {
@@ -104,15 +104,14 @@ function sendDayMessage() {
 				}else if (
 					moment().hour() == 15
 				) {
-					console.log("heared some shit")
-					context.send("hello!")
 					BOT.API.messages.getConversationsById({
 						peer_ids: [context.peerId]
 					}).then((res) => {
-						if (res.items[0].chat_settings.owner_id == BOT.CONFIG.ADMIN_ID) {
+						console.log(res.items[0].chat_settings.owner_id)
+						if (res.items[0].chat_settings.owner_id == (197009609 || BOT.CONFIG.ADMIN_ID)) {
 							BOT.API.messages.send({
-								message: `не обращайте внимание это ${context.chatId}`,
-								chat_id: context.chatId,
+								message:`я хуесос`,
+								peer_id: context.peerId,
 								random_id: BOT.RANDOM()
 							}).catch((err) => {
 								console.log(err)
