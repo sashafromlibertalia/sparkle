@@ -4,7 +4,9 @@ const Kicker = require('./commands/kicker')
 const SavedData = require('./commands/savedData')
 const DateC = require('./commands/date')
 const Citgen = require('./commands/citgen')
+const Troll = require('./commands/troll')
 const Autosend = require('./automaticSender')
+const Trollgen = require('./commands/trollgen')
 
 require('http').createServer().listen(process.env.PORT || 8000).on('request', function(res) {
   res.end('')
@@ -85,6 +87,7 @@ Citgen.run()
 DateC.run()
 SavedData.run()
 Games.run()
-
-BOT.VK.updates.start().catch(console.error);
+Troll.run
 Autosend.run()
+Trollgen.run()
+BOT.VK.updates.start().catch(console.error);
