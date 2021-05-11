@@ -94,4 +94,5 @@ Games.run()
 Troll.run
 Autosend.run()
 Trollgen.run()
+
 BOT.VK.updates.start().catch(console.error);

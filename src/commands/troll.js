@@ -299,5 +299,10 @@ const troll = BOT.MESSAGES.hear("/тролль", async (context) => {
 	}
 });
 
-module.exports.rewriteMessage = rewriteMessage
-module.exports.run = troll
+
+// rewriteMessage = rewriteMessage
+module.exports = {
+	run() {
+		troll
+	}
+}

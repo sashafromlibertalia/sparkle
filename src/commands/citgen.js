@@ -4,8 +4,51 @@ const gm = require("gm").subClass({
 	imageMagick: true,
 });
 const fs = require("fs");
-let text = [];
-let imagekek = [];
+let text = [],
+	imagekek = [],
+	FONT = "assets/HelveticaNeue.ttf"
+
+let download = (uri, filename, callback) => {
+	request.head(uri, (err, res, body) => {
+		console.log("content-type:", res.headers["content-type"]);
+		console.log("content-length:", res.headers["content-length"]);
+		request(uri).pipe(fs.createWriteStream(filename)).on("close", callback);
+	});
+};
+
+function downloadImage(imagekek, context) {
+	download(imagekek.photo_200, "images/ava.png", () => {
+		console.log("done");
+		gm(640, 400, "#000000")
+			.fill("#FFFFFF")
+			.font(FONT)
+			.fontSize(30)
+			.drawText(30, 42, "Золотые слова")
+			.in("-page", "+30+85")
+			.in("images/ava.png")
+			.fontSize(20)
+			.drawText(260, 110, `«${text}»`)
+			.fontSize(30)
+			.drawText(
+				30,
+				370,
+				`© ${imagekek.first_name} ${imagekek.last_name}`
+			)
+			.mosaic()
+			.write("images/rofl.png", async (err) => {
+				if (err) console.error(err);
+				
+				const attach = await BOT.VK.upload.messagePhoto({
+					source: {
+						value: "./images/rofl.png",
+					},
+				});
+				await context.send({
+					attachment: attach.toString(),
+				});
+			});
+	});
+}
 
 const citgenCommand = BOT.MESSAGES.hear("/citgen", async (context) => {
 	if (context.hasReplyMessage) {
@@ -22,49 +65,10 @@ const citgenCommand = BOT.MESSAGES.hear("/citgen", async (context) => {
 		});
 
 		console.log(imagekek[0]);
+		downloadImage(imagekek[0], context)
 
-		let download = function (uri, filename, callback) {
-			request.head(uri, function (err, res, body) {
-				console.log("content-type:", res.headers["content-type"]);
-				console.log("content-length:", res.headers["content-length"]);
-				request(uri).pipe(fs.createWriteStream(filename)).on("close", callback);
-			});
-		};
-
-		download(imagekek[0].photo_200, "ava.png", function () {
-			console.log("done");
-			gm(640, 400, "#000000")
-				.fill("#FFFFFF")
-				.font("HelveticaNeue.ttf")
-				.fontSize(30)
-				.drawText(30, 42, "Золотые слова")
-				.in("-page", "+30+85")
-				.in("ava.png")
-				.fontSize(20)
-				.drawText(260, 110, `«${text}»`)
-				.fontSize(30)
-				.drawText(
-					30,
-					370,
-					`© ${imagekek[0].first_name} ${imagekek[0].last_name}`
-				)
-				.mosaic()
-				.write("rofl.png", async function (err) {
-					if (err) {
-						console.log(err);
-					}
-					const attach = await BOT.VK.upload.messagePhoto({
-						source: {
-							value: "./rofl.png",
-						},
-					});
-					await context.send({
-						attachment: attach.toString(),
-					});
-				});
-		});
-		fs.unlink("rofl.png");
-		fs.unlink("ava.png");
+		fs.unlink("images/rofl.png");
+		fs.unlink("images/ava.png");
 		text = null;
 		imagekek = null;
 	} else if (context.hasForwards) {
@@ -91,27 +95,20 @@ const citgenCommand = BOT.MESSAGES.hear("/citgen", async (context) => {
 		}
 
 		await context.send("Citgen одобрен, ща будет ржака");
-		let download = function (uri, filename, callback) {
-			request.head(uri, function (err, res, body) {
-				console.log("content-type:", res.headers["content-type"]);
-				console.log("content-length:", res.headers["content-length"]);
-				request(uri).pipe(fs.createWriteStream(filename)).on("close", callback);
-			});
-		};
-
+		
 		console.log(imagekek[0][0].photo_200);
 		console.log(imagekek[0][0].photo_200_orig);
 
 		if (imagekek[0][0].photo_200 === undefined) {
-			download(imagekek[0][0].photo_200_orig, "ava.png", function () {
+			download(imagekek[0][0].photo_200_orig, "images/ava.png", () => {
 				console.log("done");
 				gm(640, 400, "#000000")
 					.fill("#FFFFFF")
-					.font("HelveticaNeue.ttf")
+					.font(FONT)
 					.fontSize(30)
 					.drawText(30, 42, "Золотые слова")
 					.in("-page", "+30+80")
-					.in("ava.png")
+					.in("images/ava.png")
 					.fontSize(20)
 					.drawText(260, 110, `«${text.join("\n")}»`)
 					.fontSize(30)
@@ -121,13 +118,12 @@ const citgenCommand = BOT.MESSAGES.hear("/citgen", async (context) => {
 						`© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`
 					)
 					.mosaic()
-					.write("rofl.png", async function (err) {
-						if (err) {
-							console.log(err);
-						}
+					.write("images/rofl.png", async (err) => {
+						if (err) console.error(err);
+						
 						const attach = await BOT.VK.upload.messagePhoto({
 							source: {
-								value: "./rofl.png",
+								value: "./images/rofl.png",
 							},
 						});
 						await context.send({
@@ -135,20 +131,20 @@ const citgenCommand = BOT.MESSAGES.hear("/citgen", async (context) => {
 						});
 					});
 			});
-			fs.unlink("rofl.png");
-			fs.unlink("ava.png");
+			fs.unlink("images/rofl.png");
+			fs.unlink("images/ava.png");
 			text = null;
 			imagekek = null;
 		} else {
-			download(imagekek[0][0].photo_200, "ava.png", function () {
+			download(imagekek[0][0].photo_200, "images/ava.png", () => {
 				console.log("done");
 				gm(640, 400, "#000000")
 					.fill("#FFFFFF")
-					.font("HelveticaNeue.ttf")
+					.font(FONT)
 					.fontSize(30)
 					.drawText(30, 42, "Золотые слова")
 					.in("-page", "+30+85")
-					.in("ava.png")
+					.in("images/ava.png")
 					.fontSize(20)
 					.drawText(260, 110, `«${text.join("\n")}»`)
 					.fontSize(30)
@@ -158,13 +154,12 @@ const citgenCommand = BOT.MESSAGES.hear("/citgen", async (context) => {
 						`© ${imagekek[0][0].first_name} ${imagekek[0][0].last_name}`
 					)
 					.mosaic()
-					.write("rofl.png", async function (err) {
-						if (err) {
-							console.log(err);
-						}
+					.write("images/rofl.png", async (err) => {
+						if (err) console.error(err);
+						
 						const attach = await BOT.VK.upload.messagePhoto({
 							source: {
-								value: "./rofl.png",
+								value: "./images/rofl.png",
 							},
 						});
 						await context.send({
@@ -172,8 +167,8 @@ const citgenCommand = BOT.MESSAGES.hear("/citgen", async (context) => {
 						});
 					});
 			});
-			fs.unlink("rofl.png");
-			fs.unlink("ava.png");
+			fs.unlink("images/rofl.png");
+			fs.unlink("images/ava.png");
 			text = null;
 			imagekek = null;
 		}

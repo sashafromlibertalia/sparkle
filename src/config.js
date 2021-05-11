@@ -9,7 +9,7 @@ let config = {
   NAME_ADMIN: 'Саша',
   NAME_ADMIN_DAT: 'Саше',
   ADMIN_DOMAIN: 'sashafromlibertalia',
-  ADMIN_ID: 368418604
+  ADMIN_ID: [368418604, 282987452]
 }
 
 module.exports = config
