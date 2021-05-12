@@ -24,7 +24,7 @@ $ git clone https://github.com/sashafromlibertalia/SchoolBot.git
 
 После того, как Вы скачали репозиторий бота, переходить в папку ```src```. В ней находится файл **```config.js```**. Он нужен для внесения параметров, необходимых для корректной работы бота.
 ```js
-let config = {
+const config = {
     TOKEN: STRING,  // Сюда вы пишите токен группы, полученный с помощью LongPoll
     POLLING_GROUP_ID: INT, // ID вашей группы
     PARSER_URL: STRING, // Ссылка на файл domashka.txt (Рекомендую хранить его на GitHub в репозитории с ботом)
