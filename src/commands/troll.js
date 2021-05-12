@@ -1,5 +1,8 @@
 const BOT = require('../vk')
 
+/**
+@important Если кто-то придумает умный алгоритм подобных коверканий, сделайте Pull Request, я оценю
+*/
 const matches = [
   {
     string: /ог/gi,

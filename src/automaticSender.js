@@ -1,6 +1,9 @@
 const DATA = require('./links')
 const BOT = require('./vk')
-
+/**
+*@note
+В данном коде вводите свое расписание, и бот отправит вам рассылку с Zoom
+*/
 function sendDayMessage (context) {
   const moment = new Date()
   setInterval(() => {
@@ -105,9 +108,9 @@ function sendDayMessage (context) {
 
 module.exports = {
   run () {
-    /*
-	@important - Бот должен быть администратором, чтобы этот код работал
-	*/
+    /**
+    * @important Бот должен быть администратором, чтобы этот код работал
+	  */
     BOT.VK.updates.on('message_new', (context) => {
       BOT.API.messages.getConversationsById({ peer_ids: context.peerId }).then((res) => {
         BOT.CONFIG.ADMIN_ID.map(admin => {

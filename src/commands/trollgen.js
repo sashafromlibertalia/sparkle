@@ -4,7 +4,6 @@ const options = require('../image').options
 const download = require('../image').downloadImage
 const fs = require('fs')
 
-
 const trollCommand = BOT.MESSAGES.hear('/trollgen', async (context) => {
   if (context.hasReplyMessage && !context.replyMessage.isGroup) {
     await context.send('Trollgen одобрен, ща буит ржяка')
@@ -19,8 +18,8 @@ const trollCommand = BOT.MESSAGES.hear('/trollgen', async (context) => {
     fs.unlink(options.USER_PIC)
     text = null
   } else if (context.hasForwards && !context.forwards[0].isGroup) {
-    let text = [],
-      img = []
+    let text = []
+    let img = []
     if (context.forwards.length === 1) {
       text[0] = context.forwards[0].text
     }
@@ -42,7 +41,7 @@ const trollCommand = BOT.MESSAGES.hear('/trollgen', async (context) => {
     }
     await context.send('Trollgen одобрен, ща буит ржяка')
     if (img[0][0].photo_200 === undefined) {
-      download.apply(null,[img[0][0], img[0][0].photo_200_orig, context, troll.rewriteMessage(text.join('\n'))])
+      download.apply(null, [img[0][0], img[0][0].photo_200_orig, context, troll.rewriteMessage(text.join('\n'))])
       fs.unlink(options.FINAL_PATH)
       fs.unlink(options.USER_PIC)
       text = null
@@ -58,7 +57,6 @@ const trollCommand = BOT.MESSAGES.hear('/trollgen', async (context) => {
     await context.send('А че троллгенить то будем?')
   }
 })
-
 
 module.exports = {
   run () {

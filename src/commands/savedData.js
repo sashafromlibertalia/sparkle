@@ -4,6 +4,10 @@ const listAttachment = []
 
 function isNumber (n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
+/**
+* @note
+Я бы здесь добавил БД, например mongoose, чтобы шпоры не удалялись после перегрузки бота
+*/
 const hear = BOT.MESSAGES.hear(/^\/шпора добавить (.+)/i, async (context) => {
   const category = context.$match[1]
   if (context.hasAttachments('photo')) {

@@ -1,3 +1,7 @@
+/**
+*@note
+Заполняйте данные согласно README
+*/
 const config = {
   TOKEN: '87322753850ec43c47043f1a45c052eee24cc123226ec82083df315f30f085d27d222e3fb0bf956fe43cd',
   POLLING_GROUP_ID: 168462227,

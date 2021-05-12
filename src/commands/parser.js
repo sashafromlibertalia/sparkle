@@ -37,8 +37,11 @@ function configureSaturday () {
   DAYS[5][0] = arguments[0].ALGORITHMS + arguments[1].ALGORITHMS + `\n${arguments[2]}`
 }
 
-const url = BOT.CONFIG.PARSER_URL
-const parseCommand = request(url, async function (err, res, body) {
+/**
+* Мне было лень править свой код, но суть такая:
+Я с гитхаба произвожу парсинг построчно содержимого каждого предмета (чтобы еще стало понятнее, см. domashka.txt в репозитории)
+*/
+const parseCommand = request(BOT.CONFIG.PARSER_URL, async function (err, res, body) {
   if (err) {
     throw err
   }
