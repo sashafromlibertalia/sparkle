@@ -8,7 +8,7 @@ const Troll = require('./commands/troll')
 const Autosend = require('./automaticSender')
 const Trollgen = require('./commands/trollgen')
 
-require('http').createServer().listen(process.env.PORT || 8000).on('request', function(res) {
+require('http').createServer().listen(process.env.PORT || 8000).on('request', function (res) {
   res.end('')
 })
 
@@ -79,12 +79,11 @@ BOT.MESSAGES.hear(/^\/отзыв (.+)/i, async (context) => {
   const feedback = context.$match[1]
   await context.send(`Хорошо, твой отзыв будет отправлен ${BOT.CONFIG.NAME_ADMIN_DAT}, спасибо :)`)
   BOT.API.messages.send({
-      message: 'НОВЫЙ ОТЗЫВ: ' + feedback,
-      domain: BOT.CONFIG.ADMIN_DOMAIN,
-      random_id: BOT.RANDOM()
+    message: 'НОВЫЙ ОТЗЫВ: ' + feedback,
+    domain: BOT.CONFIG.ADMIN_DOMAIN,
+    random_id: BOT.RANDOM()
   })
 })
-
 
 Kicker.run()
 Citgen.run()
@@ -95,4 +94,4 @@ Troll.run
 Autosend.run()
 Trollgen.run()
 
-BOT.VK.updates.start().catch(console.error);
+BOT.VK.updates.start().catch(console.error)
