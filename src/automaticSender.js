@@ -11,12 +11,12 @@ function sendDayMessage (context) {
       case 1:
         if (moment.getHours() == 9 &&
 					moment.getMinutes() == 58 &&
-					moment.getSeconds() == 0) {
-          context.send(`${DATA.Programming.lecture.text} ${DATA.Programming.lecture.link}`)
+					moment.getSeconds() == 10) {
+            context.send(`${DATA.Programming.lecture.text} ${DATA.Programming.lecture.link}`)
         }
         if (moment.getHours() == 11 &&
 					moment.getMinutes() == 38 &&
-					moment.getSeconds() == 0) {
+          moment.getSeconds() == 10) {
           context.send(`${DATA.Programming.practice.text} ${DATA.Programming.practice.link}`)
         }
         break
@@ -24,21 +24,21 @@ function sendDayMessage (context) {
         if (
           moment.getHours() == 9 &&
 					moment.getMinutes() == 58 &&
-					moment.getSeconds() == 0
+          moment.getSeconds() == 10
         ) {
           context.send(`${DATA.English.text}`)
         }
         if (
           moment.getHours() == 11 &&
 					moment.getMinutes() == 38 &&
-					moment.getSeconds() == 0
+					moment.getSeconds() == 10
         ) {
           context.send(`${DATA.Math.lecture.text} ${DATA.Math.lecture.link}`)
         }
         if (
           moment.getHours() == 13 &&
 					moment.getMinutes() == 28 &&
-					moment.getSeconds() == 0
+          moment.getSeconds() == 10
         ) {
           context.send(`${DATA.DiscreteMath.practice.text} ${DATA.DiscreteMath.practice.link}`)
         }
@@ -48,7 +48,7 @@ function sendDayMessage (context) {
         if (
           moment.getHours() == 9 &&
 					moment.getMinutes() == 58 &&
-					moment.getSeconds() == 0
+					moment.getSeconds() == 10
         ) {
           context.send(`${DATA.Math.lecture.text} ${DATA.Math.lecture.link}`)
         }
@@ -57,13 +57,13 @@ function sendDayMessage (context) {
         if (
           moment.getHours() == 9 &&
 					moment.getMinutes() == 58 &&
-					moment.getSeconds() == 0
+          moment.getSeconds() == 10
         ) {
           context.send(`${DATA.Physics.lecture.text} ${DATA.Physics.lecture.link}`)
         } else if (
           moment.getHours() == 11 &&
 					moment.getMinutes() == 38 &&
-					moment.getSeconds() == 0
+          moment.getSeconds() == 10
         ) {
           context.send(`${DATA.Physics.practice.text} ${DATA.Physics.practice.link}`)
         }
@@ -72,7 +72,7 @@ function sendDayMessage (context) {
         if (
           moment.getHours() == 9 &&
 					moment.getMinutes() == 58 &&
-					moment.getSeconds() == 0
+          moment.getSeconds() == 10
         ) {
           context.send(`${DATA.English.text}`)
         }
@@ -80,7 +80,7 @@ function sendDayMessage (context) {
         if (
           moment.getHours() == 11 &&
 					moment.getMinutes() == 38 &&
-					moment.getSeconds() == 0
+					moment.getSeconds() == 10
         ) {
           context.send(`${DATA.LinearAlgebra.lecture.text} ${DATA.LinearAlgebra.lecture.link}`)
         }
@@ -88,16 +88,16 @@ function sendDayMessage (context) {
         if (
           moment.getHours() == 13 &&
 					moment.getMinutes() == 28 &&
-					moment.getSeconds() == 0
+          moment.getSeconds() == 10
         ) {
-          context.send(`${DATA.LinearAlgebra.lecture.text} ${DATA.LinearAlgebra.lecture.link}`)
+          context.send(`${DATA.Math.practice.text} ${DATA.Math.practice.link}`)
         }
         break
       case 6:
         if (
           moment.getHours() == 13 &&
 					moment.getMinutes() == 28 &&
-					moment.getSeconds() == 0
+          moment.getSeconds() == 10
         ) {
           context.send(`${DATA.Algorithms.practice.text} ${DATA.Algorithms.practice.link}`)
         }
@@ -115,6 +115,7 @@ module.exports = {
       BOT.API.messages.getConversationsById({ peer_ids: context.peerId }).then((res) => {
         BOT.CONFIG.ADMIN_ID.map(admin => {
           if (res.items[0].chat_settings.owner_id === admin) {
+            console.log(moment.getSeconds())
             sendDayMessage(context)
           }
         })
