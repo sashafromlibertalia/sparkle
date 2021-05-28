@@ -294,7 +294,7 @@ const troll = BOT.MESSAGES.hear('/тролль', async (context) => {
       text[0] = context.forwards[0].text
     }
     for (let i = 0; i < context.forwards.length; i++) {
-      text[i] = rewriteMessage(context.forwards[i].text)
+      text[i] = rewrite(context.forwards[i].text)
     }
     await context.send(`${text.join('\n')}`)
   } else {
