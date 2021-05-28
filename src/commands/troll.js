@@ -286,7 +286,7 @@ const rewrite = function rewriteMessage (message) {
 const troll = BOT.MESSAGES.hear('/тролль', async (context) => {
   if (context.hasReplyMessage) {
     let msg = context.message.reply_message.text
-    msg = rewriteMessage(msg)
+    msg = rewrite(msg)
     await context.send(msg)
   } else if (context.hasForwards) {
     const text = []
