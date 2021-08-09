@@ -1,8 +1,8 @@
 const BOT = require('../vk')
 
-/** 
-@important Если кто-то придумает умный алгоритм подобных коверканий, сделайте Pull Request, я оценю
-*/
+/**
+ @important Если кто-то придумает умный алгоритм подобных коверканий, сделайте Pull Request, я оценю
+ */
 const matches = [
   {
     string: /ог/gi,
@@ -274,18 +274,19 @@ const matches = [
   }
 ]
 
-function rewriteMessage (message) {
+const rewrite = function rewriteMessage (message) {
   for (let i = 0; i < matches.length; i++) {
     if (message.match(matches[i].string)) {
       message = message.replace(matches[i].string, matches[i].replace)
     }
   }
   return message
-};
+}
 
 const troll = BOT.MESSAGES.hear('/тролль', async (context) => {
   if (context.hasReplyMessage) {
-    const msg = rewriteMessage(context.message.reply_message.text)
+    let msg = context.message.reply_message.text
+    msg = rewrite(msg)
     await context.send(msg)
   } else if (context.hasForwards) {
     const text = []
@@ -293,7 +294,7 @@ const troll = BOT.MESSAGES.hear('/тролль', async (context) => {
       text[0] = context.forwards[0].text
     }
     for (let i = 0; i < context.forwards.length; i++) {
-      text[i] = rewriteMessage(context.forwards[i].text)
+      text[i] = rewrite(context.forwards[i].text)
     }
     await context.send(`${text.join('\n')}`)
   } else {
@@ -301,9 +302,9 @@ const troll = BOT.MESSAGES.hear('/тролль', async (context) => {
   }
 })
 
-// rewriteMessage = rewriteMessage
 module.exports = {
   run () {
     troll
   }
 }
+module.exports.rewriteMessage = rewrite
