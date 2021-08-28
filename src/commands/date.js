@@ -10,9 +10,7 @@ const formatter = new Intl.DateTimeFormat('ru', {
 
 moment().format()
 
-/**
-  Клавиатура с днями недели
-*/
+/// Клавиатура с днями недели
 const weekKeyboard = BOT.KEYBOARD.keyboard([
     [
         BOT.KEYBOARD.textButton({
@@ -112,16 +110,14 @@ const tomorrowCommand = BOT.MESSAGES.hear('/дз завтра', async (context) 
     for (let i = 0; i < 7; i++) {
         if (moment().day() === i) {
             await context.send('Домашка на завтра. Сегодня ' + formatter.format(Time) + ' \n' + PARSER.DAYS[i].join('\n'))
-        };
-    };
+        }
+    }
 })
 
 const allCommand = BOT.MESSAGES.hear('/дз все', async (context) => {
     await context.send(`${PARSER.DAYS[0].join('\n')}
-    ${PARSER.DAYS[1].join('\n')}
-    ${PARSER.DAYS[3].join('\n')}
-    ${PARSER.DAYS[4].join('\n')}
-    ${PARSER.DAYS[5].join('\n')}`)
+${PARSER.DAYS[1].join('\n')}\n${PARSER.DAYS[3].join('\n')}
+${PARSER.DAYS[4].join('\n')}\n${PARSER.DAYS[5].join('\n')}`)
 })
 
 module.exports = {

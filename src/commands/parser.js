@@ -12,29 +12,29 @@ let SATURDAY = []
 
 const DAYS = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY]
 
-const configureMonday = () => {
-    DAYS[0][0] = arguments[0].PROGRAMMING + arguments[1].PROGRAMMING + `\n${arguments[2]}`
+const configureMonday = (DATA, TITLES, SEPARATOR) => {
+    DAYS[0][0] = DATA.PROGRAMMING + TITLES.PROGRAMMING + `\n${SEPARATOR}`
 }
 
-const configureTuesday = () => {
-    DAYS[1][0] = arguments[0].DISCRETE_MATH + arguments[1].DISCRETE_MATH + `\n${arguments[2]}`
+const configureTuesday = (DATA, TITLES, SEPARATOR) => {
+    DAYS[1][0] = DATA.DISCRETE_MATH + TITLES.DISCRETE_MATH + `\n${SEPARATOR}`
 }
 
 const configureWednesday = () => {
     DAYS[2][0] = 'Ничего, у нас лекции в этот день.'
 }
 
-const configureThursday = () => {
-    DAYS[3][0] = arguments[0].PHYSICS + arguments[1].PHYSICS + `\n${arguments[2]}`
-    DAYS[3][1] = arguments[0].LINEAR_ALGEBRA + arguments[1].LINEAR_ALGEBRA + `\n${arguments[2]}`
+const configureThursday = (DATA, TITLES, SEPARATOR) => {
+    DAYS[3][0] = DATA.PHYSICS + TITLES.PHYSICS + `\n${SEPARATOR}`
+    DAYS[3][1] = DATA.LINEAR_ALGEBRA + TITLES.LINEAR_ALGEBRA + `\n${SEPARATOR}`
 }
 
-const configureFriday = () => {
-    DAYS[4][0] = arguments[0].MATH_ANALYSYS + arguments[1].MATH_ANALYSYS + `\n${arguments[2]}`
+const configureFriday = (DATA, TITLES, SEPARATOR) => {
+    DAYS[4][0] = DATA.MATH_ANALYSYS + TITLES.MATH_ANALYSYS + `\n${SEPARATOR}`
 }
 
-const configureSaturday = () => {
-    DAYS[5][0] = arguments[0].ALGORITHMS + arguments[1].ALGORITHMS + `\n${arguments[2]}`
+const configureSaturday = (DATA, TITLES, SEPARATOR) => {
+    DAYS[5][0] = DATA.ALGORITHMS + TITLES.ALGORITHMS + `\n${SEPARATOR}`
 }
 
 /**
@@ -77,6 +77,7 @@ const parseCommand = request(BOT.CONFIG.PARSER_URL, async function (err, res, bo
     configureThursday(DATA, TITLES, SEPARATOR)
     configureFriday(DATA, TITLES, SEPARATOR)
     configureSaturday(DATA, TITLES, SEPARATOR)
+    
 })
 
 module.exports = {
