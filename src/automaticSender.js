@@ -110,11 +110,11 @@ module.exports = {
     run() {
         /**
         * @important Бот должен быть администратором, чтобы этот код работал
-          */
+        */
         BOT.VK.updates.on('message_new', (context) => {
             BOT.API.messages.getConversationsById({ peer_ids: context.peerId }).then((res) => {
                 BOT.CONFIG.ADMIN_ID.map(admin => {
-                    if (res.items[0].chat_settings.owner_id === admin) {
+                    if (res.items[0].chat_settings !== undefined && res.items[0].chat_settings.owner_id === admin) {
                         sendDayMessage(context)
                     }
                 })
