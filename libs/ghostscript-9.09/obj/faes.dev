@@ -1,3 +1,0 @@
--obj ./obj/zfaes.o
--include ./obj/saes
--oper zfaes

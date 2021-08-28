@@ -6,21 +6,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Alexander Miroshnichenko",
+  "license": "MIT",
   "engines": {
-    "node": "^12.x"
+    "node": "^16.x"
   },
   "dependencies": {
     "@vk-io/hear": "^1.0.2",
     "buffer-crc32": "^0.2.13",
+    "canvas": "^2.8.0",
     "cheerio": "^1.0.0-rc.5",
     "gm": "^1.23.1",
-    "google": "^0.6.0",
+    "google": "^2.1.0",
     "intl": "^1.2.5",
     "moment": "^2.29.1",
-    "vk-io": "^4.1.4",
-    "webshot": "^0.18.0"
+    "node-canvas": "^2.7.0",
+    "request": "^2.88.2",
+    "vk-io": "^4.1.4"
   },
   "repository": {
     "type": "git",

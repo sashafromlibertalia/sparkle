@@ -1,2 +1,0 @@
--dev2 bitrgbtags -include ./obj/page -obj ./obj/gdevbit.o ./obj/gdevdcrd.o
--include ./obj/cielib

@@ -1,2 +1,0 @@
--dev2 xpswrite -obj ./obj/gdevxps.o
--include ./obj/vector

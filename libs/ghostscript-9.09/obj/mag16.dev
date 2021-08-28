@@ -1,1 +1,0 @@
--dev mag16 -obj ./obj/gdevmag.o ./obj/gdevpccm.o ./obj/gdevprn.o

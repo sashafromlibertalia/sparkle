@@ -1,1 +1,0 @@
--dev dl2100 -include ./obj/page -obj ./obj/gdevln03.o

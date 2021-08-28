@@ -1,1 +1,0 @@
--dev alc4000 -include ./obj/page -obj ./obj/gdevescv.o

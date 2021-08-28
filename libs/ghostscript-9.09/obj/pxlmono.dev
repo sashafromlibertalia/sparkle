@@ -1,2 +1,0 @@
--dev2 pxlmono -obj ./obj/gdevpx.o ./obj/gdevpxut.o ./obj/gdevpcl.o
--include ./obj/vector

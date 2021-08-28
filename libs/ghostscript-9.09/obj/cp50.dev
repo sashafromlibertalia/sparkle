@@ -1,1 +1,0 @@
--dev cp50 -include ./obj/page -obj ./obj/gdevcp50.o

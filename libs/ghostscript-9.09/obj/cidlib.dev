@@ -1,2 +1,0 @@
--obj ./obj/gsfcid.o ./obj/gsfcid2.o
--include ./obj/ttflib

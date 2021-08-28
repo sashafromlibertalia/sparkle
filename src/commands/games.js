@@ -62,7 +62,7 @@ const cancelKCommand = BOT.HEARCOMMAND('cancel', async (context) => {
 })
 
 module.exports = {
-  run () {
+  run() {
     gamesCommand
     ballKCommand
     elseKCommand

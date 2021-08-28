@@ -1,5 +1,0 @@
--obj 
--dev2 nullpage
--include ./obj/libs ./obj/libx ./obj/libd
--include ./obj/iscale ./obj/roplib
--include ./obj/strdline

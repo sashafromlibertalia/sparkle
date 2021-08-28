@@ -1,2 +1,0 @@
--dev lips4v -obj ./obj/gdevl4v.o ./obj/gdevlips.o
--include ./obj/vector

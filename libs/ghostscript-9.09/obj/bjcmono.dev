@@ -1,1 +1,0 @@
--dev bjcmono -include ./obj/page -obj ./obj/gdevbjc_.o ./obj/gdevbjca.o

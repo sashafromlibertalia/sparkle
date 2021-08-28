@@ -1,1 +1,0 @@
--dev bj10e -include ./obj/page -obj ./obj/gdevbj10.o

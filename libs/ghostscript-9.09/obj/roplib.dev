@@ -1,3 +1,0 @@
--obj ./obj/gdevdrop.o ./obj/gsroprun.o
-./obj/gdevmr1.o ./obj/gdevmr2n.o ./obj/gdevmr8n.o
-./obj/gdevrops.o ./obj/gsrop.o ./obj/gsroptab.o

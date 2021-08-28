@@ -1,4 +1,10 @@
 ![alt text](/assets/Шапка.jpg)
+<div align="center">
+    <img src="https://img.shields.io/npm/l/schoolbot">
+    <img src="https://img.shields.io/amo/dw/schoolbot">
+    <img src="https://img.shields.io/npm/v/schoolbot">
+</div>
+
 
 # SchoolBot
 Помощник для школьников и студентов для ВКонтакте, написанный на Node.JS
@@ -13,6 +19,11 @@
 ```
 $ git clone https://github.com/sashafromlibertalia/SchoolBot.git
 ```
+или воспользуйтесь **npm**:
+```
+npm install schoolbot
+```
+
 
 ## Дальнейшая настройка
 
@@ -27,17 +38,17 @@ $ git clone https://github.com/sashafromlibertalia/SchoolBot.git
 const config = {
     TOKEN: STRING,  // Сюда вы пишите токен группы, полученный с помощью LongPoll
     POLLING_GROUP_ID: INT, // ID вашей группы
-    PARSER_URL: STRING, // Ссылка на файл domashka.txt (Рекомендую хранить его на GitHub в репозитории с ботом)
+    PARSER_URL: STRING, // Ссылка на файл domashka.txt (КРАЙНЕ рекомендую хранить его на GitHub в репозитории с ботом, почему - см. parser.js)
     NAME_GROUP: STRING, // Ваш класс (или группа)
     NAME_PLACE: STRING, // Название вашего учебного заведения
     NAME_ADMIN: STRING, // Ваше имя
-    NAME_ADMIN_DAT: STRING, // Ваше имя в дательном падеже (см. код)
+    NAME_ADMIN_DAT: STRING, // Ваше имя в дательном падеже (см. feedback.js)
     ADMIN_DOMAIN: STRING, // Короткая ссылка на вашу страницу
     ADMIN_ID: ARRAY OF INTS // Массив, состоящий из ID администраторов беседы (на тот случай, если бот будет состоять в нескольких беседах)
 }
 ```
 После того, как все данные будут заполнены, вам нужно разобраться со структурой кода. 
-```SchoolBot``` использует модульную систему: каждая важная и большая функция вынесена в отдельный файл, который далее подключается к **```index.js```**. Подробнее о файлах ниже: <br>
+```SchoolBot``` использует модульную систему: каждая функция вынесена в отдельный файл, который далее подключается к **```index.js```**. Подробнее о файлах ниже: <br>
 
 | Название файла | Расположение | Назначение|
 |----------------|--------------|-----------|
@@ -46,13 +57,17 @@ const config = {
 |**```links.js```**|```./src/links.js```| В данном файле хранится информация о предметах и ссылках на зум. 
 |**```image.js```**|```./src/image.js```|Обертка для /citgen и /trollgen|
 |**```automasticSender.js```**|```./src/automaticSender.js```|Этот файл нужен для отправки оповещений перед началом пар|
-|**```citgen.js```**|```./src/commands/citgen.js```| Данный файл является реализацией команды _/citgen_. Юмор - наше все
-|**```date.js```**|```./src/commands/date.js```| В данном файле реализована команды _/дата_ и смежные с ней
-|**```games.js```**|```./src/commands/games.js```|В этом файле реализованы игры бота|
-|**```kicker.js```**|```./src/commands/kicker.js```|В этом файле реализована функция _/вгулаг_, которая кикает любого пользователя. Плюс ее в том, что работать для того человека, который будет указан в ```config.js``` в поле _ADMIN_ID_|
-|**```parser.js```**|```./src/commands/parser.js```|В этом файле находится парсер ```domashka.txt```|
-|**```savedData```**|```./src/commands/savedData.js```|В этом файле сделана команды _/шпора_ и смежные с ней|
-|**```troll.js```**|```./src/commands/troll.js```|В этом файле сделана команды _/тролль_, которая коверкает слова, которые дает пользователь. Иногда выходит очень забавно|
+|**```start.js```**|```./src/commands/start.js```|Реализация команды _/start_|
+|**```commands.js```**|```./src/commands/commands.js```|Реализация команды _/команды_. Она присылает полный список команд|
+|**```help.js```**|```./src/commands/commands.js```|Реализация команды _/help_|
+|**```feedback.js```**|```./src/commands/feedback.js```|Реализация команды _/отзыв_|
+|**```citgen.js```**|```./src/commands/citgen.js```|Реализация команды _/citgen_. Юмор - наше все
+|**```date.js```**|```./src/commands/date.js```|Реализация команды _/дата_ и смежных с ней
+|**```games.js```**|```./src/commands/games.js```|Реализация игр бота|
+|**```kicker.js```**|```./src/commands/kicker.js```|Реализована команда _/вгулаг_, которая кикает любого пользователя. Плюс ее в том, что работать для того человека, который будет указан в ```config.js``` в поле _ADMIN_ID_|
+|**```parser.js```**|```./src/commands/parser.js```|Парсер ```domashka.txt```|
+|**```savedData```**|```./src/commands/savedData.js```|Реализация команды _/шпора_ и смежных с ней|
+|**```troll.js```**|```./src/commands/troll.js```|Реализация команды _/тролль_, которая коверкает слова, которые дает пользователь. Иногда выходит очень забавно|
 |**```trollgen.js```**|```./src/commands/trollgen.js```|Аналог _/citgen_|
 
 Если вы все сделали правильно, поздравляю - бот готов :)
