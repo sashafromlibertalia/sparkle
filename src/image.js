@@ -1,10 +1,5 @@
 const request = require('request')
-const BOT = require('./vk')
 const fs = require('fs')
-const gm = require('gm').subClass({
-    imageMagick: true
-})
-
 const { createCanvas, loadImage } = require("canvas")
 
 // Параметры картинки
