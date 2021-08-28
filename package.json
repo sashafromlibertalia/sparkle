@@ -14,6 +14,7 @@
   "dependencies": {
     "@vk-io/hear": "^1.0.2",
     "buffer-crc32": "^0.2.13",
+    "canvas": "^2.8.0",
     "cheerio": "^1.0.0-rc.5",
     "gm": "^1.23.1",
     "google": "^2.1.0",
