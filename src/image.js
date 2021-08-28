@@ -1,10 +1,5 @@
 const request = require('request')
-const BOT = require('./vk')
 const fs = require('fs')
-const gm = require('gm').subClass({
-    imageMagick: true
-})
-
 const { createCanvas, loadImage } = require("canvas")
 
 // Параметры картинки
@@ -53,7 +48,7 @@ const downloadImage = (user, url, context, text) => {
         ctx.fillText(options.TITLE, 30, 42)
         ctx.fillText(`© ${user.first_name} ${user.last_name}`, 30, 370)
 
-        ctx.font = "bold 22px Helvetica"
+        ctx.font = "bold 20px Helvetica"
         ctx.fillText(`«${text}»`, 260, 110)
 
         loadImage(url).then(image => {
