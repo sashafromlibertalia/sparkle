@@ -1,3 +1,0 @@
--obj -include ./obj/sdcte ./obj/sdeparam
--obj ./obj/zfdcte.o
--oper zfdcte

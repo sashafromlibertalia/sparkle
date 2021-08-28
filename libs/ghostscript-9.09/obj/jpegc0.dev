@@ -1,1 +1,0 @@
--obj ./obj/jcomapi.o ./obj/jutils.o ./obj/jmemmgr.o ./obj/jerror.o ./obj/jaricom.o

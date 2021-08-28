@@ -1,1 +1,0 @@
--dev2 plank -include ./obj/page -obj ./obj/gdevplan.o ./obj/gdevppla.o ./obj/gdevmpla.o

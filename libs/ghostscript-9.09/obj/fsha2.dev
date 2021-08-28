@@ -1,3 +1,0 @@
--obj ./obj/zfsha2.o
--include ./obj/ssha2
--oper zfsha2

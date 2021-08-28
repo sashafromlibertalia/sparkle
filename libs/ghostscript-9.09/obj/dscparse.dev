@@ -1,2 +1,0 @@
--obj -obj ./obj/zdscpars.o ./obj/dscparse.o
--oper zdscpars

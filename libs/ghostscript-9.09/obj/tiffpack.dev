@@ -1,2 +1,0 @@
--dev2 tiffpack -obj -include ./obj/tfax
--include ./obj/libtiff

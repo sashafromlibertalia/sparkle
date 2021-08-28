@@ -1,3 +1,0 @@
--dev2 cups -include ./obj/page -obj ./obj/gdevcups.o
--include ./obj/lcups.dev
--include ./obj/lcupsi.dev

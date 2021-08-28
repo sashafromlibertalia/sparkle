@@ -1,4 +1,0 @@
--obj -include ./obj/fdecode
--obj ./obj/zfilter2.o
--include ./obj/cfe ./obj/lzwe ./obj/rle
--oper zfilter2

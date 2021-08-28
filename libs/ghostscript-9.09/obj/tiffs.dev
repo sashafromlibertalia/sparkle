@@ -1,2 +1,0 @@
--obj ./obj/gdevtifs.o ./obj/minftrsz.o
--include ./obj/page -include ./obj/libtiff

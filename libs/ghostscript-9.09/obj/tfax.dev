@@ -1,3 +1,0 @@
--obj ./obj/gdevtfax.o ./obj/minftrsz.o
--include ./obj/cfe ./obj/lzwe ./obj/rle
--include ./obj/fax ./obj/tiffs -include ./obj/libtiff

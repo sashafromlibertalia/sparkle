@@ -1,2 +1,0 @@
--obj ./obj/gdevvec.o
--include ./obj/bboxutil ./obj/sfile

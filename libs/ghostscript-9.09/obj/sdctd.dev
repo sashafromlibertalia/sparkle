@@ -1,2 +1,0 @@
--obj ./obj/sdctc.o ./obj/sjpegc.o ./obj/sdctd.o ./obj/sjpegd.o
--include ./obj/jpegd.dev

@@ -1,2 +1,0 @@
--obj ./obj/gsfcmap.o ./obj/gsfcmap1.o
--include ./obj/cidlib

@@ -1,1 +1,0 @@
--dev lp9200b -include ./obj/page -obj ./obj/gdevescv.o

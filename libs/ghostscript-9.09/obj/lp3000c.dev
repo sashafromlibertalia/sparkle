@@ -1,1 +1,0 @@
--dev lp3000c -include ./obj/page -obj ./obj/gdevescv.o

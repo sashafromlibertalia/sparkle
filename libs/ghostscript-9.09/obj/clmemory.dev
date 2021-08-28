@@ -1,4 +1,0 @@
--obj ./obj/gxclmem.o ./obj/gxclzlib.o
--include ./obj/szlibe
--include ./obj/szlibd
--init gxclmem

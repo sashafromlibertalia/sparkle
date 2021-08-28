@@ -1,1 +1,0 @@
--dev2 pbmraw -include ./obj/page -obj ./obj/gdevpbm.o ./obj/gdevppla.o ./obj/gdevmpla.o

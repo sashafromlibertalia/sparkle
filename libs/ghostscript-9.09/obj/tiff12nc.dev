@@ -1,2 +1,0 @@
--dev2 tiff12nc -include ./obj/page -obj ./obj/gdevtfnx.o ./obj/minftrsz.o
--include ./obj/tiffs -include ./obj/libtiff

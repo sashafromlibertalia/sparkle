@@ -1,3 +1,0 @@
--obj ./obj/ziodev2.o ./obj/zdevcal.o
--oper ziodev2_l2
--iodev null calendar
