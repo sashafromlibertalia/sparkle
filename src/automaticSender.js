@@ -42,7 +42,7 @@ module.exports = {
         BOT.VK.updates.on('message_new', (context) => {
             BOT.API.messages.getConversationsById({ peer_ids: context.peerId }).then((res) => {
                 BOT.CONFIG.ADMIN_ID.map(admin => {
-                    if (res.items[0].peer.type === "chat" && res.items[0].chat_settings.owner_id === admin) {
+                    if (res.items !== undefined && res.items[0].peer.type === "chat" && res.items[0].chat_settings.owner_id === admin) {
                         sendDayMessage(context)
                     }
                 })
