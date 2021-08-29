@@ -1,8 +1,8 @@
 ![alt text](/assets/Шапка.jpg)
 <div align="center">
-    <img src="https://img.shields.io/npm/l/schoolbot">
-    <img src="https://img.shields.io/amo/dw/schoolbot">
-    <img src="https://img.shields.io/npm/v/schoolbot">
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 </div>
 
 
@@ -18,10 +18,6 @@
 Чтобы установить бота, скопируйте репозиторий.
 ```
 $ git clone https://github.com/sashafromlibertalia/SchoolBot.git
-```
-или воспользуйтесь **npm**:
-```
-npm install schoolbot
 ```
 
 ## Важное объявление
