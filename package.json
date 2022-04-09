@@ -17,7 +17,7 @@
     "canvas": "^2.8.0",
     "cheerio": "^1.0.0-rc.5",
     "intl": "^1.2.5",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "node-canvas": "^2.7.0",
     "request": "^2.88.2",
     "vk-io": "^4.1.4"
