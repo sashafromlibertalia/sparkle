@@ -3,7 +3,7 @@ module.exports = {
     markdown: {
         lineNumbers: true
     },
-    base: '/sparcle/',
+    base: '/sparkle/',
     themeConfig: {
         sidebar: [
             ['/', 'Главная'],
