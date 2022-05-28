@@ -9,8 +9,6 @@ jobs:
 
       - name: vuepress-deploy
         uses: jenkey2011/vuepress-deploy@master
-        with:
-          force: false
         env:
           ACCESS_TOKEN: ${{ secrets.VUEPRESS }}
           TARGET_REPO: sashafromlibertalia/sparkle
