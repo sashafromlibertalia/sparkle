@@ -1,4 +1,6 @@
-<h1 align="center">sparkle</h1>
+# sparkle
+
+Simple chat bot for students designed for [VK](https://vk.com)
 
 [Demo](https://vk.com/club168462227) • [Documentation](https://rotonda-ui.dev/getting-started)
 

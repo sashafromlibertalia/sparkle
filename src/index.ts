@@ -1,5 +1,8 @@
-import { vk } from './vk';
+import { Bot } from './core';
+
+const bot = new Bot();
 
 (async () => {
-    await vk.updates.startPolling();
+    await bot.startPolling();
+    await bot.runCommands();
 })();

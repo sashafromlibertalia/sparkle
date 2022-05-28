@@ -4,28 +4,18 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "baseUrl": "./",
-    "paths": {
-      "@/models/*": [
-        "src/models/*"
-      ],
-      "@/commands/*": [
-        "src/commands/*"
-      ],
-      "@/types/*": [
-        "src/types/*"
-      ],
-      "@/common/*": [
-        "src/common/*"
-      ],
-    },
-    "strictNullChecks": true,
-    "strictFunctionTypes": false,
     "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "types": [
+      "node"
+    ],
+    "strictFunctionTypes": false,
     "esModuleInterop": true,
     "outDir": ".build",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    "skipLibCheck": true
-  }
+  },
+  "include": ["src"]
 }

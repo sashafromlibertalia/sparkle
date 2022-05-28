@@ -1,284 +1,281 @@
-interface ITroll {
-    regex: RegExp,
-    replaceTo: string,
-}
+import { IUglify } from '../types/global';
 
-const matches: ITroll[] = [
+const matches: IUglify[] = [
     {
         regex: /ог/gi,
-        replaceTo: 'ох'
+        replaceTo: 'ох',
     },
     {
         regex: /рь/gi,
-        replaceTo: 'йь'
+        replaceTo: 'йь',
     },
     {
         regex: /гов/gi,
-        replaceTo: 'гяв'
+        replaceTo: 'гяв',
     },
     {
         regex: /аж/gi,
-        replaceTo: 'яз'
+        replaceTo: 'яз',
     },
     {
         regex: /на/gi,
-        replaceTo: 'ня'
+        replaceTo: 'ня',
     },
     {
         regex: /ла/gi,
-        replaceTo: 'ля'
+        replaceTo: 'ля',
     },
     {
         regex: /шу/gi,
-        replaceTo: 'шю'
+        replaceTo: 'шю',
     },
     {
         regex: /жи/gi,
-        replaceTo: 'жы'
+        replaceTo: 'жы',
     },
     {
         regex: /ши/gi,
-        replaceTo: 'шы'
+        replaceTo: 'шы',
     },
     {
         regex: /лу/gi,
-        replaceTo: 'лю'
+        replaceTo: 'лю',
     },
     {
         regex: /рок/gi,
-        replaceTo: 'рйок'
+        replaceTo: 'рйок',
     },
     {
         regex: /кря/gi,
-        replaceTo: 'кья'
+        replaceTo: 'кья',
     },
     {
         regex: /ря/gi,
-        replaceTo: 'ля'
+        replaceTo: 'ля',
     },
     {
         regex: /кр/gi,
-        replaceTo: 'кл'
+        replaceTo: 'кл',
     },
     {
         regex: /ред/gi,
-        replaceTo: 'ьед'
+        replaceTo: 'ьед',
     },
     {
         regex: /как/gi,
-        replaceTo: 'кяк'
+        replaceTo: 'кяк',
     },
     {
         regex: /енных/gi,
-        replaceTo: 'ених'
+        replaceTo: 'ених',
     },
     {
         regex: /ать/gi,
-        replaceTo: 'ять'
+        replaceTo: 'ять',
     },
     {
         regex: /ас/gi,
-        replaceTo: 'яс'
+        replaceTo: 'яс',
     },
     {
         regex: /ра/gi,
-        replaceTo: 'ья'
+        replaceTo: 'ья',
     },
     {
         regex: /рав/gi,
-        replaceTo: 'ьяв'
+        replaceTo: 'ьяв',
     },
     {
         regex: /чк/gi,
-        replaceTo: 'чьк'
+        replaceTo: 'чьк',
     },
     {
         regex: /чн/gi,
-        replaceTo: 'чьн'
+        replaceTo: 'чьн',
     },
     {
         regex: /ль/gi,
-        replaceTo: 'й'
+        replaceTo: 'й',
     },
     {
         regex: /гу/gi,
-        replaceTo: 'гю'
+        replaceTo: 'гю',
     },
     {
         regex: /су/gi,
-        replaceTo: 'сю'
+        replaceTo: 'сю',
     },
     {
         regex: /еб/gi,
-        replaceTo: 'йоб'
+        replaceTo: 'йоб',
     },
     {
         regex: /тся/gi,
-        replaceTo: 'ться'
+        replaceTo: 'ться',
     },
     {
         regex: /оо/gi,
-        replaceTo: 'а'
+        replaceTo: 'а',
     },
     {
         regex: /ал/gi,
-        replaceTo: 'ял'
+        replaceTo: 'ял',
     },
     {
         regex: /ром/gi,
-        replaceTo: 'ьом'
+        replaceTo: 'ьом',
     },
     {
         regex: /олб/gi,
-        replaceTo: 'об'
+        replaceTo: 'об',
     },
     {
         regex: /лять/gi,
-        replaceTo: 'ьять'
+        replaceTo: 'ьять',
     },
     {
         regex: /жа/gi,
-        replaceTo: 'жя'
+        replaceTo: 'жя',
     },
     {
         regex: /удет/gi,
-        replaceTo: 'уит'
+        replaceTo: 'уит',
     },
     {
         regex: /ет/gi,
-        replaceTo: 'ит'
+        replaceTo: 'ит',
     },
     {
         regex: /чт/gi,
-        replaceTo: 'щт'
+        replaceTo: 'щт',
     },
     {
         regex: /ох/gi,
-        replaceTo: 'ёх'
+        replaceTo: 'ёх',
     },
     {
         regex: /эле/gi,
-        replaceTo: 'эе'
+        replaceTo: 'эе',
     },
     {
         regex: /вре/gi,
-        replaceTo: 'вье'
+        replaceTo: 'вье',
     },
     {
         regex: /ых/gi,
-        replaceTo: 'ьих'
+        replaceTo: 'ьих',
     },
     {
         regex: /чис/gi,
-        replaceTo: 'чьс'
+        replaceTo: 'чьс',
     },
     {
         regex: /цит/gi,
-        replaceTo: 'сит'
+        replaceTo: 'сит',
     },
     {
         regex: /цы/gi,
-        replaceTo: 'си'
+        replaceTo: 'си',
     },
     {
         regex: /го/gi,
-        replaceTo: 'си'
+        replaceTo: 'си',
     },
     {
         regex: /ли/gi,
-        replaceTo: 'ль'
+        replaceTo: 'ль',
     },
     {
         regex: /гр/gi,
-        replaceTo: 'гл'
+        replaceTo: 'гл',
     },
     {
         regex: /лн/gi,
-        replaceTo: 'ьн'
+        replaceTo: 'ьн',
     },
     {
         regex: /ту/gi,
-        replaceTo: 'тю'
+        replaceTo: 'тю',
     },
     {
         regex: /те/gi,
-        replaceTo: 'ти'
+        replaceTo: 'ти',
     },
     {
         regex: /ры/gi,
-        replaceTo: 'ьы'
+        replaceTo: 'ьы',
     },
     {
         regex: /за/gi,
-        replaceTo: 'зя'
+        replaceTo: 'зя',
     },
     {
         regex: /мат/gi,
-        replaceTo: 'мят'
+        replaceTo: 'мят',
     },
     {
         regex: /уж/gi,
-        replaceTo: 'юш'
+        replaceTo: 'юш',
     },
     {
         regex: /ну/gi,
-        replaceTo: 'ню'
+        replaceTo: 'ню',
     },
     {
         regex: /мам/gi,
-        replaceTo: 'мямь'
+        replaceTo: 'мямь',
     },
     {
         regex: /оп/gi,
-        replaceTo: 'ёп'
+        replaceTo: 'ёп',
     },
     {
         regex: /ут/gi,
-        replaceTo: 'ють'
+        replaceTo: 'ють',
     },
     {
         regex: /тан/gi,
-        replaceTo: 'тян'
+        replaceTo: 'тян',
     },
     {
         regex: /зыв/gi,
-        replaceTo: 'зивъ'
+        replaceTo: 'зивъ',
     },
     {
         regex: /орош/gi,
-        replaceTo: 'ороф'
+        replaceTo: 'ороф',
     },
     {
         regex: /уст/gi,
-        replaceTo: 'ьюс'
+        replaceTo: 'ьюс',
     },
     {
         regex: /уж/gi,
-        replaceTo: 'юш'
+        replaceTo: 'юш',
     },
     {
         regex: /ерз/gi,
-        replaceTo: 'ьерс'
+        replaceTo: 'ьерс',
     },
     {
         regex: /изик/gi,
-        replaceTo: 'иьик'
+        replaceTo: 'иьик',
     },
     {
         regex: /тик/gi,
-        replaceTo: 'ьик'
+        replaceTo: 'ьик',
     },
     {
         regex: /дем/gi,
-        replaceTo: 'им'
-    }
-]
+        replaceTo: 'им',
+    },
+];
 
-const rewriteMessage = (message) => {
+export const uglifyMessage = (message: string) => {
     for (let i = 0; i < matches.length; i++) {
         if (message.match(matches[i].regex)) {
-            message = message.replaceTo(matches[i].regex, matches[i].replaceTo)
+            message = message.replace(matches[i].regex, matches[i].replaceTo);
         }
     }
-    return message
-}
+    return message;
+};
