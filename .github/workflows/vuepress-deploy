@@ -1,0 +1,18 @@
+name: Build and Deploy
+on: [ push ]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: vuepress-deploy
+        uses: jenkey2011/vuepress-deploy@master
+        with:
+          force: false
+        env:
+          ACCESS_TOKEN: ${{ secrets.VUEPRESS }}
+          TARGET_REPO: sashafromlibertalia/sparkle
+          BUILD_SCRIPT: npm i && npm run docs:build
+          BUILD_DIR: docs/.vuepress/dist
