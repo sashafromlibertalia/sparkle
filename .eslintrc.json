@@ -1,0 +1,36 @@
+{
+    "env": {
+        "node": true,
+        "es2021": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "semi": ["error", "always"],
+        "@typescript-eslint/semi": ["error"],
+        "quotes": ["error", "single"],
+        "@typescript-eslint/ban-ts-comment": "off",
+        "no-undef": "off",
+        "react/prop-types": "off",
+        "object-curly-spacing": ["error", "always"],
+        "comma-dangle": ["error", "always-multiline"],
+        "@typescript-eslint/no-var-requires": "off",
+        "eol-last": ["error", "always"],
+        "indent": ["error", 4, { "SwitchCase": 1 }]
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@/models/*": [
+        "src/models/*"
+      ],
+      "@/commands/*": [
+        "src/commands/*"
+      ],
+      "@/types/*": [
+        "src/types/*"
+      ],
+      "@/common/*": [
+        "src/common/*"
+      ],
+    },
+    "strictNullChecks": true,
+    "strictFunctionTypes": false,
+    "incremental": true,
+    "esModuleInterop": true,
+    "outDir": ".build",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true
+  }
+}
