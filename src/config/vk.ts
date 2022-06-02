@@ -1,14 +1,15 @@
-import { Context, VK } from 'vk-io';
-const { HearManager } = require('@vk-io/hear');
+import { VK } from 'vk-io';
+import { HearManager } from '@vk-io/hear';
 
 import { config } from './config';
-const { token } = config;
+const { token, pollingGroupId } = config;
 
 const vk = new VK({
     token,
+    pollingGroupId,
 });
 
-const hearManager: Context = new HearManager();
+const hearManager = new HearManager();
 
 vk.updates.on('message_new', hearManager.middleware);
 

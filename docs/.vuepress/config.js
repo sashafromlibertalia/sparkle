@@ -9,7 +9,6 @@ module.exports = {
             ['/', 'Главная'],
             '/setup',
             '/commands',
-            '/contributing'
         ],
         nav: [
             { text: 'GitHub', link: 'https://github.com/sashafromlibertalia/sparkle' }
