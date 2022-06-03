@@ -29,3 +29,5 @@ export const trollCommand = async () => {
         }
     });
 };
+
+trollCommand();

@@ -18,3 +18,5 @@ export const helpCommand = async () => {
         }
     });
 };
+
+helpCommand();

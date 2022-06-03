@@ -4,5 +4,4 @@ const bot = new Bot();
 
 (async () => {
     await bot.startPolling();
-    await bot.runCommands();
 })();

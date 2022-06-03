@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc --build",
-    "start:dev": "NODE_ENV=development nodemon ./src/index.ts",
+    "start:dev": "NODE_ENV=development ts-node ./src/index.ts",
     "start:prod": "NODE_ENV=production npm run build && node ./.build/index.js",
+    "start:watch": "NODE_ENV=development nodemon ./src/index.ts",
     "lint": "eslint --ext .ts,.js --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .ts,.js --ignore-path .gitignore . --fix",
     "docs:dev": "vuepress dev docs",
