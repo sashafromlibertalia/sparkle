@@ -1,4 +1,4 @@
-import { VK } from 'vk-io';
+import { MessageContext, VK } from 'vk-io';
 import { HearManager } from '@vk-io/hear';
 
 import { config } from './config';
@@ -9,7 +9,7 @@ const vk = new VK({
     pollingGroupId,
 });
 
-const hearManager = new HearManager();
+const hearManager = new HearManager<MessageContext>();
 
 vk.updates.on('message_new', hearManager.middleware);
 

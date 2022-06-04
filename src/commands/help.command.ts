@@ -8,10 +8,10 @@ export const helpCommandData: ICommand = {
     description: 'Документация бота',
 };
 
-export const helpCommand = async () => {    
+export const helpCommand = async () => {
     hearManager.hear(helpCommandData.name, async (context: Context) => {
         try {
-            await context.send('Документация: https://github.com/sashafromlibertalia/sparkle');
+            await context.send('📑 Документация: https://sashafromlibertalia.github.io/sparkle/\n⚙️ GitHub: https://github.com/sashafromlibertalia/sparkle');
         }
         catch (err: any) {
             return context.send(throwException(err));
