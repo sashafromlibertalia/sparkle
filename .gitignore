@@ -37,6 +37,7 @@ yarn-error.log*
 .env.production.local
 
 # vercel
+temp
 .vercel
 
 # typescript

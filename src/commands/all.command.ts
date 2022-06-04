@@ -9,7 +9,7 @@ export const allCommand = async () => {
             let message = '';
             for (const command of commands) {
                 message += `${command.name}: ${command.description}\n`;
-            };
+            }
 
             await context.send(message);
         }
