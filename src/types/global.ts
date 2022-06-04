@@ -22,3 +22,8 @@ export interface IConfig {
     universityName: string;
     admin: IAdmin;
 }
+
+export interface IUser {
+    first_name: string;
+    last_name: string;
+}

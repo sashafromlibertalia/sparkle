@@ -1,9 +1,7 @@
 export const citgenConfig = {
-    width: 640,
-    height: 400,
+    width: 900,
+    height: 500,
     background: '#000000',
     fill: '#FFFFFF',
-    user_pic: 'images/ava.png',
-    destination_path: 'images/res.png',
     title: 'Золотые слова',
 };
