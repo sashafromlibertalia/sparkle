@@ -34,13 +34,13 @@ export const citgenCommand = async () => {
                     let text_arr: string[] = [];
 
                     if (context.forwards.length === 1) {
-                        text_arr[0] = context.forwards[0].text
+                        text_arr[0] = context.forwards[0].text;
                     }
 
                     for (const [user] of context.forwards.entries()) {
                         if (context.forwards[0].senderId !== user.senderId) {
-                            await context.send('Так! Ошибка! Рофляночка должна принадлежать одному человеку, а не разным')
-                            return
+                            await context.send('Так! Ошибка! Рофляночка должна принадлежать одному человеку, а не разным');
+                            return;
                         }
 
                         text_arr.push(user.text);
