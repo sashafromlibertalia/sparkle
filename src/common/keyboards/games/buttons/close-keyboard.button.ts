@@ -1,10 +1,10 @@
 import { Context } from 'vk-io';
 import { hearManager } from '../../../../config';
-import { throwException } from '../../../exception.util';
+import { throwException } from '../../../../utils/exception.util';
 import { CommandsEnum } from '../commands';
 
 const closeKeyboardButton = async () => {
-    hearManager.hear({ 'messagePayload.command': CommandsEnum.CLOSE_KEYBOARD }, async (context: Context) => {        
+    hearManager.hear({ 'messagePayload.command': CommandsEnum.CLOSE_KEYBOARD }, async (context: Context) => {
         try {
             await context.send('Хорошо, я выключу клавиатуру!');
         }

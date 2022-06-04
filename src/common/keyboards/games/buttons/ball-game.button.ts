@@ -1,10 +1,10 @@
 import { Context } from 'vk-io';
 import { hearManager } from '../../../../config';
-import { throwException } from '../../../exception.util';
+import { throwException } from '../../../../utils/exception.util';
 import { CommandsEnum } from '../commands';
 
 const ballGameKeyboardButton = async () => {
-    hearManager.hear({ 'messagePayload.command': CommandsEnum.BALL_GAME }, async (context: Context) => {        
+    hearManager.hear({ 'messagePayload.command': CommandsEnum.BALL_GAME }, async (context: Context) => {
         try {
             await context.send('Ты пишешь "шанc" и свое утверждение, а я отвечаю вероятностью:\n\n— Шанc, что мне повезет.\n— Вероятность - 100%');
 
@@ -17,7 +17,7 @@ const ballGameKeyboardButton = async () => {
                     'Маловероятно, но шанс есть',
                     'Вероятность нулевая, ничего не поделать',
                 ];
-                
+
                 await context.send(chances[Math.floor(Math.random() * chances.length)]);
             });
         }

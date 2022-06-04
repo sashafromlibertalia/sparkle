@@ -1,7 +1,8 @@
 import { hearManager } from '../config';
 import { Context } from 'vk-io';
-import { downloadImage, fetchUserPhoto, throwException } from '../utils';
+import { throwException } from '../utils';
 import { ICommand } from '../types/global';
+import { downloadImage, fetchUserPhoto } from '../api';
 
 export const citgenCommandData: ICommand = {
     name: '/citgen',
@@ -15,7 +16,7 @@ export const citgenCommand = async () => {
                 return await context.send('А че цитгенить то будем?');
 
             if (context.replyMessage.isGroup || context.forwards.filter((msg: any) => msg.isGroup).length)
-                return context.send('Цитген с ботами не работает.');
+                return context.send('Цитген с ботами не работает 😔');
 
             switch (true) {
                 case context.hasReplyMessage:
