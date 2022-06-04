@@ -21,11 +21,31 @@ export const citgenCommand = async () => {
             switch (true) {
                 case context.hasReplyMessage:
                     await context.send('Citgen одобрен, ща будет ржака');
+
                     const text = context.replyMessage.text;
 
                     const [pic] = await fetchUserPhoto(context.replyMessage.senderId);
                     const { first_name, last_name, photo_200 } = pic;
                     await downloadImage(photo_200);
+                    break;
+                case context.hasForwards:
+                    await context.send('Citgen одобрен, ща будет ржака');
+
+                    let text_arr: string[] = [];
+
+                    if (context.forwards.length === 1) {
+                        text_arr[0] = context.forwards[0].text
+                    }
+
+                    for (const [user] of context.forwards.entries()) {
+                        if (context.forwards[0].senderId !== user.senderId) {
+                            await context.send('Так! Ошибка! Рофляночка должна принадлежать одному человеку, а не разным')
+                            return
+                        }
+
+                        text_arr.push(user.text);
+                        const [pic] = await fetchUserPhoto(user.senderId);
+                    }
                     break;
                 default:
                     break;
