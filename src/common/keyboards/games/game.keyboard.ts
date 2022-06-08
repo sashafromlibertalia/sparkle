@@ -1,5 +1,5 @@
 import { Keyboard } from 'vk-io';
-import { CommandsEnum } from './commands';
+import { CommandsEnum } from '../commands.enum';
 
 export const gamesKeyboard = Keyboard.builder()
     .textButton({
@@ -7,7 +7,7 @@ export const gamesKeyboard = Keyboard.builder()
         payload: {
             command: CommandsEnum.BALL_GAME,
         },
-        color: Keyboard.POSITIVE_COLOR,
+        color: Keyboard.PRIMARY_COLOR,
     })
     .row()
     .textButton({

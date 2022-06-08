@@ -1,2 +1,2 @@
 export * from './game.keyboard';
-export * from './commands';
+export * from '../commands.enum';

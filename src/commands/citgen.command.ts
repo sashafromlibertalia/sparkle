@@ -21,6 +21,7 @@ export const citgenCommand = async () => {
                 return context.send('Цитген с ботами не работает 😔');
 
             await context.send('Citgen одобрен, ща будет ржака');
+
             switch (true) {
                 case context.hasReplyMessage:
                     {
@@ -33,7 +34,7 @@ export const citgenCommand = async () => {
                         const user: IUser = {
                             first_name,
                             last_name,
-                        }
+                        };
 
                         await generateCitgenImage(context, photo_200, text, user);
                     }
@@ -58,7 +59,7 @@ export const citgenCommand = async () => {
                         const user: IUser = {
                             first_name,
                             last_name,
-                        }
+                        };
 
                         await generateCitgenImage(context, photo_200, text.join('\n'), user);
                     }
