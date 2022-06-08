@@ -1,4 +1,3 @@
-import { IConfig } from '../types/global';
 import dotenv from 'dotenv';
 import fs from 'fs';
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });

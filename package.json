@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc --build",
-    "start:dev": "NODE_ENV=development ts-node ./src/index.ts",
+    "start:dev": "NODE_ENV=development ts-node ./src/index.ts --files",
     "start:prod": "NODE_ENV=production npm run build && node ./.build/index.js",
-    "start:watch": "NODE_ENV=development nodemon ./src/index.ts",
+    "start:watch": "NODE_ENV=development nodemon ./src/index.ts --files",
     "lint": "eslint --ext .ts,.js --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .ts,.js --ignore-path .gitignore . --fix",
     "docs:dev": "vuepress dev docs",
@@ -31,7 +31,8 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-promise": "^6.0.0",
-    "typescript": "4.5.5",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3",
     "vuepress": "^1.9.7"
   }
 }

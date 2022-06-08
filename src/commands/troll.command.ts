@@ -1,14 +1,13 @@
 import { hearManager } from '../config';
 import { Context } from 'vk-io';
 import { throwException, uglifyMessage } from '../utils';
-import { ICommand } from '../types/global';
 
 export const trollCommandData: ICommand = {
     name: '/тролль',
     description: 'Отправляет забавно исковерканное сообщение, на которое ответил человек',
 };
 
-export const trollCommand = async () => {    
+export const trollCommand = async () => {
     hearManager.hear(trollCommandData.name, async (context: Context) => {
         try {
             if (context.hasReplyMessage) {

@@ -3,18 +3,25 @@
     "target": "es2017",
     "module": "commonjs",
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": "src",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
     "types": [
       "node"
     ],
+    "typeRoots": ["./src/types", "./node_modules/@types"],
     "strictFunctionTypes": false,
     "esModuleInterop": true,
     "outDir": ".build",
+    "removeComments": true,
+    "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-  }
+  },
+  "ts-node": {
+    "files": true
+  },
+  "files": ["src/types/global.d.ts", "src/index.ts"],
 }

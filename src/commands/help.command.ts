@@ -1,7 +1,6 @@
 import { hearManager } from '../config';
 import { Context } from 'vk-io';
 import { throwException } from '../utils';
-import { ICommand } from '../types/global';
 
 export const helpCommandData: ICommand = {
     name: '/help',

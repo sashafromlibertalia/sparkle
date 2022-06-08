@@ -2,8 +2,7 @@ import { Context, MessageContext, VK } from 'vk-io';
 import { HearManager } from '@vk-io/hear';
 import { config } from './config';
 import { CommandsEnum } from '../common/keyboards/games';
-import { closeKeyboardButton } from '../common/keyboards/games/buttons/close-keyboard.button';
-import { ballGameKeyboardButton } from '../common/keyboards/games/buttons/ball-game.button';
+import { ballGameKeyboardButton, closeKeyboardButton } from '../common/keyboards/games/buttons';
 const { token, pollingGroupId } = config;
 
 const vk = new VK({

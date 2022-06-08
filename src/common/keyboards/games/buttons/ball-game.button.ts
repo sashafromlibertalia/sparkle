@@ -1,6 +1,6 @@
 import { Context } from 'vk-io';
-import { hearManager, vk } from '../../../../config';
 import { throwException } from '../../../../utils';
+import { hearManager, vk } from '../../../../config';
 
 export const ballGameKeyboardButton = async (context: Context) => {
     try {

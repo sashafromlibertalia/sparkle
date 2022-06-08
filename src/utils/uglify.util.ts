@@ -1,5 +1,3 @@
-import { IUglify } from '../types/global';
-
 const matches: IUglify[] = [
     {
         regex: /ог/gi,
@@ -272,10 +270,11 @@ const matches: IUglify[] = [
 ];
 
 export const uglifyMessage = (message: string) => {
-    for (let i = 0; i < matches.length; i++) {
-        if (message.match(matches[i].regex)) {
-            message = message.replace(matches[i].regex, matches[i].replaceTo);
+    for (const match of matches) {
+        if (message.match(match.regex)) {
+            message = message.replace(match.regex, match.replaceTo);
         }
     }
+
     return message;
 };

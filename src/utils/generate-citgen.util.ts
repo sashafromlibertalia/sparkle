@@ -3,7 +3,6 @@ import { createCanvas, loadImage } from 'canvas';
 import { downloadImage } from '../api';
 import fs from 'fs';
 import { Context } from 'vk-io';
-import { IUser } from '../types/global';
 
 export const generateCitgenImage = async (context: Context, url: string, text: string, user: IUser) => {
     const { width, height, background, fill, title } = citgenConfig;
