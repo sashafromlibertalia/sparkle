@@ -1,4 +1,4 @@
-import { vk } from '../config';
+import { vk } from '../config/vk';
 
 export const fetchUserPhoto = (userId: number) => {
     return vk.api.users.get({

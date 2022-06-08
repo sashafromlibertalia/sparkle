@@ -1,7 +1,7 @@
-import { hearManager } from '../config';
 import { Context } from 'vk-io';
 import { throwException } from '../utils';
 import { gamesKeyboard } from '../common/keyboards/games';
+import { hearManager } from '../config';
 
 export const gamesCommandData: ICommand = {
     name: '/игры',

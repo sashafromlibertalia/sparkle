@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { Bot } from './core';
 
 const bot = new Bot();

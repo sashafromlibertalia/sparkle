@@ -1,6 +1,6 @@
-import { hearManager } from '../config';
 import { Context } from 'vk-io';
 import { throwException, uglifyMessage } from '../utils';
+import { hearManager } from '../config';
 
 export const trollCommandData: ICommand = {
     name: '/тролль',

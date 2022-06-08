@@ -6,4 +6,4 @@ export class Bot {
     public async startPolling(): Promise<void> {
         await vk.updates.startPolling().catch(e => console.error(e));
     }
-};
+}

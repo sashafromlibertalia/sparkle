@@ -1,7 +1,7 @@
-import { hearManager } from '../config';
 import { Context } from 'vk-io';
 import { generateCitgenImage, throwException } from '../utils';
 import { fetchUserPhoto } from '../api';
+import { hearManager } from '../config';
 
 export const citgenCommandData: ICommand = {
     name: '/citgen',

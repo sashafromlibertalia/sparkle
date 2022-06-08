@@ -1,6 +1,6 @@
-import { hearManager } from '../config';
 import { Context } from 'vk-io';
 import { throwException } from '../utils';
+import { hearManager } from '../config';
 import { commands } from '../core';
 
 export const allCommand = async () => {

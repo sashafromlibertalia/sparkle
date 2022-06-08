@@ -1,4 +1,12 @@
 export enum CommandsEnum {
     BALL_GAME = 'BALL_GAME',
+
+    MONDAY = 'MONDAY',
+    TUESDAY = 'TUESDAY',
+    WEDNESDAY = 'WEDNESDAY',
+    THURSDAY = 'THURSDAY',
+    FRIDAY = 'FRIDAY',
+    SATURDAY = 'SATURDAY',
+
     CLOSE_KEYBOARD = 'CLOSE_KEYBOARD',
 }

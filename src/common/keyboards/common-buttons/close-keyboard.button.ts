@@ -1,6 +1,6 @@
 import { Context } from 'vk-io';
-import { throwException } from '../../../../utils';
-import { vk } from '../../../../config';
+import { throwException } from '../../../utils';
+import { vk } from '../../../config';
 
 export const closeKeyboardButton = async (context: Context) => {
     try {
