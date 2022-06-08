@@ -1,7 +1,8 @@
 {
   "name": "sparkle",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple chat bot for students designed for VK",
+  "homepage": "https://github.com/sashafromlibertalia/sparkle",
   "main": "index.js",
   "scripts": {
     "build": "tsc --build",
