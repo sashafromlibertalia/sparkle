@@ -3,10 +3,6 @@ declare global {
     interface IConfig {
         token: string;
         pollingGroupId: number;
-        parserUrl: string;
-        groupName: string;
-        universityName: string;
-        admin: IAdmin;
     }
 
     interface ICommand {
@@ -17,12 +13,6 @@ declare global {
     interface IUglify {
         regex: RegExp,
         replaceTo: string,
-    }
-
-    interface IAdmin {
-        name: string;
-        shortLink?: string;
-        list: number[];
     }
 
     interface IUser {
