@@ -1,5 +1,5 @@
 import { Keyboard } from 'vk-io';
-import { CommandsEnum } from '../commands.enum';
+import { CommandsEnum } from '../../enums/commands.enum';
 
 export const gamesKeyboard = Keyboard.builder()
     .textButton({

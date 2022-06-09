@@ -1,0 +1,8 @@
+export enum SubjectsEnum {
+    MATHS = 'MATHS',
+    PHYSICS = 'PHYSICS',
+    PROGRAMMING = 'PROGRAMMING',
+    FOREIGN_LANGUAGE = 'FOREIGN_LANGUAGE',
+    OS = 'OS',
+    DATABASE = 'DATABASE'
+}

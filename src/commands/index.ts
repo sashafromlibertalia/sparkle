@@ -4,3 +4,4 @@ export * from './troll.command';
 export * from './games.command';
 export * from './citgen.command';
 export * from './date.command';
+export * from './add.command';

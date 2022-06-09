@@ -1,4 +1,11 @@
-import { helpCommandData, trollCommandData, gamesCommandData, citgenCommandData, dateCommandData } from '../commands';
+import {
+    helpCommandData,
+    trollCommandData,
+    gamesCommandData,
+    citgenCommandData,
+    dateCommandData,
+    addCommandData,
+} from '../commands';
 
 export const commands: ICommand[] = [
     helpCommandData,
@@ -6,4 +13,5 @@ export const commands: ICommand[] = [
     gamesCommandData,
     citgenCommandData,
     dateCommandData,
+    addCommandData,
 ];

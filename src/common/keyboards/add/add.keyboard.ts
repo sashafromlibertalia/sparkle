@@ -1,25 +1,25 @@
 import { Keyboard } from 'vk-io';
 import { CommandsEnum } from '../../enums/commands.enum';
 
-export const dateKeyboard = Keyboard.builder()
+export const addKeyboard = Keyboard.builder()
     .textButton({
         label: 'Понедельник',
         payload: {
-            command: CommandsEnum.GET_MONDAY,
+            command: CommandsEnum.SET_MONDAY,
         },
         color: Keyboard.POSITIVE_COLOR,
     })
     .textButton({
         label: 'Вторник',
         payload: {
-            command: CommandsEnum.GET_TUESDAY,
+            command: CommandsEnum.SET_TUESDAY,
         },
         color: Keyboard.POSITIVE_COLOR,
     })
     .textButton({
         label: 'Среда',
         payload: {
-            command: CommandsEnum.GET_WEDNESDAY,
+            command: CommandsEnum.SET_WEDNESDAY,
         },
         color: Keyboard.POSITIVE_COLOR,
     })
@@ -27,21 +27,21 @@ export const dateKeyboard = Keyboard.builder()
     .textButton({
         label: 'Четверг',
         payload: {
-            command: CommandsEnum.GET_THURSDAY,
+            command: CommandsEnum.SET_THURSDAY,
         },
         color: Keyboard.POSITIVE_COLOR,
     })
     .textButton({
         label: 'Пятница',
         payload: {
-            command: CommandsEnum.GET_FRIDAY,
+            command: CommandsEnum.SET_FRIDAY,
         },
         color: Keyboard.POSITIVE_COLOR,
     })
     .textButton({
         label: 'Суббота',
         payload: {
-            command: CommandsEnum.GET_SATURDAY,
+            command: CommandsEnum.SET_SATURDAY,
         },
         color: Keyboard.POSITIVE_COLOR,
     })

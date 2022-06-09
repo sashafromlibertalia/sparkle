@@ -1,4 +1,4 @@
-import { CommandsEnum } from '../../commands.enum';
+import { CommandsEnum } from '../../../enums';
 import { SubjectService } from '../../../../db';
 import { Context } from 'vk-io';
 import { vk } from '../../../../config';
